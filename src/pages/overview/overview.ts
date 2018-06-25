@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController} from 'ionic-angular';
+import {IonicPage, NavController, ModalController} from 'ionic-angular';
 import {TabsPage} from '../tabs/tabs';
+import {AddConferencePage} from '../add-conference/add-conference';
+
 import {GlobalProvider} from '../../providers/global/global';
 import {ConferenceService} from "../../providers/conference/conference-service";
 
@@ -20,7 +22,8 @@ export class OverviewPage {
 
   constructor(private navCtrl: NavController,
     private globalProvider: GlobalProvider,
-    private conferenceService: ConferenceService) {
+    private conferenceService: ConferenceService,
+    private modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
@@ -31,12 +34,9 @@ export class OverviewPage {
     this.globalProvider.conferenceId = "0";
     this.navCtrl.push(TabsPage);
   }
-
-  public addConference(conferenceCode: string, conferencePassword: string) {
-    this.conferenceService.addConference(conferenceCode, conferencePassword)
-      .then(() => {
-        console.log("conference added");
-        this.goToConference()
-      });
-  }
+  
+  public presentAddConferenceModal() {
+ 	 let addModal = this.modalCtrl.create(AddConferencePage, {  });
+ 	 addModal.present();
+   }
 }
