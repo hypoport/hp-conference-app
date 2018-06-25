@@ -11,8 +11,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AgendaProvider } from '../providers/agenda/agenda';
-import { ConferenceProvider } from '../providers/conference/conference';
 import { GlobalProvider } from '../providers/global/global';
+import { ConferenceService } from '../providers/conference/conference-service';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,7 @@ import { GlobalProvider } from '../providers/global/global';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AgendaProvider,
-    ConferenceProvider,
+    ConferenceService,
     GlobalProvider
   ]
 })

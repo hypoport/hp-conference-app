@@ -5,13 +5,36 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+
+  <section>
+    <h2>{{ conference.title }}</h2>
+    <p>
+      {{ conference.description }}
+    </p>
+  </section>
+
+  <section>
+    <h2>Anfahrt</h2>
+    <p>
+      {{ conference.directions.address }}
+    </p>
+    <p>
+      {{ conference.directions.description }}
+    </p>
+  </section>
+
+  <section>
+    <h2>Ansprechpartner</h2>
+    <img [src]="conference.contact.avatarUrl" height="50" />
+    <p>
+      {{ conference.contact.name }}
+    </p>
+    <p>
+      {{ conference.contact.telephone }}
+    </p>
+    <p>
+      {{ conference.contact.email }}
+    </p>
+  </section>
+
 </ion-content>

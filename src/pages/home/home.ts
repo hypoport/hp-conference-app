@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Conference } from '../../models/conference';
+import { ConferenceService } from '../../providers/conference/conference-service';
 
 @Component({
   selector: 'page-home',
@@ -7,8 +8,10 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  conference: Conference;
 
+  constructor(conferenceService: ConferenceService) {
+    this.conference = conferenceService.getMockedConference();
   }
 
 }
