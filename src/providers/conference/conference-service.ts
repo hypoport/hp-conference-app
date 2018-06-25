@@ -24,6 +24,7 @@ export class ConferenceService {
     contact.telephone = "030/123456789";
     contact.avatarUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Smiley.svg/1200px-Smiley.svg.png";
     conference.contact = contact;
+    conference.image = "https://www.google.de/logos/doodles/2018/world-cup-2018-day-12-6225439109414912-5189192371929088-ssw.png";
     return conference;
   }
 

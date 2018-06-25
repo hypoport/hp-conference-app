@@ -6,4 +6,5 @@ export class Conference {
   description: string; // HTMlElement?
   directions: Directions;
   contact: Contact;
+  image: string;
 }
