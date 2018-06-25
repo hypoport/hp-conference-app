@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import { GlobalProvider } from '../../providers/global/global';
 
@@ -18,7 +18,6 @@ import { GlobalProvider } from '../../providers/global/global';
 export class OverviewPage {
 
   constructor(private navCtrl: NavController,
-              private navParams: NavParams,
               private globalProvider: GlobalProvider) {
   }
 
@@ -26,7 +25,7 @@ export class OverviewPage {
     console.log('ionViewDidLoad OverviewPage');
   }
 
-  goToConference() {
+  public goToConference() {
     this.globalProvider.conferenceId = "foo12";
     this.navCtrl.push(TabsPage);
   }

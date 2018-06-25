@@ -26,8 +26,4 @@ export class TabsPage {
       this.title = conference.title;
     });
   }
-
-  public goToOverview() {
-    this.navCtrl.push(OverviewPage);
-  }
 }
