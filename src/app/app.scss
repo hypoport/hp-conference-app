@@ -20,11 +20,29 @@
   global
 */
 
-section {
-  h1, h2, h3, h4, p {
-  color: #333;
-  }
+// typo
+h1, h2, h3, h4, p {
+color: #333;
 }
+p {
+  font-size: 1.6rem;
+}
+
+section {
+  // section spacing
+  padding: 25px 0;
+  &:last-of-type {
+    padding-bottom: 100px;
+  }
+
+
+}
+
+
+
+
+
+
 
 
 /*
@@ -43,9 +61,6 @@ section {
 
 
 
-section {
-  margin-top: 50px;
-}
 
 /*
   slider styles
@@ -62,28 +77,73 @@ ion-slides[card-slides]{
 	}
 	.swiper-slide, .swiper-container, .swiper-wrapper {
 		height: auto;
-    min-height: 250px;
+
     overflow: visible;
 	}
 	.swiper-slide .slide-zoom, .swiper-slide .card {
 		height: 100%;
 	}
 
+}
 
+
+
+
+
+  // basic card styling
   .card {
 
+    // same appearance for ios + md
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.15);
+    box-shadow: 0 0 30px -10px rgba(0,0,0,0.45);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    color: #fff;
 
-
-    &.card-ios,
-    &.card-md {
-      border-radius: 10px;
-      border: 1px solid rgba(0,0,0,0.15);
-      box-shadow: 0 0 30px -10px rgba(0,0,0,0.45);
+    .card-content {
+      height: 100%;
     }
+
+    // different card styles
+    // hero card in overview
+    &.hero-card {
+
+      min-height: 300px;
+      // TODO: problem with swiper-container padding
+      // max-height: 350px;
+      .hero-image {
+        background: url("https://www.finmas.de/finmas/uploads/2017/07/Fotolia_148991212_M.jpg");
+        background-size: cover;
+        background-position: 50% center;
+        height: 100%;
+      }
+      .card-content {}
+      .company-logo {
+        border-radius: 10px;
+        width: 60px;
+        height: 60px;
+        background: rgba(0,0,0,0.5);
+      }
+      h1, h2 {
+        position: absolute;
+        color: #fff;
+      }
+      h1 {
+        // TODO: set to global
+        font-weight: bold;
+        bottom: 20px;
+      }
+      h2 {
+        bottom: 0;
+      }
+    }
+
+
+    // add new conference card (empty)
     &.empty-card {
       border: 5px dashed rgba(0,0,0,.1);
-      border-radius: 10px;
       box-shadow: none;
+      // TODO: rearrange
       .button {
         margin-top: 60px;
         margin-bottom: 15px;
@@ -93,40 +153,111 @@ ion-slides[card-slides]{
         height: 60px;
       }
       h2 {
-
         text-align: center;
       }
+    }
 
-    }
-    .hero-image {
-      background: url("https://www.finmas.de/finmas/uploads/2017/07/Fotolia_148991212_M.jpg");
-      background-size: cover;
-      background-position: 50% center;
-      height: 100%;
-    }
-    .card-content {
-      text-align: left;
-      height: 100%;
-      h1, h2 {
-        text-shadow: 0 1px 5px rgba(0,0,0,0.25);
+
+
+    // service cards
+    &.service-card {
+      border: none;
+      min-height: 120px;
+      // TODO: problem with swiper-container padding
+      // max-height: 120px;
+      h4, h2, p {
+        position: absolute;
         color: #fff;
       }
-      h1 {
-        font-weight: bold;
+      h4 {
+        text-transform: uppercase;
+        bottom: 50px;
+        font-size: 1.2rem;
+        letter-spacing: 2px;
       }
-      h2 {}
-    }
-
-    .company-logo {
-      border-radius: 10px;
-      // top: 0;
-      // left: 0;
-      width: 60px;
-      height: 60px;
-      background: rgba(123, 187, 131, 0.8);
-      margin-bottom: 100px;
-
+      h2 {
+        bottom: 22px;
+      }
+      p {
+        bottom: 0;
+        font-style: italic;
+      }
     }
   }
 
+
+
+
+
+/*
+  OVERVIEW
+*/
+
+
+
+
+/*
+  HOME
+*/
+section {
+  // conference home hero image
+  &.hero-image {
+    padding: 0;
+    margin: -16px;
+    margin-bottom: 0;
+  }
+  // conference home service cards
+  &.service {
+    margin-top: -80px;
+    .next-agenda-slot {
+      .card {
+        background: #00c0ff;
+      }
+    }
+    .wifi {
+      .card {
+        background: red;
+      }
+    }
+    .participants {
+      .card {
+        background: blue;
+      }
+    }
+    .blank-box {
+      .card {
+        background: orange;
+      }
+    }
+  }
+  // conference home google maps cards
+  &.maps {}
+
+  // conference home support contact
+  &.support {
+    .profile-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.15);
+
+      img {
+        display: block;
+        margin: 0 auto;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+    .profile-data {
+      padding-top: 15px;
+      ion-icon {
+        margin-right: 5px;
+      }
+      p {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+  }
 }
