@@ -5,14 +5,114 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>overview</ion-title>
+    <ion-title>
+      Overview
+    </ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
+
+  <section>
+  <h2>Aktuelle Tagungen</h2>
+  <ion-slides card-slides slidesPerView="1">
+    <ion-slide>
+    <ion-card>
+      <div class="hero-image">
+        <ion-card-content>
+          <div class="company-logo"></div>
+          <h1>Tagungstitel</h1>
+          <h2>Thema der Veranstaltung</h2>
+        </ion-card-content>
+      </div>
+    </ion-card>
+    </ion-slide>
+  </ion-slides>
+</section>
+
+
+<!-- <section>
+  <h2>Tagungen hinzufügen</h2>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <button ion-button round>+</button>
+          <h2 style="color: #333;">Tagung hinzufügen</h2>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</section> -->
+
+<section>
+  <h2>Tagungen hinzufügen</h2>
+  <ion-slides card-slides slidesPerView="1">
+    <ion-slide>
+    <ion-card class="empty-card">
+      <ion-card-content>
+        <button ion-button round>+</button>
+        <h2 style="color: #333;">Tagung hinzufügen</h2>
+      </ion-card-content>
+    </ion-card>
+    </ion-slide>
+  </ion-slides>
+</section>
+
+
+<section>
+  <h2>Vergangene Tagungen</h2>
+  <ion-slides card-slides slidesPerView="1.5" spaceBetween="10">
+	    <ion-slide>
+			<ion-card>
+        <div class="hero-image">
+          <ion-card-content>
+            <div class="company-logo"></div>
+            <h1>Tagungstitel</h1>
+            <h2>Thema der Veranstaltung</h2>
+          </ion-card-content>
+        </div>
+			</ion-card>
+	    </ion-slide>
+
+	    <ion-slide>
+			<ion-card>
+        <div class="hero-image">
+          <ion-card-content>
+            <div class="company-logo"></div>
+            <h1>Tagungstitel</h1>
+            <h2>Thema der Veranstaltung</h2>
+          </ion-card-content>
+        </div>
+			</ion-card>
+	    </ion-slide>
+
+      <ion-slide>
+			<ion-card>
+        <div class="hero-image">
+          <ion-card-content>
+            <div class="company-logo"></div>
+            <h1>Tagungstitel</h1>
+            <h2>Thema der Veranstaltung</h2>
+          </ion-card-content>
+        </div>
+			</ion-card>
+	    </ion-slide>
+
+      <ion-slide>
+			<ion-card>
+        <div class="hero-image">
+          <ion-card-content>
+            <div class="company-logo"></div>
+            <h1>Tagungstitel</h1>
+            <h2>Thema der Veranstaltung</h2>
+          </ion-card-content>
+        </div>
+			</ion-card>
+	    </ion-slide>
+
+	</ion-slides>
+
+</section>
 
 </ion-content>

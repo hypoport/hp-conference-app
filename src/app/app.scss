@@ -14,3 +14,119 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+
+/*
+  global
+*/
+
+section {
+  h1, h2, h3, h4, p {
+  color: #333;
+  }
+}
+
+
+/*
+  helper
+*/
+.vert-align {
+  height: 100%;
+  display: flex!important;
+  align-content: center!important;
+  align-items: center!important;
+}
+.dropshadow {
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 0 30px -10px rgba(0,0,0,0.25);
+}
+
+
+
+section {
+  margin-top: 50px;
+}
+
+/*
+  slider styles
+*/
+ion-slides[card-slides]{
+
+	height: auto;
+
+	margin-left: -$content-padding;
+	width: calc(100% + #{$content-padding*2});
+
+	.swiper-container {
+		padding-bottom: 30px;
+	}
+	.swiper-slide, .swiper-container, .swiper-wrapper {
+		height: auto;
+    min-height: 250px;
+    overflow: visible;
+	}
+	.swiper-slide .slide-zoom, .swiper-slide .card {
+		height: 100%;
+	}
+
+
+  .card {
+
+
+
+    &.card-ios,
+    &.card-md {
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.15);
+      box-shadow: 0 0 30px -10px rgba(0,0,0,0.45);
+    }
+    &.empty-card {
+      border: 5px dashed rgba(0,0,0,.1);
+      border-radius: 10px;
+      box-shadow: none;
+      .button {
+        margin-top: 60px;
+        margin-bottom: 15px;
+        display: block;
+        margin: 0 auto;
+        width: 60px;
+        height: 60px;
+      }
+      h2 {
+
+        text-align: center;
+      }
+
+    }
+    .hero-image {
+      background: url("https://www.finmas.de/finmas/uploads/2017/07/Fotolia_148991212_M.jpg");
+      background-size: cover;
+      background-position: 50% center;
+      height: 100%;
+    }
+    .card-content {
+      text-align: left;
+      height: 100%;
+      h1, h2 {
+        text-shadow: 0 1px 5px rgba(0,0,0,0.25);
+        color: #fff;
+      }
+      h1 {
+        font-weight: bold;
+      }
+      h2 {}
+    }
+
+    .company-logo {
+      border-radius: 10px;
+      // top: 0;
+      // left: 0;
+      width: 60px;
+      height: 60px;
+      background: rgba(123, 187, 131, 0.8);
+      margin-bottom: 100px;
+
+    }
+  }
+
+}
