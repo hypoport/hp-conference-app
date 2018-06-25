@@ -16,7 +16,7 @@
   <section *ngIf="currentConference != null">
     <ion-slides card-slides slidesPerView="1">
       <ion-slide>
-        <ion-card (click)="goToConference(currentConference.id)">
+        <ion-card class="hero-card" (click)="goToConference(currentConference.id)">
           <div class="hero-image">
             <ion-card-content>
               <div class="company-logo"></div>
