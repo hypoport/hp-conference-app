@@ -62,15 +62,8 @@ export class OverviewPage {
     this.globalProvider.conferenceId = "0";
     this.navCtrl.push(TabsPage);
   }
-
-  public addConference(conferenceCode: string, conferencePassword: string) {
-    this.conferenceService.addConference(conferenceCode, conferencePassword)
-      .then(() => {
-        this.goToConference()
-      });
-  }
-
-  public presentAddConferenceModal() {
+  
+  presentAddConferenceModal() {
  	 let addModal = this.modalCtrl.create(AddConferencePage, {  });
  	 addModal.present();
    }
