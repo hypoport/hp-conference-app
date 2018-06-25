@@ -10,7 +10,7 @@ import {TabsPage} from '../pages/tabs/tabs';
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
-import {AgendaProvider} from '../providers/agenda/agenda';
+import {AgendaService} from '../providers/agenda/agenda-service';
 import {GlobalProvider} from '../providers/global/global';
 import {ConferenceService} from '../providers/conference/conference-service';
 import {HttpClientModule} from '@angular/common/http';
@@ -40,7 +40,7 @@ import {HttpClientModule} from '@angular/common/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AgendaProvider,
+    AgendaService,
     ConferenceService,
     GlobalProvider
   ]
