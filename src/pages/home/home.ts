@@ -21,9 +21,8 @@ export class HomePage {
 
   ionViewDidLoad() {
     let location = { lat: this.conference.directions.location.latitude, lng: this.conference.directions.location.longitude }
-    console.log(location);
     this.map = new google.maps.Map(this.mapElement.nativeElement, {
-      zoom: 8,
+      zoom: 15,
       center: location,
       mapTypeId: 'roadmap'
     });
