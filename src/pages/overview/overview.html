@@ -17,6 +17,7 @@
     <ion-slides card-slides slidesPerView="1">
       <ion-slide>
         <ion-card class="hero-card" (click)="goToConference(currentConference.id)">
+
           <div class="hero-image">
             <ion-card-content>
               <div class="company-logo"></div>
@@ -29,18 +30,6 @@
     </ion-slides>
   </section>
 
-
-  <!-- <section>
-    <h2>Tagungen hinzufügen</h2>
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <button ion-button round>+</button>
-            <h2 style="color: #333;">Tagung hinzufügen</h2>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-  </section> -->
 
   <section *ngIf="currentConference == null">
     <h2>Tagungen hinzufügen</h2>
