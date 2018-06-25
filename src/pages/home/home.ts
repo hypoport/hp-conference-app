@@ -20,11 +20,15 @@ export class HomePage {
     this.conference = this.conferenceService.getConference(this.globalProvider.conferenceId);
     console.log(this.conference);
     console.log("loadDirection");
-    this.loadDirection();
+  }
+  
+  ionViewDidLoad(){
+   this.loadDirection();	  
   }
 
   loadDirection() {
-    let location = {lat: this.conference.directions.location.latitude, lng: this.conference.directions.location.longitude}
+   	let location = {lat: this.conference.directions.location.latitude, lng: this.conference.directions.location.longitude}
+    
     this.map = new google.maps.Map(this.mapElement.nativeElement, {
       zoom: 15,
       center: location,
