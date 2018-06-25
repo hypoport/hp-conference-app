@@ -31,7 +31,7 @@
     "rxjs": "5.5.11",
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.26",
-    "google-maps": "3.3.0"
+    "@google/maps": "0.5.0"
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.1.10",
