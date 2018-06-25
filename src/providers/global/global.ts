@@ -12,7 +12,6 @@ export class GlobalProvider {
   private _conferenceId: string;
 
   constructor() {
-    this._conferenceId = "foo12";
   }
 
   get conferenceId(): string {
