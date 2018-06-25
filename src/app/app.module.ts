@@ -1,48 +1,50 @@
-import {ErrorHandler, NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
-import {MyApp} from './app.component';
+import {ErrorHandler, NgModule}from '@angular/core';
+import {BrowserModule}from '@angular/platform-browser';
+import {IonicApp, IonicErrorHandler, IonicModule}from 'ionic-angular';
+import {MyApp}from './app.component';
 
-import {AgendaPage} from '../pages/agenda/agenda';
-import {SpeakersPage} from '../pages/speakers/speakers';
-import {HomePage} from '../pages/home/home';
-import {TabsPage} from '../pages/tabs/tabs';
+import {AgendaPage}from '../pages/agenda/agenda';
+import {SpeakersPage}from '../pages/speakers/speakers';
+import {HomePage}from '../pages/home/home';
+import {TabsPage}from '../pages/tabs/tabs';
+import {OverviewPage }from '../pages/overview/overview';
 
-import {StatusBar} from '@ionic-native/status-bar';
-import {SplashScreen} from '@ionic-native/splash-screen';
-import {AgendaService} from '../providers/agenda/agenda-service';
-import {GlobalProvider} from '../providers/global/global';
-import {ConferenceService} from '../providers/conference/conference-service';
-import {HttpClientModule} from '@angular/common/http';
+import {StatusBar}from '@ionic-native/status-bar';
+import {SplashScreen}from '@ionic-native/splash-screen';
+import {AgendaService}from '../providers/agenda/agenda-service';
+import {GlobalProvider}from '../providers/global/global';
+import {ConferenceService}from '../providers/conference/conference-service';
+import {HttpClientModule}from '@angular/common/http';
 
-@NgModule({
-  declarations: [
+@NgModule( {
+declarations:[
     MyApp,
-    SpeakersPage,
-    AgendaPage,
-    HomePage,
-    TabsPage
+SpeakersPage,
+AgendaPage,
+HomePage,
+TabsPage,
+OverviewPage
   ],
-  imports: [
+imports:[
     BrowserModule,
-    HttpClientModule,
-    IonicModule.forRoot(MyApp)
-  ],
-  bootstrap: [IonicApp],
-  entryComponents: [
+HttpClientModule,
+IonicModule.forRoot(MyApp)
+],
+bootstrap:[IonicApp],
+entryComponents:[
     MyApp,
-    SpeakersPage,
-    AgendaPage,
-    HomePage,
-    TabsPage
+SpeakersPage,
+AgendaPage,
+HomePage,
+TabsPage,
+OverviewPage
   ],
-  providers: [
+providers:[
     StatusBar,
-    SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AgendaService,
-    ConferenceService,
-    GlobalProvider
+SplashScreen,  {provide:ErrorHandler, useClass:IonicErrorHandler},
+AgendaService,
+ConferenceService,
+GlobalProvider
   ]
 })
 export class AppModule {}
