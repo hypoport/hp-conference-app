@@ -13,15 +13,15 @@
 </ion-header>
 
 <ion-content padding>
-  <section>
+  <section *ngIf="currentConference != null">
     <ion-slides card-slides slidesPerView="1">
       <ion-slide>
-        <ion-card (click)="goToConference()">
+        <ion-card (click)="goToConference(currentConference.id)">
           <div class="hero-image">
             <ion-card-content>
               <div class="company-logo"></div>
-              <h1>Tagungstitel</h1>
-              <h2>Thema der Veranstaltung</h2>
+              <h1>{{ currentConference.title }}</h1>
+              <h2>{{ currentConference.subtitle }}</h2>
             </ion-card-content>
           </div>
         </ion-card>
@@ -42,7 +42,7 @@
       </ion-grid>
   </section> -->
 
-  <section>
+  <section *ngIf="currentConference == null">
     <h2>Tagungen hinzufügen</h2>
     <ion-slides card-slides slidesPerView="1">
       <ion-slide>
@@ -56,60 +56,38 @@
     </ion-slides>
   </section>
 
+  <section *ngIf="nextConferences.length > 0">
+      <h2>Zukünftige Tagungen</h2>
+      <ion-slides card-slides slidesPerView="1.5" spaceBetween="10">
+        <ion-slide>
+          <ion-card *ngFor="let conference of nextConferences" (click)="goToConference(conference.id)">
+            <div class="hero-image">
+              <ion-card-content>
+                <div class="company-logo"></div>
+                <h1>{{ conference.title }}</h1>
+                <h2>{{ conference.subtitle }}</h2>
+              </ion-card-content>
+            </div>
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+    </section>
 
-  <section>
+  <section *ngIf="lastConferences.length > 0">
     <h2>Vergangene Tagungen</h2>
     <ion-slides card-slides slidesPerView="1.5" spaceBetween="10">
       <ion-slide>
-        <ion-card>
+        <ion-card *ngFor="let conference of lastConferences" (click)="goToConference(conference.id)">
           <div class="hero-image">
             <ion-card-content>
               <div class="company-logo"></div>
-              <h1>Tagungstitel</h1>
-              <h2>Thema der Veranstaltung</h2>
+              <h1>{{ conference.title }}</h1>
+              <h2>{{ conference.subtitle }}</h2>
             </ion-card-content>
           </div>
         </ion-card>
       </ion-slide>
-
-      <ion-slide>
-        <ion-card>
-          <div class="hero-image">
-            <ion-card-content>
-              <div class="company-logo"></div>
-              <h1>Tagungstitel</h1>
-              <h2>Thema der Veranstaltung</h2>
-            </ion-card-content>
-          </div>
-        </ion-card>
-      </ion-slide>
-
-      <ion-slide>
-        <ion-card>
-          <div class="hero-image">
-            <ion-card-content>
-              <div class="company-logo"></div>
-              <h1>Tagungstitel</h1>
-              <h2>Thema der Veranstaltung</h2>
-            </ion-card-content>
-          </div>
-        </ion-card>
-      </ion-slide>
-
-      <ion-slide>
-        <ion-card>
-          <div class="hero-image">
-            <ion-card-content>
-              <div class="company-logo"></div>
-              <h1>Tagungstitel</h1>
-              <h2>Thema der Veranstaltung</h2>
-            </ion-card-content>
-          </div>
-        </ion-card>
-      </ion-slide>
-
     </ion-slides>
-
   </section>
 
 </ion-content>
