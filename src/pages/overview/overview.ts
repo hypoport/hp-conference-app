@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
-import { TabsPage } from '../tabs/tabs';
-import { GlobalProvider } from '../../providers/global/global';
+import {Component} from '@angular/core';
+import {IonicPage, NavController} from 'ionic-angular';
+import {TabsPage} from '../tabs/tabs';
+import {GlobalProvider} from '../../providers/global/global';
+import {ConferenceService} from "../../providers/conference/conference-service";
 
 /**
  * Generated class for the OverviewPage page.
@@ -18,7 +19,8 @@ import { GlobalProvider } from '../../providers/global/global';
 export class OverviewPage {
 
   constructor(private navCtrl: NavController,
-              private globalProvider: GlobalProvider) {
+    private globalProvider: GlobalProvider,
+    private conferenceService: ConferenceService) {
   }
 
   ionViewDidLoad() {
@@ -28,5 +30,13 @@ export class OverviewPage {
   public goToConference() {
     this.globalProvider.conferenceId = "foo12";
     this.navCtrl.push(TabsPage);
+  }
+
+  public addConference(conferenceCode: string, conferencePassword: string) {
+    this.conferenceService.addConference(conferenceCode, conferencePassword)
+      .then(() => {
+        console.log("conference added");
+        this.goToConference()
+      });
   }
 }

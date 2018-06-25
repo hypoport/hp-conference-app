@@ -1,0 +1,25 @@
+{
+  "title": "EP 2018",
+  "header": "Willkommen",
+  "description": "Hier folgt eine Beschreibung der Konferenz",
+  "subtitle": "tolle Konfernz",
+  "startDate": "2018-06-03",
+  "endDate": "2018-06-05",
+  "city": "Berlin",
+  "directions": {
+    "location": {
+      "latitude": 52.517927,
+      "longitude": 13.4121633
+    },
+    "address": "Klosterstr. 71, 10771 Berlin",
+    "description": "Einfach gerade aus. Siehste schon."
+  },
+  "contact": {
+    "name": "Max Mustermann",
+    "telephone": "030/123456789",
+    "email": "max@muster.de",
+    "avatarUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Smiley.svg/1200px-Smiley.svg.png"
+  },
+  "image": "https://www.google.de/logos/doodles/2018/world-cup-2018-day-12-6225439109414912-5189192371929088-ssw.png",
+  "brand": "EP"
+}

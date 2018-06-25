@@ -16,11 +16,10 @@ export class HomePage {
   conference: Conference;
 
   constructor(private conferenceService: ConferenceService, private globalProvider: GlobalProvider) {
-    this.conferenceService.getConference(this.globalProvider.conferenceId)
-      .then((conference) => {
-        this.conference = conference;
-        this.loadDirection();
-      });
+    console.log("home");
+    this.conference = this.conferenceService.getConference(this.globalProvider.conferenceId);
+    console.log("loadDirection");
+    this.loadDirection();
   }
 
   loadDirection() {
