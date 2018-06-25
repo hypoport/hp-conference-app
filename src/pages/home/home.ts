@@ -1,6 +1,7 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
-import { Conference } from '../../models/conference';
-import { ConferenceService } from '../../providers/conference/conference-service';
+import {Component,  ViewChild, ElementRef } from '@angular/core';
+import {Conference} from '../../models/conference';
+import {ConferenceService} from '../../providers/conference/conference-service';
+import {GlobalProvider} from "../../providers/global/global";
 
 declare const google;
 
@@ -10,13 +11,12 @@ declare const google;
 })
 export class HomePage {
 
-  conference: Conference;
-
   @ViewChild('map') mapElement: ElementRef;
   map: any;
+  conference: Conference;
 
-  constructor(private conferenceService: ConferenceService) {
-    this.conference = conferenceService.getMockedConference();
+  constructor(private conferenceService: ConferenceService, private globalProvider: GlobalProvider) {
+    conferenceService.getConference(globalProvider.conferenceId).then((result) => this.conference = result);
   }
 
   ionViewDidLoad() {

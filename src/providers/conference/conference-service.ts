@@ -1,31 +1,27 @@
-import { Injectable } from '@angular/core';
-import { Conference } from '../../models/conference';
-import { Directions } from '../../models/directions';
-import { Location } from '../../models/location';
-import { Contact } from '../../models/contact';
+import {Injectable} from "@angular/core";
+import {Conference} from "../../models/conference";
+import {HttpClient} from "@angular/common/http";
+import "rxjs/add/observable/of";
+import "rxjs/add/operator/map";
 
 @Injectable()
 export class ConferenceService {
 
-  constructor() { }
+  private conferences: Map<string, Conference> = new Map<string, Conference>();
 
-  public getMockedConference(): Conference {
-    const conference = new Conference();
-    conference.title = "Willkommen";
-    conference.description = "Hier folgt eine Beschreibung der Konferenz";
-    const directions = new Directions();
-    directions.description = "Einfach gerade aus. Siehste schon.";
-    directions.address = "Klosterstr. 71, 10771 Berlin";
-    directions.location = new Location(52.517927, 13.4121633);
-    conference.directions = directions;
-    const contact = new Contact();
-    contact.name = "Max Mustermann";
-    contact.email = "exmaple@mail.de";
-    contact.telephone = "030/123456789";
-    contact.avatarUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Smiley.svg/1200px-Smiley.svg.png";
-    conference.contact = contact;
-    conference.image = "https://www.google.de/logos/doodles/2018/world-cup-2018-day-12-6225439109414912-5189192371929088-ssw.png";
-    return conference;
+  constructor(private http: HttpClient) {
+  }
+
+  public getConference(conferenceId: string): Promise<Conference> {
+    let conference = this.conferences.get(conferenceId);
+    if (conference) {
+      return Promise.resolve(conference);
+    }
+    return this.http.get("assets/data/conference.json").toPromise()
+      .then((conference: Conference): Conference => {
+        this.conferences.set(conference.id, conference);
+        return conference;
+      });
   }
 
 }

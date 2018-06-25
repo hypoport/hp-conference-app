@@ -8,34 +8,34 @@
 <ion-content padding>
 
   <section>
-    <h2>{{ conference.title }}</h2>
+    <h2>{{ conference?.title }}</h2>
     <p>
-      {{ conference.description }}
+      {{ conference?.description }}
     </p>
   </section>
 
   <section>
     <h2>Anfahrt</h2>
     <p>
-      {{ conference.directions.address }}
+      {{ conference?.directions?.address }}
     </p>
     <div #map id="map"></div>
     <p>
-      {{ conference.directions.description }}
+      {{ conference?.directions?.description }}
     </p>
   </section>
 
   <section>
     <h2>Ansprechpartner</h2>
-    <img [src]="conference.contact.avatarUrl" height="50" />
+    <img [src]="conference?.contact?.avatarUrl" height="50"/>
     <p>
-      {{ conference.contact.name }}
+      {{ conference?.contact?.name }}
     </p>
     <p>
-      {{ conference.contact.telephone }}
+      {{ conference?.contact?.telephone }}
     </p>
     <p>
-      {{ conference.contact.email }}
+      {{ conference?.contact?.email }}
     </p>
   </section>
 

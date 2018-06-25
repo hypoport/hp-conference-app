@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 /*
   Generated class for the GlobalProvider provider.
@@ -9,8 +9,18 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class GlobalProvider {
 
+  private _conferenceId: string;
+
   constructor() {
-    console.log('Hello GlobalProvider Provider');
+    this._conferenceId = "foo12";
+  }
+
+  get conferenceId(): string {
+    return this._conferenceId;
+  }
+
+  set conferenceId(value: string) {
+    this._conferenceId = value;
   }
 
 }
