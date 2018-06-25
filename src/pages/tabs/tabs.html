@@ -1,11 +1,9 @@
 <ion-header>
-  <ion-item>
-    <button item-left clear (click)='goToOverview()'>
-        <ion-icon name="arrow-back"></ion-icon>
-    </button>
-    {{ title }}
-  </ion-item>
+  <ion-navbar>
+    <ion-title>{{ title }}</ion-title>
+  </ion-navbar>
 </ion-header>
+
 <ion-tabs>
   <ion-tab [root]="infoPage" tabTitle="Info" tabIcon="home"></ion-tab>
   <ion-tab [root]="agendaPage" tabTitle="Agenda" tabIcon="information-circle"></ion-tab>

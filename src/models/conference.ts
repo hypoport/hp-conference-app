@@ -4,9 +4,14 @@ import {Contact} from "./contact";
 export class Conference {
   id: string;
   title: string;
+  subtitle: string;
+  startDate: Date;
+  endDate: Date;
+  city: string;
   header: string;
-  description: string; // HTMlElement?
+  description: string;
   directions: Directions;
   contact: Contact;
   image: string;
+  brand: string;
 }

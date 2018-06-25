@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { App, IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { GlobalProvider } from '../../providers/global/global';
+import { ConferenceService } from "../../providers/conference/conference-service";
+import {TabsPage} from '../tabs/tabs';
+
 
 /**
  * Generated class for the AddConferencePage page.
@@ -15,11 +19,37 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AddConferencePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+  public navCtrl: NavController, 
+  public navParams: NavParams, 
+  private conferenceService: ConferenceService,
+  public viewCtrl: ViewController,
+  private globalProvider: GlobalProvider,
+  public app: App
+  ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddConferencePage');
   }
+  
+  public goToConference(id: string){
+	  this.globalProvider.conferenceId = id;
+	  this.app.getRootNav().push(TabsPage);
+	  this.viewCtrl.dismiss();
 
+  }
+    
+  public addConference(conferenceCode: string, conferencePassword: string) {
+    this.conferenceService.addConference(conferenceCode, conferencePassword)
+      .then((conference) => {
+
+	    this.goToConference(conference.id);
+        console.log("conference added");
+
+      });
+  }
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
 }
