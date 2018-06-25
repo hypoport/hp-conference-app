@@ -17,8 +17,8 @@ export class HomePage {
 
   constructor(private conferenceService: ConferenceService, private globalProvider: GlobalProvider) {
     this.conferenceService.getConference(this.globalProvider.conferenceId)
-      .then((result) => {
-        this.conference = result;
+      .then((conference) => {
+        this.conference = conference;
         this.loadDirection();
       });
   }
