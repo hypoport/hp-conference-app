@@ -28,7 +28,7 @@ export class OverviewPage {
   }
 
   public goToConference() {
-    this.globalProvider.conferenceId = "foo12";
+    this.globalProvider.conferenceId = "0";
     this.navCtrl.push(TabsPage);
   }
 

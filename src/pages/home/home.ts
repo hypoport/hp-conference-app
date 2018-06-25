@@ -18,6 +18,7 @@ export class HomePage {
   constructor(private conferenceService: ConferenceService, private globalProvider: GlobalProvider) {
     console.log("home");
     this.conference = this.conferenceService.getConference(this.globalProvider.conferenceId);
+    console.log(this.conference);
     console.log("loadDirection");
     this.loadDirection();
   }
