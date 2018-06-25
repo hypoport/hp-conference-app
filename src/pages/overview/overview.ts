@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController} from 'ionic-angular';
+import {IonicPage, NavController, ModalController} from 'ionic-angular';
 import {TabsPage} from '../tabs/tabs';
+import {AddConferencePage} from '../add-conference/add-conference';
+
 import {GlobalProvider} from '../../providers/global/global';
 import {ConferenceService} from "../../providers/conference/conference-service";
 import { Conference } from '../../models/conference';
@@ -25,7 +27,8 @@ export class OverviewPage {
 
   constructor(private navCtrl: NavController,
     private globalProvider: GlobalProvider,
-    private conferenceService: ConferenceService) {
+    private conferenceService: ConferenceService,
+    private modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
@@ -66,4 +69,9 @@ export class OverviewPage {
         this.goToConference()
       });
   }
+
+  public presentAddConferenceModal() {
+ 	 let addModal = this.modalCtrl.create(AddConferencePage, {  });
+ 	 addModal.present();
+   }
 }

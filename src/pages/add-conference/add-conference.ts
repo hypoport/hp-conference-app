@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { GlobalProvider } from '../../providers/global/global';
+import { ConferenceService } from "../../providers/conference/conference-service";
+
 
 /**
  * Generated class for the AddConferencePage page.
@@ -20,6 +23,14 @@ export class AddConferencePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddConferencePage');
+  }
+  
+  public addConference(conferenceCode: string, conferencePassword: string) {
+    this.conferenceService.addConference(conferenceCode, conferencePassword)
+      .then(() => {
+        console.log("conference added");
+        this.goToConference()
+      });
   }
 
 }

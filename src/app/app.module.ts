@@ -8,6 +8,8 @@ import {SpeakersPage} from '../pages/speakers/speakers';
 import {HomePage} from '../pages/home/home';
 import {TabsPage} from '../pages/tabs/tabs';
 import {OverviewPage} from '../pages/overview/overview';
+import {AddConferencePage} from '../pages/add-conference/add-conference';
+
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
@@ -24,7 +26,8 @@ import {IonicStorageModule} from '@ionic/storage';
     AgendaPage,
     HomePage,
     TabsPage,
-    OverviewPage
+    OverviewPage,
+    AddConferencePage
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import {IonicStorageModule} from '@ionic/storage';
     AgendaPage,
     HomePage,
     TabsPage,
-    OverviewPage
+    OverviewPage,
+    AddConferencePage
   ],
   providers: [
     StatusBar,
