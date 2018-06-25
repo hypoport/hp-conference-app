@@ -22,10 +22,25 @@
 
 // typo
 h1, h2, h3, h4, p {
-color: #333;
+  color: #444;
+}
+h1 {
+  font-size: 2.8rem;
+  &.maximus {
+    font-size: 3.4rem;
+  }
+}
+h2 {
+  font-size: 2.2rem;
+}
+h3 {
+  font-size: 2.0rem;
 }
 p {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
+  line-height: 1.5;
+  color: #666;
+
 }
 
 section {
@@ -34,10 +49,11 @@ section {
   &:last-of-type {
     padding-bottom: 100px;
   }
-
-
 }
 
+ion-content.content {
+  background: #FDFDFD;
+}
 
 
 
@@ -95,10 +111,11 @@ ion-slides[card-slides]{
 
     // same appearance for ios + md
     border-radius: 10px;
-    border: 1px solid rgba(0,0,0,0.15);
-    box-shadow: 0 0 30px -10px rgba(0,0,0,0.45);
-    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    // border: 1px solid rgba(0,0,0,0.15);
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.25);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.25);
     color: #fff;
+    background: #fff;
 
     .card-content {
       height: 100%;
@@ -143,10 +160,16 @@ ion-slides[card-slides]{
     &.empty-card {
       border: 5px dashed rgba(0,0,0,.1);
       box-shadow: none;
+      text-shadow: none;
+
+      min-height: 300px;
+      // TODO: problem with swiper-container padding
+      // max-height: 350px;
+
       // TODO: rearrange
       .button {
-        margin-top: 60px;
-        margin-bottom: 15px;
+        margin-top: 80px !important;
+        margin-bottom: 15px !important;
         display: block;
         margin: 0 auto;
         width: 60px;
@@ -163,11 +186,14 @@ ion-slides[card-slides]{
     &.service-card {
       border: none;
       min-height: 120px;
+      background: #fff !important;
+
       // TODO: problem with swiper-container padding
       // max-height: 120px;
       h4, h2, p {
         position: absolute;
-        color: #fff;
+        color: #666;
+
       }
       h4 {
         text-transform: uppercase;
@@ -231,7 +257,17 @@ section {
     }
   }
   // conference home google maps cards
-  &.maps {}
+  &.maps {
+    .card {
+      text-shadow: none;
+    }
+    .searchbar {
+      background: #fff;
+      height: 50px;
+
+
+    }
+  }
 
   // conference home support contact
   &.support {
