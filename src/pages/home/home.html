@@ -1,11 +1,70 @@
+
+
+
 <ion-content padding>
-  <img [src]="conference?.image"/>
+
+  <!-- conference hero image -->
+  <section class="hero-image">
+    <img [src]="conference?.image"/>
+  </section>
+
+  <!-- service card section (next slot, wifi, participants list) -->
+  <section class="service">
+    <ion-slides card-slides slidesPerView="2.2" spaceBetween="10">
+  	    <ion-slide class="next-agenda-slot">
+  			<ion-card>
+            <ion-card-content>
+              <h4>Next</h4>
+              <h2>Agendapunkt</h2>
+              <p>Thema</p>
+            </ion-card-content>
+  			</ion-card>
+  	    </ion-slide>
+
+  	    <ion-slide class="wifi">
+  			<ion-card>
+            <ion-card-content>
+              <h4>Info</h4>
+              <h2>Wifi Hotspot</h2>
+              <p>Subline</p>
+            </ion-card-content>
+  			</ion-card>
+  	    </ion-slide>
+
+        <ion-slide class="participants">
+  			<ion-card>
+            <ion-card-content>
+              <h4>Info</h4>
+              <h2>Teilnehmerliste</h2>
+              <p>Subline</p>
+            </ion-card-content>
+  			</ion-card>
+  	    </ion-slide>
+
+        <ion-slide class="blank-box">
+  			<ion-card>
+            <ion-card-content>
+              <h4>Info</h4>
+              <h2>Blank Box</h2>
+              <p>Subline</p>
+            </ion-card-content>
+
+  			</ion-card>
+  	    </ion-slide>
+
+  	</ion-slides>
+
+  </section>
+
+  <!-- conference lead text -->
   <section>
-    <h2>{{ conference?.title }}</h2>
+    <h2>{{ conference?.header }}</h2>
     <p>
       {{ conference?.description }}
     </p>
   </section>
+
+
 
   <section>
     <h2>Anfahrt</h2>
