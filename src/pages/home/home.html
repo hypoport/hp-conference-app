@@ -3,16 +3,17 @@
 
 <ion-content padding>
 
-  <!-- conference hero image -->
+  <!-- conference home hero image -->
   <section class="hero-image">
     <img [src]="conference?.image"/>
   </section>
 
-  <!-- service card section (next slot, wifi, participants list) -->
+  <!-- conference home service card section (next slot, wifi, participants list) -->
   <section class="service">
     <ion-slides card-slides slidesPerView="2.2" spaceBetween="10">
-  	    <ion-slide class="next-agenda-slot">
-  			<ion-card>
+
+        <ion-slide class="next-agenda-slot">
+  			<ion-card class="service-card">
             <ion-card-content>
               <h4>Next</h4>
               <h2>Agendapunkt</h2>
@@ -22,7 +23,7 @@
   	    </ion-slide>
 
   	    <ion-slide class="wifi">
-  			<ion-card>
+  			<ion-card class="service-card">
             <ion-card-content>
               <h4>Info</h4>
               <h2>Wifi Hotspot</h2>
@@ -32,7 +33,7 @@
   	    </ion-slide>
 
         <ion-slide class="participants">
-  			<ion-card>
+  			<ion-card class="service-card">
             <ion-card-content>
               <h4>Info</h4>
               <h2>Teilnehmerliste</h2>
@@ -42,7 +43,7 @@
   	    </ion-slide>
 
         <ion-slide class="blank-box">
-  			<ion-card>
+  			<ion-card class="service-card">
             <ion-card-content>
               <h4>Info</h4>
               <h2>Blank Box</h2>
@@ -56,7 +57,7 @@
 
   </section>
 
-  <!-- conference lead text -->
+  <!-- conference home lead text -->
   <section>
     <h2>{{ conference?.header }}</h2>
     <p>
@@ -65,30 +66,46 @@
   </section>
 
 
-
-  <section>
+  <!-- conference home google maps -->
+  <section class="maps">
     <h2>Anfahrt</h2>
     <p>
       {{ conference?.directions?.address }}
     </p>
-    <div #map id="map"></div>
+    <div #map class="card" id="map"></div>
     <p>
       {{ conference?.directions?.description }}
     </p>
   </section>
 
-  <section>
+
+  <!-- conference home support contact -->
+  <section class="support">
     <h2>Ansprechpartner</h2>
-    <img [src]="conference?.contact?.avatarUrl" height="50"/>
-    <p>
-      {{ conference?.contact?.name }}
-    </p>
-    <p>
-      {{ conference?.contact?.telephone }}
-    </p>
-    <p>
-      {{ conference?.contact?.email }}
-    </p>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4>
+          <div class="profile-image">
+            <img [src]="conference?.contact?.avatarUrl" height="50"/>
+          </div>
+        </ion-col>
+        <ion-col col-8>
+          <div class="profile-data">
+            <h3>
+              {{ conference?.contact?.name }}
+            </h3>
+            <p>
+              <ion-icon name="call"></ion-icon>
+              {{ conference?.contact?.telephone }}
+            </p>
+            <p>
+              <ion-icon name="mail-open"></ion-icon>
+              {{ conference?.contact?.email }}
+            </p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </section>
 
 </ion-content>
