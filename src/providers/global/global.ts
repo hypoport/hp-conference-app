@@ -25,7 +25,7 @@ export class GlobalProvider {
     this._conferenceId = value;
   }
   
-  get apiURL(endpoint: string){
+  public apiURL(endpoint: string){
 	  return this._apiURL + '/' + endpoint;
   }
 
