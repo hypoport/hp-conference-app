@@ -46,7 +46,7 @@ export class HomePage {
       this.conference = conference;
       refresher.complete();
       const toast = this.toastCtrl.create({
-        message: "Infos wurden aktualisiert",
+        message: "Info wurde aktualisiert",
         duration: 2000,
         position: "top"
       });

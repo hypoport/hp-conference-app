@@ -30,8 +30,9 @@ export class SpeakersPage {
       this.speakers = speakers;
       refresher.complete();
       const toast = this.toastCtrl.create({
-        message: "Speaker wurden aktualisiert",
-        duration: 3000
+        message: "Sprecher wurden aktualisiert",
+        duration: 2000,
+        position: "top"
       });
       toast.present();
     });

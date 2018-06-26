@@ -3,6 +3,7 @@ import {Contact} from "./contact";
 
 export class Conference {
   id: string;
+  token: string;
   title: string;
   subtitle: string;
   startDate: Date;
