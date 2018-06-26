@@ -1,6 +1,3 @@
-
-
-
 <ion-content padding>
 
   <!-- conference home hero image -->
@@ -12,55 +9,55 @@
   <section class="service">
     <ion-slides card-slides slidesPerView="2.2" spaceBetween="10">
 
-        <ion-slide class="next-agenda-slot">
-  			<ion-card class="service-card">
-            <ion-card-content>
-              <ion-icon name="alarm"></ion-icon>
-              <h4>Next</h4>
-              <h2>Agendapunkt</h2>
-              <p>Thema</p>
-            </ion-card-content>
-  			</ion-card>
-  	    </ion-slide>
+      <ion-slide class="next-agenda-slot">
+        <ion-card class="service-card">
+          <ion-card-content>
+            <ion-icon name="alarm"></ion-icon>
+            <h4>Next</h4>
+            <h2>Agendapunkt</h2>
+            <p>Thema</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
 
-  	    <ion-slide class="wifi">
-  			<ion-card class="service-card">
-            <ion-card-content>
-              <h4>Info</h4>
-              <h2>Wifi Hotspot</h2>
-              <p>Subline</p>
-            </ion-card-content>
-  			</ion-card>
-  	    </ion-slide>
+      <ion-slide class="wifi">
+        <ion-card class="service-card">
+          <ion-card-content>
+            <h4>Info</h4>
+            <h2>Wifi Hotspot</h2>
+            <p>Subline</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
 
-        <ion-slide class="participants">
-  			<ion-card class="service-card">
-            <ion-card-content>
-              <h4>Info</h4>
-              <h2>Teilnehmerliste</h2>
-              <p>Subline</p>
-            </ion-card-content>
-  			</ion-card>
-  	    </ion-slide>
+      <ion-slide class="participants">
+        <ion-card class="service-card">
+          <ion-card-content>
+            <h4>Info</h4>
+            <h2>Teilnehmerliste</h2>
+            <p>Subline</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
 
-        <ion-slide class="blank-box">
-  			<ion-card class="service-card">
-            <ion-card-content>
-              <h4>Info</h4>
-              <h2>Blank Box</h2>
-              <p>Subline</p>
-            </ion-card-content>
+      <ion-slide class="blank-box">
+        <ion-card class="service-card">
+          <ion-card-content>
+            <h4>Info</h4>
+            <h2>Blank Box</h2>
+            <p>Subline</p>
+          </ion-card-content>
 
-  			</ion-card>
-  	    </ion-slide>
+        </ion-card>
+      </ion-slide>
 
-  	</ion-slides>
+    </ion-slides>
 
   </section>
 
   <!-- conference home lead text -->
   <section>
-    <h5>{{ conference.startDate | date: 'dd.MM.' }} - {{ conference.endDate | date: 'dd.MM.yyyy'}}</h5>
+    <h5>{{ conference?.startDate | date: 'dd.MM.' }} - {{ conference?.endDate | date: 'dd.MM.yyyy'}}</h5>
     <h1>{{ conference?.header }}</h1>
     <p>
       {{ conference?.description }}

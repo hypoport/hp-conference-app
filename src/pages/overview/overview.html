@@ -20,7 +20,9 @@
           <div class="hero-image">
             <ion-card-content>
               <div class="company-logo"></div>
-              <div class="conv-date">{{ currentConference.startDate | date: 'dd.MM.' }} - {{ currentConference.endDate | date: 'dd.MM.yyyy' }}</div>
+              <div
+                class="conv-date">{{ currentConference.startDate | date: 'dd.MM.' }} - {{ currentConference.endDate | date: 'dd.MM.yyyy' }}
+              </div>
               <h1 class="maximus">{{ currentConference.title }}</h1>
               <h1>{{ currentConference.subtitle }}</h1>
             </ion-card-content>
@@ -44,24 +46,24 @@
   </section>
 
   <section *ngIf="nextConferences.length > 0">
-      <h2>Zukünftige Tagungen</h2>
-      <ion-slides card-slides slidesPerView="1.5" spaceBetween="10">
-        <ion-slide *ngFor="let conference of nextConferences">
-          <ion-card class="hero-card small-card" (click)="goToConference(conference.id)">
-            <div class="hero-image">
-              <ion-card-content>
-                <div class="company-logo"></div>
+    <h2>Zukünftige Tagungen</h2>
+    <ion-slides card-slides slidesPerView="1.5" spaceBetween="10">
+      <ion-slide *ngFor="let conference of nextConferences">
+        <ion-card class="hero-card small-card" (click)="goToConference(conference.id)">
+          <div class="hero-image">
+            <ion-card-content>
+              <div class="company-logo"></div>
 
-                <div class="conv-date">{{ conference.startDate | date: 'LLLL yyyy': 'CEST': 'de-DE' }}</div>
-                <h1>{{ conference.title }}</h1>
-                <h2>{{ conference.subtitle }}</h2>
+              <div class="conv-date">{{ conference.startDate | date: 'LLLL yyyy': 'CEST': 'de-DE' }}</div>
+              <h1>{{ conference.title }}</h1>
+              <h2>{{ conference.subtitle }}</h2>
 
-              </ion-card-content>
-            </div>
-          </ion-card>
-        </ion-slide>
-      </ion-slides>
-    </section>
+            </ion-card-content>
+          </div>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </section>
 
   <section *ngIf="lastConferences.length > 0">
     <h2>Vergangene Tagungen</h2>
