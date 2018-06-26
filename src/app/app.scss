@@ -132,7 +132,7 @@ ion-slides[card-slides]{
     // hero card in overview
     &.hero-card {
 
-      min-height: 300px;
+      min-height: 250px;
       // TODO: problem with swiper-container padding
       // max-height: 350px;
       .hero-image {
@@ -160,6 +160,18 @@ ion-slides[card-slides]{
         bottom: 20px;
       }
     }
+
+    // list of all added upcoming conferences (upcoming)
+    &.upcoming-card {
+
+            min-height: 250px;
+            // TODO: problem with swiper-container padding
+            // max-height: 350px;
+
+    }
+    // list of all previous added conferences (previous)
+    &.previous-card {}
+
 
 
     // add new conference card (empty)
