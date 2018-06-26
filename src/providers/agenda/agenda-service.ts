@@ -29,6 +29,7 @@ export class AgendaService {
 
   public getAgenda(conferenceId: string): Promise<Agenda> {
     return this.getAgendas().then((agendas) => {
+      console.log("in then von getAgendas");
       return agendas.get(conferenceId);
     });
   }
@@ -44,6 +45,7 @@ export class AgendaService {
         return this.agendas
       });
     }
+    console.log("return Promise with agendas");
     return Promise.resolve(this.agendas);
   }
 

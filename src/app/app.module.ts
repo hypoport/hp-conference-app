@@ -21,6 +21,7 @@ import {IonicStorageModule} from '@ionic/storage';
 
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
+import { SessionPage } from '../pages/session/session';
 
 registerLocaleData(localeDe);
 
@@ -32,7 +33,8 @@ registerLocaleData(localeDe);
     HomePage,
     TabsPage,
     OverviewPage,
-    AddConferencePage
+    AddConferencePage,
+    SessionPage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ registerLocaleData(localeDe);
     HomePage,
     TabsPage,
     OverviewPage,
-    AddConferencePage
+    AddConferencePage,
+    SessionPage
   ],
   providers: [
     StatusBar,
