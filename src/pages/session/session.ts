@@ -36,10 +36,12 @@ export class SessionPage {
     this.session = this.navParams.get('session');
     console.log("session passed: " + this.session);
     this.speakers.length = 0;
-    this.session.speakers.forEach( (speakerId) => {
-      this.speakerService.getSpeaker(this.globalProvider.conferenceId, speakerId).then((speaker) => {
-        this.speakers.push(speaker);
+    if(this.session.speakers) {
+      this.session.speakers.forEach( (speakerId) => {
+        this.speakerService.getSpeaker(this.globalProvider.conferenceId, speakerId).then((speaker) => {
+          this.speakers.push(speaker);
+        });
       });
-    });
+    }
   }
 }
