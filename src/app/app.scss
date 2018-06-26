@@ -135,18 +135,48 @@ ion-slides[card-slides]{
       min-height: 250px;
       // TODO: problem with swiper-container padding
       // max-height: 350px;
+      &.small-card {
+        min-height: 130px;
+        .card-content {
+          .company-logo {
+            width: 40px;
+            height: 40px;
+          }
+          .conv-date {
+            font-size: 1.4rem;
+            bottom: 40px;
+          }
+          h1 {
+            font-size: 1.7rem;
+          }
+          h1:first-of-type {
+            bottom: 20px;
+          }
+          h1:last-of-type {
+            bottom: 0px;
+          }
+
+        }
+      }
+
       .hero-image {
         background: url("https://www.finmas.de/finmas/uploads/2017/07/Fotolia_148991212_M.jpg");
         background-size: cover;
         background-position: 50% center;
         height: 100%;
       }
-      .card-content {}
+
       .company-logo {
         border-radius: 10px;
         width: 60px;
         height: 60px;
         background: rgba(0,0,0,0.5);
+      }
+      .conv-date {
+        font-size: 1.7rem;
+        text-shadow: none;
+        position: absolute;
+        bottom: 90px;
       }
       h1 {
         position: absolute;
@@ -159,22 +189,6 @@ ion-slides[card-slides]{
       h1:last-of-type {
         bottom: 20px;
       }
-    }
-
-    // list of all added upcoming conferences (upcoming)
-    &.upcoming-card {
-
-      min-height: 150px;
-      // TODO: problem with swiper-container padding
-      // max-height: 350px;
-
-    }
-    // list of all previous added conferences (previous)
-    &.previous-card {
-      min-height: 150px;
-      // TODO: problem with swiper-container padding
-      // max-height: 350px;
-
     }
 
 
