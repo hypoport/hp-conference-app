@@ -22,6 +22,7 @@ import {IonicStorageModule} from '@ionic/storage';
 import {registerLocaleData} from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import { SessionPage } from '../pages/session/session';
+import { BrandProvider } from '../providers/brand/brand';
 
 registerLocaleData(localeDe);
 
@@ -59,7 +60,8 @@ registerLocaleData(localeDe);
     AgendaService,
     ConferenceService,
     GlobalProvider,
-    SpeakerService
+    SpeakerService,
+    BrandProvider
   ]
 })
 export class AppModule {}

@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {Refresher, ToastController, ModalController, App} from "ionic-angular";
+import {Refresher, ToastController, App} from "ionic-angular";
 import {AgendaService} from "../../providers/agenda/agenda-service";
 import {GlobalProvider} from "../../providers/global/global";
 import {Agenda} from "../../models/agenda";

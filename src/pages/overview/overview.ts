@@ -6,6 +6,7 @@ import {AddConferencePage} from '../add-conference/add-conference';
 import {GlobalProvider} from '../../providers/global/global';
 import {ConferenceService} from "../../providers/conference/conference-service";
 import {Conference} from '../../models/conference';
+import { BrandProvider } from '../../providers/brand/brand';
 
 /**
  * Generated class for the OverviewPage page.
@@ -29,7 +30,8 @@ export class OverviewPage {
     private globalProvider: GlobalProvider,
     private conferenceService: ConferenceService,
     private modalCtrl: ModalController,
-    private toastCtrl: ToastController) {
+    private toastCtrl: ToastController,
+    private brandProvider: BrandProvider) {
   }
 
   ionViewDidLoad() {
@@ -99,5 +101,9 @@ export class OverviewPage {
       });
       toast.present();
     });
+  }
+
+  getLogo(brand: string): string {
+    return this.brandProvider.getLogoUrl(brand);
   }
 }
