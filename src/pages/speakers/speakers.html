@@ -4,6 +4,13 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
+
+
+  <section class="speakers">
+
+    <h5 class="pretitle">Pretitle</h5>
+    <h1 class="maximus">Referenten</h1>
+
   <ion-list [virtualScroll]="speakers">
     <ion-grid fixed>
       <ion-row align-items-stretch>
@@ -21,11 +28,22 @@
             </ion-card-header>
 
             <ion-card-content class="outer-content">
-              <div>{{speaker.jobTitle}}</div>
-              <div>{{speaker.company}}</div>
-              <div>{{speaker.email}}</div>
-              <div>{{speaker.phone}}</div>
-              <div>{{speaker.description}}</div>
+              <div class="job-title">{{speaker.jobTitle}}</div>
+              <div class="company">{{speaker.company}}</div>
+              <div class="short-description">{{speaker.description}}</div>
+
+              <div class="socials">
+              <div class="mail">
+                <ion-icon name="mail-open"></ion-icon>
+                {{speaker.email}}
+              </div>
+
+              <div class="phone">
+                <ion-icon name="call"></ion-icon>
+                {{speaker.phone}}
+              </div>
+              </div>
+
             </ion-card-content>
 
             <ion-row no-padding>
@@ -43,4 +61,5 @@
       </ion-row>
     </ion-grid>
   </ion-list>
+</section>
 </ion-content>

@@ -281,6 +281,50 @@ ion-slides[card-slides]{
         bottom: 15px;
       }
     }
+
+    // speakers card
+    &.speaker-card {
+      text-shadow: none;
+      color: #444;
+      position: relative;
+      .card-header {
+        padding-bottom: 0;
+      }
+
+      ion-avatar {
+        img {
+          background: rgba(0,0,0,.25);
+
+        }
+      }
+      .card-content {
+        position: relative;
+        > div {
+          // display: inline;
+        }
+        padding-left: 85px;
+
+        .job-title,
+        .company {
+          display: inline-block;
+        }
+        .company {
+          padding-left: 10px;
+        }
+
+        .short-description {
+          font-style: italic;
+          color: #999;
+        }
+
+        .socials {
+          padding-top: 10px;
+          ion-icon {
+            margin-right: 5px;
+          }
+        }
+      }
+    }
   }
 
 
@@ -427,6 +471,18 @@ section {
 section {
   // agenda first section
   &.agenda {
+    padding-top: 80px;
+
+  }
+}
+
+
+/*
+  SPEAKERS
+*/
+section {
+  // speakers first section
+  &.speakers {
     padding-top: 80px;
 
   }
