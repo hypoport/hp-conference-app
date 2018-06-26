@@ -44,7 +44,7 @@
 
 
   <section *ngIf="nextConferences.length > 0">
-    <h2>Zukünftige Tagungen</h2>
+    <h1>Zukünftige Tagungen</h1>
     <ion-slides card-slides slidesPerView="1.5" spaceBetween="10">
       <ion-slide *ngFor="let conference of nextConferences">
         <ion-card class="hero-card small-card" (click)="goToConference(conference.id)">

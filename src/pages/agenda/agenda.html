@@ -4,6 +4,12 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
+
+  <section class="agenda">
+
+    <h5 class="pretitle">Pretitle</h5>
+    <h1 class="maximus">Agenda</h1>
+
   <ion-list #scheduleList [hidden]="sessions.length === 0">
 
     <ion-item-sliding *ngFor="let session of sessions" #slidingItem [attr.category]="session.category | lowercase"
@@ -21,6 +27,8 @@
     </ion-item-sliding>
 
   </ion-list>
+</section>
+
 
   <ion-list-header [hidden]="sessions.length > 0">
     No Sessions Found

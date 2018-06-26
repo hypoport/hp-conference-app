@@ -47,6 +47,19 @@ p {
   margin: 0;
 }
 
+
+section {
+  h5.pretitle {
+    color: #999;
+  }
+  h1.maximus {
+    margin-top: 0;
+    margin-bottom: 3rem;
+  }
+}
+
+
+
 section {
   // section spacing
   padding: 25px 0;
@@ -403,5 +416,18 @@ section {
       p {
       }
     }
+  }
+}
+
+
+
+/*
+  AGENDA
+*/
+section {
+  // agenda first section
+  &.agenda {
+    padding-top: 80px;
+
   }
 }
