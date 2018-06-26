@@ -1,3 +1,31 @@
 <ion-content padding>
 
+  <ion-refresher (ionRefresh)="refreshAgenda($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list #scheduleList [hidden]="sessions.length === 0">
+
+    <ion-item-sliding *ngFor="let session of sessions" #slidingItem [attr.category]="session.category | lowercase"
+                      [hidden]="session.hide">
+
+      <button ion-item (click)="goToSessionDetail(session)">
+        <h3>{{session.title}}</h3>
+        <p>
+          {{session.timeStart}} &mdash;
+          {{session.timeEnd}}:
+          {{session.location}}
+        </p>
+      </button>
+
+
+    </ion-item-sliding>
+
+
+  </ion-list>
+
+  <ion-list-header [hidden]="sessions.length > 0">
+    No Sessions Found
+  </ion-list-header>
+
 </ion-content>

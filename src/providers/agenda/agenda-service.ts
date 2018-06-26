@@ -11,6 +11,7 @@ export class AgendaService {
   private agendas: Map<string, Agenda> = new Map<string, Agenda>();
 
   constructor(private http: HttpClient, private storage: Storage) {
+
   }
 
   public loadAgenda(conferenceId: string): Promise<Agenda> {
@@ -26,13 +27,17 @@ export class AgendaService {
       });
   }
 
-  public getAgenda(conferenceId: string): Agenda {
-    return this.agendas.get(conferenceId);
+  public getAgenda(conferenceId: string): Promise<Agenda> {
+    return this.getAgendas().then((agendas) => {
+      return agendas.get(conferenceId);
+    });
   }
 
   public getAgendas(): Promise<Map<string, Agenda>> {
     if (this.agendas.size == 0) {
+      console.log("load agendas");
       return this.storage.get(STORAGE_KEY).then((data) => {
+        console.log("data", data);
         if (data.size > 0) {
           this.agendas = data;
         }

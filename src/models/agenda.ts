@@ -1,5 +1,5 @@
-import {AgendaItem} from "./agendaItem";
+import {Session} from "./session";
 
 export class Agenda {
-	agendaItems: Array<AgendaItem>
+	sessions: Array<Session>
 }

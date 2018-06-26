@@ -1,4 +1,4 @@
-export class AgendaItem {
+export class Session {
   id: string;
   title: string;
   description: string;
@@ -6,5 +6,5 @@ export class AgendaItem {
   timeEnd: Date;
   speakers: Array<string>;
   location: string;
-  category: Array<string>;
+  category: string;
 }
