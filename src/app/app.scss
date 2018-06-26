@@ -146,6 +146,7 @@ ion-slides[card-slides]{
       min-height: 250px;
       // TODO: problem with swiper-container padding
       // max-height: 350px;
+      max-height: 250px;
       &.small-card {
         &:before {
           content: '';
@@ -153,7 +154,8 @@ ion-slides[card-slides]{
           height: 70px;
         }
 
-        min-height: 130px;
+        min-height: 150px;
+        max-height: 150px;
         .card-content {
           .company-logo {
             width: 40px;
