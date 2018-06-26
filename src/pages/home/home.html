@@ -58,9 +58,11 @@
   </section>
 
   <!-- conference home lead text -->
-  <section>
-    <h5>{{ conference?.startDate | date: 'dd.MM.' }} - {{ conference?.endDate | date: 'dd.MM.yyyy'}}</h5>
+  <section class="intro">
+
+    <h5 class="conv-date">{{ conference?.startDate | date: 'dd.MM.' }} - {{ conference?.endDate | date: 'dd.MM.yyyy'}}</h5>
     <h1>{{ conference?.header }}</h1>
+
     <p>
       {{ conference?.description }}
     </p>
