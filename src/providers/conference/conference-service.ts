@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {Conference} from "../../models/conference";
 import {HttpClient} from "@angular/common/http";
 import {Storage} from "@ionic/storage";
+import {GlobalProvider} from "../../providers/global/global";
 
 import "rxjs/add/observable/of";
 import "rxjs/add/operator/map";
@@ -18,21 +19,30 @@ export class ConferenceService {
   constructor(private http: HttpClient,
     private storage: Storage,
     private agendaService: AgendaService,
-    private speakerService: SpeakerService) {
+    private speakerService: SpeakerService,
+    private global: GlobalProvider) {
   }
 
-  public addConference(conferenceCode: string, conferencePassword: string): Promise<Conference> {
-    // TODO richtige API nutzen
-    // this.http.post("")
-    let url = "assets/data/conference" + (this.conferences.size % 4) + ".json";
-    return this.http.get(url).toPromise()
-      .then((conference: Conference): Conference => {
-        this.conferences.set(conference.id, conference);
-        this.storage.set(STORAGE_KEY, this.conferences);
-        this.agendaService.loadAgenda(conference.id);
-        this.speakerService.loadSpeakers(conference.id);
-        return conference;
-      });
+  public addConference(conferenceCode: string, conferencePassword: string): Promise<Conference> { 
+	  
+    let url = this.global.apiURL('auth');
+    
+    return this.http.post(url,{
+	    "key": conferenceCode, 
+	    "password": conferencePassword,
+	    "uuid": 'naap'
+	    },{ headers: { 'Content-Type': 'application/json; charset=utf-8' }
+		}).toPromise()
+        .then((conference: Conference): Conference => {
+        		    
+		    this.conferences.set(conference.id, conference);
+	        this.storage.set(STORAGE_KEY, this.conferences);
+	        this.agendaService.loadAgenda(conference.id);
+	        this.speakerService.loadSpeakers(conference.id);
+	        
+	        return conference;
+	        
+		  });
   }
 
   public loadConference(conferenceId: string): Promise<Conference> {

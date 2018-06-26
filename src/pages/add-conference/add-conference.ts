@@ -3,6 +3,8 @@ import { App, IonicPage, NavController, NavParams, ViewController } from 'ionic-
 import { GlobalProvider } from '../../providers/global/global';
 import { ConferenceService } from "../../providers/conference/conference-service";
 import {TabsPage} from '../tabs/tabs';
+import { ToastController } from 'ionic-angular';
+import { LoadingController } from 'ionic-angular';
 
 
 /**
@@ -18,14 +20,19 @@ import {TabsPage} from '../tabs/tabs';
   templateUrl: 'add-conference.html',
 })
 export class AddConferencePage {
-
+  
+  confCode: string;
+  confPassword: string;
+  
   constructor(
   public navCtrl: NavController,
   public navParams: NavParams,
   private conferenceService: ConferenceService,
   public viewCtrl: ViewController,
   private globalProvider: GlobalProvider,
-  public app: App
+  public app: App,
+  private toastCtrl: ToastController,
+  public loadingCtrl: LoadingController
   ) {
   }
 
@@ -37,15 +44,56 @@ export class AddConferencePage {
 	  this.globalProvider.conferenceId = id;
 	  this.app.getRootNav().push(TabsPage);
 	  this.viewCtrl.dismiss();
-
   }
 
   public addConference(conferenceCode: string, conferencePassword: string) {
-    this.conferenceService.addConference(conferenceCode, conferencePassword)
-      .then((conference) => {
-	      this.goToConference(conference.id);
-      });
+     
+    if(typeof conferenceCode === 'undefined' || typeof conferencePassword === 'undefined' || conferenceCode.length == 0 || conferenceCode.length == conferencePassword){
+	
+		let toast = this.toastCtrl.create({
+			message: 'Bitte geben Sie eine Tagungs-Kennung und ein Tagungs-Passwort an.',
+			duration: 5000,
+			position: 'top',
+			showCloseButton: true,
+			closeButtonText: 'OK'
+		});
+		toast.present();
+		     	
+    } else {
+ 
+		const loader = this.loadingCtrl.create({
+		    content: "Lade Tagung …",
+		    duration: 30000,
+		    dismissOnPageChange: true,
+		});
+		loader.present();
+		
+	    this.conferenceService.addConference(conferenceCode, conferencePassword)
+	      .then((conference) => { 
+		     loader.dismiss();
+		     this.goToConference(conference.id);
+	      }).catch((error) => {
+		  	  
+		 	loader.dismiss();
+	
+		    let message = "Tagungs-Login aktuell nicht möglich. Versuchen Sie es zu einem späteren Zeitpunkt nochmal.";
+		    if(error.status == 403){
+			    message = "Tagungs-Kennung und Tagungs-Passwort stimmen nicht überein.";
+		    }
+		 
+		    let toast = this.toastCtrl.create({
+				 message: message,
+				 duration: 5000,
+				 position: 'top',
+				 showCloseButton: true,
+				 closeButtonText: 'OK'
+			});
+		    toast.present();
+	
+		  });
+	}
   }
+  
   dismiss() {
     this.viewCtrl.dismiss();
   }

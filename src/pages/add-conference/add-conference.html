@@ -21,8 +21,35 @@
 
 <ion-content padding>
 
+<ion-grid>
+  <ion-row>
+    <ion-col col-7>
+ 
+	<ion-list no-lines no-margin>
+	
+	  <ion-item>
+	    <ion-input type="text" placeholder="Tagungs-Kennung" [(ngModel)]="confCode"></ion-input>
+	  </ion-item>
+	
+	  <ion-item>
+	    <ion-input type="password" placeholder="Tagungs-Passwort" [(ngModel)]="confPassword"></ion-input>
+	  </ion-item>
+	
+	</ion-list>
+   
+    </ion-col>
+    <ion-col col-5>
+	    
+		<button id="qrbutton" ion-button block> <ion-icon name="qr-scanner"></ion-icon> </button>
 
-<button ion-button (click)="addConference('foo','bar')">Hinzufügen</button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<br/>
+<br/>
+
+<button ion-button block (click)="addConference(this.confCode,this.confPassword)">Hinzufügen</button>
 
 
 </ion-content>
