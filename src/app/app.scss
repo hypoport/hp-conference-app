@@ -26,7 +26,7 @@ h1, h2, h3, h4, p {
 }
 h1, h2, h3, h4 {
   margin-bottom: 2rem;
-  
+
 }
 h1 {
   font-size: 2.8rem;
@@ -194,6 +194,9 @@ ion-slides[card-slides]{
       min-height: 120px;
       background: #fff !important;
 
+      text-shadow: none;
+
+
       // TODO: problem with swiper-container padding
       // max-height: 120px;
       h4, h2, p {
@@ -206,13 +209,14 @@ ion-slides[card-slides]{
         bottom: 50px;
         font-size: 1.2rem;
         letter-spacing: 2px;
+        color: #999;
       }
       h2 {
+        font-weight: bold;
         bottom: 22px;
       }
       p {
         bottom: 0;
-        font-style: italic;
       }
     }
   }
@@ -242,6 +246,16 @@ section {
   &.service {
     margin-top: -80px;
     .next-agenda-slot {
+      ion-icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        color: orange;
+        font-size: 3.5rem;
+        margin-top: 20px;
+        margin-right: 25px;
+      }
       .card {
         background: #00c0ff;
       }
