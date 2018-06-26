@@ -36,9 +36,9 @@ export class OverviewPage {
   }
 
   ionViewWillEnter() {
-    console.log('ionViewWillEnter OverviewPage');
     let today = new Date();
-    console.log("today=" + today);
+    this.nextConferences.length = 0;
+    this.lastConferences.length = 0;
     this.conferenceService.getAllConferences().then((conferences) => {
       if (!conferences) {
         return;

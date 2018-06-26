@@ -20,8 +20,8 @@ import {TabsPage} from '../tabs/tabs';
 export class AddConferencePage {
 
   constructor(
-  public navCtrl: NavController, 
-  public navParams: NavParams, 
+  public navCtrl: NavController,
+  public navParams: NavParams,
   private conferenceService: ConferenceService,
   public viewCtrl: ViewController,
   private globalProvider: GlobalProvider,
@@ -32,21 +32,18 @@ export class AddConferencePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddConferencePage');
   }
-  
+
   public goToConference(id: string){
 	  this.globalProvider.conferenceId = id;
 	  this.app.getRootNav().push(TabsPage);
 	  this.viewCtrl.dismiss();
 
   }
-    
+
   public addConference(conferenceCode: string, conferencePassword: string) {
     this.conferenceService.addConference(conferenceCode, conferencePassword)
       .then((conference) => {
-
-	    this.goToConference(conference.id);
-        console.log("conference added");
-
+	      this.goToConference(conference.id);
       });
   }
   dismiss() {
