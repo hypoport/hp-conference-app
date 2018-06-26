@@ -35,7 +35,7 @@ export class ConferenceService {
   public getAllConferences(): Promise<Map<string, Conference>> {
     if (this.conferences.size == 0) {
       return this.storage.get(STORAGE_KEY).then((data) => {
-        if (data.size > 0) {
+        if (data && data.size > 0) {
           this.conferences = data;
         }
         return this.conferences
