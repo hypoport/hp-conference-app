@@ -1,5 +1,9 @@
 <ion-content padding>
 
+  <ion-refresher (ionRefresh)="refreshConference($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <!-- conference home hero image -->
   <section class="hero-image">
     <img [src]="conference?.image"/>

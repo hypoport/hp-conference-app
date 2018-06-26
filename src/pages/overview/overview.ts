@@ -36,6 +36,32 @@ export class OverviewPage {
   }
 
   ionViewWillEnter() {
+    this.loadConferences();
+  }
+
+  public goToConference() {
+    this.globalProvider.conferenceId = "0";
+    this.navCtrl.push(TabsPage);
+  }
+
+  presentAddConferenceModal() {
+    let addModal = this.modalCtrl.create(AddConferencePage, {});
+    addModal.present();
+  }
+
+  private sortByStartDate(conferences: Array<Conference>): void {
+    conferences.sort((a: Conference, b: Conference) => {
+      return new Date(a.startDate).getTime() - new Date(b.startDate).getTime();
+    })
+  }
+
+  private sortByEndDate(conferences: Array<Conference>): void {
+    conferences.sort((a: Conference, b: Conference) => {
+      return new Date(b.endDate).getTime() - new Date(a.endDate).getTime();
+    })
+  }
+
+  private loadConferences() {
     let today = new Date();
     this.nextConferences.length = 0;
     this.lastConferences.length = 0;
@@ -60,27 +86,5 @@ export class OverviewPage {
         this.currentConference = this.lastConferences.pop();
       }
     });
-  }
-
-  public goToConference() {
-    this.globalProvider.conferenceId = "0";
-    this.navCtrl.push(TabsPage);
-  }
-
-  presentAddConferenceModal() {
-    let addModal = this.modalCtrl.create(AddConferencePage, {});
-    addModal.present();
-  }
-
-  private sortByStartDate(conferences: Array<Conference>): void {
-    conferences.sort((a: Conference, b: Conference) => {
-      return new Date(a.startDate).getTime() - new Date(b.startDate).getTime();
-    })
-  }
-
-  private sortByEndDate(conferences: Array<Conference>): void {
-    conferences.sort((a: Conference, b: Conference) => {
-      return new Date(b.endDate).getTime() - new Date(a.endDate).getTime();
-    })
   }
 }

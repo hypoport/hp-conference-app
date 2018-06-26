@@ -32,6 +32,11 @@ export class ConferenceService {
       });
   }
 
+  public loadConference(conferenceId: string): Promise<Conference> {
+    // TODO API ansprechen um aktuelle Konferenz-Daten zu laden
+    return Promise.resolve(this.getConference(conferenceId));
+  }
+
   public getConference(conferenceId: string): Conference {
     return this.conferences.get(conferenceId);
   }

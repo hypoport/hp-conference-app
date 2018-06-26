@@ -33,7 +33,8 @@ export class AgendaPage {
       refresher.complete();
       const toast = this.toastCtrl.create({
         message: "Agenda wurde aktualisiert",
-        duration: 3000
+        duration: 2000,
+        position: "top"
       });
       toast.present();
     });
