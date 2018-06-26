@@ -1,8 +1,5 @@
-export class AgendaSlot {
-	start: number;
-	duration: number;
-	title: string;
-	subtitle: string;
-	speaker: string;
+import {AgendaItem} from "./agendaItem";
+
+export class Agenda {
+	agendaItems: Array<AgendaItem>
 }
-	

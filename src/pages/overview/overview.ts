@@ -40,6 +40,9 @@ export class OverviewPage {
     let today = new Date();
     console.log("today=" + today);
     this.conferenceService.getAllConferences().then((conferences) => {
+      if (!conferences) {
+        return;
+      }
       conferences.forEach(conference => {
         if (new Date(conference.endDate) < today) {
           this.lastConferences.push(conference);

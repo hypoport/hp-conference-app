@@ -5,6 +5,7 @@ import {Storage} from "@ionic/storage";
 
 import "rxjs/add/observable/of";
 import "rxjs/add/operator/map";
+import {AgendaService} from "../agenda/agenda-service";
 
 const STORAGE_KEY = "conferences";
 
@@ -13,7 +14,9 @@ export class ConferenceService {
 
   private conferences: Map<string, Conference> = new Map<string, Conference>();
 
-  constructor(private http: HttpClient, private storage: Storage) {
+  constructor(private http: HttpClient,
+    private storage: Storage,
+    private agendaService: AgendaService) {
   }
 
   public addConference(conferenceCode: string, conferencePassword: string): Promise<Conference> {
@@ -24,6 +27,7 @@ export class ConferenceService {
       .then((conference: Conference): Conference => {
         this.conferences.set(conference.id, conference);
         this.storage.set(STORAGE_KEY, this.conferences);
+        this.agendaService.loadAgenda(conference.id);
         return conference;
       });
   }
