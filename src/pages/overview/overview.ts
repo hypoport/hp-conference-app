@@ -47,15 +47,15 @@ export class OverviewPage {
         else if (new Date(conference.startDate) > today) {
           this.nextConferences.push(conference);
         }
-        this.sortByStartDate(this.nextConferences);
-        this.sortByEndDate(this.lastConferences);
-        if (this.nextConferences.length > 0) {
-          this.currentConference = this.nextConferences.pop();
-        }
-        else {
-          this.currentConference = this.lastConferences.pop();
-        }
       });
+      this.sortByStartDate(this.nextConferences);
+      this.sortByEndDate(this.lastConferences);
+      if (this.nextConferences.length > 0) {
+        this.currentConference = this.nextConferences.pop();
+      }
+      else {
+        this.currentConference = this.lastConferences.pop();
+      }
     });
   }
 
@@ -71,13 +71,13 @@ export class OverviewPage {
 
   private sortByStartDate(conferences: Array<Conference>): void {
     conferences.sort((a: Conference, b: Conference) => {
-      return a.startDate.getTime() - b.startDate.getTime();
+      return new Date(a.startDate).getTime() - new Date(b.startDate).getTime();
     })
   }
 
   private sortByEndDate(conferences: Array<Conference>): void {
     conferences.sort((a: Conference, b: Conference) => {
-      return b.endDate.getTime() - a.endDate.getTime();
+      return new Date(b.endDate).getTime() - new Date(a.endDate).getTime();
     })
   }
 }

@@ -50,8 +50,8 @@
   <section *ngIf="nextConferences.length > 0">
       <h2>Zukünftige Tagungen</h2>
       <ion-slides card-slides slidesPerView="1.5" spaceBetween="10">
-        <ion-slide>
-          <ion-card *ngFor="let conference of nextConferences" (click)="goToConference(conference.id)">
+        <ion-slide *ngFor="let conference of nextConferences">
+          <ion-card (click)="goToConference(conference.id)">
             <div class="hero-image">
               <ion-card-content>
                 <div class="company-logo"></div>
@@ -67,8 +67,8 @@
   <section *ngIf="lastConferences.length > 0">
     <h2>Vergangene Tagungen</h2>
     <ion-slides card-slides slidesPerView="1.5" spaceBetween="10">
-      <ion-slide>
-        <ion-card *ngFor="let conference of lastConferences" (click)="goToConference(conference.id)">
+      <ion-slide *ngFor="let conference of lastConferences">
+        <ion-card (click)="goToConference(conference.id)">
           <div class="hero-image">
             <ion-card-content>
               <div class="company-logo"></div>
