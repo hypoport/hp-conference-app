@@ -2,7 +2,7 @@
   {
     "id": "1",
     "name": "Burt Bear",
-    "profileFoto": "assets/img/speakers/bear.jpg",
+    "profileFoto": "assets/imgs/speakers/bear.jpg",
     "twitter": "ionicframework",
     "email": "burt@example.com",
     "phone": "+1-541-754-3010",
@@ -12,7 +12,7 @@
   },
   {
     "name": "Charlie Cheetah",
-    "profileFoto": "assets/img/speakers/cheetah.jpg",
+    "profileFoto": "assets/imgs/speakers/cheetah.jpg",
     "location": "Everywhere",
     "email": "charlie@example.com",
     "phone": "+1-541-754-3010",
@@ -20,7 +20,7 @@
   },
   {
     "name": "Donald Duck",
-    "profileFoto": "assets/img/speakers/duck.jpg",
+    "profileFoto": "assets/imgs/speakers/duck.jpg",
     "location": "Everywhere",
     "email": "donald@example.com",
     "phone": "+1-541-754-3010",
@@ -28,7 +28,7 @@
   },
   {
     "name": "Eva Eagle",
-    "profileFoto": "assets/img/speakers/eagle.jpg",
+    "profileFoto": "assets/imgs/speakers/eagle.jpg",
     "location": "Everywhere",
     "email": "eva@example.com",
     "phone": "+1-541-754-3010",
@@ -36,7 +36,7 @@
   },
   {
     "name": "Ellie Elephant",
-    "profileFoto": "assets/img/speakers/elephant.jpg",
+    "profileFoto": "assets/imgs/speakers/elephant.jpg",
     "location": "Everywhere",
     "email": "ellie@example.com",
     "phone": "+1-541-754-3010",
@@ -44,7 +44,7 @@
   },
   {
     "name": "Gino Giraffe",
-    "profileFoto": "assets/img/speakers/giraffe.jpg",
+    "profileFoto": "assets/imgs/speakers/giraffe.jpg",
     "location": "Everywhere",
     "email": "gino@example.com",
     "phone": "+1-541-754-3010",
@@ -52,7 +52,7 @@
   },
   {
     "name": "Isabella Iguana",
-    "profileFoto": "assets/img/speakers/iguana.jpg",
+    "profileFoto": "assets/imgs/speakers/iguana.jpg",
     "location": "Everywhere",
     "email": "isabella@example.com",
     "phone": "+1-541-754-3010",
@@ -60,7 +60,7 @@
   },
   {
     "name": "Karl Kitten",
-    "profileFoto": "assets/img/speakers/kitten.jpg",
+    "profileFoto": "assets/imgs/speakers/kitten.jpg",
     "location": "Everywhere",
     "email": "karl@example.com",
     "phone": "+1-541-754-3010",
@@ -68,7 +68,7 @@
   },
   {
     "name": "Lionel Lion",
-    "profileFoto": "assets/img/speakers/lion.jpg",
+    "profileFoto": "assets/imgs/speakers/lion.jpg",
     "location": "Everywhere",
     "email": "lionel@example.com",
     "phone": "+1-541-754-3010",
@@ -76,7 +76,7 @@
   },
   {
     "name": "Molly Mouse",
-    "profileFoto": "assets/img/speakers/mouse.jpg",
+    "profileFoto": "assets/imgs/speakers/mouse.jpg",
     "location": "Everywhere",
     "email": "molly@example.com",
     "phone": "+1-541-754-3010",
@@ -84,7 +84,7 @@
   },
   {
     "name": "Paul Puppy",
-    "profileFoto": "assets/img/speakers/puppy.jpg",
+    "profileFoto": "assets/imgs/speakers/puppy.jpg",
     "location": "Everywhere",
     "email": "paul@example.com",
     "phone": "+1-541-754-3010",
@@ -92,7 +92,7 @@
   },
   {
     "name": "Rachel Rabbit",
-    "profileFoto": "assets/img/speakers/rabbit.jpg",
+    "profileFoto": "assets/imgs/speakers/rabbit.jpg",
     "location": "Everywhere",
     "email": "rachel@example.com",
     "phone": "+1-541-754-3010",
@@ -100,7 +100,7 @@
   },
   {
     "name": "Ted Turtle",
-    "profileFoto": "assets/img/speakers/turtle.jpg",
+    "profileFoto": "assets/imgs/speakers/turtle.jpg",
     "location": "Everywhere",
     "email": "ted@example.com",
     "phone": "+1-541-754-3010",
