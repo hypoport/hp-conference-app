@@ -13,7 +13,7 @@
 </ion-header>
 
 <ion-content padding>
-  <section *ngIf="currentConference != null">
+  <section class="hero" *ngIf="currentConference != null">
     <ion-slides card-slides slidesPerView="1">
       <ion-slide>
         <ion-card class="hero-card" (click)="goToConference(currentConference.id)">
