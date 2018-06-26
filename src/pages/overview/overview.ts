@@ -40,8 +40,8 @@ export class OverviewPage {
     this.loadConferences().then(() => console.log("conferences loadad"));
   }
 
-  public goToConference() {
-    this.globalProvider.conferenceId = "0";
+  public goToConference(newConferenceId: string) {
+    this.globalProvider.conferenceId = newConferenceId;
     this.navCtrl.push(TabsPage);
   }
 
