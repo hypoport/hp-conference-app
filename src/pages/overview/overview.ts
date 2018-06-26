@@ -47,7 +47,8 @@ export class OverviewPage {
         else if (new Date(conference.startDate) > today) {
           this.nextConferences.push(conference);
         }
-        // TODO sortieren der Listen nach Datum
+        this.sortByStartDate(this.nextConferences);
+        this.sortByEndDate(this.lastConferences);
         if (this.nextConferences.length > 0) {
           this.currentConference = this.nextConferences.pop();
         }
@@ -66,5 +67,17 @@ export class OverviewPage {
   presentAddConferenceModal() {
     let addModal = this.modalCtrl.create(AddConferencePage, {});
     addModal.present();
+  }
+
+  private sortByStartDate(conferences: Array<Conference>): void {
+    conferences.sort((a: Conference, b: Conference) => {
+      return a.startDate.getTime() - b.startDate.getTime();
+    })
+  }
+
+  private sortByEndDate(conferences: Array<Conference>): void {
+    conferences.sort((a: Conference, b: Conference) => {
+      return b.endDate.getTime() - a.endDate.getTime();
+    })
   }
 }
