@@ -1,9 +1,41 @@
-<ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
+<ion-content padding>
+  <ion-list [virtualScroll]="speakers">
+    <ion-grid fixed>
+      <ion-row align-items-stretch>
+
+        <ion-col col-12 col-md-6 align-self-stretch align-self-center *virtualItem="let speaker" approxItemHeight="457px">
+
+          <ion-card class="speaker-card">
+            <ion-card-header>
+              <button ion-item detail-none>
+                <ion-avatar item-start>
+                  <img [src]="speaker.profileFoto" alt="Speaker profile foto">
+                </ion-avatar>
+                {{speaker.name}}
+              </button>
+            </ion-card-header>
+
+            <ion-card-content class="outer-content">
+              <div>{{speaker.jobTitle}}</div>
+              <div>{{speaker.company}}</div>
+              <div>{{speaker.email}}</div>
+              <div>{{speaker.phone}}</div>
+              <div>{{speaker.description}}</div>
+            </ion-card-content>
+
+            <ion-row no-padding>
+              <ion-col col-12 col-lg-auto text-center text-lg-right>
+                <button ion-button clear small color="primary" icon-start (click)="openContact(speaker)">
+                  <ion-icon name='chatboxes'></ion-icon>
+                  Contact
+                </button>
+              </ion-col>
+            </ion-row>
+
+          </ion-card>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-list>
 </ion-content>
