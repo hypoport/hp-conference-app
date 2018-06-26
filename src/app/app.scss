@@ -164,13 +164,18 @@ ion-slides[card-slides]{
     // list of all added upcoming conferences (upcoming)
     &.upcoming-card {
 
-            min-height: 250px;
-            // TODO: problem with swiper-container padding
-            // max-height: 350px;
+      min-height: 150px;
+      // TODO: problem with swiper-container padding
+      // max-height: 350px;
 
     }
     // list of all previous added conferences (previous)
-    &.previous-card {}
+    &.previous-card {
+      min-height: 150px;
+      // TODO: problem with swiper-container padding
+      // max-height: 350px;
+
+    }
 
 
 
