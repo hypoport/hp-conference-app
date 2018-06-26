@@ -7,27 +7,26 @@
 
   <section class="agenda">
 
-    <h5 class="pretitle">Pretitle</h5>
     <h1 class="maximus">Agenda</h1>
 
-  <ion-list #scheduleList [hidden]="sessions.length === 0">
+    <ion-list #scheduleList [hidden]="sessions.length === 0">
 
-    <ion-item-sliding *ngFor="let session of sessions" #slidingItem [attr.category]="session.category | lowercase"
-                      [hidden]="session.hide">
+      <ion-item-sliding *ngFor="let session of sessions" #slidingItem [attr.category]="session.category | lowercase"
+                        [hidden]="session.hide">
 
-      <button ion-item (click)="goToSessionDetail(session)">
-        <h3>{{session.title}}</h3>
-        <p>
-          {{session.timeStart | date: 'HH:mm': 'CEST': 'de-DE'}} &mdash;
-          {{session.timeEnd | date: 'HH:mm': 'CEST': 'de-DE'}}:
-          {{session.location}}
-        </p>
-      </button>
+        <button ion-item (click)="goToSessionDetail(session)">
+          <h3>{{session.title}}</h3>
+          <p>
+            {{session.timeStart | date: 'HH:mm': 'CEST': 'de-DE'}} &mdash;
+            {{session.timeEnd | date: 'HH:mm': 'CEST': 'de-DE'}}:
+            {{session.location}}
+          </p>
+        </button>
 
-    </ion-item-sliding>
+      </ion-item-sliding>
 
-  </ion-list>
-</section>
+    </ion-list>
+  </section>
 
 
   <ion-list-header [hidden]="sessions.length > 0">
