@@ -6,7 +6,7 @@
 
 <ion-content padding>
 
-  <h5>{{ session?.timeStart }} - {{ session?.timeEnd }}</h5>
+  <h5>{{ session?.timeStart | date: 'HH:mm': 'CEST': 'de-DE' }} - {{ session?.timeEnd | date: 'HH:mm': 'CEST': 'de-DE' }}</h5>
 
   <p>{{ session?.description }}</p>
 
