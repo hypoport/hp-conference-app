@@ -65,30 +65,24 @@
   <section class="intro">
     <h5 class="conv-date">{{ conference?.startDate | date: 'dd.MM.' }} - {{ conference?.endDate | date: 'dd.MM.yyyy'}}</h5>
     <h1 class="maximus">{{ conference?.header }}</h1>
-    <p>
-      {{ conference?.description }}
-    </p>
+    <div [innerHtml]="conference?.description"></div>
   </section>
 
 
   <!-- conference home google maps -->
   <section class="maps">
-    <h1>Location</h1>
+    <h3>Informationen zur Anreise</h3>
     <p>
       {{ conference?.directions?.address }}
     </p>
     <div #map class="card" id="map"></div>
-
-    <h3>Informationen zur Anreise</h3>
-    <p>{{ conference?.directions?.description }}</p>
-    <ul class="map-list">
+    <!--ul class="map-list">
       <li><ion-icon name="checkmark-circle-outline"></ion-icon>einmal links</li>
       <li><ion-icon name="checkmark-circle-outline"></ion-icon>ducken</li>
       <li><ion-icon name="checkmark-circle-outline"></ion-icon>durch den Tunnel</li>
       <li><ion-icon name="checkmark-circle-outline"></ion-icon>am vegi Döner wieder rechts</li>
-    </ul>
-
-
+    </ul-->
+    <div [innerHtml]="conference?.directions?.description"></div>
   </section>
 
 
