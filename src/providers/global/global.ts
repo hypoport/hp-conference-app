@@ -11,7 +11,10 @@ export class GlobalProvider {
 
   private _conferenceId: string;
 
+  private _apiURL: string;
+  
   constructor() {
+	  this._apiURL = 'http://wp.hypoport.local/wp-json/confsystem/v2';
   }
 
   get conferenceId(): string {
@@ -20,6 +23,10 @@ export class GlobalProvider {
 
   set conferenceId(value: string) {
     this._conferenceId = value;
+  }
+  
+  get apiURL(endpoint: string){
+	  return this._apiURL + '/' + endpoint;
   }
 
 }
