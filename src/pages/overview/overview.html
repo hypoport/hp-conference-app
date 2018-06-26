@@ -17,8 +17,9 @@
     <ion-slides card-slides slidesPerView="1">
       <ion-slide>
         <ion-card class="hero-card" (click)="goToConference(currentConference.id)">
-          <div>
-            <img class="hero-image" [src]="currentConference.image"/>
+
+            <img [src]="currentConference.image"/>
+            
             <ion-card-content>
               <div class="company-logo"></div>
               <div
@@ -27,7 +28,6 @@
               <h1 class="maximus">{{ currentConference.title }}</h1>
               <h1>{{ currentConference.subtitle }}</h1>
             </ion-card-content>
-          </div>
         </ion-card>
       </ion-slide>
     </ion-slides>

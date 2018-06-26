@@ -124,8 +124,19 @@ ion-slides[card-slides]{
     color: #fff;
     background: #fff;
 
+
+    img {
+      min-height: 100% !important;
+      max-height: none;
+      z-index: 0;
+      margin-top: -50px;
+    }
     .card-content {
       height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      z-index: 10;
     }
 
     // different card styles
@@ -142,61 +153,24 @@ ion-slides[card-slides]{
         bottom: 0;
         right: 0;
         position: absolute;
+        z-index: 2;
       }
       min-height: 250px;
-      // TODO: problem with swiper-container padding
-      // max-height: 350px;
       max-height: 250px;
-      &.small-card {
-        &:before {
-          content: '';
-          background: rgba(0,0,0,.25);
-          height: 70px;
-        }
-
-        min-height: 150px;
-        max-height: 150px;
-        .card-content {
-          .company-logo {
-            width: 40px;
-            height: 40px;
-          }
-          .conv-date {
-            font-size: 1.4rem;
-            bottom: 45px;
-          }
-          h1 {
-            font-size: 1.7rem;
-            margin-bottom: 0;
-          }
-          h1:first-of-type {
-            bottom: 25px;
-          }
-          h1:last-of-type {
-            bottom: 5px;
-          }
-
-        }
-      }
-
-      .hero-image {
-        background: url("https://www.finmas.de/finmas/uploads/2017/07/Fotolia_148991212_M.jpg");
-        background-size: cover;
-        background-position: 50% center;
-        height: 100%;
-      }
 
       .company-logo {
         border-radius: 10px;
         width: 60px;
         height: 60px;
         background: rgba(0,0,0,0.5);
+        position: absolute;
+        top: 13px;
       }
       .conv-date {
-        font-size: 1.7rem;
+        font-size: 1.5rem;
         text-shadow: none;
         position: absolute;
-        bottom: 90px;
+        bottom: 80px;
       }
       h1 {
         position: absolute;
@@ -205,14 +179,42 @@ ion-slides[card-slides]{
       }
       h1:first-of-type {
         font-weight: bold;
-        bottom: 50px;
+        bottom: 35px;
       }
       h1:last-of-type {
-        bottom: 20px;
+        bottom: 10px;
       }
     }
 
-
+    &.small-card {
+      &:before {
+        content: '';
+        background: rgba(0,0,0,.25);
+        height: 70px;
+      }
+      min-height: 150px;
+      max-height: 150px;
+      .card-content {
+        .company-logo {
+          width: 40px;
+          height: 40px;
+        }
+        .conv-date {
+          font-size: 1.2rem;
+          bottom: 50px;
+        }
+        h1 {
+          font-size: 1.7rem;
+          margin-bottom: 0;
+        }
+        h1:first-of-type {
+          bottom: 25px;
+        }
+        h1:last-of-type {
+          bottom: 5px;
+        }
+      }
+    }
 
     // add new conference card (empty)
     &.empty-card {
