@@ -255,14 +255,13 @@ ion-slides[card-slides]{
     // service cards
     &.service-card {
       border: none;
-      min-height: 120px;
+      min-height: 100px;
       background: #fff !important;
       position: relative;
       text-shadow: none;
 
 
-      // TODO: problem with swiper-container padding
-      // max-height: 120px;
+
       h4, h2, p {
         position: absolute;
         color: #666;
@@ -422,12 +421,25 @@ section {
   &.maps {
     .card {
       text-shadow: none;
+
     }
-    .searchbar {
-      background: #fff;
-      height: 50px;
+
+    ul {
+      padding-left: 0;
+      list-style-type: none;
+      li {
+
+        ion-icon {
+          margin-right: 10px;
+          color: rgba(73, 219, 101, 0.8);
+          font-size: 3rem;
+        }
+
+        font-size: 1.7rem;
+        padding-bottom: .5rem;
 
 
+      }
     }
   }
 
@@ -444,6 +456,7 @@ section {
 
       img {
 
+        padding-left: 0;
         width: 100%;
         height: auto;
 
