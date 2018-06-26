@@ -275,28 +275,37 @@ section {
   }
   // conference home service cards
   &.service {
+    ion-icon {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: block;
+      font-size: 3.5rem;
+      margin-top: 20px;
+      margin-right: 25px;
+    }
+
     margin-top: -80px;
     .next-agenda-slot {
       ion-icon {
-        position: absolute;
-        top: 0;
-        right: 0;
-        display: block;
         color: orange;
-        font-size: 3.5rem;
-        margin-top: 20px;
-        margin-right: 25px;
       }
       .card {
         background: #00c0ff;
       }
     }
     .wifi {
+      ion-icon {
+        color: blue;
+      }
       .card {
         background: red;
       }
     }
     .participants {
+      ion-icon {
+        color: grey;
+      }
       .card {
         background: blue;
       }
