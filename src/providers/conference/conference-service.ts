@@ -23,7 +23,7 @@ export class ConferenceService {
     return this.http.get(url).toPromise()
       .then((conference: Conference): Conference => {
         this.conferences.set(conference.id, conference);
-        this.storage.set(STORAGE_KEY, JSON.stringify(this.conferences));
+        this.storage.set(STORAGE_KEY, this.conferences);
         return conference;
       });
   }
@@ -32,13 +32,15 @@ export class ConferenceService {
     return this.conferences.get(conferenceId);
   }
 
-  public getAllConferences() {
-    if(this.conferences.size == 0) {
-      this.storage.get(STORAGE_KEY).then((cache) => {
-        if(cache.toString() !== "{}") {
-          this.conferences = new Map(JSON.parse(cache));
+  public getAllConferences(): Promise<Map<string, Conference>> {
+    if (this.conferences.size == 0) {
+      return this.storage.get(STORAGE_KEY).then((data) => {
+        if (data.size > 0) {
+          this.conferences = data;
         }
+        return this.conferences
       });
     }
-    return this.conferences;  }
+    return Promise.resolve(this.conferences);
+  }
 }
