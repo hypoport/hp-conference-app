@@ -294,24 +294,40 @@ ion-slides[card-slides]{
       }
 
       ion-avatar {
+        width: 70px;
+        height: 70px;
+        border-radius: 20px;
+        overflow: hidden;
+        float: left;
+        margin-right: 20px;
         img {
+          width: 100%;
+          height: auto;
           background: rgba(0,0,0,.25);
 
         }
+      }
+      .speaker-name {
+        font-size: 2.4rem;
+        margin-top: 20px;
       }
       .card-content {
         position: relative;
         > div {
           // display: inline;
         }
-        padding-left: 85px;
+        padding-left: 107px;
 
         .job-title,
         .company {
           display: inline-block;
         }
+        .job-title {
+          padding-right: 5px;
+        }
         .company {
           padding-left: 10px;
+          border-left: 1px solid rgba(0,0,0,0.25);
         }
 
         .short-description {
