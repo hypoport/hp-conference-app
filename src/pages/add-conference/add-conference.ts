@@ -48,7 +48,7 @@ export class AddConferencePage {
 
   public addConference(conferenceCode: string, conferencePassword: string) {
      
-    if(typeof conferenceCode === 'undefined' || typeof conferencePassword === 'undefined' || conferenceCode.length == 0 || conferenceCode.length == conferencePassword){
+    if(typeof conferenceCode === 'undefined' || typeof conferencePassword === 'undefined' || conferenceCode == "" || conferenceCode == ""){
 	
 		let toast = this.toastCtrl.create({
 			message: 'Bitte geben Sie eine Tagungs-Kennung und ein Tagungs-Passwort an.',
