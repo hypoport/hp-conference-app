@@ -16,19 +16,8 @@
       <ion-avatar item-start>
         <img [src]="speaker.profileFoto" alt="Speaker profile foto">
       </ion-avatar>
-      <div class="job-title">{{speaker.jobTitle}}</div>
-      <div class="company">{{speaker.company}}</div>
-      <div class="short-description">{{speaker.description}}</div>
-
-      <div class="socials">
-        <div class="mail">
-          <ion-icon name="mail-open"></ion-icon>
-          {{speaker.email}}
-        </div>
-        <div class="phone">
-          <ion-icon name="call"></ion-icon>
-          {{speaker.phone}}
-        </div>
+      <div class="speaker-name">{{speaker.name}}</div>
+      <div class="speaker-detail">{{speaker.company}}<span *ngIf="speaker.company && speaker.jobTitle">, </span>{{speaker.jobTitle}}
       </div>
     </ion-item>
   </ion-list>

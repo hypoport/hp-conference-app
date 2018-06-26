@@ -3,7 +3,6 @@
     "id": "1",
     "name": "Burt Bear",
     "profileFoto": "assets/imgs/speakers/bear.jpg",
-    "twitter": "ionicframework",
     "email": "burt@example.com",
     "phone": "+1-541-754-3010",
     "description": "ganz wichtiger Text",
@@ -16,7 +15,9 @@
     "location": "Everywhere",
     "email": "charlie@example.com",
     "phone": "+1-541-754-3010",
-    "id": "2"
+    "id": "2",
+    "jobTitle": "Super important",
+    "company": "Blah AG"
   },
   {
     "name": "Donald Duck",
@@ -24,7 +25,9 @@
     "location": "Everywhere",
     "email": "donald@example.com",
     "phone": "+1-541-754-3010",
-    "id": "3"
+    "id": "3",
+    "jobTitle": "Head of Nix",
+    "company": "Test Foo"
   },
   {
     "name": "Eva Eagle",
@@ -32,78 +35,8 @@
     "location": "Everywhere",
     "email": "eva@example.com",
     "phone": "+1-541-754-3010",
-    "id": "4"
-  },
-  {
-    "name": "Ellie Elephant",
-    "profileFoto": "assets/imgs/speakers/elephant.jpg",
-    "location": "Everywhere",
-    "email": "ellie@example.com",
-    "phone": "+1-541-754-3010",
-    "id": "5"
-  },
-  {
-    "name": "Gino Giraffe",
-    "profileFoto": "assets/imgs/speakers/giraffe.jpg",
-    "location": "Everywhere",
-    "email": "gino@example.com",
-    "phone": "+1-541-754-3010",
-    "id": "6"
-  },
-  {
-    "name": "Isabella Iguana",
-    "profileFoto": "assets/imgs/speakers/iguana.jpg",
-    "location": "Everywhere",
-    "email": "isabella@example.com",
-    "phone": "+1-541-754-3010",
-    "id": "7"
-  },
-  {
-    "name": "Karl Kitten",
-    "profileFoto": "assets/imgs/speakers/kitten.jpg",
-    "location": "Everywhere",
-    "email": "karl@example.com",
-    "phone": "+1-541-754-3010",
-    "id": "8"
-  },
-  {
-    "name": "Lionel Lion",
-    "profileFoto": "assets/imgs/speakers/lion.jpg",
-    "location": "Everywhere",
-    "email": "lionel@example.com",
-    "phone": "+1-541-754-3010",
-    "id": "9"
-  },
-  {
-    "name": "Molly Mouse",
-    "profileFoto": "assets/imgs/speakers/mouse.jpg",
-    "location": "Everywhere",
-    "email": "molly@example.com",
-    "phone": "+1-541-754-3010",
-    "id": "10"
-  },
-  {
-    "name": "Paul Puppy",
-    "profileFoto": "assets/imgs/speakers/puppy.jpg",
-    "location": "Everywhere",
-    "email": "paul@example.com",
-    "phone": "+1-541-754-3010",
-    "id": "11"
-  },
-  {
-    "name": "Rachel Rabbit",
-    "profileFoto": "assets/imgs/speakers/rabbit.jpg",
-    "location": "Everywhere",
-    "email": "rachel@example.com",
-    "phone": "+1-541-754-3010",
-    "id": "12"
-  },
-  {
-    "name": "Ted Turtle",
-    "profileFoto": "assets/imgs/speakers/turtle.jpg",
-    "location": "Everywhere",
-    "email": "ted@example.com",
-    "phone": "+1-541-754-3010",
-    "id": "13"
+    "id": "4",
+    "jobTitle": "CTO",
+    "company": "Super Foo"
   }
 ]
