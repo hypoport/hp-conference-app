@@ -24,7 +24,9 @@
         <ion-card class="hero-card" (click)="goToConference(currentConference.id)">
             <img [src]="currentConference.image"/>
             <ion-card-content>
-              <img [src]="getLogo(currentConference.brand)" />
+              <div class="company-logo">
+                <img [src]="getLogo(currentConference.brand)" />
+              </div>
               <div class="conv-date">{{ currentConference.startDate | date: 'dd.MM.' }} - {{ currentConference.endDate | date: 'dd.MM.yyyy' }}</div>
               <h1 class="maximus">{{ currentConference.title }}</h1>
               <h1>{{ currentConference.subtitle }}</h1>
@@ -54,7 +56,9 @@
         <ion-card class="hero-card small-card" (click)="goToConference(conference.id)">
             <img [src]="conference.image"/>
             <ion-card-content>
-              <img [src]="getLogo(conference.brand)" />
+              <div class="company-logo">
+                  <img [src]="getLogo(conference.brand)" />
+              </div>
               <div class="conv-date">{{ conference.startDate | date: 'LLLL yyyy': 'CEST': 'de-DE' }}</div>
               <h1>{{ conference.title }}</h1>
               <h1>{{ conference.subtitle }}</h1>
@@ -71,7 +75,9 @@
         <ion-card class="hero-card small-card" (click)="goToConference(conference.id)">
             <img [src]="conference.image"/>
             <ion-card-content>
-              <img [src]="getLogo(conference.brand)" />
+              <div class="company-logo">
+                  <img [src]="getLogo(conference.brand)" />
+              </div>
               <div class="conv-date">{{ conference.startDate | date: 'LLLL yyyy': 'CEST': 'de-DE' }}</div>
               <h1>{{ conference.title }}</h1>
               <h1>{{ conference.subtitle }}</h1>
