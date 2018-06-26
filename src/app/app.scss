@@ -265,6 +265,14 @@ section {
   }
 }
 
+ion-fab[right] {
+  right: 30px;
+  right: calc(30px + constant(safe-area-inset-right));
+  right: calc(30px + env(safe-area-inset-right));
+}
+ion-fab[bottom] {
+  bottom: 30px;
+}
 
 
 /*
