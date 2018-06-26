@@ -14,6 +14,10 @@
 
 <ion-content padding>
 
+  <ion-refresher (ionRefresh)="refreshConferences($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <section class="hero" *ngIf="currentConference != null">
     <ion-slides card-slides slidesPerView="1">
       <ion-slide>
