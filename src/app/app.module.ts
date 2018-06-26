@@ -24,7 +24,7 @@ import localeDe from '@angular/common/locales/de';
 import { SessionPage } from '../pages/session/session';
 import { BrandProvider } from '../providers/brand/brand';
 
-import { QRScanner } from '@ionic-native/qr-scanner';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 
 registerLocaleData(localeDe);
@@ -59,7 +59,7 @@ registerLocaleData(localeDe);
   ],
   providers: [
     StatusBar,
-    QRScanner,
+    BarcodeScanner,
     SplashScreen, {provide: ErrorHandler, useClass: IonicErrorHandler},
     AgendaService,
     ConferenceService,
