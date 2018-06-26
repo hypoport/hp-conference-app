@@ -5,7 +5,7 @@ import { ConferenceService } from "../../providers/conference/conference-service
 import {TabsPage} from '../tabs/tabs';
 import { ToastController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
-import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 /**
  * Generated class for the AddConferencePage page.
@@ -33,7 +33,7 @@ export class AddConferencePage {
   public app: App,
   private toastCtrl: ToastController,
   public loadingCtrl: LoadingController,
-  private qrScanner: QRScanner,
+  private barcodeScanner: BarcodeScanner,
   ) {
   }
 
@@ -96,30 +96,37 @@ export class AddConferencePage {
   }
   
   openQrReader(){
-	  // Optionally request the permission early
-	  this.qrScanner.prepare()
-	  .then((status: QRScannerStatus) => {
-	     if (status.authorized) {
-	       // camera permission was granted
-	
-	
-	       // start scanning
-	       let scanSub = this.qrScanner.scan().subscribe((text: string) => {
-	         console.log('Scanned something', text);
-	
-	         this.qrScanner.hide(); // hide camera preview
-	         scanSub.unsubscribe(); // stop scanning
-	       });
-	
-	     } else if (status.denied) {
-	       // camera permission was permanently denied
-	       // you must use QRScanner.openSettings() method to guide the user to the settings page
-	       // then they can grant the permission from there
-	     } else {
-	       // permission was denied, but not permanently. You can ask for permission again at a later time.
-	     }
-	  })
-	  .catch((e: any) => console.log('Error is', e));
+
+  	this.barcodeScanner.scan().then(barcodeData => {
+		
+		let data = JSON.parse(barcodeData.text);
+		
+		if(typeof data.key !== 'undefined' && data.key != ""
+		&& typeof data.pw !== 'undefined' && data.pw != ""
+		&& typeof data.brand !== 'undefined' && data.brand != ""){
+			this.addConference(data.key,data.pw);
+		} else {
+			let toast = this.toastCtrl.create({
+				 message: 'Ungültiger Tagungs-QR-Code',
+				 duration: 5000,
+				 position: 'top',
+				 showCloseButton: true,
+				 closeButtonText: 'OK'
+			});
+		    toast.present();
+		}
+		
+		}).catch(err => {
+			
+			let toast = this.toastCtrl.create({
+				 message: 'Fehlerhafter Tagungs-QR-Code',
+				 duration: 5000,
+				 position: 'top',
+				 showCloseButton: true,
+				 closeButtonText: 'OK'
+			});
+		    toast.present();		    
+		});
   }
   
   dismiss() {
