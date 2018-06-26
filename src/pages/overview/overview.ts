@@ -47,15 +47,15 @@ export class OverviewPage {
         else if (new Date(conference.startDate) > today) {
           this.nextConferences.push(conference);
         }
-        this.sortByStartDate(this.nextConferences);
-        this.sortByEndDate(this.lastConferences);
-        if (this.nextConferences.length > 0) {
-          this.currentConference = this.nextConferences.pop();
-        }
-        else {
-          this.currentConference = this.lastConferences.pop();
-        }
       });
+      this.sortByStartDate(this.nextConferences);
+      this.sortByEndDate(this.lastConferences);
+      if (this.nextConferences.length > 0) {
+        this.currentConference = this.nextConferences.pop();
+      }
+      else {
+        this.currentConference = this.lastConferences.pop();
+      }
     });
   }
 
