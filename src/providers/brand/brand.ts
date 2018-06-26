@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
 
 @Injectable()
 export class BrandProvider {
@@ -9,7 +9,7 @@ export class BrandProvider {
   }
 
   public getLogoUrl(brand: string): string {
-    switch(brand) {
+    switch (brand.toUpperCase()) {
       case "EP":
         return "assets/logos/europace.png";
       case "FM":
@@ -17,7 +17,6 @@ export class BrandProvider {
       case "GP":
         return "assets/logos/genopace.png";
       default:
-        console.error("Brand '" + brand + "' is not known.");
         return "";
     }
   }
