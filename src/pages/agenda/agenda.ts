@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {Refresher, ToastController, ModalController} from "ionic-angular";
+import {Refresher, ToastController, ModalController, App} from "ionic-angular";
 import {AgendaService} from "../../providers/agenda/agenda-service";
 import {GlobalProvider} from "../../providers/global/global";
 import {Agenda} from "../../models/agenda";
@@ -17,7 +17,7 @@ export class AgendaPage {
   constructor(private globalProvider: GlobalProvider,
     private agendaService: AgendaService,
     private toastCtrl: ToastController,
-    private modalCtrl: ModalController) {
+    private app: App) {
   }
 
   ionViewDidLoad() {
@@ -33,15 +33,17 @@ export class AgendaPage {
       refresher.complete();
       const toast = this.toastCtrl.create({
         message: "Agenda wurde aktualisiert",
-        duration: 3000
+        duration: 2000,
+        position: "top"
       });
       toast.present();
     });
   }
 
   public goToSessionDetail(session: any) {
-    console.log("goto session", session);
-    let sessionModal = this.modalCtrl.create(SessionPage, { sessionId: session.id, name: session.name });
-    sessionModal.present();
+    console.log("goto session");
+    this.app.getRootNav().push(SessionPage, { session: session });
+    //let sessionModal = this.modalCtrl.create(SessionPage, { session: session });
+    //sessionModal.present();
   }
 }

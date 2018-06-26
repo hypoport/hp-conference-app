@@ -2,6 +2,7 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 import {Conference} from '../../models/conference';
 import {ConferenceService} from '../../providers/conference/conference-service';
 import {GlobalProvider} from "../../providers/global/global";
+import { ToastController, Refresher } from 'ionic-angular';
 
 declare const google;
 
@@ -15,7 +16,9 @@ export class HomePage {
   map: any;
   conference: Conference;
 
-  constructor(private conferenceService: ConferenceService, private globalProvider: GlobalProvider) {
+  constructor(private conferenceService: ConferenceService,
+    private globalProvider: GlobalProvider,
+    private toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
@@ -35,6 +38,19 @@ export class HomePage {
     new google.maps.Marker({
       position: location,
       map: this.map
+    });
+  }
+
+  public refreshConference(refresher: Refresher) {
+    this.conferenceService.loadConference(this.globalProvider.conferenceId).then((conference: Conference) => {
+      this.conference = conference;
+      refresher.complete();
+      const toast = this.toastCtrl.create({
+        message: "Infos wurden aktualisiert",
+        duration: 2000,
+        position: "top"
+      });
+      toast.present();
     });
   }
 }

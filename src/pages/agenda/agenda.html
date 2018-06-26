@@ -12,8 +12,8 @@
       <button ion-item (click)="goToSessionDetail(session)">
         <h3>{{session.title}}</h3>
         <p>
-          {{session.timeStart}} &mdash;
-          {{session.timeEnd}}:
+          {{session.timeStart | date: 'HH:mm': 'CEST': 'de-DE'}} &mdash;
+          {{session.timeEnd | date: 'HH:mm': 'CEST': 'de-DE'}}:
           {{session.location}}
         </p>
       </button>

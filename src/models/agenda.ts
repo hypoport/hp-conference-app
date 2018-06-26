@@ -1,5 +1,5 @@
 import {Session} from "./session";
 
 export class Agenda {
-	sessions: Array<Session>
+	sessions: Array<Session>;
 }

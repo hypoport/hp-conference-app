@@ -10,16 +10,16 @@ import {TabsPage} from '../pages/tabs/tabs';
 import {OverviewPage} from '../pages/overview/overview';
 import {AddConferencePage} from '../pages/add-conference/add-conference';
 
-
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {AgendaService} from '../providers/agenda/agenda-service';
 import {GlobalProvider} from '../providers/global/global';
 import {ConferenceService} from '../providers/conference/conference-service';
+import {SpeakerService} from '../providers/speaker/speaker-service';
 import {HttpClientModule} from '@angular/common/http';
 import {IonicStorageModule} from '@ionic/storage';
 
-import { registerLocaleData } from '@angular/common';
+import {registerLocaleData} from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import { SessionPage } from '../pages/session/session';
 
@@ -58,7 +58,8 @@ registerLocaleData(localeDe);
     SplashScreen, {provide: ErrorHandler, useClass: IonicErrorHandler},
     AgendaService,
     ConferenceService,
-    GlobalProvider
+    GlobalProvider,
+    SpeakerService
   ]
 })
 export class AppModule {}
