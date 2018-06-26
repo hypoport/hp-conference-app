@@ -17,7 +17,8 @@
     <ion-slides card-slides slidesPerView="1">
       <ion-slide>
         <ion-card class="hero-card" (click)="goToConference(currentConference.id)">
-          <div class="hero-image">
+          <div>
+            <img [src]="currentConference.image"/>
             <ion-card-content>
               <div class="company-logo"></div>
               <div
@@ -50,7 +51,8 @@
     <ion-slides card-slides slidesPerView="1.5" spaceBetween="10">
       <ion-slide *ngFor="let conference of nextConferences">
         <ion-card class="hero-card small-card" (click)="goToConference(conference.id)">
-          <div class="hero-image">
+          <div>
+            <img [src]="conference.image"/>
             <ion-card-content>
               <div class="company-logo"></div>
               <div class="conv-date">{{ conference.startDate | date: 'LLLL yyyy': 'CEST': 'de-DE' }}</div>
@@ -68,7 +70,8 @@
     <ion-slides card-slides slidesPerView="1.5" spaceBetween="10">
       <ion-slide *ngFor="let conference of lastConferences">
         <ion-card class="hero-card small-card" (click)="goToConference(conference.id)">
-          <div class="hero-image">
+          <div>
+            <img [src]="conference.image"/>
             <ion-card-content>
               <div class="company-logo"></div>
               <div class="conv-date">{{ conference.startDate | date: 'LLLL yyyy': 'CEST': 'de-DE' }}</div>
