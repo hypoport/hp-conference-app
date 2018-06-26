@@ -27,6 +27,7 @@ export class SessionPage {
   }
 
   ionViewWillEnter() {
+    console.log("ionViewWillEnter SessionPage");
     this.session = this.navParams.get('session');
     console.log("session passed: " + this.session);
 }

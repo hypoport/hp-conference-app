@@ -1,9 +1,13 @@
 <ion-header>
   <ion-navbar>
+    <ion-buttons left>
+        <button ion-button icon-only (click)="close()">
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+      </ion-buttons>
     <ion-title>{{ session?.title }}</ion-title>
   </ion-navbar>
 </ion-header>
-
 
 <ion-content padding>
 
@@ -14,11 +18,5 @@
   <section>
     Speakers will be listed here...
   </section>
-
-  <ion-fab right bottom>
-    <button ion-fab color="light" (click)="close()">
-      <ion-icon name="md-close"></ion-icon>
-    </button>
-  </ion-fab>
 
 </ion-content>
