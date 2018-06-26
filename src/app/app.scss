@@ -26,6 +26,7 @@ h1, h2, h3, h4, p {
 }
 h1, h2, h3, h4 {
   margin-bottom: 2rem;
+  
 }
 h1 {
   font-size: 2.8rem;
@@ -147,17 +148,16 @@ ion-slides[card-slides]{
         height: 60px;
         background: rgba(0,0,0,0.5);
       }
-      h1, h2 {
+      h1 {
         position: absolute;
         color: #fff;
       }
-      h1 {
-        // TODO: set to global
+      h1:first-of-type {
         font-weight: bold;
-        bottom: 20px;
+        bottom: 50px;
       }
-      h2 {
-        bottom: 0;
+      h1:last-of-type {
+        bottom: 20px;
       }
     }
 
