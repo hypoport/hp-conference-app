@@ -129,7 +129,7 @@ ion-slides[card-slides]{
       min-height: 100% !important;
       max-height: none;
       z-index: 0;
-      
+
     }
     .card-content {
       height: 100%;
@@ -221,22 +221,16 @@ ion-slides[card-slides]{
       border: 5px dashed rgba(0,0,0,.05);
       box-shadow: none;
       text-shadow: none;
+      position: relative;
 
-      min-height: 300px;
-      // TODO: problem with swiper-container padding
-      // max-height: 350px;
-
-      // TODO: rearrange
-      .button {
-        margin-top: 80px !important;
-        margin-bottom: 15px !important;
-        display: block;
-        margin: 0 auto;
-        width: 60px;
-        height: 60px;
-      }
+      min-height: 250px;
+      max-height: 250px;
       h2 {
         text-align: center;
+        margin-top: 90px;
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: rgba(0,0,0,.25);
       }
     }
 
