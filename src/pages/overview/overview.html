@@ -32,15 +32,11 @@
 
 
   <section *ngIf="currentConference == null">
-    <h2>Tagungen hinzufügen</h2>
     <ion-slides card-slides slidesPerView="1">
       <ion-slide>
         <ion-card class="empty-card">
           <ion-card-content>
-            <button ion-button round (click)="this.presentAddConferenceModal()">
-                <ion-icon name="md-add"></ion-icon>
-            </button>
-            <h2 style="color: #333;">Tagung hinzufügen</h2>
+            <h2 style="color: #333;">Noch keine Tagungen vorhanden</h2>
           </ion-card-content>
         </ion-card>
       </ion-slide>
@@ -81,7 +77,7 @@
     </ion-slides>
   </section>
 
-  <ion-fab right bottom *ngIf="currentConference != null">
+  <ion-fab right bottom>
     <button ion-fab color="primary" (click)="this.presentAddConferenceModal()">
       <ion-icon name="md-add"></ion-icon>
     </button>
