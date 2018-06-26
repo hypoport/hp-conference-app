@@ -16,15 +16,15 @@ export class HomePage {
   conference: Conference;
 
   constructor(private conferenceService: ConferenceService, private globalProvider: GlobalProvider) {
-    this.conference = this.conferenceService.getConference(this.globalProvider.conferenceId);
   }
 
-  ionViewDidLoad(){
-   this.loadDirection();
+  ionViewDidLoad() {
+    this.conference = this.conferenceService.getConference(this.globalProvider.conferenceId);
+    this.loadDirection();
   }
 
   loadDirection() {
-   	let location = {lat: this.conference.directions.location.latitude, lng: this.conference.directions.location.longitude}
+    let location = {lat: this.conference.directions.location.latitude, lng: this.conference.directions.location.longitude}
 
     this.map = new google.maps.Map(this.mapElement.nativeElement, {
       zoom: 15,

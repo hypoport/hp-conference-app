@@ -60,6 +60,7 @@
 
   <!-- conference home lead text -->
   <section>
+    <h5>{{ conference.startDate | date: 'dd.MM.' }} - {{ conference.endDate | date: 'dd.MM.yyyy'}}</h5>
     <h1>{{ conference?.header }}</h1>
     <p>
       {{ conference?.description }}
@@ -70,14 +71,6 @@
   <!-- conference home google maps -->
   <section class="maps">
     <h1>Anfahrt</h1>
-
-    <ion-searchbar class="card"
-      [(ngModel)]="myInput"
-      [showCancelButton]="shouldShowCancel"
-      (ionInput)="onInput($event)"
-      (ionCancel)="onCancel($event)">
-    </ion-searchbar>
-
     <p>
       {{ conference?.directions?.address }}
     </p>

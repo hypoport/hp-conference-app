@@ -19,6 +19,11 @@ import {ConferenceService} from '../providers/conference/conference-service';
 import {HttpClientModule} from '@angular/common/http';
 import {IonicStorageModule} from '@ionic/storage';
 
+import { registerLocaleData } from '@angular/common';
+import localeDe from '@angular/common/locales/de';
+
+registerLocaleData(localeDe);
+
 @NgModule({
   declarations: [
     MyApp,
