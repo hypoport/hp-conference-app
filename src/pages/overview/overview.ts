@@ -71,13 +71,13 @@ export class OverviewPage {
 
   private sortByStartDate(conferences: Array<Conference>): void {
     conferences.sort((a: Conference, b: Conference) => {
-      return a.startDate.getTime() - b.startDate.getTime();
+      return new Date(a.startDate).getTime() - new Date(b.startDate).getTime();
     })
   }
 
   private sortByEndDate(conferences: Array<Conference>): void {
     conferences.sort((a: Conference, b: Conference) => {
-      return b.endDate.getTime() - a.endDate.getTime();
+      return new Date(b.endDate).getTime() - new Date(a.endDate).getTime();
     })
   }
 }
