@@ -40,8 +40,8 @@ export class AgendaPage {
   }
 
   public goToSessionDetail(session: any) {
-    console.log("goto session", session);
-    let sessionModal = this.modalCtrl.create(SessionPage, { sessionId: session.id, name: session.name });
+    console.log("goto session");
+    let sessionModal = this.modalCtrl.create(SessionPage, { session: session });
     sessionModal.present();
   }
 }

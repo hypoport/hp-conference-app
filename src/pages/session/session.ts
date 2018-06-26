@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavParams, ViewController } from 'ionic-angular';
+import { Session } from '../../models/session';
 
 /**
  * Generated class for the SessionPage page.
@@ -15,14 +16,20 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 })
 export class SessionPage {
 
-  constructor(private navCtrl: NavController,
-    private navParams: NavParams,
+  session: Session;
+
+  constructor(private navParams: NavParams,
     private viewCtrl: ViewController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SessionPage');
   }
+
+  ionViewWillEnter() {
+    this.session = this.navParams.get('session');
+    console.log("session passed: " + this.session);
+}
 
   close() {
     this.viewCtrl.dismiss();
