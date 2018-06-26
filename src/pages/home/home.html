@@ -65,7 +65,7 @@
   <section class="intro">
     <h5 class="conv-date">{{ conference?.startDate | date: 'dd.MM.' }} - {{ conference?.endDate | date: 'dd.MM.yyyy'}}</h5>
     <h1 class="maximus">{{ conference?.header }}</h1>
-    <p [innerHtml]="conference?.description"></p>
+    <div [innerHtml]="conference?.description"></div>
   </section>
 
 
