@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavParams } from 'ionic-angular';
 import { Session } from '../../models/session';
 
 /**
@@ -18,8 +18,7 @@ export class SessionPage {
 
   session: Session;
 
-  constructor(private navParams: NavParams,
-    private viewCtrl: ViewController) {
+  constructor(private navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -30,9 +29,5 @@ export class SessionPage {
     console.log("ionViewWillEnter SessionPage");
     this.session = this.navParams.get('session');
     console.log("session passed: " + this.session);
-}
-
-  close() {
-    this.viewCtrl.dismiss();
   }
 }
