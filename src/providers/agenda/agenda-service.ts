@@ -28,14 +28,13 @@ export class AgendaService {
 
   public getAgenda(conferenceId: string): Promise<Agenda> {
     return this.getAgendas().then((agendas) => {
-      console.log("in then von getAgendas");
       return agendas.get(conferenceId);
     });
   }
 
   public getAgendas(): Promise<Map<string, Agenda>> {
     if (this.agendas.size == 0) {
-      console.log("load agendas");
+      console.log("get agendas");
       return this.storage.get(STORAGE_KEY).then((data) => {
         console.log("data", data);
         if (data && data.size > 0) {

@@ -6,7 +6,7 @@ import {AddConferencePage} from '../add-conference/add-conference';
 import {GlobalProvider} from '../../providers/global/global';
 import {ConferenceService} from "../../providers/conference/conference-service";
 import {Conference} from '../../models/conference';
-import { BrandProvider } from '../../providers/brand/brand';
+import {BrandProvider} from '../../providers/brand/brand';
 
 /**
  * Generated class for the OverviewPage page.
@@ -40,7 +40,7 @@ export class OverviewPage {
   }
 
   ionViewWillEnter() {
-    this.loadConferences().then(() => console.log("conferences loadad"));
+    this.loadConferences().then(() => console.log("conferences loaded"));
   }
 
   public goToConference(newConferenceId: string) {

@@ -1,10 +1,11 @@
 import {Component} from "@angular/core";
-import {Refresher, ToastController, App} from "ionic-angular";
+import {App, Refresher, ToastController} from "ionic-angular";
 import {AgendaService} from "../../providers/agenda/agenda-service";
 import {GlobalProvider} from "../../providers/global/global";
 import {Agenda} from "../../models/agenda";
 import {Session} from "../../models/session";
-import { SessionPage } from "../session/session";
+import {SessionPage} from "../session/session";
+import {FavoritesService} from "../../providers/favorites/favorites-service";
 
 @Component({
   selector: "page-agenda",
@@ -13,17 +14,19 @@ import { SessionPage } from "../session/session";
 export class AgendaPage {
 
   sessions: Array<Session> = [];
+  isFavorite: boolean;
 
   constructor(private globalProvider: GlobalProvider,
     private agendaService: AgendaService,
+    private favoritesService: FavoritesService,
     private toastCtrl: ToastController,
     private app: App) {
   }
 
   ionViewDidLoad() {
-    console.log(this.agendaService.getAgenda(this.globalProvider.conferenceId));
     this.agendaService.getAgenda(this.globalProvider.conferenceId).then((agenda) => {
       this.sessions = agenda.sessions;
+      this.favoritesService.loadFavorites(agenda, this.globalProvider.conferenceId);
     });
   }
 
@@ -42,8 +45,9 @@ export class AgendaPage {
 
   public goToSessionDetail(session: any) {
     console.log("goto session");
-    this.app.getRootNav().push(SessionPage, { session: session });
+    this.app.getRootNav().push(SessionPage, {session: session});
     //let sessionModal = this.modalCtrl.create(SessionPage, { session: session });
     //sessionModal.present();
   }
+
 }

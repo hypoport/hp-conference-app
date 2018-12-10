@@ -23,26 +23,27 @@ export class ConferenceService {
     private global: GlobalProvider) {
   }
 
-  public addConference(conferenceCode: string, conferencePassword: string): Promise<Conference> { 
-	  
-    let url = this.global.apiURL('auth');
-    
-    return this.http.post(url,{
-	    "key": conferenceCode, 
-	    "password": conferencePassword,
-	    "uuid": 'naap'
-	    },{ headers: { 'Content-Type': 'application/json; charset=utf-8' }
-		}).toPromise()
-        .then((conference: Conference): Conference => {
-        		    
-		    this.conferences.set(conference.id, conference);
-	        this.storage.set(STORAGE_KEY, this.conferences);
-	        this.agendaService.loadAgenda(conference.id);
-	        this.speakerService.loadSpeakers(conference.id);
-	        
-	        return conference;
-	        
-		  });
+  public addConference(conferenceCode: string, conferencePassword: string): Promise<Conference> {
+
+    const url = this.global.apiURL('auth');
+
+    return this.http.post(url, {
+      "key": conferenceCode,
+      "password": conferencePassword,
+      "uuid": 'naap'
+    }, {
+      headers: {'Content-Type': 'application/json; charset=utf-8'}
+    }).toPromise()
+      .then((conference: Conference): Conference => {
+
+        this.conferences.set(conference.id, conference);
+        this.storage.set(STORAGE_KEY, this.conferences);
+        this.agendaService.loadAgenda(conference.id);
+        this.speakerService.loadSpeakers(conference.id);
+
+        return conference;
+
+      });
   }
 
   public loadConference(conferenceId: string): Promise<Conference> {

@@ -7,20 +7,21 @@
 <ion-content padding>
 
   <h5>{{ session?.timeStart | date: 'HH:mm': 'CEST': 'de-DE' }} - {{ session?.timeEnd | date: 'HH:mm': 'CEST': 'de-DE' }}</h5>
+  <ion-icon name="star" [ngClass]="session?.isFavorite ? 'star-active' : 'star-inactive'" (click)="this.toggleFavorite()"></ion-icon>
   <h6>{{ session?.location }}</h6>
 
   <p>{{ session?.description }}</p>
 
-  <section class="agenda-speaker">
-  <ion-list>
-    <ion-item *ngFor="let speaker of speakers">
-      <ion-avatar item-start>
-        <img [src]="speaker.profileFoto" alt="Speaker profile foto">
-      </ion-avatar>
-      <div class="speaker-name">{{speaker.name}}</div>
-      <div class="speaker-detail">{{speaker.company}}<span *ngIf="speaker.company && speaker.jobTitle">, </span>{{speaker.jobTitle}}
-      </div>
-    </ion-item>
-  </ion-list>
-</section>
+  <section class=" agenda-speaker">
+    <ion-list>
+      <ion-item *ngFor="let speaker of speakers">
+        <ion-avatar item-start>
+          <img [src]="speaker.profileFoto" alt="Speaker profile foto">
+        </ion-avatar>
+        <div class="speaker-name">{{speaker.name}}</div>
+        <div class="speaker-detail">{{speaker.company}}<span *ngIf="speaker.company && speaker.jobTitle">, </span>{{speaker.jobTitle}}
+        </div>
+      </ion-item>
+    </ion-list>
+  </section>
 </ion-content>

@@ -16,16 +16,16 @@ import {AgendaService} from '../providers/agenda/agenda-service';
 import {GlobalProvider} from '../providers/global/global';
 import {ConferenceService} from '../providers/conference/conference-service';
 import {SpeakerService} from '../providers/speaker/speaker-service';
+import {FavoritesService} from '../providers/favorites/favorites-service';
 import {HttpClientModule} from '@angular/common/http';
 import {IonicStorageModule} from '@ionic/storage';
 
 import {registerLocaleData} from '@angular/common';
 import localeDe from '@angular/common/locales/de';
-import { SessionPage } from '../pages/session/session';
-import { BrandProvider } from '../providers/brand/brand';
+import {SessionPage} from '../pages/session/session';
+import {BrandProvider} from '../providers/brand/brand';
 
-import { BarcodeScanner } from '@ionic-native/barcode-scanner';
-
+import {BarcodeScanner} from '@ionic-native/barcode-scanner';
 
 registerLocaleData(localeDe);
 
@@ -68,7 +68,8 @@ registerLocaleData(localeDe);
     ConferenceService,
     GlobalProvider,
     SpeakerService,
-    BrandProvider
+    BrandProvider,
+    FavoritesService
   ]
 })
 export class AppModule {}

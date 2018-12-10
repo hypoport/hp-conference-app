@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavParams } from 'ionic-angular';
-import { Session } from '../../models/session';
-import { SpeakerService } from '../../providers/speaker/speaker-service';
-import { GlobalProvider } from '../../providers/global/global';
-import { Speaker } from '../../models/speaker';
+import {Component} from '@angular/core';
+import {IonicPage, NavParams} from 'ionic-angular';
+import {Session} from '../../models/session';
+import {SpeakerService} from '../../providers/speaker/speaker-service';
+import {GlobalProvider} from '../../providers/global/global';
+import {Speaker} from '../../models/speaker';
+import {FavoritesService} from "../../providers/favorites/favorites-service";
 
 /**
  * Generated class for the SessionPage page.
@@ -24,7 +25,8 @@ export class SessionPage {
 
   constructor(private navParams: NavParams,
     private speakerService: SpeakerService,
-    private globalProvider: GlobalProvider) {
+    private globalProvider: GlobalProvider,
+    private favoritesService: FavoritesService) {
   }
 
   ionViewDidLoad() {
@@ -36,12 +38,17 @@ export class SessionPage {
     this.session = this.navParams.get('session');
     console.log("session passed: " + this.session);
     this.speakers.length = 0;
-    if(this.session.speakers) {
-      this.session.speakers.forEach( (speakerId) => {
+    if (this.session.speakers) {
+      this.session.speakers.forEach((speakerId) => {
         this.speakerService.getSpeaker(this.globalProvider.conferenceId, speakerId).then((speaker) => {
           this.speakers.push(speaker);
         });
       });
     }
   }
+
+  toggleFavorite() {
+    this.favoritesService.toggleFavorite(this.globalProvider.conferenceId, this.session);
+  }
+
 }
