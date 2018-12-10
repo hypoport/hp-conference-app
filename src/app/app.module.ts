@@ -26,6 +26,7 @@ import {SessionPage} from '../pages/session/session';
 import {BrandProvider} from '../providers/brand/brand';
 
 import {BarcodeScanner} from '@ionic-native/barcode-scanner';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 registerLocaleData(localeDe);
 
@@ -63,6 +64,7 @@ registerLocaleData(localeDe);
   providers: [
     StatusBar,
     BarcodeScanner,
+    LocalNotifications,
     SplashScreen, {provide: ErrorHandler, useClass: IonicErrorHandler},
     AgendaService,
     ConferenceService,
