@@ -11,6 +11,7 @@ import {AddConferencePage} from '../pages/add-conference/add-conference';
 import {SessionPage} from '../pages/session/session';
 import {SpeakersPage} from '../pages/speakers/speakers';
 import {SpeakerPage} from '../pages/speaker/speaker';
+import {SettingsPage} from '../pages/settings/settings';
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
@@ -43,7 +44,8 @@ registerLocaleData(localeDe);
     OverviewPage,
     AddConferencePage,
     SessionPage,
-    SpeakerPage
+    SpeakerPage,
+    SettingsPage
   ],
   imports: [
     BrowserModule,
@@ -65,7 +67,8 @@ registerLocaleData(localeDe);
     OverviewPage,
     AddConferencePage,
     SessionPage,
-    SpeakerPage
+    SpeakerPage,
+    SettingsPage
   ],
   providers: [
     StatusBar,

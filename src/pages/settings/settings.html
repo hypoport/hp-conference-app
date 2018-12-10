@@ -1,0 +1,51 @@
+<!--
+  Generated template for the SettingsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+
+<ion-list class="switchers-list">
+   
+      <ion-list-header>Notifications</ion-list-header>
+      
+      <ion-item class="switcher-item">
+        <ion-label>Push-Notifications</ion-label>
+        <ion-toggle></ion-toggle>
+      
+      </ion-item>
+      <ion-item class="switcher-item">
+        <ion-label>Benachrichtigung zur Agenda</ion-label>
+        <ion-toggle></ion-toggle>
+      </ion-item>
+      
+    </ion-list>
+    
+    <ion-list>
+      <ion-list-header>App Information</ion-list-header>
+      
+      <ion-item>
+	  	<ion-icon name="phone-portrait" item-start></ion-icon>
+        <p>Hypoport Tagungs-App<br/>v. {{this.globalProvider.appVersion()}}</p>
+        
+        <button ion-button clear item-end>Changelog</button>
+
+      </ion-item>
+    
+    </ion-list>  
+  <button ion-button color="light" full>Über die App</button>
+  <button ion-button color="light" full>Support</button>
+  <button ion-button color="light" full>Datenschutz</button>
+
+</ion-content>

@@ -7,6 +7,7 @@ import {GlobalProvider} from '../../providers/global/global';
 import {ConferenceService} from "../../providers/conference/conference-service";
 import {Conference} from '../../models/conference';
 import {BrandProvider} from '../../providers/brand/brand';
+import {SettingsPage} from '../settings/settings';
 
 /**
  * Generated class for the OverviewPage page.
@@ -151,6 +152,10 @@ export class OverviewPage {
 	   });
 	
 	   actionSheet.present();	  
+  }
+  
+  public openSettingsPage(){
+	  this.navCtrl.push(SettingsPage);
   }
   
 }
