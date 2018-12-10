@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {ActionSheetButton, ActionSheetController, ActionSheetOptions, Config, Refresher, ToastController} from 'ionic-angular';
+import {ActionSheetButton, ActionSheetController, ActionSheetOptions, Config, Refresher, ToastController, NavController, NavParams, App} from 'ionic-angular';
 import {GlobalProvider} from "../../providers/global/global";
 import {SpeakerService} from "../../providers/speaker/speaker-service";
 import {Speaker} from "../../models/speaker";
+import {SpeakerPage} from '../speaker/speaker';
 
 @Component({
   selector: 'page-speakers',
@@ -16,7 +17,9 @@ export class SpeakersPage {
     private speakerService: SpeakerService,
     private toastCtrl: ToastController,
     private config: Config,
-    private actionSheetCtrl: ActionSheetController) {
+    private navCtrl: NavController,
+    private actionSheetCtrl: ActionSheetController,
+    private app: App) {
   }
 
   ionViewDidLoad() {
@@ -62,6 +65,10 @@ export class SpeakersPage {
     } as ActionSheetOptions);
 
     actionSheet.present();
+  }
+  
+  public goToSpeakerPage(speaker){
+	this.app.getRootNav().push(SpeakerPage, { speaker:speaker });
   }
 
 }

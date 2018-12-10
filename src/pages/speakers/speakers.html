@@ -15,7 +15,7 @@
 
           <ion-col col-12 col-md-6 align-self-stretch align-self-center *virtualItem="let speaker" approxItemHeight="457px">
 
-            <ion-card class="speaker-card">
+            <ion-card class="speaker-card" (click)="goToSpeakerPage(speaker)">
               <ion-card-header>
                 <ion-avatar item-start>
                   <img [src]="speaker.profileFoto" alt="Speaker profile foto">
