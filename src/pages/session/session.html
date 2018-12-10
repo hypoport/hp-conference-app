@@ -1,13 +1,19 @@
 <ion-header>
   <ion-navbar>
     <ion-title>{{ session?.title }}</ion-title>
+    
+    <ion-buttons end>
+      <button ion-button (click)="this.toggleFavorite()">
+      <ion-icon name="star" [ngClass]="session?.isFavorite ? 'star-active' : 'star-inactive'" (click)="this.toggleFavorite()"></ion-icon>
+      </button>
+    </ion-buttons>
+    
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
   <h5>{{ session?.timeStart | date: 'HH:mm': 'CEST': 'de-DE' }} - {{ session?.timeEnd | date: 'HH:mm': 'CEST': 'de-DE' }}</h5>
-  <ion-icon name="star" [ngClass]="session?.isFavorite ? 'star-active' : 'star-inactive'" (click)="this.toggleFavorite()"></ion-icon>
   <h6>{{ session?.location }}</h6>
 
   <p>{{ session?.description }}</p>
