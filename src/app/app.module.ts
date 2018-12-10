@@ -43,7 +43,10 @@ registerLocaleData(localeDe);
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicStorageModule.forRoot(),
+    IonicStorageModule.forRoot({
+      name: 'de.hypoport.conferences',
+         driverOrder: ['indexeddb', 'sqlite', 'websql']
+    }),
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
