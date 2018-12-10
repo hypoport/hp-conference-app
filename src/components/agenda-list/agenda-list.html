@@ -4,8 +4,8 @@
                         [hidden]="session.hide">
 
         <button ion-item (click)="goToSessionDetail(session)">
+          <ion-icon name="star" item-start [ngClass]="session.isFavorite ? 'star-active' : 'star-inactive'"></ion-icon>
           <h3>{{session.title}}</h3>
-          <ion-icon name="star" [ngClass]="session.isFavorite ? 'star-active' : 'star-inactive'"></ion-icon>
           <p>
             {{session.timeStart | date: 'HH:mm': 'CEST': 'de-DE'}} &mdash;
             {{session.timeEnd | date: 'HH:mm': 'CEST': 'de-DE'}}:
