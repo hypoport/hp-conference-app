@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, ModalController, NavController, Refresher, ToastController} from 'ionic-angular';
+import {IonicPage, ModalController, NavController, Refresher, ToastController, ActionSheetController} from 'ionic-angular';
 import {TabsPage} from '../tabs/tabs';
 import {AddConferencePage} from '../add-conference/add-conference';
 
@@ -31,7 +31,8 @@ export class OverviewPage {
     private conferenceService: ConferenceService,
     private modalCtrl: ModalController,
     private toastCtrl: ToastController,
-    private brandProvider: BrandProvider) {
+    private brandProvider: BrandProvider,
+    private actSheetCtrl: ActionSheetController) {
   }
 
   ionViewDidLoad() {
@@ -103,7 +104,53 @@ export class OverviewPage {
     });
   }
 
-  getLogo(brand: string): string {
+  public getLogo(brand: string): string {
     return this.brandProvider.getLogoUrl(brand);
   }
+  
+  public openActionSheetForConferences(newConferenceId: string){
+	  let actionSheet = this.actSheetCtrl.create({
+	     title: 'Tagung',
+	     buttons: [
+	       {
+	         text: 'Aktualisieren',
+	         handler: () => {
+			 	this.loadConferences().then(() => {
+			      const toast = this.toastCtrl.create({
+			        message: "Tagungen wurden aktualisiert",
+			        duration: 2000,
+			        position: "top"
+			      });
+			      toast.present();
+			    });
+	         }
+	       },
+	       {
+	         text: 'Entfernen',
+	         role: 'destructive',
+	         handler: () => {
+			 	this.conferenceService.removeConference(newConferenceId).then(()=>{
+				  this.loadConferences().then(() => {
+					  const toast = this.toastCtrl.create({
+				        message: "Tagung wurde entfernt",
+				        duration: 2000,
+				        position: "top"
+				      });
+				      toast.present();					  
+				  });
+			 	});
+	         }
+	       },
+	       {
+	         text: 'Abbrechen',
+	         role: 'cancel',
+	         handler: () => {
+	         }
+	       }
+	     ]
+	   });
+	
+	   actionSheet.present();	  
+  }
+  
 }

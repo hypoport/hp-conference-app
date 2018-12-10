@@ -50,6 +50,18 @@ export class ConferenceService {
     return Promise.resolve(this.getConference(conferenceId));
   }
 
+  public removeConference(conferenceId: string): Promise<Map<string, Conference>> {
+  	this.conferences.forEach((val,key,confs) => {
+	  if(val.id.toString() == conferenceId.toString()){
+		   this.conferences.delete(key);
+		   console.log(this.conferences);
+	       this.storage.set(STORAGE_KEY, this.conferences);
+		}
+  	});
+  	
+    return Promise.resolve(this.conferences);
+  }
+
   public getConference(conferenceId: string): Conference {
     return this.conferences.get(conferenceId);
   }

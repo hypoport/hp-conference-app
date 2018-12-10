@@ -21,7 +21,7 @@
   <section class="hero" *ngIf="currentConference != null">
     <ion-slides card-slides slidesPerView="1">
       <ion-slide>
-        <ion-card class="hero-card" (click)="goToConference(currentConference.id)">
+        <ion-card class="hero-card" (click)="goToConference(currentConference.id)" (press)="openActionSheetForConferences(currentConference.id)">
             <img [src]="currentConference.image"/>
             <ion-card-content>
               <div class="company-logo">
@@ -53,7 +53,7 @@
     <h1>Zukünftige Tagungen</h1>
     <ion-slides card-slides slidesPerView="1.5" spaceBetween="10">
       <ion-slide *ngFor="let conference of nextConferences">
-        <ion-card class="hero-card small-card" (click)="goToConference(conference.id)">
+        <ion-card class="hero-card small-card" (click)="goToConference(conference.id)" (press)="openActionSheetForConferences(currentConference.id)">
             <img [src]="conference.image"/>
             <ion-card-content>
               <div class="company-logo">
@@ -72,7 +72,7 @@
     <h1>Vergangene Tagungen</h1>
     <ion-slides card-slides slidesPerView="1.5" spaceBetween="10">
       <ion-slide *ngFor="let conference of lastConferences">
-        <ion-card class="hero-card small-card" (click)="goToConference(conference.id)">
+        <ion-card class="hero-card small-card" (click)="goToConference(conference.id)" (press)="openActionSheetForConferences(currentConference.id)">
             <img [src]="conference.image"/>
             <ion-card-content>
               <div class="company-logo">
