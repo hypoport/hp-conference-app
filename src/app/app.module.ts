@@ -20,6 +20,8 @@ import {FavoritesService} from '../providers/favorites/favorites-service';
 import {HttpClientModule} from '@angular/common/http';
 import {IonicStorageModule} from '@ionic/storage';
 
+import {ComponentsModule} from "../components/components.module";
+
 import {registerLocaleData} from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import {SessionPage} from '../pages/session/session';
@@ -48,7 +50,8 @@ registerLocaleData(localeDe);
       name: 'de.hypoport.conferences',
          driverOrder: ['indexeddb', 'sqlite', 'websql']
     }),
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

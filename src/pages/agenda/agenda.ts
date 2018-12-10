@@ -4,7 +4,6 @@ import {AgendaService} from "../../providers/agenda/agenda-service";
 import {GlobalProvider} from "../../providers/global/global";
 import {Agenda} from "../../models/agenda";
 import {Session} from "../../models/session";
-import {SessionPage} from "../session/session";
 import {FavoritesService} from "../../providers/favorites/favorites-service";
 
 @Component({
@@ -41,13 +40,6 @@ export class AgendaPage {
       });
       toast.present();
     });
-  }
-
-  public goToSessionDetail(session: any) {
-    console.log("goto session");
-    this.app.getRootNav().push(SessionPage, {session: session});
-    //let sessionModal = this.modalCtrl.create(SessionPage, { session: session });
-    //sessionModal.present();
   }
 
 }

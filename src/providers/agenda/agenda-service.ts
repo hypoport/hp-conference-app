@@ -10,7 +10,8 @@ export class AgendaService {
 
   private agendas: Map<string, Agenda> = new Map<string, Agenda>();
 
-  constructor(private http: HttpClient, private storage: Storage) {
+  constructor(private http: HttpClient, 
+  			  private storage: Storage) {
   }
 
   public loadAgenda(conferenceId: string): Promise<Agenda> {
