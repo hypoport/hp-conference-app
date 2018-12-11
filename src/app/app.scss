@@ -63,6 +63,7 @@ $button-shadow-red: 0px 5px 15px -5px rgba(177, 31, 48, 1), 0 5px 25px 10px rgba
 
 /* border */
 $border-radius: 6px;
+$border-radius-xs: 4px;
 
 
 
@@ -555,7 +556,7 @@ ion-slides[card-slides] {
 
 
 section {
-  padding: 50px 0;
+  padding: 75px 0;
 
   &:last-of-type {
     padding-bottom: 100px;
@@ -565,9 +566,6 @@ section {
 
   /* homescreen (dashboard) */
   &.hero {
-
-
-
 
     .card {
       position: relative;
@@ -669,17 +667,14 @@ section {
         letter-spacing: 2px;
         color: $typo-grey;
       }
-
-
     }
-
   }
 
 
 
   /* conv home intro paragraph */
   &.intro {
-
+    padding-top: 0;
     .conv-date {
       color: $typo-grey;
     }
@@ -838,7 +833,38 @@ section {
 ** conv page speakers
 ** conv page speaker
 */
-page-agenda {}
+page-agenda {
+  section {
+    agenda-list {
+
+      ion-list {
+        &.list,
+        &.list-md,
+        &.list-ios {
+          margin-top: 25px;
+          padding: 10px;
+          background: $grey-soft;
+          border-radius: $border-radius;
+
+          ion-item-sliding {
+            margin-bottom: 12px;
+            border-radius: $border-radius-xs;
+
+            .item-block {
+              border-bottom: none !important;
+              .item-inner {
+                border-bottom: none;
+              }
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+
+}
 page-speakers,
 page-speaker {
   section {
@@ -940,6 +966,7 @@ page-speaker {
 /*
 ** custom ui elements
 ** button add conference
+** agenda nav
 */
 
 /* button add conference */
@@ -958,6 +985,25 @@ ion-fab {
     &.fab-ios {
       box-shadow: $button-shadow-red;
       background: $red;
+    }
+  }
+}
+
+ion-segment {
+  &.segment,
+  &.segment-md,
+  &.segment-ios {
+    .segment-button {
+      border: none;
+      color: $red;
+      &:hover:not(.segment-activated) {
+        background: rgba(177, 31, 48, .1);
+      }
+      &.segment-activated {
+        color: $white;
+        background: $red;
+        border-radius: $border-radius-xs;
+      }
     }
   }
 }
