@@ -25,6 +25,9 @@ export class NotificationService {
         notifications.set(conferenceId, conferenceNotification)
       }
       let notification = this.getNotification(notifications, session);
+      if (!notification) {
+        return
+      }
       console.log("trigger", notification);
       this.localNotifications.schedule(notification);
       conferenceNotification.set(session.id, notification.id);
@@ -61,7 +64,11 @@ export class NotificationService {
   }
 
   private getNotification(notifications: Map<string, Map<string, number>>, session: Session) {
-    const triggerTime = new Date(new Date().getTime() + (5 * 60 * 1000));
+    // TODO use time from session
+    const triggerTime: Date = new Date(new Date().getTime() + (5 * 60 * 1000));
+    if (triggerTime < new Date()) {
+      return null;
+    }
     return {
       id: this.getMaxId(notifications) + 1,
       text: `${session.title} beginnt in 5 Minuten`,
