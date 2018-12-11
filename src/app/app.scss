@@ -836,11 +836,14 @@ section {
 ** custom pages from tabs
 ** conv page agenda
 ** conv page speakers
+** conv page speaker
 */
 page-agenda {}
-page-speakers {
+page-speakers,
+page-speaker {
   section {
-    &.speakers {
+    &.speakers,
+    &.speaker {
 
       &.card {
         position: relative;
@@ -920,6 +923,10 @@ page-speakers {
 
           }
         }
+      }
+
+      .speaker-agenda {
+        padding-top: 50px;
       }
 
     }
