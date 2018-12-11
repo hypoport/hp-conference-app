@@ -19,16 +19,21 @@
   </ion-refresher>
 
   <section class="hero" *ngIf="currentConference != null">
+    <h1 class="maximus">Dashboard</h1>
+
     <ion-slides card-slides slidesPerView="1">
       <ion-slide>
         <ion-card class="hero-card" (click)="goToConference(currentConference.id)">
             <img [src]="currentConference.image"/>
+            <!-- <div class="company-logo">
+              <img [src]="getLogo(currentConference.brand)" />
+            </div> -->
             <ion-card-content>
               <div class="company-logo">
                 <img [src]="getLogo(currentConference.brand)" />
               </div>
-              <div class="conv-date">{{ currentConference.startDate | date: 'dd.MM.' }} - {{ currentConference.endDate | date: 'dd.MM.yyyy' }}</div>
-              <h1 class="maximus">{{ currentConference.title }}</h1>
+              <h4 class="conv-date">{{ currentConference.startDate | date: 'dd.MM.' }} - {{ currentConference.endDate | date: 'dd.MM.yyyy' }}</h4>
+              <h1>{{ currentConference.title }}</h1>
               <h1>{{ currentConference.subtitle }}</h1>
             </ion-card-content>
         </ion-card>
