@@ -12,6 +12,7 @@ import {SessionPage} from '../pages/session/session';
 import {SpeakersPage} from '../pages/speakers/speakers';
 import {SpeakerPage} from '../pages/speaker/speaker';
 import {SettingsPage} from '../pages/settings/settings';
+import {HomePopoverPage} from '../pages/home-popover/home-popover';
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
@@ -45,7 +46,8 @@ registerLocaleData(localeDe);
     AddConferencePage,
     SessionPage,
     SpeakerPage,
-    SettingsPage
+    SettingsPage,
+    HomePopoverPage
   ],
   imports: [
     BrowserModule,
@@ -68,7 +70,8 @@ registerLocaleData(localeDe);
     AddConferencePage,
     SessionPage,
     SpeakerPage,
-    SettingsPage
+    SettingsPage,
+    HomePopoverPage
   ],
   providers: [
     StatusBar,
