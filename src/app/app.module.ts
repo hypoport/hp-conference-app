@@ -22,6 +22,7 @@ import {ConferenceService} from '../providers/conference/conference-service';
 import {BrandProvider} from '../providers/brand/brand';
 import {SpeakerService} from '../providers/speaker/speaker-service';
 import {FavoritesService} from '../providers/favorites/favorites-service';
+import {NotificationService} from '../providers/notifications/notifications-service';
 import {HttpClientModule} from '@angular/common/http';
 import {IonicStorageModule} from '@ionic/storage';
 
@@ -31,7 +32,7 @@ import {registerLocaleData} from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 
 import {BarcodeScanner} from '@ionic-native/barcode-scanner';
-import { LocalNotifications } from '@ionic-native/local-notifications';
+import {LocalNotifications} from '@ionic-native/local-notifications';
 
 registerLocaleData(localeDe);
 
@@ -54,7 +55,7 @@ registerLocaleData(localeDe);
     HttpClientModule,
     IonicStorageModule.forRoot({
       name: 'de.hypoport.conferences',
-         driverOrder: ['indexeddb', 'sqlite', 'websql']
+      driverOrder: ['indexeddb', 'sqlite', 'websql']
     }),
     IonicModule.forRoot(MyApp),
     ComponentsModule
@@ -83,7 +84,8 @@ registerLocaleData(localeDe);
     GlobalProvider,
     SpeakerService,
     BrandProvider,
-    FavoritesService
+    FavoritesService,
+    NotificationService
   ]
 })
 export class AppModule {}

@@ -47,7 +47,7 @@ export class SessionPage {
     }
   }
 
-  toggleFavorite() {
+  public toggleFavorite() {
     this.favoritesService.toggleFavorite(this.globalProvider.conferenceId, this.session);
   }
 
