@@ -20,93 +20,267 @@
   global
 */
 
-// typo
-h1, h2, h3, h4, p {
-  color: #444;
-}
-h1, h2, h3, h4 {
-  margin-bottom: 2rem;
 
+/*
+** variables
+*/
+
+/* colors */
+$red: #b11f30;
+$white: #fff;
+$black: #202020;
+$off-white: #FAFAFA;
+$grey: #8c8c8c;
+$grey-dim: #dcdcdc;
+$grey-light: #ececec;
+$grey-soft: #f0f0f0;
+
+/* colors */
+$typo       : #444;
+$typo-dim   : #555;
+$typo-light : #777;
+$typo-grey  : #999;
+$typo-white : #fff;
+
+
+/* shadows */
+$text-shadow: 0 1px 3px rgba(0,0,0,0.25);
+
+$bar-shadow: 0 0px 20px 5px rgba(0,0,0,0.1);
+$box-shadow: 0 0 30px -10px rgba(0,0,0,0.25);
+$box-shadow-xl: 0 15px 35px rgba(50,50,93,.1),
+                0 5px 15px  rgba(0,0,0,.07);
+$box-shadow-xl-red: 0 15px 35px rgba(177, 31, 48,.1),
+                    0 5px 15px  rgba(177, 31, 48,.07);
+
+
+
+$button-shadow: 0px 5px 15px -5px rgba(50, 50, 93, .75), 0 5px 25px 10px rgba(0, 0, 0, 0.05);
+$button-shadow-red: 0px 5px 15px -5px rgba(177, 31, 48, 1), 0 5px 25px 10px rgba(177, 31, 48, .05);
+
+
+
+
+/* border */
+$border-radius: 6px;
+
+
+
+/*
+** base typo
+*/
+
+
+$base-font-size : 1.8rem;
+$line-height    : 1.7;
+$h1-size        : 3.4rem;
+$h2-size        : 2.6rem;
+$h3-size        : 2.4rem;
+$h4-size        : 1.8rem;
+$h5-size        : 1.6rem;
+$small          : 1.4rem;
+
+$f-normal         : 400;
+$f-medium         : 500;
+$f-bold           : 600;
+
+
+body {
+    font-size: $base-font-size;
+    line-height: $line-height;
+    color: $typo;
+    text-align: left;
+}
+h1, h2, h3, h4, h5, small, p {
+  line-height: $line-height;
+  color: $typo;
+  text-align: left;
+  margin: 0 0 5px;
+}
+h1, h2, h3, h4, h5 {
+  font-weight: $f-medium !important;
 }
 h1 {
-  font-size: 2.8rem;
+  font-size: $h1-size;
   &.maximus {
-    font-size: 3.4rem;
+    line-height: calc( #{$line-height} * .75 );
+    margin-bottom: 2rem;
   }
 }
 h2 {
-  font-size: 2.2rem;
+  font-size: $h2-size;
 }
 h3 {
-  font-size: 2.0rem;
+  font-size: $h3-size;
 }
-p {
-  font-size: 1.7rem;
-  line-height: 1.5;
-  color: #666;
-  margin: 0;
+h4 {
+  font-size: $h4-size;
 }
+h5 {
+  font-size: $h5-size;
+  color: $typo-grey;
+}
+p,
+ul,
+li {
+  font-size: $base-font-size;
+
+}
+small {
+  font-size: $small;
+}
+a {
+  font-size: $h5-size;
+  line-height: $line-height;
+  background: $grey-light;
+  border-radius: $border-radius;
+  padding: 4px 6px;
+  color: $typo-light;
 
 
-section {
-  h5.pretitle {
-    color: #999;
+  &:hover, &:focus, &:active {
+    cursor: pointer;
+
   }
-  h1.maximus {
-    margin-top: 0;
-    margin-bottom: 3rem;
+}
+ul {
+  padding-left: $base-font-size;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+** base viewport structure
+** ion-header
+*/
+
+/* ion-header top navigation bar */
+ion-app {
+
+
+  &.md,
+  &.ios,
+  &.wp {
+    background: $off-white;
+    // background: linear-gradient(to bottom, $off-white 50%, $grey-soft 80%, $grey-dim 100%);
+  }
+
+
+}
+ion-header {
+
+  &.header,
+  &.header-md,
+  &.header-ios {
+    box-shadow: $bar-shadow;
+    &:after {
+      display: none;
+    }
+  }
+  .toolbar-background {
+    background: $white;
+
+  }
+  ion-title {
+    &.title-md,
+    &.title-ios {
+      text-align: center;
+    }
+
   }
 }
 
 
+ion-tabs {
+  &.tabs,
+  &.tabs-md,
+  &.tabs-ios {
 
-section {
-  // section spacing
-  padding: 25px 0;
-  &:last-of-type {
-    padding-bottom: 100px;
+    .tabbar {
+      background: $white;
+      box-shadow: $bar-shadow;
+
+      &:before {
+        display: none;
+      }
+    }
   }
+
 }
 
-ion-content.content {
-  background: #FDFDFD;
+page-home {
+    background: $off-white;
+}
+ion-content {
+
+  &.content,
+  &.content-md,
+  &.content-ios {
+    background: transparent;
+    hr {
+      height: .55px;
+      background-color: rgba(0, 0, 0, 0.25);
+
+    }
+  }
+
 }
 
 
-hr {
-  height: .55px;
-  background-color: rgba(0, 0, 0, 0.05);
+
+/*
+** add conv modal
+*/
+
+
+page-add-conference {
+  &.ion-page {
+    background: $off-white;
+  }
+
+  .list,
+  .list-md,
+  .list-ios {
+    border-radius: $border-radius;
+  }
+
+  .button,
+  .button-md,
+  .button-ios {
+    border-radius: $border-radius;
+    background: $red;
+    color: $white;
+    box-shadow: $button-shadow-red;
+    margin: 0;
+    span {}
+    &:hover:not(.disable-hover) {
+      background: $red;
+    }
+  }
+  .text-input::placeholder {
+    color: $red;
+  }
 }
 
 
 
 
 /*
-  helper
+** slider styles
 */
-.vert-align {
-  height: 100%;
-  display: flex!important;
-  align-content: center!important;
-  align-items: center!important;
-}
-.dropshadow {
-  border: 1px solid rgba(0,0,0,0.05);
-  box-shadow: 0 0 30px -10px rgba(0,0,0,0.25);
-}
 
-@media not all and (min-height: 600px) and (min-width: 768px) {
-  ion-modal ion-backdrop {
-    visibility: visible;
-    z-index: -1;
-  }
-}
-
-
-/*
-  slider styles
-*/
-ion-slides[card-slides]{
+ion-slides[card-slides] {
 
 	height: auto;
 
@@ -124,83 +298,74 @@ ion-slides[card-slides]{
 	.swiper-slide .slide-zoom, .swiper-slide .card {
 		height: 100%;
 	}
-
 }
 
 
 
+/*
+** base card styling
+*/
 
 
-  // basic card styling
   .card {
 
-    // same appearance for ios + md
-    border-radius: 10px;
-    // border: 1px solid rgba(0,0,0,0.15);
-    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.25);
-    text-shadow: 0 1px 3px rgba(0,0,0,0.25);
-    color: #fff;
-    background: #fff;
+    /* base styling for all cards */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 
+    border-radius: $border-radius;
+    box-shadow: $box-shadow-xl;
+    text-shadow: $text-shadow;
+    color: $typo-white;
+    background: $white;
 
     img {
-      min-height: 100% !important;
-      max-height: none;
-      z-index: 0;
 
-    }
-    .card-content {
-      height: 100%;
       width: 100%;
+      height: auto;
+      z-index: 0;
+    }
+    /* */
+    .card-content {
       position: absolute;
-      top: 0;
-      z-index: 10;
-    }
+      left: 0;
+      bottom: 0;
 
-    // different card styles
-    // hero card in overview
-    &.hero-card {
+      width: 100%;
+      height: 100%;
 
-      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      flex-grow: 1;
 
-      &:before {
-        content: '';
-        background: rgba(0,0,0,.25);
-        height: 120px;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        position: absolute;
-        z-index: 2;
-      }
-      min-height: 250px;
-      max-height: 250px;
+      padding: 12px;
 
-      .company-logo {
-        width: 60px;
-        height: 60px;
-        position: absolute;
-        top: 13px;
-      }
-      .conv-date {
-        font-size: 1.5rem;
+      /* base typo */
+      h1, h2, h3, h4, p {
+        color: $typo;
         text-shadow: none;
-        position: absolute;
-        bottom: 80px;
-      }
-      h1 {
-        position: absolute;
-        color: #fff;
-        margin-bottom: 0;
-      }
-      h1:first-of-type {
-        font-weight: bold;
-        bottom: 35px;
-      }
-      h1:last-of-type {
-        bottom: 10px;
+        text-align: left;
+
+
       }
     }
+
+    /* conv homescreen cards */
+    &.service-card {}
+
+
+
+
+
+
+
+
+
+
+
+
 
     &.small-card {
       &:before {
@@ -252,37 +417,7 @@ ion-slides[card-slides]{
 
 
 
-    // service cards
-    &.service-card {
-      border: none;
-      min-height: 100px;
-      background: #fff !important;
-      position: relative;
-      text-shadow: none;
 
-
-
-      h4, h2, p {
-        position: absolute;
-        color: #666;
-        margin-bottom: 0;
-
-      }
-      h4 {
-        text-transform: uppercase;
-        bottom: 60px;
-        font-size: 1.2rem;
-        letter-spacing: 2px;
-        color: #999;
-      }
-      h2 {
-        font-weight: bold;
-        bottom: 35px;
-      }
-      p {
-        bottom: 15px;
-      }
-    }
 
     // speakers card
     &.speaker-card {
@@ -349,121 +484,188 @@ ion-slides[card-slides]{
 
 
 
+
+
+
 /*
-  OVERVIEW
+** base viewport sections
+** homescreen (dashboard)
+** conv home hero pic
+** conv home service panels
+** conv home intro paragraph
+** conv home location + maps
+** conv home support
 */
+
 section {
+  padding: 25px 0;
+  &:last-of-type {
+    padding-bottom: 100px;
+  }
+
+
+
+  /* homescreen (dashboard) */
   &.hero {
-    padding-top: 0;
-  }
-}
-
-ion-fab[right] {
-  right: 30px;
-  right: calc(30px + constant(safe-area-inset-right));
-  right: calc(30px + env(safe-area-inset-right));
-}
-ion-fab[bottom] {
-  bottom: 30px;
-}
 
 
-/*
-  HOME
-*/
-section {
-  // conference home hero image
-  &.hero-image {
-    width: 100%;
-    height: 300px;
-    position: relative;
-    display: inline-block;
-    overflow: hidden;
-    margin: 0;
 
-    img {
-      display: block;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      min-height: 100%;
-      min-width: 100%;
-      transform: translate(-50%, -50%);
-    }
-  }
-  // conference home service cards
-  &.service {
-    ion-icon {
-      position: absolute;
-      top: 0;
-      right: 0;
-      display: block;
-      font-size: 3.5rem;
-      margin-top: 10px;
-      margin-right: 15px;
-    }
 
-    margin-top: -80px;
-    .next-agenda-slot {
-      ion-icon {
-        color: orange;
-      }
-      .card {
-        background: #00c0ff;
-      }
-    }
-    .wifi {
-      ion-icon {
-        color: blue;
-      }
-      .card {
-        background: red;
-      }
-    }
-    .participants {
-      ion-icon {
-        color: grey;
-      }
-      .card {
-        background: blue;
-      }
-    }
-    .blank-box {
-      .card {
-        background: orange;
-      }
-    }
-  }
-
-  // conference home intro text
-  &.intro {
-    .conv-date {
-      color: #999;
-
-    }
-    h1 {
-      margin-top: 0;
-    }
-    div {
-      font-size: 1.7rem;
-      line-height: 1.5;
-      color: #666;
-      margin: 0;
-    }
-  }
-
-  // conference home google maps cards
-  &.maps {
     .card {
-      margin-top: 25px;
-      margin-bottom: 25px;
-      text-shadow: none;
+      position: relative;
+      min-height: 250px;
+      max-height: 350px;
+      box-shadow: $box-shadow-xl-red;
 
+
+
+      .card-content {
+        height: 30%;
+        background: $white;
+
+        /* bramd icon + logo */
+        .company-logo {
+          width: auto;
+          height: 35px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          margin: 12px;
+          display: block;
+
+          transform: translateY(-60px);
+
+          box-shadow: $box-shadow;
+        }
+        /* base typo */
+        h1, h2, h3, h4, h5, p {
+          position: relative;
+          color: $typo-dim;
+        }
+        .conv-date {
+          color: $typo-grey;
+          text-shadow: none;
+        }
+
+      }
+    }
+  }
+
+
+  /* conv home hero pic */
+  &.hero-image {
+    position: relative;
+    display: block;
+    min-height: 300px;
+
+    /* overfloating img section */
+    width: calc(100% + 40px);
+    margin-left: -20px;
+  }
+
+
+  /* conv home service panels */
+  &.service {
+    transform: translateY(-50%);
+
+    .card {
+      position: relative;
+      min-height: 100px;
+
+      /* card icon */
+      ion-icon {
+        position: absolute;
+        top: -3px;
+        right: 0;
+        margin: 12px;
+        display: block;
+        font-size: 3.5rem;
+
+        &[name="alarm"] {
+          color: orange;
+        }
+        &[name="wifi"] {
+          color: blue;
+        }
+        &[name="people"] {
+          color: $grey;
+        }
+
+      }
+
+      /* base typo */
+      h1, h2, h3, h4, h5, p {
+        position: relative;
+        color: $typo-dim;
+        text-shadow: none;
+        margin: 0 0 2px;
+        line-height: 1.4;
+      }
+
+      /* supertitle */
+      h5 {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: $typo-grey;
+      }
+
+
+    }
+
+  }
+
+
+
+  /* conv home intro paragraph */
+  &.intro {
+
+    .conv-date {
+      color: $typo-grey;
+    }
+    h1 {}
+
+    /* base paragraph text */
+    div {
+      font-size: $base-font-size;
+      line-height: $line-height;
+      color: $typo-dim;
+
+      b, strong {
+        font-weight: $f-medium;
+      }
+
+      a, em {
+        background: $grey-light;
+        border-radius: $border-radius;
+        padding: 2px 4px;
+        color: $typo-light;
+      }
+      i, em {
+        font-style: italic;
+      }
+      ul {
+
+        li {
+
+        }
+      }
+    }
+  }
+
+
+
+  /* conv home location + maps */
+  &.maps {
+
+
+    a {
+      background: $red;
+      color: $white;
     }
 
     ul {
-      padding-left: 0;
-      list-style-type: none;
+
+
       li {
 
         ion-icon {
@@ -472,76 +674,121 @@ section {
           font-size: 3rem;
         }
 
-        font-size: 1.7rem;
-        padding-bottom: .5rem;
 
 
       }
     }
+
+    /* google maps */
+    #map {
+      margin-top: 25px;
+      margin-bottom: 25px;
+      border-radius: $border-radius;
+
+      a {
+        background: transparent;
+      }
+      .gm-style {
+        filter: grayscale(100%);
+        .gm-control-active,
+        .gm-style-cc,
+        .gmnoprint {
+          display: none;
+        }
+      }
+
+
+    }
   }
 
-  // conference home support contact
+  /* conv home support */
   &.support {
-    .profile-image {
 
+    .card {
+      position: relative;
+      box-shadow: $box-shadow-xl;
+      margin-top: 25px;
+
+    }
+
+
+
+    .profile-image {
       margin: 0 auto;
-      width: 100px;
-      height: 100px;
-      border-radius: 20px;
-      background: rgba(0,0,0,0.05);
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
       overflow: hidden;
 
       img {
-
         padding-left: 0;
         width: 100%;
         height: auto;
-
-        // for testing
-        transform: scale(1.4);
-
+        // transform: scale(1.4);
       }
     }
     .profile-data {
-      margin-top: 1rem;
+
+
+      /* base typo */
+      h1, h2, h3, h4, h5, p, ul, li {
+        color: $typo;
+        text-shadow: none;
+        margin-bottom: 0;
+      }
+
+
+      ul {
+        margin: 0;
+        padding-left: 0;
+        li {
+          list-style-type: none;
+          font-size: $small;
+          font-weight: $f-medium;
+          color: $grey;
+
+        }
+      }
       ion-icon {
-        margin-right: 5px;
-      }
-      h4 {
-        margin-bottom: 1rem;
-      }
-      p {
+        color: $grey;
+        &:before {
+          margin-right: 1rem;
+
+        }
       }
     }
+
+
   }
 }
+
+
+
+
 
 
 
 /*
-  AGENDA
+** custom ui elements
+** button add conference
 */
-section {
-  // agenda first section
-  &.agenda {
-    padding-top: 80px;
 
+/* button add conference */
+ion-fab {
+  &[right] {
+    right: 30px;
+    right: calc(30px + constant(safe-area-inset-right));
+    right: calc(30px + env(safe-area-inset-right));
   }
-}
-
-
-/*
-  SPEAKERS
-*/
-section {
-  // speakers first section
-  &.speakers {
-    padding-top: 80px;
-
+  &[bottom] {
+    bottom: 30px;
   }
-}
 
-.speaker-detail {
-  font-style: italic;
-  color: #999;
+  button {
+    &.fab-md,
+    &.fab-ios {
+      box-shadow: $button-shadow-red;
+      background: $red;
+    }
+  }
 }
