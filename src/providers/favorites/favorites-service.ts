@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Storage} from "@ionic/storage";
 import {Session} from "../../models/session";
 import {Agenda} from "../../models/agenda";
-import {LocalNotifications} from "@ionic-native/local-notifications";
+import {NotificationService} from "../notifications/notifications-service";
 
 const STORAGE_KEY = "favorites";
 
@@ -10,12 +10,7 @@ const STORAGE_KEY = "favorites";
 export class FavoritesService {
 
   constructor(private storage: Storage,
-    localNotifications: LocalNotifications) {
-    console.log("trigger notification");
-    localNotifications.schedule({
-      text: 'Delayed ILocalNotification',
-      trigger: {at: new Date(new Date().getTime() + 5000)}
-    });
+    private notificationService: NotificationService) {
   }
 
   public toggleFavorite(conferenceId: string, session: Session): void {
@@ -26,10 +21,12 @@ export class FavoritesService {
       if (favorites.get(session.id)) {
         favorites.delete(session.id);
         session.isFavorite = false;
+        this.notificationService.removeNotification(conferenceId, session);
       }
       else {
         favorites.set(session.id, session);
         session.isFavorite = true;
+        this.notificationService.triggerNotification(conferenceId, session);
       }
       console.log(favorites);
       this.storage.set(STORAGE_KEY + conferenceId, favorites);
@@ -46,6 +43,16 @@ export class FavoritesService {
       }
       return favorites;
     });
+  }
+
+  public rescheduleNotifications(agenda: Agenda, conferenceId: string) {
+    console.log("reschedule notifications");
+    this.notificationService.removeAllNotifictions(conferenceId);
+    this.loadFavorites(agenda, conferenceId).then((favorites) => {
+      if (favorites) {
+        favorites.forEach((favorite) => this.notificationService.triggerNotification(conferenceId, favorite));
+      }
+    })
   }
 
 }

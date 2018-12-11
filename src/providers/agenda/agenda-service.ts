@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Agenda} from '../../models/agenda';
 import {HttpClient} from "@angular/common/http";
 import {Storage} from "@ionic/storage";
+import {FavoritesService} from "../favorites/favorites-service";
 
 const STORAGE_KEY = "agendas";
 
@@ -10,8 +11,9 @@ export class AgendaService {
 
   private agendas: Map<string, Agenda> = new Map<string, Agenda>();
 
-  constructor(private http: HttpClient, 
-  			  private storage: Storage) {
+  constructor(private http: HttpClient,
+    private storage: Storage,
+    private favoritesService: FavoritesService) {
   }
 
   public loadAgenda(conferenceId: string): Promise<Agenda> {
@@ -23,6 +25,9 @@ export class AgendaService {
         console.log("agenda", agenda);
         this.agendas.set(conferenceId, agenda);
         this.storage.set(STORAGE_KEY, this.agendas);
+        return agenda;
+      }).then((agenda) => {
+        this.favoritesService.rescheduleNotifications(agenda, conferenceId);
         return agenda;
       });
   }

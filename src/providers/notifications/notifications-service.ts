@@ -1,24 +1,79 @@
 import {Injectable} from '@angular/core';
 import {LocalNotifications} from "@ionic-native/local-notifications";
+import {Session} from "../../models/session";
+import {Storage} from "@ionic/storage";
 
-/*
-  Generated class for the NotificationService provider.
+const STORAGE_KEY = "notifications";
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class NotificationService {
 
-  constructor(private localNotifications: LocalNotifications) {
-    const triggered = new Date(new Date().getTime() + 1000);
-    console.log("notification triggered", triggered);
-    this.localNotifications.schedule({
-      text: 'Delayed ILocalNotification',
-      trigger: {at: triggered},
-      led: 'FF0000',
-      sound: null
+  constructor(private storage: Storage,
+    private localNotifications: LocalNotifications) {
+  }
+
+  public triggerNotification(conferenceId: string, session: Session) {
+    console.log("trigger notification for session", session);
+    this.storage.get(STORAGE_KEY).then((notifications) => {
+      let conferenceNotification;
+      if (!notifications) {
+        notifications = new Map();
+      }
+      conferenceNotification = notifications.get(conferenceId);
+      if (!conferenceNotification) {
+        conferenceNotification = new Map();
+        notifications.set(conferenceId, conferenceNotification)
+      }
+      let notification = this.getNotification(notifications, session);
+      console.log("trigger", notification);
+      this.localNotifications.schedule(notification);
+      conferenceNotification.set(session.id, notification.id);
+      this.storage.set(STORAGE_KEY, notifications);
     });
+  }
+
+  public removeAllNotifictions(conferenceId: string) {
+    console.log("remove all notifications");
+    this.storage.get(STORAGE_KEY).then((notifications: Map<string, Map<string, number>>) => {
+      if (!notifications) {
+        return
+      }
+      const conferenceNotification: Map<string, number> = notifications.get(conferenceId);
+      if (conferenceNotification) {
+        conferenceNotification.forEach((sessionId, notificationId) => {
+          this.localNotifications.cancel(notificationId);
+        });
+        notifications.delete(conferenceId);
+        this.storage.set(STORAGE_KEY, notifications);
+      }
+    });
+  }
+
+  public removeNotification(conferenceId: string, session: Session) {
+    console.log("remove notification");
+    this.storage.get(STORAGE_KEY).then((notifications: Map<string, Map<string, number>>) => {
+      const notificationId = notifications.get(conferenceId).get(session.id);
+      console.log("cancel notification " + notificationId);
+      this.localNotifications.cancel(notificationId);
+      notifications.get(conferenceId).delete(session.id);
+      this.storage.set(STORAGE_KEY, notifications);
+    });
+  }
+
+  private getNotification(notifications: Map<string, Map<string, number>>, session: Session) {
+    const triggerTime = new Date(new Date().getTime() + (5 * 60 * 1000));
+    return {
+      id: this.getMaxId(notifications) + 1,
+      text: `${session.title} beginnt in 5 Minuten`,
+      trigger: {at: triggerTime}
+    };
+  }
+
+  private getMaxId(notifications: Map<string, Map<string, number>>) {
+    const mapped = Array.from(notifications.values()).map((entry: Map<string, number>) => {
+      return Math.max(0, ...Array.from(entry.values()));
+    });
+    return Math.max(0, ...mapped);
   }
 
 }
