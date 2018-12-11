@@ -227,7 +227,7 @@ ion-content {
   &.content,
   &.content-md,
   &.content-ios {
-    background: transparent;
+    background: $off-white;
     hr {
       height: .55px;
       background-color: rgba(0, 0, 0, 0.25);
@@ -274,6 +274,14 @@ page-add-conference {
 }
 
 
+
+/*
+** header nav popover
+*/
+
+page-home-popover {
+
+}
 
 
 /*
@@ -580,6 +588,7 @@ section {
         margin: 12px;
         display: block;
         font-size: 3.5rem;
+        text-shadow: none;
 
         &[name="alarm"] {
           color: orange;
