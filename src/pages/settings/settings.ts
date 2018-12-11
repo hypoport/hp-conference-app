@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {GlobalProvider} from '../../providers/global/global';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 
 /**
  * Generated class for the SettingsPage page.
@@ -16,9 +15,8 @@ import {GlobalProvider} from '../../providers/global/global';
 })
 export class SettingsPage {
 
-  constructor(public navCtrl: NavController, 
-  			public navParams: NavParams,    
-  			private globalProvider: GlobalProvider) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
