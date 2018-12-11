@@ -24,22 +24,23 @@
 <ion-grid>
   <ion-row>
     <ion-col col-7>
- 
+
 	<ion-list no-lines no-margin>
-	
+
 	  <ion-item>
+      <h1>Dashboard</h1>
 	    <ion-input type="text" placeholder="Tagungs-Kennung" [(ngModel)]="confCode"></ion-input>
 	  </ion-item>
-	
+
 	  <ion-item>
 	    <ion-input type="password" placeholder="Tagungs-Passwort" [(ngModel)]="confPassword"></ion-input>
 	  </ion-item>
-	
+
 	</ion-list>
-   
+
     </ion-col>
     <ion-col col-5>
-	    
+
 		<button id="qrbutton" ion-button block (click)="openQrReader()"> <ion-icon name="qr-scanner"></ion-icon> </button>
 
     </ion-col>
