@@ -20,12 +20,19 @@
                 <ion-avatar item-start>
                   <img [src]="speaker.profileFoto" alt="Speaker profile foto">
                 </ion-avatar>
-                <h2 class="speaker-name">{{speaker.name}}</h2>
+                <h4 class="speaker-name">{{speaker.name}}</h4>
+                <ul>
+                  <li class="job-title">{{speaker.jobTitle}}</li>
+                  <li class="company">{{speaker.company}}</li>
+                </ul>
+
+                <!-- <div class="job-title">{{speaker.jobTitle}}</div>
+                <div class="company">{{speaker.company}}</div> -->
               </ion-card-header>
 
               <ion-card-content class="outer-content">
-                <div class="job-title">{{speaker.jobTitle}}</div>
-                <div class="company">{{speaker.company}}</div>
+                <!-- <div class="job-title">{{speaker.jobTitle}}</div>
+                <div class="company">{{speaker.company}}</div> -->
                 <div class="short-description">{{speaker.description}}</div>
               </ion-card-content>
 

@@ -279,9 +279,44 @@ page-add-conference {
 ** header nav popover
 */
 
-page-home-popover {
+ion-popover {}
+.popover-md,
+.popover-ios {
+  .popover-content {
+    border-radius: $border-radius;
+    box-shadow: $box-shadow-xl;
 
+
+    .content,
+    .content-md,
+    .content-ios {
+      background: $white;
+    }
+
+    .list,
+    .list-md,
+    .list-ios {
+      margin: 12px;
+      padding-left: 0;
+    }
+    .list-ios {
+      .item-block {
+        border: none;
+        .item-inner {
+          border: none;
+        }
+      }
+
+    }
+    .item,
+    .item-md,
+    .item-ios {
+      padding-left: 0;
+    }
+  }
 }
+
+
 
 
 /*
@@ -324,7 +359,7 @@ ion-slides[card-slides] {
 
     border-radius: $border-radius;
     box-shadow: $box-shadow-xl;
-    text-shadow: $text-shadow;
+    // text-shadow: $text-shadow;
     color: $typo-white;
     background: $white;
 
@@ -429,62 +464,62 @@ ion-slides[card-slides] {
 
     // speakers card
     &.speaker-card {
-      text-shadow: none;
-      color: #444;
-      position: relative;
-      .card-header {
-        padding-bottom: 0;
-      }
+      // text-shadow: none;
+      // color: #444;
+      // position: relative;
+      // .card-header {
+      //   padding-bottom: 0;
+      // }
 
-      ion-avatar {
-        width: 70px;
-        height: 70px;
-        border-radius: 20px;
-        overflow: hidden;
-        float: left;
-        margin-right: 20px;
-        img {
-          width: 100%;
-          height: auto;
-          background: rgba(0,0,0,.25);
-
-        }
-      }
-      .speaker-name {
-        font-size: 2.4rem;
-        margin-top: 20px;
-      }
-      .card-content {
-        position: relative;
-        > div {
-          // display: inline;
-        }
-        padding-left: 107px;
-
-        .job-title,
-        .company {
-          display: inline-block;
-        }
-        .job-title {
-          padding-right: 5px;
-        }
-        .company {
-          padding-left: 10px;
-          border-left: 1px solid rgba(0,0,0,0.25);
-        }
-
-        .short-description {
-          font-style: italic;
-          color: #999;
-        }
-
-        .socials {
-          padding-top: 10px;
-          ion-icon {
-            margin-right: 5px;
-          }
-        }
-      }
+      // ion-avatar {
+      //   width: 70px;
+      //   height: 70px;
+      //   border-radius: 20px;
+      //   overflow: hidden;
+      //   float: left;
+      //   margin-right: 20px;
+      //   img {
+      //     width: 100%;
+      //     height: auto;
+      //     background: rgba(0,0,0,.25);
+      //
+      //   }
+      // }
+      // .speaker-name {
+      //   font-size: 2.4rem;
+      //   margin-top: 20px;
+      // }
+      // .card-content {
+      //   position: relative;
+      //   > div {
+      //     // display: inline;
+      //   }
+      //   padding-left: 107px;
+      //
+      //   .job-title,
+      //   .company {
+      //     display: inline-block;
+      //   }
+      //   .job-title {
+      //     padding-right: 5px;
+      //   }
+      //   .company {
+      //     padding-left: 10px;
+      //     border-left: 1px solid rgba(0,0,0,0.25);
+      //   }
+      //
+      //   .short-description {
+      //     font-style: italic;
+      //     color: #999;
+      //   }
+      //
+      //   .socials {
+      //     padding-top: 10px;
+      //     ion-icon {
+      //       margin-right: 5px;
+      //     }
+      //   }
+      // }
     }
   }
 
@@ -496,7 +531,7 @@ ion-slides[card-slides] {
 
 
 /*
-** base viewport sections
+** base viewport sections for page-home
 ** homescreen (dashboard)
 ** conv home hero pic
 ** conv home service panels
@@ -505,8 +540,10 @@ ion-slides[card-slides] {
 ** conv home support
 */
 
+
 section {
-  padding: 25px 0;
+  padding: 50px 0;
+
   &:last-of-type {
     padding-bottom: 100px;
   }
@@ -562,6 +599,7 @@ section {
 
   /* conv home hero pic */
   &.hero-image {
+    padding: 0;
     position: relative;
     display: block;
     min-height: 300px;
@@ -574,7 +612,8 @@ section {
 
   /* conv home service panels */
   &.service {
-    transform: translateY(-50%);
+    padding: 0;
+    transform: translateY(-35%);
 
     .card {
       position: relative;
@@ -769,9 +808,110 @@ section {
 
 
   }
+
+
+
+
+
 }
 
 
+
+
+
+/*
+** custom pages from tabs
+** conv page agenda
+** conv page speakers
+*/
+page-agenda {}
+page-speakers {
+  section {
+    &.speakers {
+
+      &.card {
+        position: relative;
+        box-shadow: $box-shadow-xl;
+        margin-top: 25px;
+
+
+
+      }
+
+
+      ion-card {
+        /* base typo */
+        h1, h2, h3, h4, h5, p, ul, li {
+          color: $typo;
+          text-shadow: none;
+          margin-bottom: 0;
+        }
+      }
+
+
+      ion-card-header {
+
+        &.card-header,
+        &.card-header-md,
+        &.card-header-ios {
+
+          ion-avatar {
+            margin: 0 auto;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            float: left;
+            margin-right: 20px;
+
+            img {
+              width: 100%;
+              height: auto;
+              background: rgba(0,0,0,.25);
+            }
+          }
+          .speaker-name {
+            font-size: $h4-size;;
+          }
+
+          ul {
+            margin: 0;
+            padding-left: 0;
+            li {
+              list-style-type: none;
+              font-size: $small;
+              font-weight: $f-medium;
+              color: $grey;
+
+              &.job-title,
+              &.company {
+
+              }
+            }
+          }
+        }
+
+      }
+
+      ion-card-content {
+        &.card-content,
+        &.card-content-md,
+        &.card-content-ios {
+          position: relative;
+          padding: 22px;
+
+          .short-description {
+            color: $typo;
+            font-size: $small;
+            font-weight: $f-medium;
+
+          }
+        }
+      }
+
+    }
+  }
+}
 
 
 
