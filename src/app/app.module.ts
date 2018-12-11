@@ -4,28 +4,34 @@ import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {MyApp} from './app.component';
 
 import {AgendaPage} from '../pages/agenda/agenda';
-import {SpeakersPage} from '../pages/speakers/speakers';
 import {HomePage} from '../pages/home/home';
 import {TabsPage} from '../pages/tabs/tabs';
 import {OverviewPage} from '../pages/overview/overview';
 import {AddConferencePage} from '../pages/add-conference/add-conference';
+import {SessionPage} from '../pages/session/session';
+import {SpeakersPage} from '../pages/speakers/speakers';
+import {SpeakerPage} from '../pages/speaker/speaker';
+import {SettingsPage} from '../pages/settings/settings';
+import {HomePopoverPage} from '../pages/home-popover/home-popover';
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {AgendaService} from '../providers/agenda/agenda-service';
 import {GlobalProvider} from '../providers/global/global';
 import {ConferenceService} from '../providers/conference/conference-service';
+import {BrandProvider} from '../providers/brand/brand';
 import {SpeakerService} from '../providers/speaker/speaker-service';
+import {FavoritesService} from '../providers/favorites/favorites-service';
 import {HttpClientModule} from '@angular/common/http';
 import {IonicStorageModule} from '@ionic/storage';
 
+import {ComponentsModule} from "../components/components.module";
+
 import {registerLocaleData} from '@angular/common';
 import localeDe from '@angular/common/locales/de';
-import { SessionPage } from '../pages/session/session';
-import { BrandProvider } from '../providers/brand/brand';
 
-import { BarcodeScanner } from '@ionic-native/barcode-scanner';
-
+import {BarcodeScanner} from '@ionic-native/barcode-scanner';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 registerLocaleData(localeDe);
 
@@ -38,13 +44,20 @@ registerLocaleData(localeDe);
     TabsPage,
     OverviewPage,
     AddConferencePage,
-    SessionPage
+    SessionPage,
+    SpeakerPage,
+    SettingsPage,
+    HomePopoverPage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicStorageModule.forRoot(),
-    IonicModule.forRoot(MyApp)
+    IonicStorageModule.forRoot({
+      name: 'de.hypoport.conferences',
+         driverOrder: ['indexeddb', 'sqlite', 'websql']
+    }),
+    IonicModule.forRoot(MyApp),
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -55,17 +68,22 @@ registerLocaleData(localeDe);
     TabsPage,
     OverviewPage,
     AddConferencePage,
-    SessionPage
+    SessionPage,
+    SpeakerPage,
+    SettingsPage,
+    HomePopoverPage
   ],
   providers: [
     StatusBar,
     BarcodeScanner,
+    LocalNotifications,
     SplashScreen, {provide: ErrorHandler, useClass: IonicErrorHandler},
     AgendaService,
     ConferenceService,
     GlobalProvider,
     SpeakerService,
-    BrandProvider
+    BrandProvider,
+    FavoritesService
   ]
 })
 export class AppModule {}

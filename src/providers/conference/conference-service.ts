@@ -23,31 +23,44 @@ export class ConferenceService {
     private global: GlobalProvider) {
   }
 
-  public addConference(conferenceCode: string, conferencePassword: string): Promise<Conference> { 
-	  
-    let url = this.global.apiURL('auth');
-    
-    return this.http.post(url,{
-	    "key": conferenceCode, 
-	    "password": conferencePassword,
-	    "uuid": 'naap'
-	    },{ headers: { 'Content-Type': 'application/json; charset=utf-8' }
-		}).toPromise()
-        .then((conference: Conference): Conference => {
-        		    
-		    this.conferences.set(conference.id, conference);
-	        this.storage.set(STORAGE_KEY, this.conferences);
-	        this.agendaService.loadAgenda(conference.id);
-	        this.speakerService.loadSpeakers(conference.id);
-	        
-	        return conference;
-	        
-		  });
+  public addConference(conferenceCode: string, conferencePassword: string): Promise<Conference> {
+
+    const url = this.global.apiURL('auth');
+
+    return this.http.post(url, {
+      "key": conferenceCode,
+      "password": conferencePassword,
+      "uuid": 'naap'
+    }, {
+      headers: {'Content-Type': 'application/json; charset=utf-8'}
+    }).toPromise()
+      .then((conference: Conference): Conference => {
+
+        this.conferences.set(conference.id, conference);
+        this.storage.set(STORAGE_KEY, this.conferences);
+        this.agendaService.loadAgenda(conference.id);
+        this.speakerService.loadSpeakers(conference.id);
+
+        return conference;
+
+      });
   }
 
   public loadConference(conferenceId: string): Promise<Conference> {
     // TODO API ansprechen um aktuelle Konferenz-Daten zu laden
     return Promise.resolve(this.getConference(conferenceId));
+  }
+
+  public removeConference(conferenceId: string): Promise<Map<string, Conference>> {
+  	this.conferences.forEach((val,key,confs) => {
+	  if(val.id.toString() == conferenceId.toString()){
+		   this.conferences.delete(key);
+		   console.log(this.conferences);
+	       this.storage.set(STORAGE_KEY, this.conferences);
+		}
+  	});
+  	
+    return Promise.resolve(this.conferences);
   }
 
   public getConference(conferenceId: string): Conference {

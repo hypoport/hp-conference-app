@@ -5,4 +5,14 @@ page-session {
   ion-title {
     margin-left: 10px;
   }
+
+  .star-active {
+    color: #FFDE00;
+    font-size: 30px;
+  }
+
+  .star-inactive {
+    color: gray;
+    font-size: 30px;
+  }
 }

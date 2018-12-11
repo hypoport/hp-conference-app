@@ -1,0 +1,17 @@
+    <ion-list #scheduleList [hidden]="sessions.length === 0">
+
+      <ion-item-sliding *ngFor="let session of sessions" #slidingItem [attr.category]="session.category | lowercase"
+                        [hidden]="session.hide">
+
+        <button ion-item (click)="goToSessionDetail(session)">
+          <h3>{{session.title}} <ion-icon name="star" *ngIf="session.isFavorite" [ngClass]="session.isFavorite ? 'star-active' : 'star-inactive'"></ion-icon></h3>
+          <p>
+            {{session.timeStart | date: 'HH:mm': 'CEST': 'de-DE'}} &mdash;
+            {{session.timeEnd | date: 'HH:mm': 'CEST': 'de-DE'}}:
+            {{session.location}}
+          </p>
+        </button>
+
+      </ion-item-sliding>
+
+    </ion-list>
