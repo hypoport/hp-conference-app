@@ -201,19 +201,32 @@ ion-header {
   }
 }
 
-
+// .tabs-ios .tab-button[aria-selected="true"] .tab-button-icon {
+//   color: $red;
+// }
 ion-tabs {
   &.tabs,
   &.tabs-md,
   &.tabs-ios {
 
+    .tab-button[aria-selected="true"] {
+      color: $red;
+    }
+    .tab-button[aria-selected="true"] .tab-button-icon {
+      color: $red;
+    }
+
     .tabbar {
       background: $white;
       box-shadow: $bar-shadow;
-
       &:before {
         display: none;
       }
+      .icon,
+      .icon-md,
+      .icon-ios {}
+
+
     }
   }
 
