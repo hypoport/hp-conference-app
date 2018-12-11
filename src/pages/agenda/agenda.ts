@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {App, Refresher, ToastController} from "ionic-angular";
+import {Refresher, ToastController} from "ionic-angular";
 import {AgendaService} from "../../providers/agenda/agenda-service";
 import {GlobalProvider} from "../../providers/global/global";
 import {Agenda} from "../../models/agenda";
@@ -13,17 +13,18 @@ import {FavoritesService} from "../../providers/favorites/favorites-service";
 export class AgendaPage {
 
   sessions: Array<Session> = [];
+  allSessions: Array<Session> = [];
   isFavorite: boolean;
 
   constructor(private globalProvider: GlobalProvider,
     private agendaService: AgendaService,
     private favoritesService: FavoritesService,
-    private toastCtrl: ToastController,
-    private app: App) {
+    private toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
     this.agendaService.getAgenda(this.globalProvider.conferenceId).then((agenda) => {
+      this.allSessions = agenda.sessions;
       this.sessions = agenda.sessions;
       this.favoritesService.loadFavorites(agenda, this.globalProvider.conferenceId);
     });
@@ -40,6 +41,16 @@ export class AgendaPage {
       });
       toast.present();
     });
+  }
+
+  public segmentChanged(event) {
+    if (event.value === "favoriteSessions") {
+      this.sessions = this.allSessions.filter((session) => session.isFavorite);
+    }
+    else {
+      this.sessions = this.allSessions;
+    }
+
   }
 
 }

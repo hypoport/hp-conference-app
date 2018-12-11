@@ -1,26 +1,26 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>{{ session?.title }}</ion-title>    
+    <ion-title>{{ session?.title }}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-	
-	
+
+
   <ion-list no-lines no-padding>
-  <ion-item>	
-  <h3>{{ session?.timeStart | date: 'HH:mm': 'CEST': 'de-DE' }} - {{ session?.timeEnd | date: 'HH:mm': 'CEST': 'de-DE' }}</h3>
-  <h4>{{ session?.location }}</h4>
-  
-  <button ion-button item-end clear (click)="this.toggleFavorite()">
-	<ion-icon name="star" [ngClass]="session?.isFavorite ? 'star-active' : 'star-inactive'" (click)="this.toggleFavorite()"></ion-icon>
-  </button>    
-  </ion-item>	    
+    <ion-item>
+      <h3>{{ session?.timeStart | date: 'HH:mm': 'CEST': 'de-DE' }} - {{ session?.timeEnd | date: 'HH:mm': 'CEST': 'de-DE' }}</h3>
+      <h4>{{ session?.location }}</h4>
+
+      <button ion-button item-end clear (click)="this.toggleFavorite()">
+        <ion-icon name="star" [ngClass]="session?.isFavorite ? 'star-active' : 'star-inactive'" (click)="this.toggleFavorite()"></ion-icon>
+      </button>
+    </ion-item>
   </ion-list>
-  
+
   <p>{{ session?.description }}</p>
-  
-  
+
+
   <section class="agenda-speaker">
     <ion-list no-lines no-padding>
       <ion-item *ngFor="let speaker of speakers">
@@ -28,7 +28,7 @@
           <img [src]="speaker.profileFoto" alt="Speaker profile foto">
         </ion-avatar>
         <div class="speaker-name">{{speaker.name}}</div>
-        <div class="speaker-detail">{{speaker.company}}<span *ngIf="speaker.company && speaker.jobTitle">, </span>{{speaker.jobTitle}}    
+        <div class="speaker-detail">{{speaker.company}}<span *ngIf="speaker.company && speaker.jobTitle">, </span>{{speaker.jobTitle}}
         </div>
       </ion-item>
     </ion-list>

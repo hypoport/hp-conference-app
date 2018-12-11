@@ -9,8 +9,19 @@
 
     <h1 class="maximus">Agenda</h1>
 
+
+    <ion-segment (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="allSessions">
+        Alle
+      </ion-segment-button>
+      <ion-segment-button value="favoriteSessions">
+        Favoriten
+      </ion-segment-button>
+    </ion-segment>
+
+
     <agenda-list [sessionList]="sessions"></agenda-list>
-    
+
   </section>
 
 
