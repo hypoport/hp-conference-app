@@ -1,5 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
+import {GlobalProvider} from "../../providers/global/global";
 import {Storage} from "@ionic/storage";
 import {Speaker} from "../../models/speaker";
 
@@ -10,16 +11,25 @@ export class SpeakerService {
 
   private speakers: Map<string, Array<Speaker>> = new Map<string, Array<Speaker>>();
 
-  constructor(public http: HttpClient, private storage: Storage) {
+  constructor(public http: HttpClient, 
+  			  private storage: Storage,
+  			  private global: GlobalProvider,
+  			  ) {
+	
   }
 
   public loadSpeakers(conferenceId: string): Promise<Array<Speaker>> {
-    // TODO richtige API nutzen
-    let url = "assets/data/speakers.json";
-    return this.http.get(url).toPromise()
-      .then((speakers: Array<Speaker>): Array<Speaker> => {
-        //this.speakers.set(conferenceId, speakers);
-        //this.storage.set(STORAGE_KEY, this.speakers);
+    let url = this.global.apiURL('speaker');
+    return this.http.post(url, {
+      "key": conferenceId,
+      "uuid": 'naap'
+    }, {
+      headers: {'Content-Type': 'application/json; charset=utf-8'}
+    }).toPromise()
+      .then((response: any) => {
+	   	let speakers = response.data.speakers as Array<Speaker>;
+	    this.speakers.set(conferenceId, speakers);
+        this.storage.set(STORAGE_KEY, this.speakers);
         return speakers;
       });
   }
