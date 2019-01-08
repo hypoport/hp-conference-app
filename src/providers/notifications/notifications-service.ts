@@ -10,6 +10,7 @@ export class NotificationService {
 
   constructor(private storage: Storage,
     private localNotifications: LocalNotifications) {
+	    localNotifications.cancelAll();
   }
 
   public triggerNotification(conferenceId: string, session: Session) {
@@ -29,7 +30,7 @@ export class NotificationService {
         return
       }
       console.log("trigger", notification);
-      this.localNotifications.schedule(notification);
+      this.localNotifications.schedule(<any>notification);
       conferenceNotification.set(session.id, notification.id);
       this.storage.set(STORAGE_KEY, notifications);
     });
@@ -69,10 +70,18 @@ export class NotificationService {
     if (triggerTime < new Date()) {
       return null;
     }
+    /*const triggerTime = new Date( ( new Date().getTime() + (1 * 60 * 1000)) - (new Date().getTimezoneOffset() * 60000) );
+    /*triggerTime = new Date(new Date().getTime() + (5 * 60 * 1000));
+    console.log(new Date());
+    console.log(new Date().getTimezoneOffset());
+    console.log(new Date().getTimezoneOffset() * 10000);
+    console.log(triggerTime);
+    /*  trigger: {at: triggerTime} */
+
     return {
       id: this.getMaxId(notifications) + 1,
       text: `${session.title} beginnt in 5 Minuten`,
-      trigger: {at: triggerTime}
+      trigger: {in: 1, unit: 'minute'}
     };
   }
 
