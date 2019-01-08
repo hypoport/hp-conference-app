@@ -1,8 +1,11 @@
 import {Injectable} from '@angular/core';
 import {Agenda} from '../../models/agenda';
+import {Speaker} from '../../models/speaker';
 import {HttpClient} from "@angular/common/http";
 import {Storage} from "@ionic/storage";
+import {GlobalProvider} from "../../providers/global/global";
 import {FavoritesService} from "../favorites/favorites-service";
+import {SpeakerService} from "../speaker/speaker-service";
 
 const STORAGE_KEY = "agendas";
 
@@ -11,20 +14,41 @@ export class AgendaService {
 
   private agendas: Map<string, Agenda> = new Map<string, Agenda>();
 
-  constructor(private http: HttpClient,
-    private storage: Storage,
-    private favoritesService: FavoritesService) {
+  constructor(private http: HttpClient, 
+  			  private storage: Storage,
+  			  private global: GlobalProvider,
+  			  private favoritesService: FavoritesService,
+  			  private speakerService: SpeakerService) {
   }
 
   public loadAgenda(conferenceId: string): Promise<Agenda> {
     console.log("load agenda");
+    /*
     // TODO richtige API nutzen
     let url = "assets/data/agenda.json";
-    return this.http.get(url).toPromise()
-      .then((agenda: Agenda): Agenda => {
-        console.log("agenda", agenda);
-        this.agendas.set(conferenceId, agenda);
-        this.storage.set(STORAGE_KEY, this.agendas);
+    return this.http.get(url)
+    .toPromise()*/
+    
+    let url = this.global.apiURL('agenda');
+    return this.http.post(url, {
+      "key": conferenceId,
+      "uuid": 'naap'
+    }, {
+      headers: {'Content-Type': 'application/json; charset=utf-8'}
+    }).toPromise()
+      .then((response: any) => {
+	  	
+	  	let agenda = response.data.agenda as Agenda;
+	  	let speaker = response.data.speakers as Array<Speaker>;
+
+	  	console.log("agenda", agenda);
+
+        if(this.agendas.set(conferenceId, agenda)){
+        	this.storage.set(STORAGE_KEY, this.agendas);
+        }
+        
+        this.speakerService.setSpeaker(conferenceId,speaker);
+        
         return agenda;
       }).then((agenda) => {
         this.favoritesService.rescheduleNotifications(agenda, conferenceId);

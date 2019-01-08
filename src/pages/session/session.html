@@ -21,14 +21,14 @@
   <p>{{ session?.description }}</p>
 
 
-  <section class="agenda-speaker">
+  <section class="agenda-speaker" *ngIf="speakers">
     <ion-list no-lines no-padding>
-      <ion-item *ngFor="let speaker of speakers">
-        <ion-avatar item-start>
+      <ion-item *ngFor="let speaker of speakers" (click)="goToSpeakerPage(speaker)">
+        <ion-avatar item-start *ngIf="speaker.profileFoto">
           <img [src]="speaker.profileFoto" alt="Speaker profile foto">
         </ion-avatar>
-        <div class="speaker-name">{{speaker.name}}</div>
-        <div class="speaker-detail">{{speaker.company}}<span *ngIf="speaker.company && speaker.jobTitle">, </span>{{speaker.jobTitle}}
+        <div class="speaker-name" *ngIf="speaker.name">{{speaker.name}}</div>
+        <div class="speaker-detail">{{speaker.company ? speaker.company : ''}}<span *ngIf="speaker.company && speaker.jobTitle">, </span>{{speaker.jobTitle ? speaker.jobTitle : ''}}
         </div>
       </ion-item>
     </ion-list>

@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
-import { AgendaListComponent } from './agenda-list/agenda-list';
+import { SessionListComponent } from './session-list/session-list';
 import { IonicModule } from 'ionic-angular';
 
 @NgModule({
-	declarations: [AgendaListComponent],
+	declarations: [
+		SessionListComponent
+	],
 	imports: [IonicModule],
-	exports: [AgendaListComponent]
+	exports: [
+		SessionListComponent
+	]
 })
 export class ComponentsModule {}

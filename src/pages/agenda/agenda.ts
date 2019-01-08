@@ -11,25 +11,33 @@ import {FavoritesService} from "../../providers/favorites/favorites-service";
   templateUrl: "agenda.html"
 })
 export class AgendaPage {
-
+  
+  activeSegment: string;
+  agenda: Agenda;
   sessions: Array<Session> = [];
-  allSessions: Array<Session> = [];
+  favoSessions: Array<Session> = [];
   isFavorite: boolean;
 
   constructor(private globalProvider: GlobalProvider,
     private agendaService: AgendaService,
     private favoritesService: FavoritesService,
     private toastCtrl: ToastController) {
+		this.activeSegment = 'allSessions';    
   }
 
   ionViewDidLoad() {
     this.agendaService.getAgenda(this.globalProvider.conferenceId).then((agenda) => {
-      this.allSessions = agenda.sessions;
-      this.sessions = agenda.sessions;
+	  this.agenda = agenda;
       this.favoritesService.loadFavorites(agenda, this.globalProvider.conferenceId);
+      this.sessions = agenda.sessions;
+      this.favoSessions = this.sessions.filter((session) => session.isFavorite);
     });
   }
-
+  
+  ionViewWillEnter(){
+    this.favoSessions = this.sessions.filter((session) => session.isFavorite);		
+  }
+  
   public refreshAgenda(refresher: Refresher) {
     this.agendaService.loadAgenda(this.globalProvider.conferenceId).then((agenda: Agenda) => {
       this.sessions = agenda.sessions;
@@ -45,12 +53,8 @@ export class AgendaPage {
 
   public segmentChanged(event) {
     if (event.value === "favoriteSessions") {
-      this.sessions = this.allSessions.filter((session) => session.isFavorite);
+      this.favoSessions = this.sessions.filter((session) => session.isFavorite);
     }
-    else {
-      this.sessions = this.allSessions;
-    }
-
   }
 
 }

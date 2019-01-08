@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { App } from "ionic-angular";
 import { Session } from "../../models/session";
-import {SessionPage} from "../../pages/session/session";
+import { SessionPage } from "../../pages/session/session";
 
 /**
  * Generated class for the AgendaListComponent component.
@@ -10,10 +10,10 @@ import {SessionPage} from "../../pages/session/session";
  * Components.
  */
 @Component({
-  selector: 'agenda-list',
-  templateUrl: 'agenda-list.html'
+  selector: 'session-list',
+  templateUrl: 'session-list.html'
 })
-export class AgendaListComponent {
+export class SessionListComponent {
 
   sessions: Array<Session> = [];
   

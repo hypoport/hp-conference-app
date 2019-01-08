@@ -1,4 +1,4 @@
-    <ion-list #scheduleList [hidden]="sessions.length === 0">
+    <ion-list #scheduleList [hidden]="sessions && sessions.length === 0">
 
       <ion-item-sliding *ngFor="let session of sessions" #slidingItem [attr.category]="session.category | lowercase"
                         [hidden]="session.hide">

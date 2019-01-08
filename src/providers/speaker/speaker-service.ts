@@ -18,15 +18,20 @@ export class SpeakerService {
     let url = "assets/data/speakers.json";
     return this.http.get(url).toPromise()
       .then((speakers: Array<Speaker>): Array<Speaker> => {
-        this.speakers.set(conferenceId, speakers);
-        this.storage.set(STORAGE_KEY, this.speakers);
+        //this.speakers.set(conferenceId, speakers);
+        //this.storage.set(STORAGE_KEY, this.speakers);
         return speakers;
       });
   }
 
+  public setSpeaker(conferenceId: string, speakers: Array<Speaker>) {
+  	  this.speakers.set(conferenceId, speakers);
+      this.storage.set(STORAGE_KEY, this.speakers);
+  }
+  
   public getSpeaker(conferenceId: string, speakerId: string): Promise<Speaker> {
     return this.getAllSpeakers().then((speakers) => {
-      return speakers.get(conferenceId).find((value) => value.id === speakerId);
+      return speakers.get(conferenceId).find((value) => value.id == speakerId);
     });
   }
 
@@ -40,7 +45,6 @@ export class SpeakerService {
     if (this.speakers.size == 0) {
       console.log("load speakers");
       return this.storage.get(STORAGE_KEY).then((data) => {
-        console.log("data", data);
         if (data && data.size > 0) {
           this.speakers = data;
         }

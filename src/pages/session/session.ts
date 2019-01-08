@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavParams} from 'ionic-angular';
+import {IonicPage, NavParams, NavController} from 'ionic-angular';
 import {Session} from '../../models/session';
 import {SpeakerService} from '../../providers/speaker/speaker-service';
 import {GlobalProvider} from '../../providers/global/global';
 import {Speaker} from '../../models/speaker';
+import {SpeakerPage} from '../speaker/speaker';
 import {FavoritesService} from "../../providers/favorites/favorites-service";
 
 /**
@@ -24,6 +25,7 @@ export class SessionPage {
   speakers = new Array<Speaker>();
 
   constructor(private navParams: NavParams,
+    private navCtrl: NavController,
     private speakerService: SpeakerService,
     private globalProvider: GlobalProvider,
     private favoritesService: FavoritesService) {
@@ -50,5 +52,10 @@ export class SessionPage {
   public toggleFavorite() {
     this.favoritesService.toggleFavorite(this.globalProvider.conferenceId, this.session);
   }
+
+  public goToSpeakerPage(speaker) {
+    this.navCtrl.push(SpeakerPage, {speaker: speaker});
+  }
+
 
 }
