@@ -29,7 +29,9 @@
     <ion-slides card-slides slidesPerView="1">
       <ion-slide>
         <ion-card class="hero-card" (click)="goToConference(currentConference.id)" (press)="openActionSheetForConferences(currentConference.id)">
-            <img [src]="currentConference.image"/>
+            <div class="hero-background" [style.backgroundImage]="'url(' + currentConference.image + ')'">
+	            
+            </div>    
             <!-- <div class="company-logo">
               <img [src]="getLogo(currentConference.brand)" />
             </div> -->

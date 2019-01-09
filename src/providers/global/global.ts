@@ -15,7 +15,7 @@ export class GlobalProvider {
   private _appVersion: string;
 
   constructor() {
-	  this._apiURL = 'http://wp.hypoport.local/wp-json/confsystem/v2';
+	  this._apiURL = 'https://tagungsapp.hypoport.de/wp-json/confsystem/v2';
 	  this._appVersion = '0.1.0';
   }
 

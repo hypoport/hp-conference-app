@@ -19,7 +19,7 @@ export class SpeakerService {
   }
 
   public loadSpeakers(conferenceId: string): Promise<Array<Speaker>> {
-    let url = this.global.apiURL('speaker');
+    let url = this.global.apiURL('conference/speaker');
     return this.http.post(url, {
       "key": conferenceId,
       "uuid": 'naap'

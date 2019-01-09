@@ -29,7 +29,7 @@ export class AgendaService {
     return this.http.get(url)
     .toPromise()*/
     
-    let url = this.global.apiURL('agenda');
+    let url = this.global.apiURL('conference/agenda');
     return this.http.post(url, {
       "key": conferenceId,
       "uuid": 'naap'
