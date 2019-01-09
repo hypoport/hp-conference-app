@@ -72,60 +72,65 @@
   <!-- conference home google maps -->
   <section class="maps">
 
-    <h5>Infromationen</h5>
+    <h5>Informationen</h5>
     <h2>Veranstaltungsort</h2>
-
-    <p>An dieser Stelle findest du die wichtigsten Informationen zur Versanstaltung, der Location <a>Hypoport AG</a>, deiner Anreise <a>{{ conference?.directions?.address }}</a> und Möglichkeiten der Hotelreservierung.</p>
 
     <p [innerHtml]="conference?.directions?.description"></p>
 
-
-
-
-
     <div #map class="" id="map"></div>
-    <!--ul class="map-list">
-      <li><ion-icon name="checkmark-circle-outline"></ion-icon>einmal links</li>
-      <li><ion-icon name="checkmark-circle-outline"></ion-icon>ducken</li>
-      <li><ion-icon name="checkmark-circle-outline"></ion-icon>durch den Tunnel</li>
-      <li><ion-icon name="checkmark-circle-outline"></ion-icon>am vegi Döner wieder rechts</li>
-    </ul-->
 
   </section>
 
 
   <hr>
   <!-- conference home support contact -->
-  <section class="support">
+  <section class="support" *ngIf="conference?.contact">
     <h5>Kontakt</h5>
-    <h2>Ansprechpartner</h2>
-    <ion-grid class="card">
-      <ion-row>
-        <ion-col col-4>
-          <div class="profile-image">
-            <img [src]="conference?.contact?.avatarUrl" height="50"/>
-          </div>
-        </ion-col>
-        <ion-col col-8>
-          <div class="profile-data">
-            <h4>
-              {{ conference?.contact?.name }}
-            </h4>
-            <ul>
-              <li>
-                <ion-icon name="call"></ion-icon>
-              {{ conference?.contact?.telephone }}
-              </li>
-              <li>
-                <ion-icon name="mail-open"></ion-icon>
-                {{ conference?.contact?.email }}
-              </li>
-
-            </ul>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    
+    <ul>
+	    <li *ngIf="conference?.contact?.telephone">
+	    	<ion-icon name="call"></ion-icon>
+	        {{ conference.contact.telephone }}
+	    </li>
+	    <li *ngIf="conference?.contact?.email">
+	         <ion-icon name="mail-open"></ion-icon>
+	        {{ conference.contact.email }}
+	    </li>
+	</ul>
+    
+    <ng-container *ngIf="conference?.contact?.persons">
+	    
+	    <h2>Ansprechpartner</h2>
+	    
+	    <ion-grid class="card">
+	      <ion-row *ngFor="let person of conference.contact.persons">
+	        <ion-col col-4>
+	          <div class="profile-image">
+	            <img [src]="person.avatarUrl" height="50"/>
+	          </div>
+	        </ion-col>
+	        <ion-col col-8>
+	          <div class="profile-data">
+	            <h4>
+	              {{ person.name }}
+	            </h4>
+	            <ul>
+	              <li *ngIf="person?.telephone">
+	                <ion-icon name="call"></ion-icon>
+	              {{ person.telephone }}
+	              </li>
+	              <li *ngIf="person?.email">
+	                <ion-icon name="mail-open"></ion-icon>
+	                {{ person.email }}
+	              </li>
+	
+	            </ul>
+	          </div>
+	        </ion-col>
+	      </ion-row>
+	    </ion-grid>
+    </ng-container>
+    
   </section>
 
 </ion-content>
