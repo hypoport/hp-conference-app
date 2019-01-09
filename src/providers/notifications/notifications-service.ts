@@ -65,23 +65,21 @@ export class NotificationService {
   }
 
   private getNotification(notifications: Map<string, Map<string, number>>, session: Session) {
-    // TODO use time from session
-    const triggerTime: Date = new Date(new Date().getTime() + (5 * 60 * 1000));
-    if (triggerTime < new Date()) {
-      return null;
-    }
-    /*const triggerTime = new Date( ( new Date().getTime() + (1 * 60 * 1000)) - (new Date().getTimezoneOffset() * 60000) );
-    /*triggerTime = new Date(new Date().getTime() + (5 * 60 * 1000));
-    console.log(new Date());
-    console.log(new Date().getTimezoneOffset());
-    console.log(new Date().getTimezoneOffset() * 10000);
-    console.log(triggerTime);
-    /*  trigger: {at: triggerTime} */
-
+ 
+    let currDate = new Date(new Date().getTime())
+	let startDate  = new Date(session.timeStart);
+	
+	let minutesUntil = ((startDate - currDate) / 60000)-5;
+	console.log('notification '+session.title+' send in '+minutesUntil);
+	if(minutesUntil < 5){
+		return null;
+	}
+	minutesUntil = parseInt(minutesUntil);
+	
     return {
       id: this.getMaxId(notifications) + 1,
       text: `${session.title} beginnt in 5 Minuten`,
-      trigger: {in: 1, unit: 'minute'}
+      trigger: {in: minutesUntil, unit: 'minute'}
     };
   }
 
