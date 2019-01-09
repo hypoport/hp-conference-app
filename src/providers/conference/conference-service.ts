@@ -35,20 +35,29 @@ export class ConferenceService {
       headers: {'Content-Type': 'application/json; charset=utf-8'}
     }).toPromise()
       .then((conference: Conference): Conference => {
-
-        this.conferences.set(conference.id, conference);
+        this.conferences.set(conference.id.toString(), conference);
         this.storage.set(STORAGE_KEY, this.conferences);
         this.agendaService.loadAgenda(conference.id);
         this.speakerService.loadSpeakers(conference.id);
-
         return conference;
-
       });
   }
 
   public loadConference(conferenceId: string): Promise<Conference> {
-    // TODO API ansprechen um aktuelle Konferenz-Daten zu laden
-    return Promise.resolve(this.getConference(conferenceId));
+    const url = this.global.apiURL('conference');
+    return this.http.post(url, {
+      "key": conferenceId,
+      "uuid": 'naap'
+    }, {
+      headers: {'Content-Type': 'application/json; charset=utf-8'}
+    }).toPromise()
+      .then((conference: Conference): Conference => {
+        this.conferences.set(conference.id.toString(), conference);
+        this.storage.set(STORAGE_KEY, this.conferences);
+        this.agendaService.loadAgenda(conference.id);
+        this.speakerService.loadSpeakers(conference.id);
+        return conference;
+      });      
   }
 
   public removeConference(conferenceId: string): Promise<Map<string, Conference>> {
@@ -64,7 +73,7 @@ export class ConferenceService {
   }
 
   public getConference(conferenceId: string): Conference {
-    return this.conferences.get(conferenceId);
+    return this.conferences.get(conferenceId.toString());
   }
 
   public getAllConferences(): Promise<Map<string, Conference>> {
