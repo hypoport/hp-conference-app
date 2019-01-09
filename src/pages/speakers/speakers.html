@@ -9,11 +9,11 @@
 
     <h1 class="maximus">Sprecher</h1>
 
-    <ion-list [virtualScroll]="speakers">
-      <ion-grid fixed>
+    <ion-list>
+      <ion-grid>
         <ion-row align-items-stretch>
 
-          <ion-col col-12 col-md-6 align-self-stretch align-self-center *virtualItem="let speaker" approxItemHeight="457px">
+          <ion-col col-12 col-md-6 align-self-stretch align-self-center *ngFor="let speaker of speakers">
 
             <ion-card class="speaker-card" (click)="goToSpeakerPage(speaker)">
               <ion-card-header>
@@ -25,25 +25,7 @@
                   <li class="job-title">{{speaker.jobTitle}}</li>
                   <li class="company">{{speaker.company}}</li>
                 </ul>
-
-                <!-- <div class="job-title">{{speaker.jobTitle}}</div>
-                <div class="company">{{speaker.company}}</div> -->
               </ion-card-header>
-
-              <ion-card-content class="outer-content">
-                <!-- <div class="job-title">{{speaker.jobTitle}}</div>
-                <div class="company">{{speaker.company}}</div> -->
-                <div class="short-description">{{speaker.description}}</div>
-              </ion-card-content>
-
-              <ion-row no-padding>
-                <ion-col col-12 col-lg-auto text-center text-lg-right>
-                  <button ion-button clear small color="primary" icon-start (click)="openContact(speaker)">
-                    <ion-icon name='chatboxes'></ion-icon>
-                    Contact
-                  </button>
-                </ion-col>
-              </ion-row>
 
             </ion-card>
 

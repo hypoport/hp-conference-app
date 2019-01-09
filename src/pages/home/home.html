@@ -85,9 +85,10 @@
   <hr>
   <!-- conference home support contact -->
   <section class="support" *ngIf="conference?.contact">
-    <h5>Kontakt</h5>
+	
+	<h2>Ihre Ansprechpartner</h2>
     
-    <ul>
+    <ul class="top-contact-list">
 	    <li *ngIf="conference?.contact?.telephone">
 	    	<ion-icon name="call"></ion-icon>
 	        {{ conference.contact.telephone }}
@@ -99,9 +100,7 @@
 	</ul>
     
     <ng-container *ngIf="conference?.contact?.persons">
-	    
-	    <h2>Ansprechpartner</h2>
-	    
+    	    
 	    <ion-grid class="card">
 	      <ion-row *ngFor="let person of conference.contact.persons">
 	        <ion-col col-4>

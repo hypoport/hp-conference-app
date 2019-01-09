@@ -16,42 +16,29 @@
 <ion-content padding>
   <section class="speaker" *ngIf="speaker">
 
-    <ion-card class="speaker-card">
-      <ion-card-header>
-        <ion-avatar item-start>
-          <img [src]="speaker.profileFoto" alt="Speaker profile foto">
-        </ion-avatar>
-        <h4 class="speaker-name">{{speaker.name}}</h4>
-        <ul>
-          <li class="job-title">{{speaker.jobTitle}}</li>
-          <li class="company">{{speaker.company}}</li>
-        </ul>
-      </ion-card-header>
 
-    </ion-card>
+	<ion-grid class="speaker-head">
+	  <ion-row align-items-center>
 
-
-	<!-- <ion-grid>
-	  <ion-row>
-
-	    <ion-col col-3>
+	    <ion-col class="speaker-avatar">
             <ion-avatar item-start>
             	<img [src]="speaker.profileFoto">
             </ion-avatar>
         </ion-col>
 
-	    <ion-col col-9>
+	    <ion-col col-auto>
 	    <h4 class="speaker-name">{{speaker.name}}</h4>
-      <ul>
-        <li class="job-title">{{speaker.jobTitle}}</li>
-        <li class="company">{{speaker.company}}</li>
-      </ul>
-	    <div class="title">{{speaker.jobTitle}} | {{speaker.company}}</div>
-		<div class="short-description">{{speaker.description}}</div>
+	      <ul>
+	        <li class="job-title">{{speaker.jobTitle}}</li>
+	        <li class="company">{{speaker.company}}</li>
+	      </ul>
 		</ion-col>
 
 	  </ion-row>
-	</ion-grid> -->
+	</ion-grid>
+	<hr/>
+	<div class="short-description">{{speaker.description}}</div>
+
 
 	<div class="speaker-agenda" *ngIf="speakerSessions.length > 0">
 		<h2>Vorträge von {{speaker.name}}</h2>

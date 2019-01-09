@@ -349,12 +349,19 @@ ion-slides[card-slides] {
 	}
 	.swiper-slide, .swiper-container, .swiper-wrapper {
 		height: auto;
-
-    overflow: visible;
+		overflow: visible;
 	}
 	.swiper-slide .slide-zoom, .swiper-slide .card {
 		height: 100%;
 	}
+	.swiper-slide img {
+	}
+	.swiper-slide .hero-background {
+		background-position: center center;
+		background-size: cover;
+		min-height: 30vh;
+	}
+
 }
 
 
@@ -379,7 +386,7 @@ ion-slides[card-slides] {
 
     img {
 
-      width: 100%;
+      max-width: 100%;
       height: auto;
       z-index: 0;
     }
@@ -582,15 +589,13 @@ section {
         /* bramd icon + logo */
         .company-logo {
           width: auto;
-          height: 35px;
+          min-width: 200px;
+          height: 60px;
           position: absolute;
-          top: 0;
           left: 0;
           margin: 12px;
           display: block;
-
-          transform: translateY(-60px);
-
+		  bottom: 70px;
           box-shadow: $box-shadow;
         }
         /* base typo */
@@ -835,7 +840,7 @@ section {
 */
 page-agenda {
   section {
-    agenda-list {
+    session-list {
 
       ion-list {
         &.list,
@@ -950,7 +955,13 @@ page-speaker {
           }
         }
       }
-
+	  
+	  .speaker .short-description {
+        color: $typo;
+        font-size: $small;
+        font-weight: $f-medium;
+       }
+	  
       .speaker-agenda {
         padding-top: 50px;
       }
