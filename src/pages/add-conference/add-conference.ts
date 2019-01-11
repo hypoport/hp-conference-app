@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { App, IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { GlobalProvider } from '../../providers/global/global';
 import { ConferenceService } from "../../providers/conference/conference-service";
-import {TabsPage} from '../tabs/tabs';
+import { TabsPage } from '../tabs/tabs';
 import { ToastController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import CryptoJS from 'crypto-js';
 
 /**
  * Generated class for the AddConferencePage page.
@@ -96,11 +97,25 @@ export class AddConferencePage {
   }
   
   openQrReader(){
+	  
+  		/* example encryption
+		let b64 = CryptoJS.AES.encrypt('{	"key": "Konferenz2019", "pw": "Berlin-2019", "brand": "ep" }', this.globalProvider.qrSecret()).toString();
+	    let e64 = CryptoJS.enc.Base64.parse(b64);
+	    let eHex = e64.toString(CryptoJS.enc.Hex);
+	    
+		console.log('test '+eHex);*/
+		
+		this.barcodeScanner.scan().then(barcodeData => {
+		
+		var url = new URL(barcodeData.text);
+		var c = url.searchParams.get("c");
+		
+		   var reb64 = CryptoJS.enc.Hex.parse(c);
+		   var bytes = reb64.toString(CryptoJS.enc.Base64);
+		   var decrypt = CryptoJS.AES.decrypt(bytes, this.globalProvider.qrSecret());
+		   var plain = decrypt.toString(CryptoJS.enc.Utf8);
+		   var data = JSON.parse(plain);
 
-  	this.barcodeScanner.scan().then(barcodeData => {
-		
-		let data = JSON.parse(barcodeData.text);
-		
 		if(typeof data.key !== 'undefined' && data.key != ""
 		&& typeof data.pw !== 'undefined' && data.pw != ""
 		&& typeof data.brand !== 'undefined' && data.brand != ""){
@@ -117,7 +132,7 @@ export class AddConferencePage {
 		}
 		
 		}).catch(err => {
-			
+			console.log(JSON.stringify(err));
 			let toast = this.toastCtrl.create({
 				 message: 'Fehlerhafter Tagungs-QR-Code',
 				 duration: 5000,

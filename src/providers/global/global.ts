@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-
+import { Injectable } from '@angular/core';
+import { ENV } from './../../../env.js';
 /*
   Generated class for the GlobalProvider provider.
 
@@ -12,10 +12,12 @@ export class GlobalProvider {
   private _conferenceId: string;
 
   private _apiURL: string;
+  private _qrPayloadSecret: string;
   private _appVersion: string;
 
   constructor() {
-	  this._apiURL = 'https://tagungsapp.hypoport.de/wp-json/confsystem/v2';
+	  this._apiURL = ENV.apiROOT;
+	  this._qrPayloadSecret = ENV.qrPayloadSecret;
 	  this._appVersion = '0.1.0';
   }
 
@@ -30,10 +32,11 @@ export class GlobalProvider {
  public appVersion() {
     return this._appVersion;
   }
-
-
-  public apiURL(endpoint: string){
-	  return this._apiURL + '/' + endpoint;
-  }
+ public apiURL(endpoint: string){
+	return this._apiURL + '/' + endpoint;
+ }
+ public qrSecret(){
+	return this._qrPayloadSecret;
+ }
 
 }
