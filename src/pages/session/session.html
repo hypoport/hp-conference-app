@@ -18,7 +18,7 @@
     </ion-item>
   </ion-list>
 
-  <p>{{ session?.description }}</p>
+  <p calss="session-desc" [innerHtml]="session?.description | trustByPass"></p>
 
 
   <section class="agenda-speaker" *ngIf="speakers">
