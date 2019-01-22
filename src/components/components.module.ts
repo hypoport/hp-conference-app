@@ -1,14 +1,22 @@
 import { NgModule } from '@angular/core';
-import { SessionListComponent } from './session-list/session-list';
 import { IonicModule } from 'ionic-angular';
+
+import { SessionListComponent } from './session-list/session-list';
+
+import { TrustByPass } from './../pipes/trust-bypass';
+import { ParallaxHeader } from './../directives/parallax-header';
 
 @NgModule({
 	declarations: [
-		SessionListComponent
+		SessionListComponent,
+		ParallaxHeader,
+		TrustByPass
 	],
 	imports: [IonicModule],
 	exports: [
-		SessionListComponent
+		SessionListComponent,
+		ParallaxHeader,
+		TrustByPass
 	]
 })
 export class ComponentsModule {}

@@ -176,7 +176,12 @@ ion-app {
     background: $off-white;
     // background: linear-gradient(to bottom, $off-white 50%, $grey-soft 80%, $grey-dim 100%);
   }
-
+  .main-content {
+	background: $off-white;
+    background-color: $off-white;
+    z-index: 2;
+    position: relative;
+  }
 
 }
 ion-header {
@@ -619,10 +624,10 @@ section {
     position: relative;
     display: block;
     min-height: 300px;
-
-    /* overfloating img section */
-    width: calc(100% + 40px);
-    margin-left: -20px;
+	
+    background-position: center center;
+    background-size: cover;
+    
   }
 
 

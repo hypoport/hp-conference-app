@@ -1,15 +1,15 @@
-<ion-content padding>
+<ion-content no-padding parallax-header>
 
   <ion-refresher (ionRefresh)="refreshConference($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
   <!-- conference home hero image -->
-  <section class="hero-image">
-    <img [src]="conference?.image"/>
+  <section class="hero-image" [style.backgroundImage]="'url('+ conference?.image +')'">
   </section>
 
   <!-- conference home service card section (next slot, wifi, participants list) -->
+  <main class="main-content" padding>
   <section class="service">
     <ion-slides card-slides slidesPerView="2.2" spaceBetween="10">
 
@@ -131,5 +131,6 @@
     </ng-container>
     
   </section>
-
+  </main>
+  
 </ion-content>
