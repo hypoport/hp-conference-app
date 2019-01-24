@@ -15,15 +15,30 @@ export class HomePage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
   conference: Conference;
-
+  
+  lastUpdate: Date;
+  
   constructor(private conferenceService: ConferenceService,
     private globalProvider: GlobalProvider,
     private toastCtrl: ToastController) {
+
   }
 
   ionViewDidLoad() {
     this.conference = this.conferenceService.getConference(this.globalProvider.conferenceId);
     this.loadDirection();
+  }
+  ionViewDidEnter(){
+	// silently update conference in background 
+    if(!this.lastUpdate || this.lastUpdate.getTime() - new Date().getTime() > 1000*60){
+	    this.lastUpdate = new Date();
+	    setTimeout(()=>{
+		  this.conferenceService.loadConference(this.globalProvider.conferenceId).then((conference: Conference) => {
+			if(conference) this.conference = conference;
+	      	console.log('background-update done');
+	      });		    
+	    }, 2000); // delay it, so it wont affect the page transition
+    }
   }
 
   loadDirection() {
@@ -51,6 +66,8 @@ export class HomePage {
         position: "top"
       });
       toast.present();
+      this.lastUpdate = new Date();
+
     });
   }
 }
