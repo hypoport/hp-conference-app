@@ -12,7 +12,7 @@
 </ion-header>
 
 <ion-tabs>
-  <ion-tab [root]="infoPage" tabTitle="Info" tabIcon="home"></ion-tab>
-  <ion-tab [root]="agendaPage" tabTitle="Agenda" tabIcon="information-circle"></ion-tab>
-  <ion-tab [root]="speakerPage" tabTitle="Sprecher" tabIcon="contacts"></ion-tab>
+  <ion-tab [root]="infoPage" tabTitle="Info" tabIcon="home" (ionSelect)="tabsChange($event)"></ion-tab>
+  <ion-tab [root]="agendaPage" tabTitle="Agenda" tabIcon="information-circle" (ionSelect)="tabsChange($event)"></ion-tab>
+  <ion-tab [root]="speakerPage" tabTitle="Sprecher" tabIcon="contacts" (ionSelect)="tabsChange($event)"></ion-tab>
 </ion-tabs>

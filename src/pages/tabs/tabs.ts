@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-
+import {NavParams, NavController} from 'ionic-angular';
 import {SpeakersPage} from '../speakers/speakers';
 import {AgendaPage} from '../agenda/agenda';
 import {HomePage} from '../home/home';
@@ -19,9 +19,9 @@ export class TabsPage {
   speakerPage = SpeakersPage;
 
   title: string;
-
-  constructor(private globalProvider: GlobalProvider, private conferenceService: ConferenceService, public popoverCtrl: PopoverController) {
-    this.title = this.conferenceService.getConference(this.globalProvider.conferenceId).title
+  
+  constructor(private globalProvider: GlobalProvider, private conferenceService: ConferenceService, public popoverCtrl: PopoverController, public navParams: NavParams) {
+    this.title = this.conferenceService.getConference(this.globalProvider.conferenceId).title;
   }
   
   openPopover(event){
@@ -30,5 +30,13 @@ export class TabsPage {
       ev: event
     });
    }
-  
+  tabsChange(ev){
+	if(ev.index == 1){
+		this.title = "Agenda";
+	} else if(ev.index == 2){
+		this.title = "Sprecher";
+	} else {
+    	this.title = this.conferenceService.getConference(this.globalProvider.conferenceId).title;		
+	}
+  }
 }
