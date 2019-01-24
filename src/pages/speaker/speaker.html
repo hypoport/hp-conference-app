@@ -20,13 +20,13 @@
 	<ion-grid class="speaker-head">
 	  <ion-row align-items-center>
 
-	    <ion-col class="speaker-avatar">
+	    <ion-col col-auto class="speaker-avatar">
             <ion-avatar item-start>
             	<img [src]="speaker.profileFoto">
             </ion-avatar>
         </ion-col>
 
-	    <ion-col col-auto>
+	    <ion-col align-start>
 	    <h4 class="speaker-name">{{speaker.name}}</h4>
 	      <ul>
 	        <li class="job-title">{{speaker.jobTitle}}</li>
@@ -37,7 +37,7 @@
 	  </ion-row>
 	</ion-grid>
 	<hr/>
-	<div class="short-description">{{speaker.description}}</div>
+	<div class="short-description" [innerHtml]="speaker?.description"></div>
 
 
 	<div class="speaker-agenda" *ngIf="speakerSessions.length > 0">
