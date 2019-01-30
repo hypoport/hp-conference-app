@@ -56,7 +56,7 @@ export class OverviewPage {
 
   private sortByStartDate(conferences: Array<Conference>): void {
     conferences.sort((a: Conference, b: Conference) => {
-      return new Date(a.startDate).getTime() - new Date(b.startDate).getTime();
+      return new Date(b.startDate).getTime() - new Date(a.startDate).getTime();
     })
   }
 
@@ -72,12 +72,14 @@ export class OverviewPage {
     this.lastConferences.length = 0;
     return this.conferenceService.getAllConferences().then((conferences) => {
       if (conferences) {
-        conferences.forEach(conference => {
-          if (new Date(conference.endDate) < today) {
+        conferences.forEach(conference => {	        
+          if (new Date(conference.endDate).getTime() < today.getTime()) {
             this.lastConferences.push(conference);
           }
-          else if (new Date(conference.startDate) > today) {
-            this.nextConferences.push(conference);
+          else if (new Date(conference.startDate).getTime() > today.getTime() || new Date(conference.endDate).getTime() >= today.getTime() ) {
+            this.nextConferences.push(conference);   
+          } else {
+            this.lastConferences.push(conference);	          
           }
         });
         this.sortByStartDate(this.nextConferences);
@@ -86,8 +88,9 @@ export class OverviewPage {
           this.currentConference = this.nextConferences.pop();
         }
         else {
-          this.currentConference = this.lastConferences.pop();
+           this.currentConference = this.lastConferences.pop();
         }
+		
       }
       return Promise.resolve();
     });
