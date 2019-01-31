@@ -14,34 +14,20 @@
   <main class="main-content" padding>
 
 
-    <section class="intro">
-
-
-      <ion-grid no-padding>
-        <ion-row>
-          <ion-col auto no-padding class="conv-title">
-            <h1>{{ conference?.header }}</h1>
-          </ion-col>
-          <ion-col no-padding class="conv-date fixed-col">
-            <h2>{{ conference?.startDate | date: 'dd.' }}-{{ conference?.endDate | date: 'dd.'}}</h2>
-            <h5>{{ conference?.startDate | date: 'MM.yyyy' }}</h5>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-
-      <h3>Introduction</h3>
-      <p>Lorem sit amet, sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et.</p>
-
-    </section>
-
     <section class="service" no-padding>
-
-
         <ion-slides card-slides slidesPerView="1.2" spaceBetween="0">
 
+          <ion-slide>
+            <ion-card class="service-card">
+              <ion-card-content>
+                <h6>Supertitle</h6>
+                <h3>Machine Learning und was wir damit anfangen können.</h3>
+                <h5>{{ conference?.startDate | date: 'dd.' }}-{{ conference?.endDate | date: 'dd.'}}</h5>
+              </ion-card-content>
+              <ion-icon name="time"></ion-icon>
+            </ion-card>
 
-
-
+          </ion-slide>
 
         <ion-slide>
           <ion-card class="service-card">
@@ -82,6 +68,28 @@
 
       </section>
 
+    <!-- <section class="intro">
+
+
+      <ion-grid no-padding>
+        <ion-row>
+          <ion-col auto no-padding class="conv-title">
+            <h1>{{ conference?.header }}</h1>
+          </ion-col>
+          <ion-col no-padding class="conv-date fixed-col">
+            <h2>{{ conference?.startDate | date: 'dd.' }}-{{ conference?.endDate | date: 'dd.'}}</h2>
+            <h5>{{ conference?.startDate | date: 'MM.yyyy' }}</h5>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <h3>Introduction</h3>
+
+
+    </section> -->
+
+
+
 
 
 
@@ -98,9 +106,9 @@
           <h5 class="conv-date-small">{{ conference?.startDate | date: 'dd.MM.' }} - {{ conference?.endDate | date: 'dd.MM.yyyy'}}</h5>
           </div> -->
 
-          <p>Lorem <b>ipsum dolor</b> sit amet, <a>consetetur</a> sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et.</p>
+          <!-- <p>Lorem <b>ipsum dolor</b> sit amet, <a>consetetur</a> sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et.</p> -->
 
-          <h3>Zwischenüberschrift</h3>
+          <!-- <h3>Zwischenüberschrift</h3> -->
           <div [innerHtml]="conference?.description"></div>
         </section>
 
@@ -112,10 +120,10 @@
 
   <section class="maps">
 
-    <h6 class="supertitle">Supertitle Location</h6>
+    <!-- <h6 class="supertitle">Supertitle Location</h6> -->
     <h2>Veranstaltungsort</h2>
 
-    <p [innerHtml]="conference?.directions?.description"></p>
+    <div [innerHtml]="conference?.directions?.description"></div>
 
     <div #map class="" id="map"></div>
 
@@ -128,11 +136,10 @@
 
   <section class="support" *ngIf="conference?.contact">
 
-  <h6 class="supertitle">Supertitle Contact</h6>
+  <!-- <h6 class="supertitle">Supertitle Contact</h6> -->
 	<h2>Ihre Ansprechpartner</h2>
-  <h5 class="subtitle">Subtitle contact section h5</h5>
-  <p>
-  Einleitung Ansprechpartner: Lorem <b>ipsum dolor</b> sit amet, <a>consetetur</a> sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et.</p>
+  <!-- <h5 class="subtitle">Subtitle contact section h5</h5> -->
+
 
     <ul class="contact-list">
 	    <li *ngIf="conference?.contact?.telephone" class="contact-label">
@@ -158,11 +165,11 @@
 	          <div class="profile-data">
 	            <h6>{{ person.name }}</h6>
 	            <ul>
-	              <li *ngIf="person?.telephone" class="contact-label">
+	              <li *ngIf="person?.telephone" class="">
 	                <ion-icon name="call"></ion-icon>
 	              {{ person.telephone }}
 	              </li>
-	              <li *ngIf="person?.email" class="contact-label">
+	              <li *ngIf="person?.email" class="">
 	                <ion-icon name="paper-plane"></ion-icon>
 	                {{ person.email }}
 	              </li>
