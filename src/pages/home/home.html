@@ -140,42 +140,33 @@
   <!-- <h5 class="subtitle">Subtitle contact section h5</h5> -->
 
 
-  <!-- <ion-button>Default</ion-button> -->
 
 
-    <ul class="contact-list">
-	    <li *ngIf="conference?.contact?.telephone" class="contact-label">
-	    	<ion-icon name="call"></ion-icon>
-	        {{ conference.contact.telephone }}
-	    </li>
-	    <li *ngIf="conference?.contact?.email" class="contact-label">
-	         <ion-icon name="paper-plane"></ion-icon>
-	        {{ conference.contact.email }}
-	    </li>
-	</ul>
+    <button ion-button round small icon-start>
+      <ion-icon name="call"></ion-icon>
+        {{ conference.contact.telephone }}
+    </button>
+
+    <button ion-button round small icon-start>
+      <ion-icon name="paper-plane"></ion-icon>
+        {{ conference.contact.email }}
+    </button>
+
 
     <ng-container *ngIf="conference?.contact?.persons">
 
 	    <ion-grid no-padding>
 	      <ion-row *ngFor="let person of conference.contact.persons" class="" >
-	        <ion-col col-2>
+	        <ion-col col-2 align-self-center>
 	          <div class="profile-image">
 	            <img [src]="person.avatarUrl" height="44"/>
 	          </div>
 	        </ion-col>
 	        <ion-col auto>
 	          <div class="profile-data">
-	            <h6>{{ person.name }}</h6>
-	            <ul>
-	              <li *ngIf="person?.telephone" class="">
-	                <ion-icon name="call"></ion-icon>
-	              {{ person.telephone }}
-	              </li>
-	              <li *ngIf="person?.email" class="">
-	                <ion-icon name="paper-plane"></ion-icon>
-	                {{ person.email }}
-	              </li>
-	            </ul>
+	            <h4>{{ person.name }}</h4>
+              <button ion-button round small color="light" *ngIf="person?.telephone">{{ person.telephone }}</button>
+              <button ion-button round small color="light" *ngIf="person?.email">{{ person.email }}</button>
 	          </div>
 	        </ion-col>
 	      </ion-row>

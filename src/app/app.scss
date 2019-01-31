@@ -190,6 +190,8 @@ ul {
 
 
 
+
+
 /*
 ** base structure
 ** ion-app
@@ -413,4 +415,16 @@ ion-icon {
 
 section {
   padding: 54px 0;
+}
+
+
+/*
+** base button
+** ion-button
+*/
+
+
+.button-round-ios,
+.button-round-md {
+  padding: 0 .9rem;
 }

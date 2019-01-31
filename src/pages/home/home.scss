@@ -73,23 +73,9 @@ page-home {
       background-repeat: no-repeat;
   }
 
-  // ion-app {
-  //   &.ios {
-  //     .hero-image {
-  //       margin-top: calc(#{$toolbar-ios-height * 1.5});
-  //     }
-  //   }
-  //   &.md {
-  //     .hero-image {
-  //       margin-top: calc(#{$toolbar-ios-height * 1.5});
-  //     }
-  //   }
-  //   &.wp {
-  //     .hero-image {
-  //       margin-top: calc(#{$toolbar-ios-height * 1.5});
-  //     }
-  //   }
-  // }
+
+
+
 
 }
 
@@ -154,7 +140,10 @@ section {
     }
   }
   &.support {
+
+
     ion-grid {
+            padding-top: 27px !important;
       ion-row {
         margin-bottom: 2rem;
         ion-col {
@@ -163,27 +152,19 @@ section {
       }
     }
 
-    ul {
-      list-style-type: none;
-      padding: 0;
+    .profile-data {
 
-      li {
-        display: inline-block;
-        margin-right: .5rem;
-        margin-bottom: .5rem;
-        &:last-of-type {
-          margin-right: 0;
-          margin-bottom: 0;
-        }
-        ion-icon {
+      .button {
+        margin-left: 0;
+      }
+      .button-small-ios,
+      .button-small-md {
+        font-size: $font-h5;
 
-          font-size: 1.2rem;
-          padding-left: .25rem;
-          padding-right: .5rem;
-
-        }
 
       }
+
+
     }
 
     .profile-image {
@@ -206,18 +187,11 @@ section {
     }
     .profile-data {
 
-      h6 {
-        margin-bottom: .5rem;
+      h4 {
+        margin-bottom: .25rem;
       }
 
-      ul {
-        margin: 0;
-        li {
-          ion-icon {
-            display: none;
-          }
-        }
-      }
+
     }
   }
 }
