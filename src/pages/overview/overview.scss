@@ -1,3 +1,14 @@
 page-overview {
 
+  ion-card {
+
+    &.hero-card,
+    &.empty-card {
+      border-radius: $border-radius-x2;
+      box-shadow: $box-shadow;
+      ion-card-content {
+        min-height: 115px;
+      }
+    }
+  }
 }
