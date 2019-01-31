@@ -1,12 +1,17 @@
 
 page-home {
 
+  .content-ios,
+  .content-md {
+
+  }
+
   main {
 
     transform: translate3d(0,10px,10px);
     background: $background-color;
-    border-top-left-radius: $border-radius-x3;
-    border-top-right-radius: $border-radius-x3;
+    border-top-left-radius: calc(#{$border-radius * 4});
+    border-top-right-radius: calc(#{$border-radius * 4});
 
     background: linear-gradient(to bottom,
                   rgba($white, .85) 0,
@@ -44,28 +49,31 @@ page-home {
   /* conv home hero */
   .content-ios {
     .hero-image {
-      margin-top: calc(#{$toolbar-ios-height * 1.5});
+      margin-top: calc(#{$toolbar-ios-height * 1});
     }
   }
   .content-md {
       .hero-image {
-        margin-top: calc(#{$toolbar-md-height * 1.5});
+        margin-top: calc(#{$toolbar-md-height * 1});
       }
     }
   .content-wp {
     .hero-image {
-      margin-top: calc(#{$toolbar-wp-height * 1.5});
+      margin-top: calc(#{$toolbar-wp-height * 1});
     }
   }
 
 
   .hero-image {
-      min-height: 45vh;
+      min-height: 55vh;
       padding: 0;
-      margin: 10px;
+      // margin-left: calc(#{$content-padding + 12px });
+      // margin-right: calc(#{$content-padding + 12px });
+
+
 
       /* shape */
-      border-radius: $border-radius-x2;
+      // border-radius: $border-radius-x2;
 
       /* image position */
       background-position: center center;
@@ -113,6 +121,11 @@ ion-col.fixed-col {
 
 
 section {
+  &.service {
+    padding-top: 27px;
+    padding-bottom: 0;
+
+  }
   &.intro {
     .conv-title {
       display: flex;
