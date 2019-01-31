@@ -4,75 +4,115 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <!-- conference home hero image -->
+
   <section class="hero-image" [style.backgroundImage]="'url('+ conference?.image +')'">
   </section>
 
-  <!-- conference home service card section (next slot, wifi, participants list) -->
+
+
+
   <main class="main-content" padding>
-  <section class="service">
-    <ion-slides card-slides slidesPerView="2.2" spaceBetween="10">
 
-      <ion-slide class="next-agenda-slot">
-        <ion-card class="service-card">
-          <ion-card-content>
-            <ion-icon name="alarm"></ion-icon>
-            <h5>Next</h5>
-            <h2>Agendapunkt</h2>
-            <p>Thema</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-slide>
 
-      <ion-slide class="wifi">
-        <ion-card class="service-card">
-          <ion-card-content>
-            <ion-icon name="wifi"></ion-icon>
-            <h5>Info</h5>
-            <h2>Wifi Hotspot</h2>
-            <p>Subline</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-slide>
+    <section class="intro">
 
-      <ion-slide class="participants">
-        <ion-card class="service-card">
-          <ion-card-content>
-            <ion-icon name="people"></ion-icon>
-            <h5>Info</h5>
-            <h2>Teilnehmerliste</h2>
-            <p>Subline</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-slide>
 
-      <ion-slide class="blank-box">
-        <ion-card class="service-card">
-          <ion-card-content>
-            <h5>Info</h5>
-            <h2>Blank Box</h2>
-            <p>Subline</p>
-          </ion-card-content>
+      <ion-grid no-padding>
+        <ion-row>
+          <ion-col auto no-padding class="conv-title">
+            <h1>{{ conference?.header }}</h1>
+          </ion-col>
+          <ion-col no-padding class="conv-date fixed-col">
+            <h2>{{ conference?.startDate | date: 'dd.' }}-{{ conference?.endDate | date: 'dd.'}}</h2>
+            <h5>{{ conference?.startDate | date: 'MM.yyyy' }}</h5>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
 
-        </ion-card>
-      </ion-slide>
+      <h3>Introduction</h3>
+      <p>Lorem sit amet, sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et.</p>
 
-    </ion-slides>
+    </section>
 
-  </section>
+    <section class="service" no-padding>
 
-  <!-- conference home lead text -->
-  <section class="intro">
-    <h5 class="conv-date">{{ conference?.startDate | date: 'dd.MM.' }} - {{ conference?.endDate | date: 'dd.MM.yyyy'}}</h5>
-    <h1 class="maximus">{{ conference?.header }}</h1>
-    <div [innerHtml]="conference?.description"></div>
-  </section>
+
+        <ion-slides card-slides slidesPerView="1.2" spaceBetween="0">
+
+
+
+
+
+        <ion-slide>
+          <ion-card class="service-card">
+            <ion-card-content>
+              <h6>Kommendes Ereignis</h6>
+              <h3>Machine Learning und was wir damit anfangen können.</h3>
+              <h5>10:30 -11:00</h5>
+            </ion-card-content>
+            <ion-icon name="time"></ion-icon>
+          </ion-card>
+
+        </ion-slide>
+
+          <ion-slide>
+            <ion-card class="service-card">
+              <ion-card-content>
+                <h6>Supertitle</h6>
+                <h3>WiFi HotSpot Name</h3>
+                <h5>Ultrageheimes Passwort</h5>
+              </ion-card-content>
+              <ion-icon name="wifi"></ion-icon>
+            </ion-card>
+          </ion-slide>
+
+          <ion-slide>
+            <ion-card class="service-card">
+              <ion-card-content>
+                <h6>Supertitle</h6>
+                <h3>Unsere Teilnehmer</h3>
+                <h5>Unbekannt</h5>
+              </ion-card-content>
+              <ion-icon name="contact"></ion-icon>
+            </ion-card>
+          </ion-slide>
+
+
+        </ion-slides>
+
+      </section>
+
+
+
+
+
+
+
+      <section class="intro">
+
+          <!-- <h6>Supertitle Conv Title</h6>
+          <h1>{{ conference?.header }}</h1> -->
+
+          <!-- <div class="conv-date-wrapper">
+          <ion-icon name="calendar"></ion-icon>
+          <h5 class="conv-date-small">{{ conference?.startDate | date: 'dd.MM.' }} - {{ conference?.endDate | date: 'dd.MM.yyyy'}}</h5>
+          </div> -->
+
+          <p>Lorem <b>ipsum dolor</b> sit amet, <a>consetetur</a> sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et.</p>
+
+          <h3>Zwischenüberschrift</h3>
+          <div [innerHtml]="conference?.description"></div>
+        </section>
+
+
 
   <hr>
-  <!-- conference home google maps -->
+
+
+
   <section class="maps">
 
-    <h5>Informationen</h5>
+    <h6 class="supertitle">Supertitle Location</h6>
     <h2>Veranstaltungsort</h2>
 
     <p [innerHtml]="conference?.directions?.description"></p>
@@ -82,55 +122,62 @@
   </section>
 
 
+
   <hr>
-  <!-- conference home support contact -->
+
+
   <section class="support" *ngIf="conference?.contact">
-	
+
+  <h6 class="supertitle">Supertitle Contact</h6>
 	<h2>Ihre Ansprechpartner</h2>
-    
-    <ul class="top-contact-list">
-	    <li *ngIf="conference?.contact?.telephone">
+  <h5 class="subtitle">Subtitle contact section h5</h5>
+  <p>
+  Einleitung Ansprechpartner: Lorem <b>ipsum dolor</b> sit amet, <a>consetetur</a> sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et.</p>
+
+    <ul class="contact-list">
+	    <li *ngIf="conference?.contact?.telephone" class="label">
 	    	<ion-icon name="call"></ion-icon>
 	        {{ conference.contact.telephone }}
 	    </li>
-	    <li *ngIf="conference?.contact?.email">
-	         <ion-icon name="mail-open"></ion-icon>
+	    <li *ngIf="conference?.contact?.email" class="label">
+	         <ion-icon name="paper-plane"></ion-icon>
 	        {{ conference.contact.email }}
 	    </li>
 	</ul>
-    
+
     <ng-container *ngIf="conference?.contact?.persons">
-    	    
-	    <ion-grid class="card">
-	      <ion-row *ngFor="let person of conference.contact.persons">
-	        <ion-col col-4>
+
+	    <ion-grid no-padding>
+	      <ion-row *ngFor="let person of conference.contact.persons" class="" >
+	        <ion-col col-2>
 	          <div class="profile-image">
-	            <img [src]="person.avatarUrl" height="50"/>
+	            <img [src]="person.avatarUrl" height="44"/>
 	          </div>
 	        </ion-col>
-	        <ion-col col-8>
+	        <ion-col auto>
 	          <div class="profile-data">
-	            <h4>
-	              {{ person.name }}
-	            </h4>
+	            <h6>{{ person.name }}</h6>
 	            <ul>
-	              <li *ngIf="person?.telephone">
+	              <li *ngIf="person?.telephone" class="label">
 	                <ion-icon name="call"></ion-icon>
 	              {{ person.telephone }}
 	              </li>
-	              <li *ngIf="person?.email">
-	                <ion-icon name="mail-open"></ion-icon>
+	              <li *ngIf="person?.email" class="label">
+	                <ion-icon name="paper-plane"></ion-icon>
 	                {{ person.email }}
 	              </li>
-	
 	            </ul>
 	          </div>
 	        </ion-col>
 	      </ion-row>
 	    </ion-grid>
     </ng-container>
-    
+
   </section>
+
+
+
+
   </main>
-  
+
 </ion-content>
