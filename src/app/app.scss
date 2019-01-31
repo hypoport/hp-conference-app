@@ -383,3 +383,31 @@ ion-card {
     }
   }
 }
+
+
+
+/*
+** base icon
+** ion-icon
+*/
+
+ion-icon {
+  // display: flex;
+  font-size: calc(#{$font-size-base * 1.5});
+}
+
+
+
+/*
+** base viewport sections for page-home
+** homescreen (dashboard)
+** conv home hero pic
+** conv home service panels
+** conv home intro paragraph
+** conv home location + maps
+** conv home support
+*/
+
+section {
+  padding: 54px 0;
+}
