@@ -266,3 +266,120 @@ ion-slides[card-slides] {
 		// min-height: 30vh;
 	}
 }
+
+
+
+/*
+** base card
+** ion-card
+*/
+
+ion-card {
+  display: flex;
+  flex-flow: column wrap;
+  * {
+    display: flex;
+  }
+
+  position: relative;
+
+
+  ion-card-content {
+    display: flex;
+    flex-flow: column wrap;
+    flex-grow: 1;
+    justify-content: space-between;
+
+  }
+  ion-icon {
+    position: absolute;
+    justify-content: center;
+    align-items: flex-end;
+    top: 0;
+    right: -1.5rem;
+    bottom: -1.5rem;
+    color: $font-color-secondary;
+    font-size: 6rem;
+    opacity: .125;
+
+
+  }
+
+  &.card-ios,
+  &.card-md {
+
+    /* shape */
+    background: $background-color;
+    border-radius: $border-radius;
+    border: $base-border;
+    box-shadow: none;
+
+    /* typo reset */
+    h1, h2, h3, h4, h5, h6, p {
+      // line-height: $font-line-height;
+      color: $text-color;
+      text-align: left;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: $font-medium;
+    }
+    p {
+      font-weight: $font-normal;
+    }
+
+    /* typo custom */
+
+    /* supertitle */
+    h6 {
+      flex-grow: 1;
+      font-size: $font-h6;
+
+      // TODO: @extend not overriding all attributes
+      // @extend .supertitle;
+      text-transform: uppercase;
+      letter-spacing: .1rem;
+      color: $font-color-secondary;
+      font-weight: $font-normal;
+    }
+
+    /* heading */
+    h1 {}
+
+
+    h2 {}
+
+    /* small version of h3 heading */
+    h3 {
+
+      font-weight: $font-medium;
+    }
+
+    h4 {}
+    /* subtitle */
+    h5 {
+      color: $font-color-secondary;
+      font-weight: $font-medium;
+    }
+
+
+
+
+  }
+  .hero-background {
+    background-position: center center;
+    background-size: cover;
+    min-height: 30vh;
+  }
+  .company-logo {
+    justify-content: flex-end;
+    margin-top: -70px;
+    padding: 10px;
+
+    img {
+      height: 50px;
+      // background: rgba($white, .25);
+      padding: 2px;
+      border-radius: 50px;
+    }
+  }
+}
