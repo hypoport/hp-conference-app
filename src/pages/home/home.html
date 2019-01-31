@@ -135,11 +135,11 @@
   Einleitung Ansprechpartner: Lorem <b>ipsum dolor</b> sit amet, <a>consetetur</a> sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et.</p>
 
     <ul class="contact-list">
-	    <li *ngIf="conference?.contact?.telephone" class="label">
+	    <li *ngIf="conference?.contact?.telephone" class="contact-label">
 	    	<ion-icon name="call"></ion-icon>
 	        {{ conference.contact.telephone }}
 	    </li>
-	    <li *ngIf="conference?.contact?.email" class="label">
+	    <li *ngIf="conference?.contact?.email" class="contact-label">
 	         <ion-icon name="paper-plane"></ion-icon>
 	        {{ conference.contact.email }}
 	    </li>
@@ -158,11 +158,11 @@
 	          <div class="profile-data">
 	            <h6>{{ person.name }}</h6>
 	            <ul>
-	              <li *ngIf="person?.telephone" class="label">
+	              <li *ngIf="person?.telephone" class="contact-label">
 	                <ion-icon name="call"></ion-icon>
 	              {{ person.telephone }}
 	              </li>
-	              <li *ngIf="person?.email" class="label">
+	              <li *ngIf="person?.email" class="contact-label">
 	                <ion-icon name="paper-plane"></ion-icon>
 	                {{ person.email }}
 	              </li>
