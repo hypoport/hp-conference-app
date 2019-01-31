@@ -16,322 +16,133 @@
 // automatically applied to the <body> element in the app.
 
 
-/*
-  global
-*/
 
 
 /*
-** variables
+** custom variables
+** typo
+** colors
+** shadows
+** borders
 */
 
-/* colors */
-$red: #b11f30;
-$white: #fff;
-$black: #202020;
-$off-white: #FAFAFA;
-$grey: #8c8c8c;
-$grey-dim: #dcdcdc;
-$grey-light: #ececec;
-$grey-soft: #f0f0f0;
+
+/* typo */
+$font-base-size   : 1.4rem;
+$font-line-height : 1.7;
+$font-h1          : 2.4rem; // heading 1st lv
+$font-h2          : 2.0rem; // heading 2nd lv
+$font-h3          : 1.6rem; // heading 3rd lv
+$font-h4          : 1.4rem;
+$font-h5          : 1.2rem; // subtitle
+$font-h6          : 1.0rem; // supertitle
+$font-small       : 75%;
+$font-normal      : 400;
+$font-medium      : 600;
+$font-bold        : 700;
+
 
 /* colors */
-$typo       : #444;
-$typo-dim   : #555;
-$typo-light : #777;
-$typo-grey  : #999;
-$typo-white : #fff;
+$red: #b11f30; // hypoport primary
+$white: #ffffff;
+$cobalt: #0050ef;
+$offwhite: #fafafa;
+$whitesmoke: #f5f5f5;
+$cloud: #ecf0f1;
+$silver: #c0c0c0;
+$lightgrey: #d3d3d3;
+$darkgrey: #8c8c8c;
+$charcoal: #404040;
+$dark: #202020;
+$black: #000000;
+
+
+
+
+
+/* text colors */
+$font-color-primary:            $text-color;
+$font-color-secondary:          lighten($text-color, 30%);
+$font-color-tertiary:           lighten($text-color, 15%);
+
+
+$font-color-text:               lighten($charcoal, 20%);
+$font-color-text-lead:          lighten($charcoal, 10%);
+
+
+
 
 
 /* shadows */
-$text-shadow: 0 1px 3px rgba(0,0,0,0.25);
-
-$bar-shadow: 0 0px 20px 5px rgba(0,0,0,0.1);
-$box-shadow: 0 0 30px -10px rgba(0,0,0,0.25);
-$box-shadow-xl: 0 15px 35px rgba(50,50,93,.1),
-                0 5px 15px  rgba(0,0,0,.07);
-$box-shadow-xl-red: 0 15px 35px rgba(177, 31, 48,.1),
-                    0 5px 15px  rgba(177, 31, 48,.07);
-
-
-
-$button-shadow: 0px 5px 15px -5px rgba(50, 50, 93, .75), 0 5px 25px 10px rgba(0, 0, 0, 0.05);
-$button-shadow-red: 0px 5px 15px -5px rgba(177, 31, 48, 1), 0 5px 25px 10px rgba(177, 31, 48, .05);
-
-
-
+$box-shadow: 0 4px 12px 10px rgba($black, .05);
+// $box-shadow: 0px 2px 10px 2px rgba($black, .25);
+$card-box-shadow: 0 3px 6px 0 rgba($black, .1),
+                  0 1px 3px 0 rgba($black, .08);
 
 /* border */
+$base-border: 1px solid lighten($silver, 20%);
 $border-radius: 6px;
-$border-radius-xs: 4px;
+$border-radius-x2: 12px;
+$border-radius-x3: 18px;
 
 
 
-/*
-** base typo
-*/
-
-
-$base-font-size : 1.8rem;
-$line-height    : 1.7;
-$h1-size        : 3.4rem;
-$h2-size        : 2.6rem;
-$h3-size        : 2.4rem;
-$h4-size        : 1.8rem;
-$h5-size        : 1.6rem;
-$small          : 1.4rem;
-
-$f-normal         : 400;
-$f-medium         : 500;
-$f-bold           : 600;
 
 
 body {
-    font-size: $base-font-size;
-    line-height: $line-height;
-    color: $typo;
-    text-align: left;
+    line-height: $font-line-height;
 }
-h1, h2, h3, h4, h5, small, p {
-  line-height: $line-height;
-  color: $typo;
-  text-align: left;
-  margin: 0 0 5px;
+h1, h2, h3 {
+  font-weight: $font-bold;
 }
-h1, h2, h3, h4, h5 {
-  font-weight: $f-medium !important;
+h4, h5, h6 {
+  font-weight: $font-medium;
 }
 h1 {
-  font-size: $h1-size;
-  &.maximus {
-    line-height: calc( #{$line-height} * .75 );
-    margin-bottom: 2rem;
-  }
+  font-size: $font-h1;
 }
 h2 {
-  font-size: $h2-size;
+  font-size: $font-h2;
 }
 h3 {
-  font-size: $h3-size;
+  font-size: $font-h3;
 }
 h4 {
-  font-size: $h4-size;
+  font-size: $font-h4;
 }
 h5 {
-  font-size: $h5-size;
-  color: $typo-grey;
+  font-size: $font-h5;
 }
-p,
-ul,
-li {
-  font-size: $base-font-size;
+h6 {
+  font-size: $font-h6;
+}
+p, ul, li {
+  font-weight: $font-normal;
+  color: $font-color-secondary;
 
+  a, b, strong {
+    color: $font-color-tertiary;
+    // color: $text-color;
+  }
 }
-small {
-  font-size: $small;
+p.lead,
+.lead p {
+  font-size: calc(#{$font-size-base} * 1.15);
+  text-align: justify;
 }
 a {
-  font-size: $h5-size;
-  line-height: $line-height;
-  background: $grey-light;
-  border-radius: $border-radius;
-  padding: 4px 6px;
-  color: $typo-light;
-
-
-  &:hover, &:focus, &:active {
-    cursor: pointer;
-
-  }
+  font-weight: $font-bold;
+  text-decoration: none;
 }
+
+b, strong {
+  font-weight: $font-bold;
+}
+
 ul {
-  padding-left: $base-font-size;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-** base viewport structure
-** ion-header
-*/
-
-/* ion-header top navigation bar */
-ion-app {
-
-
-  &.md,
-  &.ios,
-  &.wp {
-    background: $off-white;
-    // background: linear-gradient(to bottom, $off-white 50%, $grey-soft 80%, $grey-dim 100%);
-  }
-  .main-content {
-	background: $off-white;
-    background-color: $off-white;
-    z-index: 2;
-    position: relative;
-  }
-
-}
-ion-header {
-
-  &.header,
-  &.header-md,
-  &.header-ios {
-    box-shadow: $bar-shadow;
-    &:after {
-      display: none;
-    }
-  }
-  .toolbar-background {
-    background: $white;
-
-  }
-  ion-title {
-    &.title-md,
-    &.title-ios {
-      text-align: center;
-    }
-
-  }
-}
-
-// .tabs-ios .tab-button[aria-selected="true"] .tab-button-icon {
-//   color: $red;
-// }
-ion-tabs {
-  &.tabs,
-  &.tabs-md,
-  &.tabs-ios {
-
-    .tab-button[aria-selected="true"] {
-      color: $red;
-    }
-    .tab-button[aria-selected="true"] .tab-button-icon {
-      color: $red;
-    }
-
-    .tabbar {
-      background: $white;
-      box-shadow: $bar-shadow;
-      &:before {
-        display: none;
-      }
-      .icon,
-      .icon-md,
-      .icon-ios {}
-
-
-    }
-  }
-
-}
-
-page-home {
-    background: $off-white;
-}
-ion-content {
-
-  &.content,
-  &.content-md,
-  &.content-ios {
-    background: $off-white;
-    hr {
-      height: .55px;
-      background-color: rgba(0, 0, 0, 0.25);
-
-    }
-  }
-
-}
-
-
-
-/*
-** add conv modal
-*/
-
-
-page-add-conference {
-  &.ion-page {
-    background: $off-white;
-  }
-
-  .list,
-  .list-md,
-  .list-ios {
-    border-radius: $border-radius;
-  }
-
-  .button,
-  .button-md,
-  .button-ios {
-    border-radius: $border-radius;
-    background: $red;
-    color: $white;
-    box-shadow: $button-shadow-red;
-    margin: 0;
-    span {}
-    &:hover:not(.disable-hover) {
-      background: $red;
-    }
-  }
-  .text-input::placeholder {
-    color: $red;
-  }
-}
-
-
-
-/*
-** header nav popover
-*/
-
-ion-popover {}
-.popover-md,
-.popover-ios {
-  .popover-content {
-    border-radius: $border-radius;
-    box-shadow: $box-shadow-xl;
-
-
-    .content,
-    .content-md,
-    .content-ios {
-      background: $white;
-    }
-
-    .list,
-    .list-md,
-    .list-ios {
-      margin: 12px;
-      padding-left: 0;
-    }
-    .list-ios {
-      .item-block {
-        border: none;
-        .item-inner {
-          border: none;
-        }
-      }
-
-    }
-    .item,
-    .item-md,
-    .item-ios {
-      padding-left: 0;
-    }
+  padding: 0 0 0 1.5rem;
+  li {
+    padding-left: 1rem;
   }
 }
 
@@ -339,687 +150,40 @@ ion-popover {}
 
 
 /*
-** slider styles
+** helper classes
 */
 
-ion-slides[card-slides] {
 
-	height: auto;
 
-	margin-left: -$content-padding;
-	width: calc(100% + #{$content-padding*2});
 
-	.swiper-container {
-		padding-bottom: 30px;
-	}
-	.swiper-slide, .swiper-container, .swiper-wrapper {
-		height: auto;
-		overflow: visible;
-	}
-	.swiper-slide .slide-zoom, .swiper-slide .card {
-		height: 100%;
-	}
-	.swiper-slide img {
-	}
-	.swiper-slide .hero-background {
-		background-position: center center;
-		background-size: cover;
-		min-height: 30vh;
-	}
+.label {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: $border-radius;
+  background: lighten($lightgrey, 10%);
+  font-size: 1.0rem;
 
 }
 
 
 
-/*
-** base card styling
-*/
-
-
-  .card {
-
-    /* base styling for all cards */
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-
-    border-radius: $border-radius;
-    box-shadow: $box-shadow-xl;
-    // text-shadow: $text-shadow;
-    color: $typo-white;
-    background: $white;
-
-    img {
-
-      max-width: 100%;
-      height: auto;
-      z-index: 0;
-    }
-    /* */
-    .card-content {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-
-      width: 100%;
-      height: 100%;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      flex-grow: 1;
-
-      padding: 12px;
-
-      /* base typo */
-      h1, h2, h3, h4, p {
-        color: $typo;
-        text-shadow: none;
-        text-align: left;
-
-
-      }
-    }
-
-    /* conv homescreen cards */
-    &.service-card {}
-
-
-
-
-
-
-
-
-
-
-
-
-
-    &.small-card {
-      &:before {
-        content: '';
-        background: rgba(0,0,0,.25);
-        height: 70px;
-      }
-      min-height: 150px;
-      max-height: 150px;
-      .card-content {
-        .company-logo {
-          width: 40px;
-          height: 40px;
-        }
-        .conv-date {
-          font-size: 1.2rem;
-          bottom: 50px;
-        }
-        h1 {
-          font-size: 1.7rem;
-          margin-bottom: 0;
-        }
-        h1:first-of-type {
-          bottom: 25px;
-        }
-        h1:last-of-type {
-          bottom: 5px;
-        }
-      }
-    }
-
-    // add new conference card (empty)
-    &.empty-card {
-      border: 5px dashed rgba(0,0,0,.05);
-      box-shadow: none;
-      text-shadow: none;
-      position: relative;
-
-      min-height: 250px;
-      max-height: 250px;
-      h2 {
-        text-align: center;
-        margin-top: 90px;
-        font-size: 1.8rem;
-        font-weight: bold;
-        color: rgba(0,0,0,.25);
-      }
-    }
-
-
-
-
-
-    // speakers card
-    &.speaker-card {
-      // text-shadow: none;
-      // color: #444;
-      // position: relative;
-      // .card-header {
-      //   padding-bottom: 0;
-      // }
-
-      // ion-avatar {
-      //   width: 70px;
-      //   height: 70px;
-      //   border-radius: 20px;
-      //   overflow: hidden;
-      //   float: left;
-      //   margin-right: 20px;
-      //   img {
-      //     width: 100%;
-      //     height: auto;
-      //     background: rgba(0,0,0,.25);
-      //
-      //   }
-      // }
-      // .speaker-name {
-      //   font-size: 2.4rem;
-      //   margin-top: 20px;
-      // }
-      // .card-content {
-      //   position: relative;
-      //   > div {
-      //     // display: inline;
-      //   }
-      //   padding-left: 107px;
-      //
-      //   .job-title,
-      //   .company {
-      //     display: inline-block;
-      //   }
-      //   .job-title {
-      //     padding-right: 5px;
-      //   }
-      //   .company {
-      //     padding-left: 10px;
-      //     border-left: 1px solid rgba(0,0,0,0.25);
-      //   }
-      //
-      //   .short-description {
-      //     font-style: italic;
-      //     color: #999;
-      //   }
-      //
-      //   .socials {
-      //     padding-top: 10px;
-      //     ion-icon {
-      //       margin-right: 5px;
-      //     }
-      //   }
-      // }
-    }
-  }
-
-
-
-
-
-
-
-
-/*
-** base viewport sections for page-home
-** homescreen (dashboard)
-** conv home hero pic
-** conv home service panels
-** conv home intro paragraph
-** conv home location + maps
-** conv home support
-*/
-
-
-section {
-  padding: 75px 0;
-
-  &:last-of-type {
-    padding-bottom: 100px;
-  }
-
-
-
-  /* homescreen (dashboard) */
-  &.hero {
-
-    .card {
-      position: relative;
-      min-height: 250px;
-      max-height: 350px;
-      box-shadow: $box-shadow-xl-red;
-
-
-
-      .card-content {
-        height: 30%;
-        background: $white;
-
-        /* bramd icon + logo */
-        .company-logo {
-          width: auto;
-          min-width: 200px;
-          height: 60px;
-          position: absolute;
-          left: 0;
-          margin: 12px;
-          display: block;
-		  bottom: 70px;
-          box-shadow: $box-shadow;
-        }
-        /* base typo */
-        h1, h2, h3, h4, h5, p {
-          position: relative;
-          color: $typo-dim;
-        }
-        .conv-date {
-          color: $typo-grey;
-          text-shadow: none;
-        }
-
-      }
-    }
-  }
-
-
-  /* conv home hero pic */
-  &.hero-image {
-    padding: 0;
-    position: relative;
-    display: block;
-    min-height: 300px;
-	
-    background-position: center center;
-    background-size: cover;
-    
-  }
-
-
-  /* conv home service panels */
-  &.service {
-    padding: 0;
-    transform: translateY(-35%);
-
-    .card {
-      position: relative;
-      min-height: 100px;
-
-      /* card icon */
-      ion-icon {
-        position: absolute;
-        top: -3px;
-        right: 0;
-        margin: 12px;
-        display: block;
-        font-size: 3.5rem;
-        text-shadow: none;
-
-        &[name="alarm"] {
-          color: orange;
-        }
-        &[name="wifi"] {
-          color: blue;
-        }
-        &[name="people"] {
-          color: $grey;
-        }
-
-      }
-
-      /* base typo */
-      h1, h2, h3, h4, h5, p {
-        position: relative;
-        color: $typo-dim;
-        text-shadow: none;
-        margin: 0 0 2px;
-        line-height: 1.4;
-      }
-
-      /* supertitle */
-      h5 {
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        color: $typo-grey;
-      }
-    }
-  }
-
-
-
-  /* conv home intro paragraph */
-  &.intro {
-    padding-top: 0;
-    .conv-date {
-      color: $typo-grey;
-    }
-    h1 {}
-
-    /* base paragraph text */
-    div {
-      font-size: $base-font-size;
-      line-height: $line-height;
-      color: $typo-dim;
-
-      b, strong {
-        font-weight: $f-medium;
-      }
-
-      a, em {
-        background: $grey-light;
-        border-radius: $border-radius;
-        padding: 2px 4px;
-        color: $typo-light;
-      }
-      i, em {
-        font-style: italic;
-      }
-      ul {
-
-        li {
-
-        }
-      }
-    }
-  }
-
-
-
-  /* conv home location + maps */
-  &.maps {
-
-
-    a {
-      background: $red;
-      color: $white;
-    }
-
-    ul {
-
-
-      li {
-
-        ion-icon {
-          margin-right: 10px;
-          color: rgba(73, 219, 101, 0.8);
-          font-size: 3rem;
-        }
-
-
-
-      }
-    }
-
-    /* google maps */
-    #map {
-      margin-top: 25px;
-      margin-bottom: 25px;
-      border-radius: $border-radius;
-
-      a {
-        background: transparent;
-      }
-      .gm-style {
-        filter: grayscale(100%);
-        .gm-control-active,
-        .gm-style-cc,
-        .gmnoprint {
-          display: none;
-        }
-      }
-
-
-    }
-  }
-
-  /* conv home support */
-  &.support {
-
-    .card {
-      position: relative;
-      box-shadow: $box-shadow-xl;
-      margin-top: 25px;
-
-    }
-
-
-
-    .profile-image {
-      margin: 0 auto;
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      overflow: hidden;
-
-      img {
-        padding-left: 0;
-        width: 100%;
-        height: auto;
-        // transform: scale(1.4);
-      }
-    }
-    .profile-data {
-
-
-      /* base typo */
-      h1, h2, h3, h4, h5, p, ul, li {
-        color: $typo;
-        text-shadow: none;
-        margin-bottom: 0;
-      }
-
-
-      ul {
-        margin: 0;
-        padding-left: 0;
-        li {
-          list-style-type: none;
-          font-size: $small;
-          font-weight: $f-medium;
-          color: $grey;
-
-        }
-      }
-      ion-icon {
-        color: $grey;
-        &:before {
-          margin-right: 1rem;
-
-        }
-      }
-    }
-
-
-  }
-
-
-
-
-
-}
-
-
-
-
-
-/*
-** custom pages from tabs
-** conv page agenda
-** conv page speakers
-** conv page speaker
-*/
-page-agenda {
-  section {
-    session-list {
-
-      ion-list {
-        &.list,
-        &.list-md,
-        &.list-ios {
-          margin-top: 25px;
-          padding: 10px;
-          background: $grey-soft;
-          border-radius: $border-radius;
-
-          ion-item-sliding {
-            margin-bottom: 12px;
-            border-radius: $border-radius-xs;
-
-            .item-block {
-              border-bottom: none !important;
-              .item-inner {
-                border-bottom: none;
-              }
-            }
-          }
-        }
-      }
-
-    }
-  }
-
-
-}
-page-speakers,
-page-speaker {
-  section {
-    &.speakers,
-    &.speaker {
-
-      &.card {
-        position: relative;
-        box-shadow: $box-shadow-xl;
-        margin-top: 25px;
-
-
-
-      }
-
-
-      ion-card {
-        /* base typo */
-        h1, h2, h3, h4, h5, p, ul, li {
-          color: $typo;
-          text-shadow: none;
-          margin-bottom: 0;
-        }
-      }
-
-
-      ion-card-header {
-
-        &.card-header,
-        &.card-header-md,
-        &.card-header-ios {
-
-          ion-avatar {
-            margin: 0 auto;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            overflow: hidden;
-            float: left;
-            margin-right: 20px;
-
-            img {
-              width: 100%;
-              height: auto;
-              background: rgba(0,0,0,.25);
-            }
-          }
-          .speaker-name {
-            font-size: $h4-size;;
-          }
-
-          ul {
-            margin: 0;
-            padding-left: 0;
-            li {
-              list-style-type: none;
-              font-size: $small;
-              font-weight: $f-medium;
-              color: $grey;
-
-              &.job-title,
-              &.company {
-
-              }
-            }
-          }
-        }
-
-      }
-
-      ion-card-content {
-        &.card-content,
-        &.card-content-md,
-        &.card-content-ios {
-          position: relative;
-          padding: 22px;
-
-          .short-description {
-            color: $typo;
-            font-size: $small;
-            font-weight: $f-medium;
-
-          }
-        }
-      }
-	  
-	  .speaker .short-description {
-        color: $typo;
-        font-size: $small;
-        font-weight: $f-medium;
-       }
-	  
-      .speaker-agenda {
-        padding-top: 50px;
-      }
-
-    }
+.supertitle {
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  color: $font-color-secondary;
+  font-weight: $font-normal;
+  margin-bottom: .5rem;
+
+  + h1,
+  + h2,
+  + h3,
+  + h4,
+  + h5 {
+    margin-top: 0;
   }
 }
+.subtitle {
+  color: $font-color-secondary;
+  font-weight: $font-medium;
 
-
-
-
-
-/*
-** custom ui elements
-** button add conference
-** agenda nav
-*/
-
-/* button add conference */
-ion-fab {
-  &[right] {
-    right: 30px;
-    right: calc(30px + constant(safe-area-inset-right));
-    right: calc(30px + env(safe-area-inset-right));
-  }
-  &[bottom] {
-    bottom: 30px;
-  }
-
-  button {
-    &.fab-md,
-    &.fab-ios {
-      box-shadow: $button-shadow-red;
-      background: $red;
-    }
-  }
-}
-
-ion-segment {
-  &.segment,
-  &.segment-md,
-  &.segment-ios {
-    .segment-button {
-      border: none;
-      color: $red;
-      &:hover:not(.segment-activated) {
-        background: rgba(177, 31, 48, .1);
-      }
-      &.segment-activated {
-        color: $white;
-        background: $red;
-        border-radius: $border-radius-xs;
-      }
-    }
-  }
 }
