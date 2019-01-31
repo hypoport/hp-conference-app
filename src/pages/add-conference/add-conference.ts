@@ -98,12 +98,12 @@ export class AddConferencePage {
   
   openQrReader(){
 	  
-  		/* example encryption
-		let b64 = CryptoJS.AES.encrypt('{	"key": "Konferenz2019", "pw": "Berlin-2019", "brand": "ep" }', this.globalProvider.qrSecret()).toString();
+  		/* example encryption 
+		let b64 = CryptoJS.AES.encrypt('{	"key": "konf", "pw": "password", "brand": "ep" }', this.globalProvider.qrSecret()).toString();
 	    let e64 = CryptoJS.enc.Base64.parse(b64);
 	    let eHex = e64.toString(CryptoJS.enc.Hex);
 	    
-		console.log('test '+eHex);*/
+		console.log('test '+eHex); */
 		
 		this.barcodeScanner.scan().then(barcodeData => {
 		
