@@ -20,13 +20,12 @@
           <ion-slide>
             <ion-card class="service-card">
               <ion-card-content>
-                <h6>Supertitle</h6>
-                <h3>Machine Learning und was wir damit anfangen können.</h3>
-                <h5>{{ conference?.startDate | date: 'dd.' }}-{{ conference?.endDate | date: 'dd.'}}</h5>
+                <h6>Location + Date</h6>
+                <h2>{{ conference?.directions?.address }}</h2>
+                <h5>{{ conference?.startDate | date: 'dd.MM.yyyy' }} - {{ conference?.endDate | date: 'dd.MM.yyyy'}}</h5>
               </ion-card-content>
-              <ion-icon name="time"></ion-icon>
+              <ion-icon name="pin"></ion-icon>
             </ion-card>
-
           </ion-slide>
 
         <ion-slide>
