@@ -187,3 +187,82 @@ ul {
   font-weight: $font-medium;
 
 }
+
+
+
+
+/*
+** base structure
+** ion-app
+** ion-header
+** ion-title
+** ion-content
+** ion-tabs
+*/
+
+
+ion-title {}
+  .toolbar-title-md {
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: $font-medium;
+}
+// disable base toolbar background shadow
+.header-md {
+  &:after {
+    display: none;
+  }
+}
+.tabbar {
+  &:before {
+    display: none;
+  }
+}
+
+ion-content {
+  &.content-ios,
+  &.content-md {
+    // background: $off-white;
+  }
+}
+
+
+
+
+
+
+
+
+/*
+** base slider
+** ion-slides
+*/
+
+ion-slides[card-slides] {
+
+	height: auto;
+
+	margin-left: -$content-padding;
+	width: calc(100% + #{$content-padding * 2});
+
+
+
+	.swiper-container {
+		// padding-bottom: 30px;
+    // height: 100%;
+	}
+	.swiper-slide, .swiper-container, .swiper-wrapper {
+		height: 100%;
+		overflow: visible;
+	}
+	.swiper-slide .slide-zoom, .swiper-slide .card {
+		height: 100%;
+	}
+	.swiper-slide img {
+	}
+	.swiper-slide .hero-background {
+		// background-position: center center;
+		// background-size: cover;
+		// min-height: 30vh;
+	}
+}
