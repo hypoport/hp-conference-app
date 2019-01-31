@@ -74,7 +74,13 @@ ion-app {
 
 
 
-
+ion-card {
+  &.card-ios,
+  &.card-md {
+    border-radius: $border-radius;
+    box-shadow: none;
+  }
+}
 
 
 

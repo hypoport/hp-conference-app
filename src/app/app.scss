@@ -284,11 +284,13 @@ ion-card {
   position: relative;
 
 
+
   ion-card-content {
     display: flex;
     flex-flow: column wrap;
     flex-grow: 1;
     justify-content: space-between;
+    min-height: 115px;
 
   }
   ion-icon {
@@ -310,9 +312,11 @@ ion-card {
 
     /* shape */
     background: $background-color;
-    border-radius: $border-radius;
+    // border-radius: $border-radius;
     border: $base-border;
-    box-shadow: none;
+    border-radius: $border-radius-x2;
+    box-shadow: $box-shadow;
+    // box-shadow: none;
 
     /* typo reset */
     h1, h2, h3, h4, h5, h6, p {
