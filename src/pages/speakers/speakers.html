@@ -7,83 +7,38 @@
 
   <section class="speakers">
 
+
+
+
     <ion-list no-lines no-padding>
 
-      <ion-card class="speaker-card" (click)="goToSpeakerPage(speaker)" *ngFor="let speaker of speakers">
+      <ion-item no-padding (click)="goToSpeakerPage(speaker)" *ngFor="let speaker of speakers" class="speaker-card">
+      <ion-grid>
+        <ion-row align-items-center>
 
-        <ion-grid>
-          <ion-row align-items-center>
-            <ion-col col-2>
-  	          <div class="profile-image">
-  	            <img [src]="speaker.profileFoto" alt="Speaker profile foto">
-  	          </div>
-  	        </ion-col>
+          <!-- speaker profile picture -->
+          <ion-col col-2 class="profile-image">
+            <ion-avatar *ngIf="speaker.profileFoto">
+              <img [src]="speaker.profileFoto" alt="Speaker profile foto">
+            </ion-avatar>
+          </ion-col>
 
-            <ion-col auto>
-  	          <div class="profile-data">
-  	            <h4 class="speaker-name">{{ speaker.name }}</h4>
+          <!-- speaker profile data (name/company/jobtitle) -->
+          <ion-col auto class="profile-data">
+              <h3 class="speaker-name" *ngIf="speaker.name">{{ speaker.name }}</h3>
 
-                <ul>
-        	        <li class="job-title">{{ speaker.jobTitle }}</li>
-        	        <li class="company">{{ speaker.company }}</li>
-        	      </ul>
+              <div class="speaker-data">
+                <h5 class="job-title">{{ speaker.jobTitle }}</h5>
+                <h5 class="company">{{ speaker.company }}</h5>
+              </div>
 
-  	          </div>
-  	        </ion-col>
-          </ion-row>
+          </ion-col>
 
-        </ion-grid>
-      </ion-card>
+        </ion-row>
+      </ion-grid>
 
+    </ion-item>
 
-
-
-
-
-
-        <!-- <ion-row align-items-center  *ngFor="let speaker of speakers">
-          <ion-card class="speaker-card" (click)="goToSpeakerPage(speaker)">
-          <ion-col col-2>
-	          <div class="profile-image">
-	            <img [src]="speaker.profileFoto" alt="Speaker profile foto">
-	          </div>
-	        </ion-col>
-
-          <ion-col auto>
-	          <div class="profile-data">
-	            <h4 class="speaker-name">{{ speaker.name }}</h4>
-
-              <ul>
-      	        <li class="job-title">{{ speaker.jobTitle }}</li>
-      	        <li class="company">{{ speaker.company }}</li>
-      	      </ul>
-
-	          </div>
-	        </ion-col> -->
-
-          <!-- <ion-col col-12 col-md-6 align-self-stretch align-self-center *ngFor="let speaker of speakers">
-            <ion-card class="speaker-card" (click)="goToSpeakerPage(speaker)">
-
-              <ion-card-header>
-                <ion-avatar item-start>
-                  <img [src]="speaker.profileFoto" alt="Speaker profile foto">
-                </ion-avatar>
-                <h4 class="speaker-name">{{speaker.name}}</h4>
-                <ul>
-                  <li class="job-title">{{speaker.jobTitle}}</li>
-                  <li class="company">{{speaker.company}}</li>
-                </ul>
-              </ion-card-header>
-
-
-            </ion-card>
-
-          </ion-col> -->
-          <!-- </ion-card> -->
-        <!-- </ion-row> -->
-
-
-      <!-- </ion-grid> -->
 
 
 

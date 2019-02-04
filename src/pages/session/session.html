@@ -24,6 +24,7 @@
   <section class="agenda-speaker" *ngIf="speakers">
 
     <ion-list no-lines no-padding>
+
       <ion-item no-padding *ngFor="let speaker of speakers" (click)="goToSpeakerPage(speaker)" class="speaker-card">
       <ion-grid>
         <ion-row align-items-center>

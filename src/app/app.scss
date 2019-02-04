@@ -174,18 +174,18 @@ hr {
   box-shadow: $card-shadow-secondary;
 
   /* override base list settings for better card styling */
-  .speaker-card {
-    &.item-ios,
-    &.item-md {
-      &.item-block {
-        .item-inner {
-          padding-right: 0;
-        }
+
+  &.item-ios,
+  &.item-md {
+    &.item-block {
+      margin-bottom: 1rem;
+      .item-inner {
+        padding-right: 0;
       }
-      .label-ios,
-      .label-md {
-        margin: 5px;
-      }
+    }
+    .label-ios,
+    .label-md {
+      margin: 5px;
     }
   }
 }
