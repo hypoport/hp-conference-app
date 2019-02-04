@@ -162,7 +162,7 @@
 
 
 
-
+  <div class="support-global">
     <button ion-button round small icon-start>
       <ion-icon name="call"></ion-icon>
         {{ conference.contact.telephone }}
@@ -172,27 +172,47 @@
       <ion-icon name="paper-plane"></ion-icon>
         {{ conference.contact.email }}
     </button>
+</div>
 
 
-    <ng-container *ngIf="conference?.contact?.persons">
 
-	    <ion-grid>
-	      <ion-row *ngFor="let person of conference.contact.persons" align-items-center>
-	        <ion-col col-2>
-	          <div class="profile-image">
-	            <img [src]="person.avatarUrl" height="44"/>
-	          </div>
-	        </ion-col>
-	        <ion-col auto>
-	          <div class="profile-data">
-	            <h4>{{ person.name }}</h4>
+
+
+    <ion-list no-lines no-padding *ngIf="conference?.contact?.persons" class="support-individual">
+      <ion-item no-padding *ngFor="let person of conference.contact.persons" class="speaker-card">
+        <ion-grid>
+
+          <ion-row align-items-center>
+
+            <!-- contact profile picture -->
+            <ion-col col-2 class="profile-image">
+              <ion-avatar>
+                <img [src]="person.avatarUrl">
+              </ion-avatar>
+            </ion-col>
+
+            <!-- contact profile data (name/mail/tele) -->
+            <ion-col auto class="profile-data">
+              <h3 class="contact-name" *ngIf="person.name">{{ person.name }}</h3>
+
               <button ion-button round small color="light" *ngIf="person?.telephone">{{ person.telephone }}</button>
               <button ion-button round small color="light" *ngIf="person?.email">{{ person.email }}</button>
-	          </div>
-	        </ion-col>
-	      </ion-row>
-	    </ion-grid>
-    </ng-container>
+
+            </ion-col>
+
+          </ion-row>
+
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+
+
+
+
+
+
+
+
 
   </section>
 

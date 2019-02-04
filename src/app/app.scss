@@ -164,8 +164,6 @@ hr {
 /*
 ** helper classes
 */
-
-
 .speaker-card {
   /* shape */
   background: $background-color;
@@ -174,7 +172,6 @@ hr {
   box-shadow: $card-shadow-secondary;
 
   /* override base list settings for better card styling */
-
   &.item-ios,
   &.item-md {
     &.item-block {
@@ -192,14 +189,6 @@ hr {
 
 
 
-.contact-label {
-  display: inline-block;
-  padding: 2px 6px;
-  border-radius: $border-radius;
-  background: lighten($lightgrey, 10%);
-  // font-size: 1.0rem;
-
-}
 
 
 

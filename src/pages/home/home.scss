@@ -63,101 +63,58 @@ page-home {
       background-repeat: no-repeat;
   }
 
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.gm-style {
-  filter: grayscale(100%);
-  .gm-control-active,
-  .gm-style-cc,
-  .gmnoprint {
-    display: none;
-  }
-}
-
-
-
-
-ion-col.fixed-col {
-  flex: 0 0 100px;
-}
-
-
-
-section {
-  &.service {
-    padding-top: 27px;
-    padding-bottom: 0;
-  }
-  &.intro {}
-
-
-
-  /* kontakt / support */
-  &.support {
-
-
-    ion-grid {
-        margin-top: 27px;
-      ion-row {
-        margin-bottom: 1rem;
-
-        /* shape */
-        padding: 10px 5px;
-        background: $background-color;
-        border: $base-border;
-        border-radius: calc(#{$border-radius * 2});
-        box-shadow: $card-shadow-secondary;
-
-
-        ion-col {}
-      }
+  .gm-style {
+    filter: grayscale(100%);
+    .gm-control-active,
+    .gm-style-cc,
+    .gmnoprint {
+      display: none;
     }
+  }
 
 
+  section {
+    &.service {}
+    &.intro {}
+    &.support {}
 
-    .profile-image {
-      line-height: 0;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      overflow: hidden;
-      img {
-        width: 100%;
-        height: auto;
-        transform: scale(1.1);
-      }
-    }
 
-    .profile-data {
-      h4 {
-        margin-bottom: .25rem;
-      }
-      .button {
-        margin-left: 0;
-      }
-      .button-small-ios,
-      .button-small-md {
+  }
+
+
+  .support-individual {
+    .button-ios,
+    .button-md {
+
+      margin-left: 0;
+      &.button-small-ios,
+      &.button-small-md {
         font-size: $font-h6;
       }
     }
   }
+  .button-md {
+    text-transform: none;
+    box-shadow: none;
+  }
+
+
+  .item-ios,
+  .item-md {
+    // ion-avatar {
+    //   border-radius: 50%;
+    //   overflow: hidden;
+    //   width: 45px;
+    //   height: 45px;
+    //   img {
+    //     width: 100%;
+    //     height: auto;
+    //     border-radius: 0;
+    //     overflow: visible;
+    //   }
+    // }
+
+  }
+
+
 }
