@@ -40,11 +40,14 @@
               </div>
 
               <ion-card-content>
+                <div class="card-content-top">
                 <h6>Supertitle</h6>
+                </div>
+                <div class="card-content-bottom">
                 <h1>{{ currentConference.title }}</h1>
-                <h1>{{ currentConference.subtitle }}</h1>
+                <h2>{{ currentConference.subtitle }}</h2>
                 <h5>{{ currentConference.startDate | date: 'dd.MM.' }} - {{ currentConference.endDate | date: 'dd.MM.yyyy' }}</h5>
-
+                </div>
               </ion-card-content>
           </ion-card>
         </ion-slide>
@@ -134,7 +137,7 @@
 
   </main>
 
-  <ion-fab right bottom>
+  <ion-fab center bottom>
     <button ion-fab color="primary" (click)="this.presentAddConferenceModal()">
       <ion-icon name="md-add"></ion-icon>
     </button>
