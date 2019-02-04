@@ -30,50 +30,37 @@ page-home {
     display: none;
   }
 
+  // 
+  // .card-ios,
+  // .card-md {
+  //   box-shadow: $card-shadow-secondary;
+  // }
 
-
-
-  ion-card {
-    &.card-ios,
-    &.card-md {
-
-      &.service-card {
-        // border-radius: $border-radius;
-        // box-shadow: none;
-
-      }
-    }
-  }
 
 
   /* conv home hero */
   .content-ios {
     .hero-image {
-      margin-top: calc(#{$toolbar-ios-height * 1});
+      margin-top: calc(#{$toolbar-ios-height * 1.5});
     }
   }
   .content-md {
       .hero-image {
-        margin-top: calc(#{$toolbar-md-height * 1});
+        margin-top: calc(#{$toolbar-md-height * 1.5});
       }
     }
-  .content-wp {
-    .hero-image {
-      margin-top: calc(#{$toolbar-wp-height * 1});
-    }
-  }
+
+
 
 
   .hero-image {
       min-height: 55vh;
       padding: 0;
-      // margin-left: calc(#{$content-padding + 12px });
-      // margin-right: calc(#{$content-padding + 12px });
-
-
+      margin-left: calc(#{$content-padding + 12px });
+      margin-right: calc(#{$content-padding + 12px });
 
       /* shape */
-      // border-radius: $border-radius-x2;
+      border-radius: $border-radius-x2;
 
       /* image position */
       background-position: center center;
@@ -124,87 +111,58 @@ section {
   &.service {
     padding-top: 27px;
     padding-bottom: 0;
-
   }
-  &.intro {
-    .conv-title {
-      display: flex;
-      flex-flow: column wrap;
-      justify-content: center;
+  &.intro {}
 
-    }
-    .conv-date {
-      display: flex;
-      flex-flow: column wrap;
-      justify-content: center;
-      align-items: center;
 
-      text-align: center;
-      height: 100px;
-      /* shape */
-      background: $background-color;
-      border-radius: $border-radius;
-      box-shadow: $box-shadow;
 
-      h2, h5 {
-        margin-top: 0;
-        margin-bottom: 0;
-      }
-    }
-  }
+  /* kontakt / support */
   &.support {
 
 
     ion-grid {
-            padding-top: 27px !important;
+        margin-top: 27px;
       ion-row {
-        margin-bottom: 2rem;
-        ion-col {
+        margin-bottom: 1rem;
 
-        }
+        /* shape */
+        padding: 10px 5px;
+        background: $background-color;
+        border: $base-border;
+        border-radius: calc(#{$border-radius * 2});
+        box-shadow: $card-shadow-secondary;
+
+
+        ion-col {}
       }
     }
 
-    .profile-data {
 
-      .button {
-        margin-left: 0;
-      }
-      .button-small-ios,
-      .button-small-md {
-        font-size: $font-h5;
-
-
-      }
-
-
-    }
 
     .profile-image {
-
       line-height: 0;
       width: 44px;
       height: 44px;
-
-
       border-radius: 50%;
       overflow: hidden;
-
-
-
       img {
         width: 100%;
         height: auto;
         transform: scale(1.1);
       }
     }
-    .profile-data {
 
+    .profile-data {
       h4 {
         margin-bottom: .25rem;
       }
-
-
+      .button {
+        margin-left: 0;
+      }
+      .button-small-ios,
+      .button-small-md {
+        font-size: $font-h6;
+      }
     }
   }
 }
