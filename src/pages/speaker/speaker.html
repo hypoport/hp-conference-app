@@ -18,31 +18,37 @@
 
 
 	<ion-grid class="speaker-head">
+
 	  <ion-row align-items-center>
 
-	    <ion-col col-auto class="speaker-avatar">
-            <ion-avatar item-start>
+	    <ion-col col-auto>
+            <div class="profile-image">
             	<img [src]="speaker.profileFoto">
-            </ion-avatar>
+            </div>
         </ion-col>
 
 	    <ion-col align-start>
 	    <h4 class="speaker-name">{{speaker.name}}</h4>
+
 	      <ul>
 	        <li class="job-title">{{speaker.jobTitle}}</li>
 	        <li class="company">{{speaker.company}}</li>
 	      </ul>
+
+
 		</ion-col>
 
 	  </ion-row>
 	</ion-grid>
-	<hr/>
-	<div class="short-description" [innerHtml]="speaker?.description"></div>
 
+	<!-- <hr/> -->
+
+	<p class="short-description" [innerHtml]="speaker?.description"></p>
 
 	<div class="speaker-agenda" *ngIf="speakerSessions.length > 0">
-		<h2>Vorträge von {{speaker.name}}</h2>
-	    <session-list [sessionList]="speakerSessions"></session-list>
+		<h3>Vorträge von {{speaker.name}}</h3>
+	    <session-list [sessionList]="speakerSessions">
+      </session-list>
 	</div>
 
   </section>
