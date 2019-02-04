@@ -8,14 +8,11 @@ page-speaker {
 			list-style-type: none;
 			margin: 0;
 			padding: 0;
-			// text-align: left;
 
 			li {
 				display: inline-block;
-				// float: left;
 				text-align: left;
 				padding-left: 0;
-				// font-size: $font-h5;
 				color: $font-color-tertiary;
 			}
 		}
