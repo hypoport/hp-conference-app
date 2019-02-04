@@ -2,6 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {GlobalProvider} from "../../providers/global/global";
 import {Storage} from "@ionic/storage";
+import {Device} from '@ionic-native/device';
 import {Speaker} from "../../models/speaker";
 
 const STORAGE_KEY = "speakers";
@@ -14,15 +15,17 @@ export class SpeakerService {
   constructor(public http: HttpClient, 
   			  private storage: Storage,
   			  private global: GlobalProvider,
+  			  private device: Device
   			  ) {
 	
   }
 
-  public loadSpeakers(conferenceId: string): Promise<Array<Speaker>> {
+  public loadSpeakers(conferenceId: string, token: string): Promise<Array<Speaker>> {
     let url = this.global.apiURL('conference/speaker');
     return this.http.post(url, {
       "key": conferenceId,
-      "uuid": 'naap'
+      "token": token,
+      "uuid": this.device.uuid
     }, {
       headers: {'Content-Type': 'application/json; charset=utf-8'}
     }).toPromise()

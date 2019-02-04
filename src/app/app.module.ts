@@ -25,6 +25,7 @@ import {FavoritesService} from '../providers/favorites/favorites-service';
 import {NotificationService} from '../providers/notifications/notifications-service';
 import {HttpClientModule} from '@angular/common/http';
 import {IonicStorageModule} from '@ionic/storage';
+import {Device} from '@ionic-native/device';
 
 import {ComponentsModule} from "../components/components.module";
 
@@ -78,6 +79,7 @@ registerLocaleData(localeDe);
     StatusBar,
     BarcodeScanner,
     LocalNotifications,
+    Device,
     SplashScreen, {provide: ErrorHandler, useClass: IonicErrorHandler},
     AgendaService,
     ConferenceService,

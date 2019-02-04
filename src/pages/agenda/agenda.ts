@@ -39,7 +39,7 @@ export class AgendaPage {
   }
   
   public refreshAgenda(refresher: Refresher) {
-    this.agendaService.loadAgenda(this.globalProvider.conferenceId).then((agenda: Agenda) => {
+    this.agendaService.loadAgenda(this.globalProvider.conferenceId,this.globalProvider.conferenceToken).then((agenda: Agenda) => {
       this.sessions = agenda.sessions;
       refresher.complete();
       const toast = this.toastCtrl.create({

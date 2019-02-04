@@ -10,6 +10,7 @@ import { ENV } from './../../../env.js';
 export class GlobalProvider {
 
   private _conferenceId: string;
+  private _conferenceToken: string;
 
   private _apiURL: string;
   private _qrPayloadSecret: string;
@@ -28,6 +29,15 @@ export class GlobalProvider {
   set conferenceId(value: string) {
     this._conferenceId = value;
   }
+
+  get conferenceToken(): string {
+    return this._conferenceToken;
+  }
+
+  set conferenceToken(value: string) {
+    this._conferenceToken = value;
+  }
+
 
  public appVersion() {
     return this._appVersion;

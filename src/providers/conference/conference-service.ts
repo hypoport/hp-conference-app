@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {Conference} from "../../models/conference";
 import {HttpClient} from "@angular/common/http";
 import {Storage} from "@ionic/storage";
+import {Device} from '@ionic-native/device';
 import {GlobalProvider} from "../../providers/global/global";
 
 import "rxjs/add/observable/of";
@@ -20,7 +21,8 @@ export class ConferenceService {
     private storage: Storage,
     private agendaService: AgendaService,
     private speakerService: SpeakerService,
-    private global: GlobalProvider) {
+    private global: GlobalProvider,
+    private device: Device) {
   }
 
   public addConference(conferenceCode: string, conferencePassword: string): Promise<Conference> {
@@ -30,32 +32,33 @@ export class ConferenceService {
     return this.http.post(url, {
       "key": conferenceCode,
       "password": conferencePassword,
-      "uuid": 'naap'
+      "uuid": this.device.uuid
     }, {
       headers: {'Content-Type': 'application/json; charset=utf-8'}
     }).toPromise()
       .then((conference: Conference): Conference => {
         this.conferences.set(conference.id.toString(), conference);
         this.storage.set(STORAGE_KEY, this.conferences);
-        this.agendaService.loadAgenda(conference.id);
-        this.speakerService.loadSpeakers(conference.id);
+        this.agendaService.loadAgenda(conference.id, conference.token);
+        this.speakerService.loadSpeakers(conference.id, conference.token);
         return conference;
       });
   }
 
-  public loadConference(conferenceId: string): Promise<Conference> {
+  public loadConference(conferenceId: string, token: string): Promise<Conference> {
     const url = this.global.apiURL('conference');
     return this.http.post(url, {
       "key": conferenceId,
-      "uuid": 'naap'
+      "token": token,
+      "uuid": this.device.uuid
     }, {
       headers: {'Content-Type': 'application/json; charset=utf-8'}
     }).toPromise()
       .then((conference: Conference): Conference => {
         this.conferences.set(conference.id.toString(), conference);
         this.storage.set(STORAGE_KEY, this.conferences);
-        this.agendaService.loadAgenda(conference.id);
-        this.speakerService.loadSpeakers(conference.id);
+        this.agendaService.loadAgenda(conference.id, token);
+        this.speakerService.loadSpeakers(conference.id, token);
         return conference;
       });      
   }
