@@ -15,4 +15,51 @@ page-session {
     color: gray;
     font-size: 30px;
   }
+
+
+  section {
+
+    &.agenda-speaker {
+      padding-top: 27px;
+      ion-item {
+        margin-bottom: 1rem;
+        /* shape */
+        padding: 10px 5px;
+        background: $background-color;
+        border: $base-border !important;
+        border-radius: calc(#{$border-radius * 2});
+        box-shadow: $card-shadow-secondary;
+      }
+      ion-avatar {
+        margin-left: 8px !important;
+      }
+      .profile-image {
+        line-height: 0;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: auto;
+          transform: scale(1.1);
+        }
+      }
+      .profile-data {
+        h4 {
+          margin-bottom: .25rem;
+        }
+        .button {
+          margin-left: 0;
+        }
+        .button-small-ios,
+        .button-small-md {
+          font-size: $font-h6;
+        }
+      }
+    }
+  }
+
+
+
 }
