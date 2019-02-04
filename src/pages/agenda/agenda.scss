@@ -1,3 +1,108 @@
 page-agenda {
 
+
+
+
+  /* filter styling */
+  .segment {
+    background: $background-color;
+  }
+  .segment-ios {
+    margin-top: calc(#{$toolbar-ios-height});
+    .segment-button {
+      border-radius: 0 !important;
+
+      border: 0;
+      border-bottom-width: $segment-button-md-border-bottom-width;
+      border-bottom-color:  rgba($black, .10);
+      border-style: solid;
+
+      &.segment-activated {
+        background-color: transparent;
+        color: $link-color;
+        border-bottom-color:  $link-color;
+      }
+      &:hover {
+        &:not(.segment-activated) {
+          background-color: rgba($link-color, 0);
+        }
+      }
+
+    }
+  }
+  .segment-md {
+    margin-top: calc(#{$toolbar-md-height});
+    .segment-button {
+      text-transform: none;
+    }
+  }
+
+  /* section top padding */
+  .content {}
+  .content-ios {
+    section {
+      &.agenda {
+        padding-top: calc(#{$toolbar-ios-height + 54px });
+      }
+    }
+  }
+  .content-md {
+    section {
+      &.agenda {
+        padding-top: calc(#{$toolbar-md-height + 54px });
+      }
+    }
+  }
+
+
+
+  /* base agenda list styling */
+  // TODO: merge with global app list style
+
+  session-list {
+    ion-list {
+      ion-item-sliding {
+
+      }
+    }
+  }
+
+
+
+  .item-wrapper {
+    &:last-child {
+      .item-block {
+        border-bottom: 0 !important;
+      }
+    }
+  }
+  button {}
+
+
+  /* base agenda list styling */
+  .item-ios,
+  .item-md {
+    .item-inner {
+      /* left agenda point line */
+      margin-left: -12px;
+      padding-left: 16px;
+      // border-left: .55px solid #c8c7cc;
+
+      &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+
+        background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='circle' class='svg-inline--fa fa-circle fa-w-16' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23c8c7cc' d='M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z'%3E%3C/path%3E%3C/svg%3E");
+
+        padding-right: 12px;
+        background-position: left 0px center;
+        background-repeat: no-repeat;
+        background-size: 8px 8px;
+      }
+    }
+  }
+
 }

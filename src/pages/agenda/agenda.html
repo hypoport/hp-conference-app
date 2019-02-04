@@ -1,3 +1,4 @@
+
 <ion-content padding>
 
   <ion-refresher (ionRefresh)="refreshAgenda($event)">
@@ -5,27 +6,28 @@
   </ion-refresher>
 
 
+  <ion-segment ion-fixed [(ngModel)]="activeSegment" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="allSessions">
+      Alle
+    </ion-segment-button>
+    <ion-segment-button value="favoriteSessions">
+      Favoriten
+    </ion-segment-button>
+  </ion-segment>
+
+
+
   <section class="agenda">
 
-    <h1 class="maximus">Agenda</h1>
 
-
-    <ion-segment [(ngModel)]="activeSegment" (ionChange)="segmentChanged($event)">
-      <ion-segment-button value="allSessions">
-        Alle
-      </ion-segment-button>
-      <ion-segment-button value="favoriteSessions">
-        Favoriten
-      </ion-segment-button>
-    </ion-segment>
 	<div [ngSwitch]="activeSegment">
 	  <div *ngSwitchCase="'allSessions'">
 	  	<session-list *ngIf="agenda && agenda.sessions" [sessionList]="agenda.sessions"></session-list>
 	  </div>
 	  <div *ngSwitchCase="'favoriteSessions'">
 		  <session-list *ngIf="agenda && favoSessions" [sessionList]="favoSessions"></session-list>
-	  </div>	
+	  </div>
 	</div>
-	
+
   </section>
 </ion-content>
