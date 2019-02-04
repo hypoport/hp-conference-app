@@ -7,15 +7,63 @@
 
   <section class="speakers">
 
-    <h1 class="maximus">Sprecher</h1>
+    <ion-list no-lines no-padding>
 
-    <ion-list>
-      <ion-grid>
-        <ion-row align-items-stretch>
+      <ion-card class="speaker-card" (click)="goToSpeakerPage(speaker)" *ngFor="let speaker of speakers">
 
-          <ion-col col-12 col-md-6 align-self-stretch align-self-center *ngFor="let speaker of speakers">
+        <ion-grid>
+          <ion-row align-items-center>
+            <ion-col col-2>
+  	          <div class="profile-image">
+  	            <img [src]="speaker.profileFoto" alt="Speaker profile foto">
+  	          </div>
+  	        </ion-col>
 
+            <ion-col auto>
+  	          <div class="profile-data">
+  	            <h4 class="speaker-name">{{ speaker.name }}</h4>
+
+                <ul>
+        	        <li class="job-title">{{ speaker.jobTitle }}</li>
+        	        <li class="company">{{ speaker.company }}</li>
+        	      </ul>
+
+  	          </div>
+  	        </ion-col>
+          </ion-row>
+
+        </ion-grid>
+      </ion-card>
+
+
+
+
+
+
+
+        <!-- <ion-row align-items-center  *ngFor="let speaker of speakers">
+          <ion-card class="speaker-card" (click)="goToSpeakerPage(speaker)">
+          <ion-col col-2>
+	          <div class="profile-image">
+	            <img [src]="speaker.profileFoto" alt="Speaker profile foto">
+	          </div>
+	        </ion-col>
+
+          <ion-col auto>
+	          <div class="profile-data">
+	            <h4 class="speaker-name">{{ speaker.name }}</h4>
+
+              <ul>
+      	        <li class="job-title">{{ speaker.jobTitle }}</li>
+      	        <li class="company">{{ speaker.company }}</li>
+      	      </ul>
+
+	          </div>
+	        </ion-col> -->
+
+          <!-- <ion-col col-12 col-md-6 align-self-stretch align-self-center *ngFor="let speaker of speakers">
             <ion-card class="speaker-card" (click)="goToSpeakerPage(speaker)">
+
               <ion-card-header>
                 <ion-avatar item-start>
                   <img [src]="speaker.profileFoto" alt="Speaker profile foto">
@@ -27,11 +75,19 @@
                 </ul>
               </ion-card-header>
 
+
             </ion-card>
 
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+          </ion-col> -->
+          <!-- </ion-card> -->
+        <!-- </ion-row> -->
+
+
+      <!-- </ion-grid> -->
+
+
+
+
     </ion-list>
   </section>
 </ion-content>
