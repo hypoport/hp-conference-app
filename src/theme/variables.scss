@@ -70,7 +70,7 @@ $text-color:                 color($colors, charcoal) !default;
 $text-ios-color:             $text-color !default;
 $text-md-color:              $text-color !default;
 
-$link-color:                 color($colors, dark) !default;
+$link-color:                 color($colors, primary) !default;
 
 $content-padding:            16px !default;
 $content-margin:             16px !default;
@@ -88,6 +88,8 @@ $toolbar-md-height:          56px !default;
 $toolbar-md-padding:         4px !default;
 $toolbar-wp-height:          44px !default;
 $toolbar-wp-padding:         4px !default;
+
+$toolbar-active-color:       $link-color !default;
 
 $toolbar-background:          color($colors, white) !default;
 $toolbar-ios-background:      $toolbar-background !default;
@@ -110,6 +112,7 @@ $tabs-ios-border-color:       rgba(0, 0, 0, 0) !default;
 // iOS only Sass variables can go here
 
 
+$segment-button-ios-border-radius:              4px !default;
 
 
 // App Material Design Variables
