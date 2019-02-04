@@ -166,6 +166,31 @@ hr {
 */
 
 
+.speaker-card {
+  /* shape */
+  background: $background-color;
+  border: $base-border !important;
+  border-radius: calc(#{$border-radius * 2});
+  box-shadow: $card-shadow-secondary;
+
+  /* override base list settings for better card styling */
+  .speaker-card {
+    &.item-ios,
+    &.item-md {
+      &.item-block {
+        .item-inner {
+          padding-right: 0;
+        }
+      }
+      .label-ios,
+      .label-md {
+        margin: 5px;
+      }
+    }
+  }
+}
+
+
 
 .contact-label {
   display: inline-block;
@@ -297,7 +322,7 @@ ion-slides[card-slides] {
 
 /*
 ** base ion items
-** ion-card (hero card, service card, ...)
+** ion-card (hero card, service card, speaker card, ...)
 ** ion-list (agenda, ...)
 ** ion-item
 */
@@ -324,23 +349,20 @@ ion-card {
 
   }
   ion-icon {
-    // position: absolute;
     display: flex;
-    // align-self: flex-end;
     width: 30px;
     height: 30px;
     border-radius: 30px;
-
     background: $white;
     border: $base-border;
     color: $font-color-tertiary;
 
+    /* vertical center */
     &:before {
       display: flex;
       flex-direction: column;
       justify-content: center;
       flex-grow: 1;
-
     }
 
   }
@@ -480,7 +502,6 @@ button {
   /* typo custom */
   /* supertitle */
   h6 {
-    // flex-grow: 1;
     font-size: $font-h6;
     text-transform: uppercase;
     letter-spacing: .1rem;
@@ -498,6 +519,11 @@ button {
     color: $font-color-tertiary;
   }
 }
+
+
+
+
+
 
 /* new button styling for ion-item */
 
