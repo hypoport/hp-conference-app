@@ -19,7 +19,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding no-bounce>
 
 <ion-grid>
   <ion-row>
@@ -47,10 +47,10 @@
   </ion-row>
 </ion-grid>
 
-<br/>
-<br/>
-
-<button ion-button block (click)="addConference(this.confCode,this.confPassword)">Hinzufügen</button>
-
-
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+  	<button ion-button block (click)="addConference(this.confCode,this.confPassword)">Hinzufügen</button>
+  </ion-toolbar>
+</ion-footer>
