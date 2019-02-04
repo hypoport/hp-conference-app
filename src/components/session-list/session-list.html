@@ -1,26 +1,28 @@
-    <ion-list #scheduleList [hidden]="sessions && sessions.length === 0">
+    <ion-list no-lines #scheduleList [hidden]="sessions && sessions.length === 0">
 
-      <ion-item-sliding *ngFor="let session of sessions" #slidingItem [attr.category]="session.category | lowercase"
+      <ion-item-sliding no-lines *ngFor="let session of sessions" #slidingItem [attr.category]="session.category | lowercase"
                         [hidden]="session.hide">
-		
-        <button ion-item *ngIf="session.description" (click)="goToSessionDetail(session)">
+
+        <button ion-item detail-none *ngIf="session.description" (click)="goToSessionDetail(session)">
+
           <h3>{{session.title}} <ion-icon name="star" *ngIf="session.isFavorite" [ngClass]="session.isFavorite ? 'star-active' : 'star-inactive'"></ion-icon></h3>
-          <p>
+          <h5>
             {{session.timeStart | date: 'HH:mm': 'CEST': 'de-DE'}} &mdash;
             {{session.timeEnd | date: 'HH:mm': 'CEST': 'de-DE'}}:
             {{session.location}}
-          </p>
+          </h5>
         </button>
-        
-        <ion-item *ngIf="!session.description || session.description == ''">
+
+
+        <ion-item no-lines detail-none *ngIf="!session.description || session.description == ''">
           <h3>{{session.title}} <ion-icon name="star" *ngIf="session.isFavorite" [ngClass]="session.isFavorite ? 'star-active' : 'star-inactive'"></ion-icon></h3>
-          <p>
+          <h5>
             {{session.timeStart | date: 'HH:mm': 'CEST': 'de-DE'}} &mdash;
             {{session.timeEnd | date: 'HH:mm': 'CEST': 'de-DE'}}
             {{session.location ? ':'+session.location : ''}}
-          </p>
+          </h5>
         </ion-item>
-		
+
       </ion-item-sliding>
 
     </ion-list>
