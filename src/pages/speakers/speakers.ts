@@ -28,7 +28,7 @@ export class SpeakersPage {
   }
 
   public refreshSpeakers(refresher: Refresher) {
-    this.speakerService.loadSpeakers(this.globalProvider.conferenceId).then((speakers: Array<Speaker>) => {
+    this.speakerService.loadSpeakers(this.globalProvider.conferenceId,this.globalProvider.conferenceToken).then((speakers: Array<Speaker>) => {
       this.speakers = speakers;
       refresher.complete();
       const toast = this.toastCtrl.create({

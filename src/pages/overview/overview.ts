@@ -44,8 +44,9 @@ export class OverviewPage {
     this.loadConferences().then(() => console.log("conferences loaded"));
   }
 
-  public goToConference(newConferenceId: string) {
+  public goToConference(newConferenceId: string, newToken: string) {
     this.globalProvider.conferenceId = newConferenceId;
+    this.globalProvider.conferenceToken = newToken;
     this.navCtrl.push(TabsPage);
   }
 

@@ -33,7 +33,7 @@ export class HomePage {
     if(!this.lastUpdate || this.lastUpdate.getTime() - new Date().getTime() > 1000*60){
 	    this.lastUpdate = new Date();
 	    setTimeout(()=>{
-		  this.conferenceService.loadConference(this.globalProvider.conferenceId).then((conference: Conference) => {
+		  this.conferenceService.loadConference(this.globalProvider.conferenceId,this.globalProvider.conferenceToken).then((conference: Conference) => {
 			if(conference) this.conference = conference;
 	      	console.log('background-update done');
 	      });		    
@@ -57,7 +57,7 @@ export class HomePage {
   }
 
   public refreshConference(refresher: Refresher) {
-    this.conferenceService.loadConference(this.globalProvider.conferenceId).then((conference: Conference) => {
+    this.conferenceService.loadConference(this.globalProvider.conferenceId, this.globalProvider.conferenceToken).then((conference: Conference) => {
       this.conference = conference;
       refresher.complete();
       const toast = this.toastCtrl.create({
