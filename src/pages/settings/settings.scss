@@ -1,3 +1,29 @@
 page-settings {
 
+  /* ion-list */
+
+
+  ion-list-header {}
+
+
+  ion-list {
+    ion-list-header {}
+    ion-label {}
+  }
+  .list-header-ios,
+  .list-header-md {
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .list {}
+  .list-ios,
+  .list-md {
+
+  }
+  .legal {
+    text-align: center;
+  }
+
+
 }

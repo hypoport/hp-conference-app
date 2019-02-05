@@ -17,35 +17,52 @@
 
 
 <ion-list class="switchers-list">
-   
-      <ion-list-header>Notifications</ion-list-header>
-      
+
+      <ion-list-header>
+        <h5>Notifications</h5>
+      </ion-list-header>
+
       <ion-item class="switcher-item">
-        <ion-label>Push-Notifications</ion-label>
+        <ion-label><p>Push-Notifications</p></ion-label>
         <ion-toggle></ion-toggle>
-      
-      </ion-item>
-      <ion-item class="switcher-item">
-        <ion-label>Benachrichtigung zur Agenda</ion-label>
-        <ion-toggle></ion-toggle>
-      </ion-item>
-      
-    </ion-list>
-    
-    <ion-list>
-      <ion-list-header>App Information</ion-list-header>
-      
-      <ion-item>
-	  	<ion-icon name="phone-portrait" item-start></ion-icon>
-        <p>Hypoport Tagungs-App<br/>v. {{this.globalProvider.appVersion()}}</p>
-        
-        <button ion-button clear item-end>Changelog</button>
 
       </ion-item>
-    
-    </ion-list>  
-  <button ion-button color="light" full>Über die App</button>
-  <button ion-button color="light" full>Support</button>
-  <button ion-button color="light" full>Datenschutz</button>
+      <ion-item class="switcher-item">
+        <ion-label>
+          <p>Benachrichtigung zur Agenda</p>
+        </ion-label>
+        <ion-toggle></ion-toggle>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-list>
+
+
+      <ion-list-header>
+        <h5>App Information</h5>
+      </ion-list-header>
+      <ion-item>
+	  	  <ion-icon name="phone-portrait" item-start></ion-icon>
+        <p>Hypoport Tagungs-App<br/>v. {{this.globalProvider.appVersion()}}</p>
+        <button ion-button clear item-end>Changelog</button>
+      </ion-item>
+
+    </ion-list>
+
+
+    <ion-grid class="legal">
+      <ion-row>
+        <ion-col>
+          <button ion-button small color="light">Über die App</button>
+          <button ion-button small color="light">Support</button>
+          <button ion-button small color="light">Datenschutz</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+
+
 
 </ion-content>
