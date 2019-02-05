@@ -1,39 +1,40 @@
 
 page-home {
 
-  .content-ios,
-  .content-md {
-
-  }
 
   main {
 
-    transform: translate3d(0,10px,10px);
+    transform: translate3d(0,32px,10px);
     background: $background-color;
-    border-top-left-radius: calc(#{$border-radius * 4});
-    border-top-right-radius: calc(#{$border-radius * 4});
+    // border-top-left-radius: calc(#{$border-radius * 4});
+    // border-top-right-radius: calc(#{$border-radius * 4});
 
-    background: linear-gradient(to bottom,
-                  rgba($white, .85) 0,
-                  rgba($white, .95) 30px,
-                  $white 70px);
+    // background: linear-gradient(to bottom,
+    //               rgba($white, .85) 0,
+    //               rgba($white, .95) 30px,
+    //               $white 70px);
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: calc(#{ 0 - $content-padding });;
+      left: calc(#{$content-padding + 0 });
+      right: calc(#{$content-padding + 0 });
+
+      border-top-left-radius: calc(#{$border-radius * 4});
+      border-top-right-radius: calc(#{$border-radius * 4});
+
+      height: calc(#{$content-padding + 0 });
+      background: $white;
+    }
   }
-  #map {
-    overflow: hidden;
-    position: relative;
-    display: inline-block;
-    // width: 100%;
-    height: 300px;
-    margin-left: -$content-padding;
-    width: calc(100% + #{$content-padding*2});
-
-    display: none;
-  }
 
 
 
 
-  /* conv home hero */
+
+  /* conv home hero image */
+  /* header bar margin */
   .content-ios {
     .hero-image {
       margin-top: calc(#{$toolbar-ios-height * 1.5});
@@ -44,24 +45,36 @@ page-home {
         margin-top: calc(#{$toolbar-md-height * 1.5});
       }
     }
-
-
-
-
+  /* size + position conv hero image */
   .hero-image {
       min-height: 55vh;
+
       padding: 0;
-      margin-left: calc(#{$content-padding + 12px });
-      margin-right: calc(#{$content-padding + 12px });
+      margin-left: calc(#{$content-padding + 0 });
+      margin-right: calc(#{$content-padding + 0 });
 
       /* shape */
-      border-radius: $border-radius-x2;
+      border-radius: calc(#{$border-radius * 3});
 
       /* image position */
       background-position: center center;
       background-size: auto 102%;
       background-repeat: no-repeat;
   }
+
+
+  /* google maps */
+    #map {
+      overflow: hidden;
+      position: relative;
+      display: inline-block;
+      // width: 100%;
+      height: 300px;
+      margin-left: -$content-padding;
+      width: calc(100% + #{$content-padding*2});
+
+      display: none;
+    }
 
   .gm-style {
     filter: grayscale(100%);
@@ -74,7 +87,9 @@ page-home {
 
 
   section {
-    &.service {}
+    &.service {
+      padding-top: 27px;
+    }
     &.intro {}
     &.support {}
 

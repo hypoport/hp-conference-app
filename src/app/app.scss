@@ -91,8 +91,6 @@ $card-shadow-secondary: 0px 4px 10px -8px rgba($black, .5); // small card, conta
 /* border */
 $base-border: 1px solid lighten($silver, 20%);
 $border-radius: 4px;
-$border-radius-x2: 8px;
-$border-radius-x3: 12px;
 
 
 
@@ -280,12 +278,15 @@ ion-content {
 ion-slides[card-slides] {
 
 	height: auto;
+  margin-left: calc(-#{$content-padding} + calc(#{$content-padding} - #{$card-ios-margin-left}));
+  width: calc(100% + #{$content-padding * 2} - calc(calc(#{$content-padding} - #{$card-ios-margin-left}) * 2)   );
 
-	margin-left: -$content-padding;
-	width: calc(100% + #{$content-padding * 2});
+  ion-slide {
+    &:first-of-type {
+      // margin-left: 4px;
+    }
 
-
-
+  }
 	.swiper-container {
 		// padding-bottom: 30px;
     // height: 100%;
@@ -293,6 +294,7 @@ ion-slides[card-slides] {
 	.swiper-slide, .swiper-container, .swiper-wrapper {
 		height: 100%;
 		overflow: visible;
+
 	}
 	.swiper-slide .slide-zoom, .swiper-slide .card {
 		height: 100%;
