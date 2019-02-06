@@ -76,7 +76,7 @@ $content-padding:            16px !default;
 $content-margin:             16px !default;
 
 /* background color */
-$background-color:           color($colors, white) !default;
+$background-color:           color($colors, offwhite) !default;
 $background-ios-color:       $background-color !default;
 $background-md-color:        $background-color !default;
 
@@ -95,7 +95,7 @@ $toolbar-background:          color($colors, white) !default;
 $toolbar-ios-background:      $toolbar-background !default;
 $toolbar-md-background:       $toolbar-background !default;
 
-$toolbar-border-color:        rgba(0, 0, 0, 0) !default;
+$toolbar-border-color:        rgba(0, 0, 0, 0.12) !default;
 $toolbar-ios-border-color:    $toolbar-border-color !default;
 $toolbar-md-border-color:     $toolbar-border-color !default;
 
@@ -103,8 +103,8 @@ $toolbar-md-border-color:     $toolbar-border-color !default;
 $tabs-background:             color($colors, white) !default;
 $tabs-ios-background:         $tabs-background !default;
 $tabs-md-background:          $tabs-background !default;
-$tabs-border-color:           rgba(0, 0, 0, 0) !default;
-$tabs-ios-border-color:       rgba(0, 0, 0, 0) !default;
+$tabs-border-color:           rgba(0, 0, 0, 0.12) !default;
+$tabs-ios-border-color:       rgba(0, 0, 0, 0.12) !default;
 
 
 // App iOS Variables

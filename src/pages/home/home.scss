@@ -5,14 +5,14 @@ page-home {
   main {
 
     transform: translate3d(0,32px,10px);
-    background: $background-color;
+    // background: $background-color;
     // border-top-left-radius: calc(#{$border-radius * 4});
     // border-top-right-radius: calc(#{$border-radius * 4});
 
     background: linear-gradient(to bottom,
-                  rgba($white, .85) 0,
-                  rgba($white, .95) 16px,
-                  rgba($white, 100) 32px);
+                  rgba($background-color, .85) 0,
+                  rgba($background-color, .95) 16px,
+                  rgba($background-color, 100) 32px);
 
     &:before {
       content: '';
@@ -26,8 +26,8 @@ page-home {
 
       height: calc(#{$content-padding + 0 });
       background: linear-gradient(to bottom,
-                    rgba($white, .75) 0,
-                    rgba($white, .85) 100%);
+                    rgba($background-color, .75) 0,
+                    rgba($background-color, .85) 100%);
     }
   }
 
@@ -123,21 +123,7 @@ page-home {
 
 
   .item-ios,
-  .item-md {
-    // ion-avatar {
-    //   border-radius: 50%;
-    //   overflow: hidden;
-    //   width: 45px;
-    //   height: 45px;
-    //   img {
-    //     width: 100%;
-    //     height: auto;
-    //     border-radius: 0;
-    //     overflow: visible;
-    //   }
-    // }
-
-  }
+  .item-md {}
 
 
 }

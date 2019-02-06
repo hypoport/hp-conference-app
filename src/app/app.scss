@@ -58,6 +58,10 @@ $black: #000000;
 
 
 
+$brand-primary: #b11f30;  // europace
+
+
+
 
 
 /* text colors */
@@ -80,7 +84,8 @@ $background-tertiary:           darken($background-color, 10%);
 $box-shadow: 0 4px 12px 10px rgba($black, .05);
 
 $card-shadow-primary: 0px 10px 30px 0px rgba($black, .1); // hero card
-$card-shadow-secondary: 0px 4px 10px -8px rgba($black, .5); // small card, contact card, speakers card
+$card-shadow-secondary: 0px 3px 6px -3px rgba($black, .2); // small card, contact card, speakers card
+
 
 
 
@@ -90,6 +95,7 @@ $card-shadow-secondary: 0px 4px 10px -8px rgba($black, .5); // small card, conta
 
 /* border */
 $base-border: 1px solid lighten($silver, 20%);
+
 $border-radius: 4px;
 
 
@@ -153,21 +159,26 @@ ul {
 }
 
 
-hr {
+
+hr,
+.content-ios hr,
+.content-md hr {
   height: 1px;
   background-color: transparent;
-  border-bottom: .55px solid #c8c7cc;
+  border-bottom: .55px solid rgba($black, .12);
 }
 
 
 /*
 ** helper classes
 */
+
 .speaker-card {
+
   /* shape */
-  background: $background-color;
+  background: $white;
   border: $base-border !important;
-  border-radius: calc(#{$border-radius * 2});
+  border-radius: calc(#{$border-radius * 1.4});
   box-shadow: $card-shadow-secondary;
 
   /* override base list settings for better card styling */
@@ -341,6 +352,7 @@ ion-card {
 
   }
   ion-icon {
+    position: relative;
     display: flex;
     width: 30px;
     height: 30px;
@@ -349,12 +361,46 @@ ion-card {
     border: $base-border;
     color: $font-color-tertiary;
 
+
+
+    border-color: lighten($brand-primary, 40%);
+    color: $brand-primary;
+    background: lighten($brand-primary, 55%);
+
+
+
+
+
+
     /* vertical center */
     &:before {
       display: flex;
       flex-direction: column;
       justify-content: center;
       flex-grow: 1;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      top: -50px;
+      left: -50px;
+      bottom: -50px;
+      right: -50px;
+      background: radial-gradient(
+                    transparent 0,
+                    transparent 22px,
+                    lighten($brand-primary, 52%) 22px,
+                    lighten($brand-primary, 52%) 23px,
+                    transparent 23px,
+                    transparent 31px,
+                    lighten($brand-primary, 55%) 31px,
+                    lighten($brand-primary, 55%) 32px,
+                    transparent 32px,
+                    transparent 40px,
+                    lighten($brand-primary, 57%) 40px,
+                    lighten($brand-primary, 57%) 41px,
+                    transparent 41px
+                    );
     }
 
   }
@@ -382,14 +428,17 @@ ion-card {
 .card-md {
 
   /* shape */
-  background: $background-color;
+  background: $white;
   border: $base-border;
   border-radius: calc(#{$border-radius * 3});
   box-shadow: $card-shadow-primary;
 
+
   &.service-card,
   &.speaker-card {
+      border-radius: calc(#{$border-radius * 1.4});
       box-shadow: $card-shadow-secondary;
+
   }
 
   /* typo reset */
@@ -448,33 +497,6 @@ ion-list {
 
 
 /* ion-item */
-button {
-  // &.item-ios,
-  // &.item-md {
-  //   .item-inner {
-  //     /* left agenda point line */
-  //     margin-left: -12px;
-  //     padding-left: 16px;
-  //     // border-left: .55px solid #c8c7cc;
-  //
-  //     &:before {
-  //       content: '';
-  //       position: absolute;
-  //       left: 0;
-  //       top: 0;
-  //       bottom: 0;
-  //
-  //       background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='circle' class='svg-inline--fa fa-circle fa-w-16' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23c8c7cc' d='M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z'%3E%3C/path%3E%3C/svg%3E");
-  //
-  //       padding-right: 12px;
-  //       background-position: left 0px center;
-  //       background-repeat: no-repeat;
-  //       background-size: 8px 8px;
-  //     }
-  //   }
-  // }
-}
-
 .item-ios,
 .item-md {
   /* typo reset */

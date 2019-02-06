@@ -1,11 +1,18 @@
+
 page-agenda {
 
 
 
+  .header-ios,
+  .header-md {
+   .toolbar-background-ios {
+     border-color: transparent;
+   }
+  }
 
   /* filter styling */
   .segment {
-    background: $background-color;
+    background: $white;
   }
   .segment-ios {
     margin-top: calc(#{$toolbar-ios-height});
