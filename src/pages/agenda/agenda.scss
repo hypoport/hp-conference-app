@@ -69,13 +69,19 @@ page-agenda {
 
 
 
-  .item-wrapper {
-    &:last-child {
+  /* disable last bottom border */
+	.list-ios,
+	.list-md {
+    .item-wrapper {
       .item-block {
-        border-bottom: 0 !important;
-      }
+  			&:last-child {
+  				border-bottom: 0;;
+  			}
+  		}
     }
-  }
+	}
+
+
   button {}
 
 

@@ -1,13 +1,98 @@
 page-add-conference {
-	
-	height: 270px !important;
-	top: unset !important;
-	bottom: 0px !important;
-	
-	#qrbutton {
-		height: 100%;
-		ion-icon {
-			font-size: 64px;
+
+	// height: 270px !important;
+	// top: unset !important;
+	// bottom: 0px !important;
+
+	// #qrbutton {
+	// 	height: 100%;
+		// ion-icon {
+		// 	font-size: 64px;
+		// }
+	// }
+
+	section {
+		&.add-conference {
+			display: flex;
+			flex-flow: column nowrap;
+			justify-content: flex-end;
+			height: 100%;
 		}
+
+		.add-conference-intro {
+			padding: 54px 0;
+			text-align: center;
+			p {
+
+			}
+		}
+	}
+
+	/* disable last bottom border */
+	.list-ios,
+	.list-md {
+		.item-input {
+			&:last-child {
+				border-bottom: 0;;
+			}
+		}
+	}
+	/* base add-conv list styling */
+	.item-ios,
+	.item-md {
+
+
+
+
+		/* left align ion icon in list */
+		[item-left] {
+			margin-top: 16px;
+			margin-bottom: 16px;
+		}
+		ion-icon {
+			color: silver;
+		}
+
+
+		&.conv-login-user,
+		&.conv-login-pass {
+			background: $background-secondary;
+			border-radius: calc(#{$border-radius} * 2);
+			margin-bottom: 1rem;
+		}
+
+
+		/* ion label placeholder */
+		.label-ios,
+		.label-md {
+			margin-top: 4px;
+			margin-bottom: 0;
+			transform: translate3d(0, 16px, 0);
+			p {
+				color: $font-color-tertiary;
+			}
+
+		}
+
+		/* ion input */
+		&.item-label-floating {
+			.text-input {
+				margin-top: 0;
+				margin-bottom: 0;
+			}
+
+		}
+	}
+
+
+
+	ion-icon {
+		font-size: 2.8rem;
+	}
+
+
+
+	#qrbutton {
+		background: $charcoal;
 	}
 }
