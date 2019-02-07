@@ -60,10 +60,10 @@ $font-size-base:             1.4rem !default;
 $font-size-ios-base:         $font-size-base !default;
 $font-size-md-base:          $font-size-base !default;
 
-$font-family-base:           "Open Sans" ,-apple-system, "Helvetica Neue", "Roboto", sans-serif !default;
+$font-family-base:           "IBMPlexSans", "Open Sans" ,-apple-system, "Helvetica Neue", "Roboto", sans-serif !default;
 $font-family-ios-base:       $font-family-base !default;
-$font-family-md-base:        "Open Sans", "Roboto", sans-serif !default;
-$font-family-wp-base:        "Open Sans", "Segoe UI", "Noto Sans", sans-serif !default;
+$font-family-md-base:        "IBMPlexSans", "Open Sans", "Roboto", sans-serif !default;
+$font-family-wp-base:        "IBMPlexSans", "Open Sans", "Segoe UI", "Noto Sans", sans-serif !default;
 
 
 $text-color:                 color($colors, charcoal) !default;
@@ -156,3 +156,4 @@ $button-md-box-shadow: none !default;
 @import "roboto";
 @import "noto-sans";
 @import "../assets/fonts/open-sans";
+@import "../assets/fonts/IBMPlexSans";

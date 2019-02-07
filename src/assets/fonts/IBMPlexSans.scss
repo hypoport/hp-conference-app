@@ -1,0 +1,50 @@
+$ibmplex-sans-font-path: $font-path !default;
+
+@font-face {
+  font-family: "IBMPlexSans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("#{$ibmplex-sans-font-path}/IBMPlexSans-Regular.eot"); /* IE9 Compat Modes */
+  src: local("IBM Plex Sans Regular"), local("IBMPlexSans-Regular"),
+  url("#{$ibmplex-sans-font-path}/IBMPlexSans-Regular?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url('#{$ibmplex-sans-font-path}/IBMPlexSans-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+  url('#{$ibmplex-sans-font-path}/IBMPlexSans-Regular.woff') format('woff'), /* Modern Browsers */
+  url("#{$ibmplex-sans-font-path}/IBMPlexSans-Regular.ttf") format("truetype"), /* Safari, Android, iOS */
+  url('#{$ibmplex-sans-font-path}/IBMPlexSans-Regular.svg#IBMPlexSans') format('svg'); /* Legacy iOS */
+}
+@font-face {
+  font-family: "IBMPlexSans";
+  font-style: normal;
+  font-weight: 500;
+  src: url("#{$ibmplex-sans-font-path}/IBMPlexSans-Medium.eot"); /* IE9 Compat Modes */
+  src: local("IBM Plex Sans Medium"), local("IBMPlexSans-Medium"),
+  url("#{$ibmplex-sans-font-path}/IBMPlexSans-Medium.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url('#{$ibmplex-sans-font-path}/IBMPlexSans-Medium.woff2') format('woff2'), /* Super Modern Browsers */
+  url('#{$ibmplex-sans-font-path}/IBMPlexSans-Medium.woff') format('woff'), /* Modern Browsers */
+  url("#{$ibmplex-sans-font-path}/IBMPlexSans-Medium.ttf") format("truetype"), /* Safari, Android, iOS */
+  url('#{$ibmplex-sans-font-path}/IBMPlexSans-Medium.svg#IBMPlexSans') format('svg'); /* Legacy iOS */
+}
+@font-face {
+  font-family: "IBMPlexSans";
+  font-style: normal;
+  font-weight: 600;
+  src: url("#{$ibmplex-sans-font-path}/IBMPlexSans-SemiBold.eot"); /* IE9 Compat Modes */
+  src: local("IBM Plex Sans SemiBold"), local("IBMPlexSans-SemiBold"),
+  url("#{$ibmplex-sans-font-path}/IBMPlexSans-SemiBold?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url('#{$ibmplex-sans-font-path}/IBMPlexSans-SemiBold.woff2') format('woff2'), /* Super Modern Browsers */
+  url('#{$ibmplex-sans-font-path}/IBMPlexSans-SemiBold.woff') format('woff'), /* Modern Browsers */
+  url("#{$ibmplex-sans-font-path}/IBMPlexSans-SemiBold.ttf") format("truetype"), /* Safari, Android, iOS */
+  url('#{$ibmplex-sans-font-path}/IBMPlexSans-SemiBold.svg#IBMPlexSans') format('svg'); /* Legacy iOS */
+}
+@font-face {
+  font-family: "IBMPlexSans";
+  font-style: normal;
+  font-weight: 700;
+  src: url("#{$ibmplex-sans-font-path}/IBMPlexSans-Bold.eot"); /* IE9 Compat Modes */
+  src: local("IBM Plex Sans Bold"), local("IBMPlexSans-Bold"),
+  url("#{$ibmplex-sans-font-path}/IBMPlexSans-Bold.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url('#{$ibmplex-sans-font-path}/IBMPlexSans-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+  url('#{$ibmplex-sans-font-path}/IBMPlexSans-Bold.woff') format('woff'), /* Modern Browsers */
+  url("#{$ibmplex-sans-font-path}/IBMPlexSans-Bold.ttf") format("truetype"), /* Safari, Android, iOS */
+  url('#{$ibmplex-sans-font-path}/IBMPlexSans-Bold.svg#IBMPlexSans') format('svg'); /* Legacy iOS */
+}
