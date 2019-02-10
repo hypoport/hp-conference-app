@@ -5,7 +5,7 @@
 
         <button ion-item detail-none *ngIf="session.description" (click)="goToSessionDetail(session)">
 
-          <h3>{{session.title}} <ion-icon name="star" *ngIf="session.isFavorite" [ngClass]="session.isFavorite ? 'star-active' : 'star-inactive'"></ion-icon></h3>
+          <h3><span class="session-title" [innerHTML]="session.title"></span> <ion-icon name="star" *ngIf="session.isFavorite" [ngClass]="session.isFavorite ? 'star-active' : 'star-inactive'"></ion-icon></h3>
           <h5>
             {{session.timeStart | date: 'HH:mm': 'CEST': 'de-DE'}} &mdash;
             {{session.timeEnd | date: 'HH:mm': 'CEST': 'de-DE'}}:
