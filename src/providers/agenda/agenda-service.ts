@@ -68,7 +68,9 @@ export class AgendaService {
         let now = new Date();
         let latest = null;
 	  	agenda.sessions.forEach( (session) =>{
-	  		if(session.timeStart > now) latest = session;
+	  		if( new Date(session.timeStart).getTime() > now.getTime() ){
+	  			latest = session;
+		  	}
 	  	});
 	  	return latest;
     });
