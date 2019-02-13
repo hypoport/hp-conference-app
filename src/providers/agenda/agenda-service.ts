@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Agenda} from '../../models/agenda';
+import {Session} from '../../models/session';
 import {Speaker} from '../../models/speaker';
 import {HttpClient} from "@angular/common/http";
 import {Storage} from "@ionic/storage";
@@ -25,11 +26,6 @@ export class AgendaService {
 
   public loadAgenda(conferenceId: string, token: string): Promise<Agenda> {
     console.log("load agenda");
-    /*
-    // TODO richtige API nutzen
-    let url = "assets/data/agenda.json";
-    return this.http.get(url)
-    .toPromise()*/
     
     let url = this.global.apiURL('conference/agenda');
     return this.http.post(url, {
@@ -62,6 +58,21 @@ export class AgendaService {
   public getAgenda(conferenceId: string): Promise<Agenda> {
     return this.getAgendas().then((agendas) => {
       return agendas.get(conferenceId);
+    });
+  }
+
+  public getNextAgendaPoint(conferenceId: string): Promise<Session> {
+    return this.getAgendas().then( async (agendas) => {
+      let agenda = await agendas.get(conferenceId);
+      if(!agenda || !agenda.sessions) return null;
+        let now = new Date();
+        let latest = null;
+	  	agenda.sessions.forEach( (session) =>{
+	  		if( new Date(session.timeStart).getTime() > now.getTime() ){
+	  			latest = session;
+		  	}
+	  	});
+	  	return latest;
     });
   }
 

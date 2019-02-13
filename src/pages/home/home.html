@@ -35,6 +35,7 @@
                 </div>
                 <div class="card-content-bottom">
                   <h3>{{ conference?.directions?.address }}</h3>
+                  <!-- <h3 [innerHTML]="conference?.directions?.address"></h3> -->
                   <h5>{{ conference?.startDate | date: 'dd.MM.yyyy' }} - {{ conference?.endDate | date: 'dd.MM.yyyy'}}</h5>
                 </div>
 
@@ -52,8 +53,8 @@
                 <ion-icon name="time"></ion-icon>
               </div>
               <div class="card-content-bottom">
-                <h3>Machine Learning und was wir damit anfangen können.</h3>
-                <h5>10:30 -11:00</h5>
+                <h3 [innerHTML]="this.nextSession?.title"></h3>
+                <h5>{{nextSession?.timeStart | date: 'HH:mm': 'CEST': 'de-DE'}} &mdash; {{nextSession?.timeEnd | date: 'HH:mm': 'CEST': 'de-DE'}}</h5>
               </div>
             </ion-card-content>
 

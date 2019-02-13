@@ -6,6 +6,8 @@
   <button ion-item detail-none *ngIf="session.description" (click)="goToSessionDetail(session)">
 
     <h3>{{session.title}}</h3>
+
+    <!-- <span class="session-title" [innerHTML]="session.title"></span> -->
     <div class="agenda-stats">
       <h5>
         {{session.timeStart | date: 'HH:mm': 'CEST': 'de-DE'}} &mdash;
