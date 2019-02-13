@@ -27,30 +27,30 @@
 
 
   <main padding>
-  <section class="hero" *ngIf="currentConference != null" padding>
+    <section class="hero" *ngIf="currentConference != null">
       <!-- <h3 class="subtitle">Aktuelle Tagung</h3> -->
       <ion-slides card-slides slidesPerView="1">
         <ion-slide>
           <ion-card class="hero-card" (click)="goToConference(currentConference.id)" (press)="openActionSheetForConferences(currentConference.id)">
-              <div class="hero-background" [style.backgroundImage]="'url(' + currentConference.image + ')'">
-              </div>
+            <div class="hero-background" [style.backgroundImage]="'url(' + currentConference.image + ')'">
+            </div>
 
 
-              <ion-card-content>
-                <div class="card-content-top">
-                  <h6>Supertitle</h6>
+            <ion-card-content>
+              <div class="card-content-top">
+                <h6>Supertitle</h6>
                 <div class="company-logo">
                   <img [src]="getLogo(currentConference.brand)" />
                 </div>
 
-                </div>
-                <div class="card-content-bottom">
+              </div>
+              <div class="card-content-bottom">
                 <h1>{{ currentConference.title }}</h1>
                 <h2>{{ currentConference.subtitle }}</h2>
                 <h5>{{ currentConference.startDate | date: 'dd.MM.' }} - {{ currentConference.endDate | date: 'dd.MM.yyyy' }}</h5>
 
-                </div>
-              </ion-card-content>
+              </div>
+            </ion-card-content>
           </ion-card>
         </ion-slide>
       </ion-slides>
@@ -59,34 +59,34 @@
 
 
 
-<section class="splashscreen" *ngIf="currentConference == null">
+    <section class="splashscreen" *ngIf="currentConference == null">
 
-  <div class="add-conference-intro">
+      <div class="add-conference-intro">
 
-    <ion-grid>
-      <ion-row align-items-center>
-        <ion-col auto align-self-center>
-          <div class="app-icon">
-            <img src="assets/imgs/hypoport-logo.svg" />
-          </div>
-
-
-        </ion-col>
-      </ion-row>
-
-    </ion-grid>
+        <ion-grid>
+          <ion-row align-items-center>
+            <ion-col auto align-self-center>
+              <div class="app-icon">
+                <img src="assets/imgs/hypoport-logo.svg" />
+              </div>
 
 
+            </ion-col>
+          </ion-row>
 
-    <h1>Hypoport TagungsAPP</h1>
-    <p>Willkommen in der Hypoport TagungsAPP.<br>Ihrem digitaler Begleiter für Tagungen, Konferenzen und Workshops der Hypoport Töchter.</p>
-
-  </div>
+        </ion-grid>
 
 
 
+        <h1>Hypoport TagungsAPP</h1>
+        <p>Willkommen in der Hypoport TagungsAPP.<br>Ihrem digitaler Begleiter für Tagungen, Konferenzen und Workshops der Hypoport Töchter.</p>
 
-</section>
+      </div>
+
+
+
+
+    </section>
 
 
 
@@ -95,23 +95,23 @@
       <ion-slides card-slides slidesPerView="1.5" spaceBetween="10">
         <ion-slide *ngFor="let conference of nextConferences">
           <ion-card class="hero-card small-card" (click)="goToConference(conference.id)" (press)="openActionSheetForConferences(currentConference.id)">
-              <img [src]="conference.image"/>
+            <img [src]="conference.image" />
 
 
 
-              <ion-card-content>
-                <div class="card-content-top">
-                  <h6>Supertitle</h6>
+            <ion-card-content>
+              <div class="card-content-top">
+                <h6>Supertitle</h6>
                 <div class="company-logo">
-                  <img [src]="getLogo(currentConference.brand)" style="height:20px"/>
+                  <img [src]="getLogo(currentConference.brand)" style="height:20px" />
                 </div>
-                </div>
-                <div class="card-content-bottom">
+              </div>
+              <div class="card-content-bottom">
                 <h1 style="font-size:small">{{ conference.title }}</h1>
                 <h2 style="font-size:small">{{ conference.subtitle }}</h2>
                 <h5 style="font-size:small">{{ conference.startDate | date: 'LLLL yyyy': 'CEST': 'de-DE' }}</h5>
-                </div>
-              </ion-card-content>
+              </div>
+            </ion-card-content>
           </ion-card>
         </ion-slide>
       </ion-slides>
@@ -123,22 +123,22 @@
       <ion-slides card-slides slidesPerView="1.5" spaceBetween="0">
         <ion-slide *ngFor="let conference of lastConferences">
           <ion-card class="hero-card small-card" (click)="goToConference(conference.id)" (press)="openActionSheetForConferences(currentConference.id)">
-              <img [src]="conference.image"/>
+            <img [src]="conference.image" />
 
 
-              <ion-card-content>
-                <div class="card-content-top">
-                  <h6>Supertitle</h6>
+            <ion-card-content>
+              <div class="card-content-top">
+                <h6>Supertitle</h6>
                 <div class="company-logo">
-                  <img [src]="getLogo(currentConference.brand)" style="height:20px"/>
+                  <img [src]="getLogo(currentConference.brand)" style="height:20px" />
                 </div>
-                </div>
-                <div class="card-content-bottom">
+              </div>
+              <div class="card-content-bottom">
                 <h1 style="font-size:small">{{ conference.title }}</h1>
                 <h2 style="font-size:small">{{ conference.subtitle }}</h2>
                 <h5 style="font-size:small">{{ conference.startDate | date: 'LLLL yyyy': 'CEST': 'de-DE' }}</h5>
-                </div>
-              </ion-card-content>
+              </div>
+            </ion-card-content>
           </ion-card>
         </ion-slide>
       </ion-slides>

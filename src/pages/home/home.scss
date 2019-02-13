@@ -30,17 +30,32 @@ page-home {
     &:before {
       content: '';
       position: absolute;
-      top: calc(#{ 0 - $content-padding });;
+      top: calc(-#{$content-padding * 1});
       left: calc(#{$content-padding + 0 });
-      right: calc(#{$content-padding + 0 });
+      // right: calc(#{$content-padding + 0 });
 
-      border-top-left-radius: calc(#{$border-radius * 4});
-      border-top-right-radius: calc(#{$border-radius * 4});
+      width: 50px;
+      border-bottom-left-radius: calc(#{$border-radius * 4});
+      // border-bottom-right-radius: calc(#{$border-radius * 4});
 
       height: calc(#{$content-padding + 0 });
-      background: linear-gradient(to bottom,
-                    rgba($background-color, .75) 0,
-                    rgba($background-color, .85) 100%);
+      background: lime;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: calc(-#{$content-padding * 1});
+      width: 50px;
+      // left: calc(#{$content-padding + 0 });
+      right: calc(#{$content-padding + 0 });
+
+      height: calc(#{$content-padding + 0 });
+      border-bottom-right-radius: calc(#{$border-radius * 4});
+      background: red;
+      // background: linear-gradient(to bottom,
+      //               rgba($background-color, .75) 0,
+      //               rgba($background-color, .85) 100%);
     }
   }
 
@@ -98,7 +113,8 @@ page-home {
 
   section {
     &.service {
-      padding-bottom: 0;
+      padding-top: 54px;
+      // padding-bottom: 0;
     }
     &.intro {}
     &.support {

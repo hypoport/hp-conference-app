@@ -9,7 +9,7 @@
   <ion-navbar>
 
     <!-- TODO: change cancel icon -->
-    <ion-title>Konferenz hinzufügen</ion-title>
+    <ion-title>Tagung hinzufügen</ion-title>
     <ion-buttons end>
       <button ion-button (click)="dismiss()">
         <!-- <span ion-text color="primary" showWhen="ios">Cancel</span> -->
@@ -29,88 +29,74 @@
 
   <section class="add-conference">
 
-    <div class="add-conference-intro">
-      <h1>Willkommen bei Hypoport</h1>
-      <p>Nutzen Sie ihre Login Daten oder scannen Sie den QR-Code den Zugang zur Tagung zu aktivieren.</p>
-    </div>
 
 
-  <ion-grid>
+    <ion-grid>
+
+
+      <ion-row justify-content-center>
+        <ion-col col-12 class="add-conference-intro">
+          <h1>Hypoport Login</h1>
+          <p>Nutzen Sie ihre Login Daten oder scannen Sie den QR-Code den Zugang zur Tagung zu aktivieren.</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-list no-lines no-margin class="conv-login">
+
+
+            <!-- conv login user -->
+            <ion-item class="conv-login-user">
+              <ion-label floating>
+                <p>Tagungs-Kennung</p>
+              </ion-label>
+              <ion-input [(ngModel)]="confCode" type="text"></ion-input>
+              <ion-icon name="person" item-left></ion-icon>
+            </ion-item>
+
+            <!-- conv login pass -->
+            <ion-item class="conv-login-pass">
+              <ion-label floating>
+                <p>Tagungs-Passwort</p>
+              </ion-label>
+              <ion-input [(ngModel)]="confPassword" type="password"></ion-input>
+              <ion-icon ios="md-lock" md="md-lock" item-left></ion-icon>
+            </ion-item>
 
 
 
-
-    <ion-row>
-      <ion-col>
-      	<ion-list no-lines class="conv-login">
-
-
-          <!-- conv login user -->
-      	  <ion-item class="conv-login-user">
-            <ion-label floating><p>Tagungs-Kennung</p></ion-label>
-      	    <ion-input [(ngModel)]="confCode" type="text"></ion-input>
-            <ion-icon name="person" item-left></ion-icon>
-      	  </ion-item>
-
-          <!-- conv login pass -->
-          <ion-item class="conv-login-pass">
-            <ion-label floating><p>Tagungs-Passwort</p></ion-label>
-            <ion-input [(ngModel)]="confPassword" type="password"></ion-input>
-            <ion-icon ios="md-lock" md="md-lock" item-left></ion-icon>
-          </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
 
 
-
-      	</ion-list>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-
-      <!-- conv login button -->
-      <ion-col col-9>
-          <button round ion-button block (click)="addConference(this.confCode,this.confPassword)">Hinzufügen</button>
-      </ion-col>
-
-      <!-- qr button -->
-      <ion-col auto>
-        <button id="qrbutton" round ion-button block (click)="openQrReader()">
-          <ion-icon ios="md-qr-scanner" md="md-qr-scanner"></ion-icon>
-        </button>
-      </ion-col>
-    </ion-row>
-
-    <!-- <ion-row>
-      <ion-col>
-
-        <button round ion-button block (click)="addConference(this.confCode,this.confPassword)">Hinzufügen</button>
-      </ion-col>
-    </ion-row> -->
-
-    <!-- qr button -->
-    <!-- <ion-row>
-      <ion-col>
-        <button id="qrbutton" round dark ion-button block (click)="openQrReader()">
-          <ion-icon name="qr-scanner"></ion-icon>
-        </button>
-      </ion-col>
-    </ion-row> -->
-
-
-      <!-- <ion-col col-5>
-
-  		<button id="qrbutton" ion-button block (click)="openQrReader()"> <ion-icon name="qr-scanner"></ion-icon> </button>
-
-      </ion-col> -->
-
-  </ion-grid>
+    </ion-grid>
 
 
   </section>
 </ion-content>
-<!--
+
+
 <ion-footer>
   <ion-toolbar>
-  	<button ion-button block (click)="addConference(this.confCode,this.confPassword)">Hinzufügen</button>
+
+    <ion-grid>
+      <ion-row align-items-center justify-content-center>
+        <ion-col col-7>
+          <button round ion-button block (click)="addConference(this.confCode,this.confPassword)">Hinzufügen</button>
+        </ion-col>
+
+
+        <ion-col col-3>
+          <button id="qrbutton" round ion-button block (click)="openQrReader()">
+        <ion-icon ios="md-qr-scanner" md="md-qr-scanner"></ion-icon>
+      </button>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+
+
   </ion-toolbar>
-</ion-footer> -->
+</ion-footer>
