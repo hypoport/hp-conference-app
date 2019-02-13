@@ -1,3 +1,8 @@
+<ion-header>
+  <ion-navbar>
+  </ion-navbar>
+</ion-header>
+
 <ion-content no-padding parallax-header>
 
   <ion-refresher (ionRefresh)="refreshConference($event)">
@@ -8,7 +13,7 @@
 
 
 
-  <!-- wrapper conv hero parallax-header -->
+
   <section class="hero-image" [style.backgroundImage]="'url('+ conference?.image +')'"></section>
 
   <main class="main-content" padding>
@@ -30,7 +35,8 @@
                 </div>
                 <div class="card-content-bottom">
                   <h3>{{ conference?.directions?.address }}</h3>
-                  <h5>{{ conference?.startDate | date: 'dd.MM.yyyy' }} - {{ conference?.endDate | date: 'dd.MM.yyyy'}}</h5>                </div>
+                  <h5>{{ conference?.startDate | date: 'dd.MM.yyyy' }} - {{ conference?.endDate | date: 'dd.MM.yyyy'}}</h5>
+                </div>
 
 
               </ion-card-content>
@@ -122,18 +128,9 @@
 
       <section class="intro">
 
+        <h1>{{ conference?.header }}</h1>
         <h3>Introduction</h3>
-          <!-- <h6>Supertitle Conv Title</h6>
-          <h1>{{ conference?.header }}</h1> -->
 
-          <!-- <div class="conv-date-wrapper">
-          <ion-icon name="calendar"></ion-icon>
-          <h5 class="conv-date-small">{{ conference?.startDate | date: 'dd.MM.' }} - {{ conference?.endDate | date: 'dd.MM.yyyy'}}</h5>
-          </div> -->
-
-          <!-- <p>Lorem <b>ipsum dolor</b> sit amet, <a>consetetur</a> sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et.</p> -->
-
-          <!-- <h3>Zwischenüberschrift</h3> -->
           <div [innerHtml]="conference?.description"></div>
         </section>
 
@@ -145,7 +142,7 @@
 
   <section class="maps">
 
-    <!-- <h6 class="supertitle">Supertitle Location</h6> -->
+
     <h2>Veranstaltungsort</h2>
 
     <div [innerHtml]="conference?.directions?.description"></div>
@@ -156,41 +153,39 @@
 
 
 
-  <hr>
+  <!-- <hr> -->
 
 
   <section class="support" *ngIf="conference?.contact">
 
-  <!-- <h6 class="supertitle">Supertitle Contact</h6> -->
+
 	<h2>Ihre Ansprechpartner</h2>
-  <!-- <h5 class="subtitle">Subtitle contact section h5</h5> -->
 
 
 
   <div class="support-global">
-    <button ion-button round small icon-start>
+    <button ion-button small round color="cloud" icon-start>
       <ion-icon name="call"></ion-icon>
         {{ conference.contact.telephone }}
     </button>
 
-    <button ion-button round small icon-start>
+    <button ion-button small round color="cloud" icon-start>
       <ion-icon name="paper-plane"></ion-icon>
         {{ conference.contact.email }}
     </button>
-</div>
+  </div>
 
 
 
 
-
-    <ion-list no-lines no-padding *ngIf="conference?.contact?.persons" class="support-individual">
-      <ion-item no-padding *ngFor="let person of conference.contact.persons" class="speaker-card">
+    <ion-list no-padding *ngIf="conference?.contact?.persons" class="support-individual">
+      <ion-item no-lines no-padding *ngFor="let person of conference.contact.persons" class="support-card">
         <ion-grid>
 
-          <ion-row align-items-center>
+          <ion-row no-padding align-items-center>
 
             <!-- contact profile picture -->
-            <ion-col col-2 class="profile-image">
+            <ion-col col-2 align-self-center class="profile-image">
               <ion-avatar>
                 <img [src]="person.avatarUrl">
               </ion-avatar>
@@ -200,8 +195,8 @@
             <ion-col auto class="profile-data">
               <h3 class="contact-name" *ngIf="person.name">{{ person.name }}</h3>
 
-              <button ion-button round small color="light" *ngIf="person?.telephone">{{ person.telephone }}</button>
-              <button ion-button round small color="light" *ngIf="person?.email">{{ person.email }}</button>
+              <button ion-button small color="cloud" *ngIf="person?.telephone">{{ person.telephone }}</button>
+              <button ion-button small color="cloud" *ngIf="person?.email">{{ person.email }}</button>
 
             </ion-col>
 

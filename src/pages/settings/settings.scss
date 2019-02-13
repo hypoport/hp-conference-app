@@ -4,7 +4,12 @@ page-settings {
 
 
   ion-list-header {}
-
+  .item-ios,
+  .item-md {
+    &:not(ion-list-header) {
+      background: $white;
+    }
+  }
 
   ion-list {
     ion-list-header {}

@@ -3,19 +3,14 @@ page-agenda {
 
 
 
-  .header-ios,
-  .header-md {
-   .toolbar-background-ios {
-     border-color: transparent;
-   }
-  }
-
-  /* filter styling */
+  /* segment filter styling */
+  /* include toolbar in header */
   .segment {
-    background: $white;
+    background: $toolbar-background;
+    box-shadow: $toolbar-shadow;
   }
   .segment-ios {
-    margin-top: calc(#{$toolbar-ios-height});
+    // margin-top: calc(#{$toolbar-ios-height});
     .segment-button {
       border-radius: 0 !important;
 
@@ -38,7 +33,7 @@ page-agenda {
     }
   }
   .segment-md {
-    margin-top: calc(#{$toolbar-md-height});
+    // margin-top: calc(#{$toolbar-md-height});
     .segment-button {
       text-transform: none;
     }
@@ -49,14 +44,14 @@ page-agenda {
   .content-ios {
     section {
       &.agenda {
-        padding-top: calc(#{$toolbar-ios-height + 54px });
+        padding-top: calc(#{$toolbar-ios-height + $segment-button-ios-height - $content-padding });
       }
     }
   }
   .content-md {
     section {
       &.agenda {
-        padding-top: calc(#{$toolbar-md-height + 54px });
+        padding-top: calc(#{$toolbar-md-height + $segment-button-md-height - $content-padding });
       }
     }
   }

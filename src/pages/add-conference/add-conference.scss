@@ -1,15 +1,11 @@
 page-add-conference {
 
-	// height: 270px !important;
-	// top: unset !important;
-	// bottom: 0px !important;
+	
 
-	// #qrbutton {
-	// 	height: 100%;
-		// ion-icon {
-		// 	font-size: 64px;
-		// }
-	// }
+	.content-ios,
+	.content-md {
+		background: $white;
+	}
 
 	section {
 		&.add-conference {

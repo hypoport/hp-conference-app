@@ -1,11 +1,34 @@
 page-speakers {
-  .speaker-data {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
+  /* header shadow */
+  .toolbar-ios,
+  .toolbar-md {
+    box-shadow: $toolbar-shadow;
+  }
 
-    > :first-child {
-      margin-right: 1rem;
+  /* 1st section top padding */
+  .content {}
+  .content-ios {
+    section {
+      &.speakers {
+        padding-top: calc(#{$toolbar-ios-height - $content-padding });
+      }
     }
   }
+  .content-md {
+    section {
+      &.speakers {
+        padding-top: calc(#{$toolbar-md-height - $content-padding });
+      }
+    }
+  }
+
+  // .speaker-data {
+  //   display: flex;
+  //   flex-direction: row;
+  //   align-items: baseline;
+  //
+  //   > :first-child {
+  //     margin-right: 1rem;
+  //   }
+  // }
 }

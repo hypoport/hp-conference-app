@@ -1,25 +1,91 @@
 page-session {
-  ion-icon {
-    // margin-left: 10px;
-  }
-  ion-title {
-    // margin-left: 10px;
-  }
-
-  .star-active {
-    color: #FFDE00;
-    font-size: 30px;
+  /* header shadow */
+  .toolbar-ios,
+  .toolbar-md {
+    box-shadow: $toolbar-shadow;
   }
 
-  .star-inactive {
-    color: gray;
-    font-size: 30px;
+  /* 1st section top padding */
+  .content {}
+  .content-ios {
+    section {
+      &.agenda-speaker-intro {
+        padding-top: calc(#{$toolbar-ios-height - $content-padding });
+      }
+    }
   }
-
-
+  .content-md {
+    section {
+      &.agenda-speaker-intro {
+        padding-top: calc(#{$toolbar-md-height - $content-padding });
+      }
+    }
+  }
   section {
-    &.agenda-speaker {}
+    &.agenda-speaker {
+      padding-top: 0;
+    }
   }
+
+  .item-ios,
+  .item-md {
+      padding-left: 0;
+  }
+
+  .agenda-stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    h5 {
+      margin: 0 1rem 0 0 !important;
+    }
+
+    ion-icon {
+      margin-right: .5rem;
+      font-size: 1.4rem;
+    }
+  }
+
+  ion-icon {
+    &.bookmark {
+      display: flex;
+      width: 30px;
+      height: 30px;
+      border-radius: 30px;
+      border: $base-border;
+      background: $white;
+      color: $font-color-secondary;
+
+
+      &:before {
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+      }
+      &.bookmark-inactive {
+
+      }
+      &.bookmark-active {
+        color: $brand-primary;
+        border-color: lighten($brand-primary, 40%);
+        background: lighten($brand-primary, 55%);
+        &:before {
+          content: '\f12e'
+        }
+      }
+    }
+  }
+
+
+
+
+
+
+
 
 
 }

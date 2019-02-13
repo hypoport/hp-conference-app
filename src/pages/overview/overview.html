@@ -10,8 +10,8 @@
       Tagungen
     </ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="openSettingsPage()">
-        <ion-icon name="settings"></ion-icon>
+      <button ion-button icon-only color="lightgrey" (click)="openSettingsPage()">
+        <ion-icon ios="md-more" md="md-more"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -57,8 +57,30 @@
 
 
 
-    <section *ngIf="currentConference == null">
-      <ion-slides card-slides slidesPerView="1">
+    <section class="empty" *ngIf="currentConference == null">
+
+      <div class="add-conference-intro">
+
+        <ion-grid>
+          <ion-row align-items-center>
+            <ion-col auto align-self-center>
+              <div class="app-icon">
+                <img src="assets/imgs/hypoport-logo.svg" />
+              </div>
+
+
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
+
+
+
+        <h1>Hypoport TagungsAPP</h1>
+        
+        <p> Deine Mudder Deine Mudder Deine Mudder Deine Mudder Deine Mudder Deine Mudder Deine Mudder Deine Mudder.</p>
+      </div>
+      <!-- <ion-slides card-slides slidesPerView="1">
         <ion-slide>
           <ion-card class="empty-card">
 
@@ -78,7 +100,7 @@
             </ion-card-content>
           </ion-card>
         </ion-slide>
-      </ion-slides>
+      </ion-slides> -->
     </section>
 
 

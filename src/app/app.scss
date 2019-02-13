@@ -87,7 +87,8 @@ $box-shadow: 0 4px 12px 10px rgba($black, .05);
 
 $card-shadow-primary: 0px 10px 30px 0px rgba($black, .1); // hero card
 $card-shadow-secondary: 0px 3px 6px -3px rgba($black, .2); // small card, contact card, speakers card
-
+$toolbar-shadow: 0 2px 10px -4px rgba($black, .15);
+$tabbar-shadow: 0 -2px 10px -4px rgba($black, .25);
 
 
 
@@ -197,6 +198,31 @@ hr,
 
 
 
+.support-card {
+
+  /* shape */
+  background: $white;
+  border: $base-border !important;
+  border-radius: calc(#{$border-radius * 1.4});
+  
+
+  /* override base list settings for better card styling */
+  &.item-ios,
+  &.item-md {
+    &.item-block {
+      margin-bottom: 1rem;
+      .item-inner {
+        padding-right: 0;
+      }
+    }
+    .label-ios,
+    .label-md {
+      margin: 5px;
+    }
+  }
+}
+
+
 
 
 
@@ -236,7 +262,19 @@ hr,
 */
 
 
-ion-title {}
+/* header + tabbar shadow */
+.toolbar-ios,
+.toolbar-md {
+  // box-shadow: $toolbar-shadow;
+  box-shadow: none;
+}
+.tabs-ios,
+.tabs-md {
+  .tabbar {
+    box-shadow: $tabbar-shadow;
+  }
+}
+
 
 /* center header title (.title-ios copy) */
 .title-md {
@@ -579,9 +617,7 @@ ion-list {
 ** base icon
 ** ion-icon
 */
-
 ion-icon {
-  // display: flex;
   font-size: calc(#{$font-size-base * 1.5});
 }
 
@@ -599,6 +635,9 @@ ion-icon {
 
 section {
   padding: 54px 0;
+  &:first-child {
+    padding-top: 0;
+  }
 }
 
 

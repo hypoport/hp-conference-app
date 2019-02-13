@@ -5,51 +5,47 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
     <ion-title>{{speaker ? speaker.name : speaker}}</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
+
   <section class="speaker" *ngIf="speaker">
 
 
-	<ion-grid class="speaker-head">
 
-	  <ion-row align-items-center>
+    <ion-grid>
+      <ion-row align-items-center>
 
-	    <ion-col col-auto>
-            <div class="profile-image">
-            	<img [src]="speaker.profileFoto">
-            </div>
+        <ion-col col-3 align-self-center class="profile-image">
+
+          <ion-avatar>
+            <img [src]="speaker.profileFoto">
+          </ion-avatar>
         </ion-col>
 
-	    <ion-col align-start>
-	    <h4 class="speaker-name">{{speaker.name}}</h4>
-
-	      <ul>
-	        <li class="job-title">{{speaker.jobTitle}}</li>
-	        <li class="company">{{speaker.company}}</li>
-	      </ul>
 
 
-		</ion-col>
+        <ion-col auto class="profile-data">
+          <h3 class="speaker-name" *ngIf="speaker.name">{{ speaker.name }}</h3>
+          <h5 class="speaker-data">{{ speaker.company ? speaker.company : '' }}<span *ngIf="speaker.company && speaker.jobTitle">, </span>{{ speaker.jobTitle ? speaker.jobTitle : ''}}</h5>
 
-	  </ion-row>
-	</ion-grid>
+        </ion-col>
 
-	<!-- <hr/> -->
+      </ion-row>
+    </ion-grid>
 
-	<p class="short-description" [innerHtml]="speaker?.description"></p>
 
-	<div class="speaker-agenda" *ngIf="speakerSessions.length > 0">
-		<h3>Vorträge von {{speaker.name}}</h3>
-	    <session-list [sessionList]="speakerSessions">
-      </session-list>
-	</div>
+
+    <p class="short-description" [innerHtml]="speaker?.description"></p>
+
+    <div class="speaker-agenda" *ngIf="speakerSessions.length > 0">
+      <h3>Vorträge von {{speaker.name}}</h3>
+      <session-list [sessionList]="speakerSessions"></session-list>
+    </div>
 
   </section>
 

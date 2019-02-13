@@ -22,12 +22,42 @@ agenda-list {
       padding-left: 10px;
     }
   }
+}
 
-  .star-active {
-    color: #FFDE00;
+.agenda-stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  h5 {
+    margin: 0 1rem 0 0 !important;
   }
 
-  .star-inactive {
-    color: gray;
+  ion-icon {
+    margin-left: auto;
+    font-size: 1.4rem;
+    &.bookmark {
+      display: flex;
+      width: 25px;
+      height: 25px;
+      border-radius: 25px;
+      background: lighten($brand-primary, 55%);
+      color: $brand-primary;
+      &:before {
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+      }
+      &.bookmark-inactive {
+      }
+      &.bookmark-active {
+        &:before {
+          content: '\f12e'
+        }
+      }
+    }
   }
 }

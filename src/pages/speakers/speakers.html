@@ -1,3 +1,8 @@
+<ion-header>
+  <ion-navbar>
+  </ion-navbar>
+</ion-header>
+
 <ion-content padding>
 
   <ion-refresher (ionRefresh)="refreshSpeakers($event)">
@@ -26,11 +31,7 @@
           <!-- speaker profile data (name/company/jobtitle) -->
           <ion-col auto class="profile-data">
               <h3 class="speaker-name" *ngIf="speaker.name">{{ speaker.name }}</h3>
-
-              <div class="speaker-data">
-                <h5 class="job-title">{{ speaker.jobTitle }}</h5>
-                <h5 class="company">{{ speaker.company }}</h5>
-              </div>
+          <h5 class="speaker-data">{{ speaker.company ? speaker.company : '' }}<span *ngIf="speaker.company && speaker.jobTitle">, </span>{{ speaker.jobTitle ? speaker.jobTitle : ''}}</h5>
 
           </ion-col>
 

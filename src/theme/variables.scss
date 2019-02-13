@@ -95,7 +95,7 @@ $toolbar-background:          color($colors, white) !default;
 $toolbar-ios-background:      $toolbar-background !default;
 $toolbar-md-background:       $toolbar-background !default;
 
-$toolbar-border-color:        rgba(0, 0, 0, 0.12) !default;
+$toolbar-border-color:        rgba(0, 0, 0, 0) !default; // rgba(0, 0, 0, 0.12)
 $toolbar-ios-border-color:    $toolbar-border-color !default;
 $toolbar-md-border-color:     $toolbar-border-color !default;
 
@@ -103,8 +103,28 @@ $toolbar-md-border-color:     $toolbar-border-color !default;
 $tabs-background:             color($colors, white) !default;
 $tabs-ios-background:         $tabs-background !default;
 $tabs-md-background:          $tabs-background !default;
-$tabs-border-color:           rgba(0, 0, 0, 0.12) !default;
-$tabs-ios-border-color:       rgba(0, 0, 0, 0.12) !default;
+$tabs-border-color:           rgba(0, 0, 0, 0) !default;
+$tabs-ios-border-color:       rgba(0, 0, 0, 0) !default;
+
+/* lists */
+$list-text-color:             $text-color !default;
+$list-background-color:       $background-color !default;
+$list-border-color:           rgba(0, 0, 0, 0.12) !default;
+
+$list-ios-text-color:         $list-text-color !default;
+$list-ios-border-color:       $list-border-color !default;
+$list-ios-background-color:   $list-background-color !default;
+
+$list-md-text-color:          $list-text-color !default;
+$list-md-border-color:        rgba(0, 0, 0, 0.12) !default;
+$list-md-background-color:    $list-background-color !default;
+
+/* segment filter */
+$segment-button-md-border-bottom-width:         1px !default;
+$segment-button-ios-border-width:               1px !default;
+$segment-button-ios-border-radius:              4px !default;
+$segment-button-ios-height:                     32px !default;
+$segment-button-md-height:                      42px !default;
 
 
 // App iOS Variables
@@ -112,17 +132,19 @@ $tabs-ios-border-color:       rgba(0, 0, 0, 0.12) !default;
 // iOS only Sass variables can go here
 
 
-$segment-button-ios-border-radius:              4px !default;
 
+$toolbar-ios-button-font-size:                  1.4rem !default;
+
+
+/* actin sheet */
+$action-sheet-ios-title-color:                  lighten($text-color, 15%) !default;
+// $action-sheet-ios-title-font-size:              1.0rem !default;
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
-$button-md-box-shadow: none !default;
 
-// $button-md-box-shadow:       0 2px 2px 0 rgba(0, 0, 0, .14),
-//                              0 3px 1px -2px rgba(0, 0, 0, .2),
-//                              0 1px 5px 0 rgba(0, 0, 0, .12) !default;
+$button-md-box-shadow: none !default;
 
 
 // App Windows Variables
