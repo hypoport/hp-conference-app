@@ -66,6 +66,12 @@ page-home {
   }
 
 
+  ion-card {
+    ion-card-content {
+      min-height: 125px;
+    }
+  }
+
   /* google maps */
     #map {
       overflow: hidden;

@@ -11,23 +11,24 @@ page-overview {
 
   main {
     display: flex;
-    height: 100%;
-
+    flex-direction: column;
+    // height: 100%;
+    min-height: 100%;
   }
 
   section {
-    &.empty {
+    margin-bottom: 54px;
+
+    &.splashscreen {
       display: flex;
 			flex-flow: column nowrap;
 			justify-content: center;
-			height: 100%;
-
+      padding: 0;
+      align-items: center;
+      flex-grow: 1;
       .add-conference-intro {
-
-
         padding: 54px 0;
         text-align: center;
-
         p {}
       }
     }
@@ -56,5 +57,22 @@ page-overview {
       overflow: hidden;
     }
   }
+
+
+  // ion-footer {
+  //   .toolbar-content-ios,
+  //   .toolbar-content-md {
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  //     button {
+  //       margin: 1rem 0;
+  //     }
+  //   }
+  //   .toolbar-background-ios,
+  //   .toolbar-background-md {
+  //     background: transparent;
+  //   }
+  // }
 
 }

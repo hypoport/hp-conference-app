@@ -204,7 +204,7 @@ hr,
   background: $white;
   border: $base-border !important;
   border-radius: calc(#{$border-radius * 1.4});
-  
+
 
   /* override base list settings for better card styling */
   &.item-ios,
@@ -242,7 +242,7 @@ hr,
   }
 }
 .subtitle {
-  color: $font-color-secondary;
+  color: $font-color-tertiary;
   font-weight: $font-medium;
 
 }
@@ -369,16 +369,38 @@ ion-card {
   display: flex;
   flex-flow: column wrap;
 
+  .hero-background {
+    display: flex;
+    background-position: center center;
+    background-size: cover;
+    min-height: 45vh;
+  }
+
 
   ion-card-content {
     display: flex;
     flex-flow: column wrap;
-    justify-content: space-around;
-    min-height: 115px;
+    justify-content: space-between;
+
+    // min-height: 115px;
     .card-content-top {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      align-items: center;
+      margin-bottom: .5rem;
+      h6 {
+        margin: 0;
+      }
+      .company-logo {
+        display: flex;
+        flex-grow: 1;
+        justify-content: flex-end;
+        img {
+          height: 30px;
+          border-radius: 50px;
+        }
+      }
     }
     .card-content-bottom {
       display: flex;
@@ -386,7 +408,6 @@ ion-card {
       justify-content: flex-end;
       z-index: 10;
     }
-
   }
   ion-icon {
     position: relative;
@@ -441,22 +462,7 @@ ion-card {
     }
 
   }
-  .hero-background {
-    background-position: center center;
-    background-size: cover;
-    min-height: 45vh;
-  }
-  .company-logo {
-    justify-content: flex-end;
-    margin-top: -70px;
-    padding: 10px;
 
-    img {
-      height: 50px;
-      padding: 2px;
-      border-radius: 50px;
-    }
-  }
 }
 
 
@@ -469,7 +475,6 @@ ion-card {
   border: $base-border;
   border-radius: calc(#{$border-radius * 3});
   box-shadow: $card-shadow-primary;
-
 
   &.service-card,
   &.speaker-card {

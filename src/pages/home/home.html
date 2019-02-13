@@ -34,8 +34,7 @@
                   <ion-icon name="pin"></ion-icon>
                 </div>
                 <div class="card-content-bottom">
-                  <h3>{{ conference?.directions?.address }}</h3>
-                  <!-- <h3 [innerHTML]="conference?.directions?.address"></h3> -->
+                  <h3 [innerHTML]="conference?.directions?.address"></h3>
                   <h5>{{ conference?.startDate | date: 'dd.MM.yyyy' }} - {{ conference?.endDate | date: 'dd.MM.yyyy'}}</h5>
                 </div>
 
@@ -99,25 +98,8 @@
 
       </section>
 
-    <!-- <section class="intro">
 
 
-      <ion-grid no-padding>
-        <ion-row>
-          <ion-col auto no-padding class="conv-title">
-            <h1>{{ conference?.header }}</h1>
-          </ion-col>
-          <ion-col no-padding class="conv-date fixed-col">
-            <h2>{{ conference?.startDate | date: 'dd.' }}-{{ conference?.endDate | date: 'dd.'}}</h2>
-            <h5>{{ conference?.startDate | date: 'MM.yyyy' }}</h5>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-
-      <h3>Introduction</h3>
-
-
-    </section> -->
 
 
 
@@ -130,8 +112,6 @@
       <section class="intro">
 
         <h1>{{ conference?.header }}</h1>
-        <h3>Introduction</h3>
-
           <div [innerHtml]="conference?.description"></div>
         </section>
 
