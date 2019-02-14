@@ -142,12 +142,12 @@ p.lead,
   text-align: justify;
 }
 a {
-  font-weight: $font-medium;
+  font-weight: $font-semibold;
   text-decoration: none;
 }
 
 b, strong {
-  font-weight: $font-medium;
+  font-weight: $font-semibold;
 }
 
 ul {
@@ -488,11 +488,12 @@ ion-card {
     color: $text-color;
     text-align: left;
   }
-  h1 {
-    font-weight: $font-medium;
-  }
+
   h1, h2, h3 {
-    // font-weight: $font-medium;
+    font-weight: $font-medium;
+   + p {
+     font-weight: $font-medium;
+   }
   }
   h4, h5, h6 {
     // font-weight: $font-normal;
@@ -549,9 +550,12 @@ ion-list {
     color: $text-color;
     text-align: left;
   }
-  // h1, h2, h3 {
-  //   font-weight: $font-medium;
-  // }
+  h1, h2, h3 {
+    font-weight: $font-medium;
+    + p {
+      font-weight: $font-medium;
+    }
+  }
   // h4, h5, h6 {
   //   font-weight: $font-normal;
   // }
