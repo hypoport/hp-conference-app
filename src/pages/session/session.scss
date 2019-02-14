@@ -30,7 +30,15 @@ page-session {
   .item-ios,
   .item-md {
       padding-left: 0;
+
+
+      /* fix: bookmark button height more than base 24px */
+      .item-button {
+        height: 100%;
+      }
+
   }
+
 
   .agenda-stats {
     display: flex;
@@ -45,6 +53,9 @@ page-session {
     ion-icon {
       margin-right: .5rem;
       font-size: 1.4rem;
+
+
+
     }
   }
 
