@@ -32,10 +32,10 @@ export class SettingsPage {
   ionViewDidEnter(){
       this.ga.trackView('settingsPage');
   }
-  openLandingpage(){
+  openCLog(){
     this.iab.create('https://github.com/hypoport/hp-conference-app/commits/master','_system',{location:'no'});
   }
-  openCLog(){
+  openLandingpage(){
     this.iab.create('https://tagungsapp.hypoport.de/','_system',{location:'no'});
   }
   openDS(){
