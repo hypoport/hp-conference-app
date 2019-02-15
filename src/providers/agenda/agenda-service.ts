@@ -16,7 +16,7 @@ export class AgendaService {
 
   private agendas: Map<string, Agenda> = new Map<string, Agenda>();
 
-  constructor(private http: HttpClient, 
+  constructor(private http: HttpClient,
   			  private storage: Storage,
   			  private global: GlobalProvider,
   			  private favoritesService: FavoritesService,
@@ -26,7 +26,7 @@ export class AgendaService {
 
   public loadAgenda(conferenceId: string, token: string): Promise<Agenda> {
     console.log("load agenda");
-    
+
     let url = this.global.apiURL('conference/agenda');
     return this.http.post(url, {
       "key": conferenceId,
@@ -36,7 +36,7 @@ export class AgendaService {
       headers: {'Content-Type': 'application/json; charset=utf-8'}
     }).toPromise()
       .then((response: any) => {
-	  	
+
 	  	let agenda = response.data.agenda as Agenda;
 	  	let speaker = response.data.speakers as Array<Speaker>;
 
@@ -45,9 +45,9 @@ export class AgendaService {
         if(this.agendas.set(conferenceId, agenda)){
         	this.storage.set(STORAGE_KEY, this.agendas);
         }
-        
+
         this.speakerService.setSpeaker(conferenceId,speaker);
-        
+
         return agenda;
       }).then((agenda) => {
         this.favoritesService.rescheduleNotifications(agenda, conferenceId);
@@ -67,8 +67,9 @@ export class AgendaService {
       if(!agenda || !agenda.sessions) return null;
         let now = new Date();
         let latest = null;
-	  	agenda.sessions.forEach( (session) =>{
-	  		if( new Date(session.timeStart).getTime() > now.getTime() ){
+
+	  	  agenda.sessions.forEach( (session) =>{
+	  		if( new Date(session.timeStart).getTime() > now.getTime() || new Date(session.timeEnd).getTime() > now.getTime() ){
 	  			latest = session;
 		  	}
 	  	});
