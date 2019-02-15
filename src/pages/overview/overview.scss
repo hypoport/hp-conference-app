@@ -21,13 +21,19 @@ page-overview {
     section {
       &.splashscreen {
         padding-bottom: $toolbar-ios-height;
+        .add-conference-hint {
+          bottom: calc(#{$toolbar-ios-height * 1.5 });
+        }
       }
     }
   }
   .content-md {
     section {
       &.splashscreen {
-        padding-bottom: $toolbar-md-height;  
+        padding-bottom: $toolbar-md-height;
+        .add-conference-hint {
+          bottom: calc(#{$toolbar-md-height * 1.5 });
+        }
       }
     }
   }
@@ -42,14 +48,17 @@ page-overview {
 
 
       display: flex;
-			flex-flow: column nowrap;
+			flex-direction: column;
 			justify-content: center;
-
       align-items: center;
       flex-grow: 1;
+
       .add-conference-intro {
         text-align: center;
-        p {}
+      }
+      .add-conference-hint {
+        position: absolute;
+        text-align: center;
       }
     }
   }

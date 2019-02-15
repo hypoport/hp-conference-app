@@ -71,6 +71,9 @@ $font-color-primary:            $text-color;
 $font-color-secondary:          lighten($text-color, 15%);
 $font-color-tertiary:           lighten($text-color, 50%);
 
+.font-tertiary {
+  color: $font-color-tertiary;
+}
 
 $font-color-text:               lighten($charcoal, 20%);
 $font-color-text-lead:          lighten($charcoal, 10%);
