@@ -4,6 +4,7 @@ import { GlobalProvider } from '../../providers/global/global';
 import { ConferenceService } from "../../providers/conference/conference-service";
 import { ToastController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
+import { GoogleAnalytics } from '@ionic-native/google-analytics';
 
 /**
  * Generated class for the AttendeesPage page.
@@ -31,7 +32,16 @@ export class AttendeesPage {
   public app: App,
   private toastCtrl: ToastController,
   public loadingCtrl: LoadingController,
+  private ga: GoogleAnalytics
   ) {
+  }
+
+  ionViewDidLoad() {
+    if(this.globalProvider.conferenceId){
+      this.ga.trackView('conf/ep/'+this.globalProvider.conferenceId+'/attendees');
+    } else {
+      this.ga.trackView('attendeePage');
+    }
   }
 
   getAttendees(conferencePassword: string,key: string,token: string){

@@ -9,6 +9,8 @@ import {Conference} from '../../models/conference';
 import {BrandProvider} from '../../providers/brand/brand';
 import {SettingsPage} from '../settings/settings';
 
+import { GoogleAnalytics } from '@ionic-native/google-analytics';
+
 /**
  * Generated class for the OverviewPage page.
  *
@@ -33,7 +35,9 @@ export class OverviewPage {
     private modalCtrl: ModalController,
     private toastCtrl: ToastController,
     private brandProvider: BrandProvider,
-    private actSheetCtrl: ActionSheetController) {
+    private actSheetCtrl: ActionSheetController,
+    private ga: GoogleAnalytics
+) {
   }
 
   ionViewDidLoad() {
@@ -42,6 +46,13 @@ export class OverviewPage {
 
   ionViewWillEnter() {
     this.loadConferences().then(() => console.log("conferences loaded"));
+
+    if(this.globalProvider.conferenceId){
+      this.ga.trackView('conf/ep/'+this.globalProvider.conferenceId+'/overview');
+    } else {
+      this.ga.trackView('overviewPage');
+    }
+
   }
 
   public goToConference(newConferenceId: string, newToken: string) {

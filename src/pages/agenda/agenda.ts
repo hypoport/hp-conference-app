@@ -5,13 +5,14 @@ import {GlobalProvider} from "../../providers/global/global";
 import {Agenda} from "../../models/agenda";
 import {Session} from "../../models/session";
 import {FavoritesService} from "../../providers/favorites/favorites-service";
+import { GoogleAnalytics } from '@ionic-native/google-analytics';
 
 @Component({
   selector: "page-agenda",
   templateUrl: "agenda.html"
 })
 export class AgendaPage {
-  
+
   activeSegment: string;
   agenda: Agenda;
   sessions: Array<Session> = [];
@@ -21,8 +22,10 @@ export class AgendaPage {
   constructor(private globalProvider: GlobalProvider,
     private agendaService: AgendaService,
     private favoritesService: FavoritesService,
-    private toastCtrl: ToastController) {
-		this.activeSegment = 'allSessions';    
+    private toastCtrl: ToastController,
+    private ga: GoogleAnalytics
+    ) {
+		this.activeSegment = 'allSessions';
   }
 
   ionViewDidLoad() {
@@ -33,11 +36,16 @@ export class AgendaPage {
       this.favoSessions = this.sessions.filter((session) => session.isFavorite);
     });
   }
-  
+
   ionViewWillEnter(){
-    this.favoSessions = this.sessions.filter((session) => session.isFavorite);		
+    this.favoSessions = this.sessions.filter((session) => session.isFavorite);
+    if(this.globalProvider.conferenceId){
+      this.ga.trackView('conf/ep/'+this.globalProvider.conferenceId+'/agenda');
+    } else {
+      this.ga.trackView('agendaPage');
+    }
   }
-  
+
   public refreshAgenda(refresher: Refresher) {
     this.agendaService.loadAgenda(this.globalProvider.conferenceId,this.globalProvider.conferenceToken).then((agenda: Agenda) => {
       this.sessions = agenda.sessions;

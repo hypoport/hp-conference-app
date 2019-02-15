@@ -13,11 +13,13 @@ export class GlobalProvider {
   private _conferenceToken: string;
 
   private _apiURL: string;
+  private _gaKey: string;
   private _qrPayloadSecret: string;
   private _appVersion: string;
 
   constructor() {
 	  this._apiURL = ENV.apiROOT;
+    this._gaKey = ENV.gaKey;
 	  this._qrPayloadSecret = ENV.qrPayloadSecret;
 	  this._appVersion = '1.0.0 (1)';
   }
@@ -42,6 +44,9 @@ export class GlobalProvider {
  public appVersion() {
     return this._appVersion;
   }
+  public getGAKey() {
+     return this._gaKey;
+}
  public apiURL(endpoint: string){
 	return this._apiURL + '/' + endpoint;
  }

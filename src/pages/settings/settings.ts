@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {GlobalProvider} from "../../providers/global/global";
+import { GoogleAnalytics } from '@ionic-native/google-analytics';
 
 /**
  * Generated class for the SettingsPage page.
@@ -18,11 +19,16 @@ export class SettingsPage {
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    private globalProvider: GlobalProvider) {
+    private globalProvider: GlobalProvider,
+    private ga: GoogleAnalytics
+    ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingsPage');
+  }
+  ionViewDidEnter(){
+      this.ga.trackView('settingsPage');
   }
 
 }

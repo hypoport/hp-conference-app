@@ -11,6 +11,7 @@ import {ConferenceService} from '../../providers/conference/conference-service';
 import {AgendaService} from '../../providers/agenda/agenda-service';
 import {GlobalProvider} from "../../providers/global/global";
 import { ToastController, Refresher, App } from 'ionic-angular';
+import { GoogleAnalytics } from '@ionic-native/google-analytics';
 
 declare const google;
 
@@ -34,7 +35,9 @@ export class HomePage {
     private globalProvider: GlobalProvider,
     private toastCtrl: ToastController,
     private iab: InAppBrowser,
-    private callNumber: CallNumber) {
+    private callNumber: CallNumber,
+    private ga: GoogleAnalytics
+    ) {
 
   }
 
@@ -50,10 +53,16 @@ export class HomePage {
     this.loadDirection();
   }
   ionViewDidEnter(){
-
-	this.agendaService.getNextAgendaPoint(this.globalProvider.conferenceId).then((session)=>{
+	  this.agendaService.getNextAgendaPoint(this.globalProvider.conferenceId).then((session)=>{
 		this.nextSession = session;
 		console.log(this.nextSession);
+
+    if(this.globalProvider.conferenceId){
+      this.ga.trackView('conf/ep/'+this.globalProvider.conferenceId+'/home');
+    } else {
+      this.ga.trackView('homePage');
+    }
+
 	});
 
 	// silently update conference in background

@@ -7,6 +7,8 @@ import {Speaker} from '../../models/speaker';
 import {SpeakerPage} from '../speaker/speaker';
 import {FavoritesService} from "../../providers/favorites/favorites-service";
 
+import { GoogleAnalytics } from '@ionic-native/google-analytics';
+
 /**
  * Generated class for the SessionPage page.
  *
@@ -28,7 +30,9 @@ export class SessionPage {
     private navCtrl: NavController,
     private speakerService: SpeakerService,
     private globalProvider: GlobalProvider,
-    private favoritesService: FavoritesService) {
+    private favoritesService: FavoritesService,
+    private ga: GoogleAnalytics
+    ) {
   }
 
   ionViewDidLoad() {
@@ -51,6 +55,14 @@ export class SessionPage {
         }
       });
     }
+
+
+        if(this.globalProvider.conferenceId && this.session.id){
+          this.ga.trackView('conf/ep/'+this.globalProvider.conferenceId+'/session/'+this.session.id);
+        } else {
+          this.ga.trackView('sessionPage');
+        }
+
   }
 
   public toggleFavorite() {

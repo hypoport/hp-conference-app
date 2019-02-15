@@ -4,6 +4,7 @@ import {GlobalProvider} from "../../providers/global/global";
 import {SpeakerService} from "../../providers/speaker/speaker-service";
 import {Speaker} from "../../models/speaker";
 import {SpeakerPage} from '../speaker/speaker';
+import { GoogleAnalytics } from '@ionic-native/google-analytics';
 
 @Component({
   selector: 'page-speakers',
@@ -18,13 +19,22 @@ export class SpeakersPage {
     private toastCtrl: ToastController,
     private config: Config,
     private actionSheetCtrl: ActionSheetController,
-    private app: App) {
+    private app: App,
+    private ga: GoogleAnalytics
+    ) {
   }
 
   ionViewDidLoad() {
     this.speakerService.getSpeakers(this.globalProvider.conferenceId).then((speakers) => {
       this.speakers = speakers;
     });
+  }
+  ionViewDidEnter(){
+    if(this.globalProvider.conferenceId){
+      this.ga.trackView('conf/ep/'+this.globalProvider.conferenceId+'/speakers');
+    } else {
+      this.ga.trackView('speakersPage');
+    }
   }
 
   public refreshSpeakers(refresher: Refresher) {
