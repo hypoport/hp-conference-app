@@ -60,9 +60,13 @@ export class AgendaPage {
   }
 
   public segmentChanged(event) {
-    if (event.value === "favoriteSessions") {
+    this.agendaService.getAgenda(this.globalProvider.conferenceId).then((agenda) => {
+	  this.agenda = agenda;
+      this.favoritesService.loadFavorites(agenda, this.globalProvider.conferenceId);
+      this.sessions = agenda.sessions;
       this.favoSessions = this.sessions.filter((session) => session.isFavorite);
-    }
+    });
+
   }
 
 }
