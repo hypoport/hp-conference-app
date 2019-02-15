@@ -1,4 +1,6 @@
 export const ENV = {
 	apiROOT: 'https://url.to/api',
-	qrPayloadSecret: 'secret'
+	qrPayloadSecret: 'secret',
+	hotFixUrls: {
+	}
 };

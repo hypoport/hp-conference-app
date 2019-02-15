@@ -48,5 +48,12 @@ export class GlobalProvider {
  public qrSecret(){
 	return this._qrPayloadSecret;
  }
+ public qrHotFix(url){
+   if(ENV.hotFixUrls[url]){
+     return ENV.hotFixUrls[url];
+   } else {
+     return url;
+   }
+ }
 
 }

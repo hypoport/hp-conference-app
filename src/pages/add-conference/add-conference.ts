@@ -21,10 +21,10 @@ import CryptoJS from 'crypto-js';
   templateUrl: 'add-conference.html',
 })
 export class AddConferencePage {
-  
+
   confCode: string;
   confPassword: string;
-  
+
   constructor(
   public navCtrl: NavController,
   public navParams: NavParams,
@@ -49,9 +49,9 @@ export class AddConferencePage {
   }
 
   public addConference(conferenceCode: string, conferencePassword: string) {
-     
+
     if(typeof conferenceCode === 'undefined' || typeof conferencePassword === 'undefined' || conferenceCode == "" || conferenceCode == ""){
-	
+
 		let toast = this.toastCtrl.create({
 			message: 'Bitte geben Sie eine Tagungs-Kennung und ein Tagungs-Passwort an.',
 			duration: 5000,
@@ -60,29 +60,29 @@ export class AddConferencePage {
 			closeButtonText: 'OK'
 		});
 		toast.present();
-		     	
+
     } else {
- 
+
 		const loader = this.loadingCtrl.create({
 		    content: "Lade Tagung …",
 		    duration: 30000,
 		    dismissOnPageChange: true,
 		});
 		loader.present();
-		
+
 	    this.conferenceService.addConference(conferenceCode, conferencePassword)
-	      .then((conference) => { 
+	      .then((conference) => {
 		     loader.dismiss();
 		     this.goToConference(conference.id);
 	      }).catch((error) => {
-		  	  
+
 		 	loader.dismiss();
-	
+
 		    let message = "Tagungs-Login aktuell nicht möglich. Versuchen Sie es zu einem späteren Zeitpunkt nochmal.";
 		    if(error.status == 403){
 			    message = "Tagungs-Kennung und Tagungs-Passwort stimmen nicht überein.";
 		    }
-		 
+
 		    let toast = this.toastCtrl.create({
 				 message: message,
 				 duration: 5000,
@@ -91,25 +91,26 @@ export class AddConferencePage {
 				 closeButtonText: 'OK'
 			});
 		    toast.present();
-	
+
 		  });
 	}
   }
-  
+
   openQrReader(){
-	  
-  		/* example encryption 
+
+  		/* example encryption
 		let b64 = CryptoJS.AES.encrypt('{	"key": "konf", "pw": "password", "brand": "ep" }', this.globalProvider.qrSecret()).toString();
 	    let e64 = CryptoJS.enc.Base64.parse(b64);
 	    let eHex = e64.toString(CryptoJS.enc.Hex);
-	    
+
 		console.log('test '+eHex); */
-		
+
 		this.barcodeScanner.scan().then(barcodeData => {
-		
-		var url = new URL(barcodeData.text);
+
+    var changedUrl = this.globalProvider.qrHotFix(barcodeData.text);
+		var url = new URL(changedUrl);
 		var c = url.searchParams.get("c");
-		
+
 		   var reb64 = CryptoJS.enc.Hex.parse(c);
 		   var bytes = reb64.toString(CryptoJS.enc.Base64);
 		   var decrypt = CryptoJS.AES.decrypt(bytes, this.globalProvider.qrSecret());
@@ -130,7 +131,7 @@ export class AddConferencePage {
 			});
 		    toast.present();
 		}
-		
+
 		}).catch(err => {
 			console.log(JSON.stringify(err));
 			let toast = this.toastCtrl.create({
@@ -140,10 +141,10 @@ export class AddConferencePage {
 				 showCloseButton: true,
 				 closeButtonText: 'OK'
 			});
-		    toast.present();		    
+		    toast.present();
 		});
   }
-  
+
   dismiss() {
     this.viewCtrl.dismiss();
   }
