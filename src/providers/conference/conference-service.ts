@@ -65,6 +65,7 @@ export class ConferenceService {
 
   public loadConferenceAttendees(conferenceId: string, token: string, password: string): Promise<Array<any>> {
     const url = this.global.apiURL('conference/attendees');
+    // @ts-ignore
     return this.http.post(url, {
       "key": conferenceId,
       "token": token,
@@ -75,7 +76,7 @@ export class ConferenceService {
     }).toPromise()
       .then((attendeelist) => {
         return attendeelist;
-      });
+    });
   }
 
   public removeConference(conferenceId: string): Promise<Map<string, Conference>> {

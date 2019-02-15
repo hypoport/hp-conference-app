@@ -1,3 +1,169 @@
 page-attendees {
 
+  /* header + tabbar shadow */
+  .toolbar-ios,
+  .toolbar-md {
+    box-shadow: none;
+  }
+  .toolbar-background {
+    background: $offwhite;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+  }
+
+
+
+  .content-ios {
+    section {
+      &.splashscreen {
+        padding-bottom: $toolbar-ios-height;
+        .add-conference-hint {
+          bottom: calc(#{$toolbar-ios-height * 1.5 });
+        }
+      }
+    }
+  }
+  .content-md {
+    section {
+      &.splashscreen {
+        padding-bottom: $toolbar-md-height;
+        .add-conference-hint {
+          bottom: calc(#{$toolbar-md-height * 1.5 });
+        }
+      }
+    }
+  }
+
+
+
+  section {
+
+
+    &.splashscreen {
+
+
+
+      display: flex;
+			flex-direction: column;
+			justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+
+      .attendeelist-info {
+        text-align: center;
+        margin-top: 8%;
+      }
+      .add-conference-hint {
+        position: absolute;
+        text-align: center;
+      }
+    }
+  }
+
+  .app-icon {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+
+    width: 96px;
+    height: 96px;
+
+    box-shadow: $card-shadow-primary;
+    border: $base-border;
+    border-radius: 20px;
+    overflow: hidden;
+
+    padding: 18px;
+    img {
+      box-shadow: 0px 4px 20px -4px rgba($red, .25);
+
+      border-radius: 50%;
+      overflow: hidden;
+    }
+  }
+
+  	/* disable last bottom border */
+  	.list-ios,
+  	.list-md {
+  		.item-input {
+  			&:last-child {
+  				border-bottom: 0;;
+  			}
+  		}
+  	}
+  	/* base add-conv list styling */
+  	.item-ios,
+  	.item-md {
+
+
+
+
+  		/* left align ion icon in list */
+  		[item-left] {
+  			margin-top: 16px;
+  			margin-bottom: 16px;
+  		}
+  		ion-icon {
+  			color: silver;
+  		}
+
+
+  		&.conv-login-user,
+  		&.conv-login-pass {
+  			background: $background-secondary;
+  			border-radius: calc(#{$border-radius} * 2);
+  			margin-bottom: 1rem;
+  		}
+
+
+  		/* ion label placeholder */
+  		.label-ios,
+  		.label-md {
+  			margin-top: 4px;
+  			margin-bottom: 0;
+  			transform: translate3d(0, 16px, 0);
+  			p {
+  				color: $font-color-tertiary;
+  			}
+
+  		}
+
+  		/* ion input */
+  		&.item-label-floating {
+  			.text-input {
+  				margin-top: 0;
+  				margin-bottom: 0;
+  			}
+
+  		}
+  	}
+
+
+
+  	ion-icon {
+  		font-size: 2.8rem;
+  	}
+
+  // ion-footer {
+  //   .toolbar-content-ios,
+  //   .toolbar-content-md {
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  //     button {
+  //       margin: 1rem 0;
+  //     }
+  //   }
+  //   .toolbar-background-ios,
+  //   .toolbar-background-md {
+  //     background: transparent;
+  //   }
+  // }
+
 }

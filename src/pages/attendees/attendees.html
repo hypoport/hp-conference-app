@@ -15,4 +15,49 @@
 
 <ion-content padding>
 
+
+  <section class="splashscreen" *ngIf="!attendees">
+
+    <div class="attendeelist-info">
+
+
+      <ion-list no-lines no-margin class="conv-login">
+
+        <!-- conv login pass -->
+        <ion-item class="conv-login-pass">
+          <ion-label floating>
+            <p>Tagungs-Passwort</p>
+          </ion-label>
+          <ion-input [(ngModel)]="confPassword" type="password"></ion-input>
+          <ion-icon ios="md-lock" md="md-lock" item-left></ion-icon>
+        </ion-item>
+
+
+
+      </ion-list>
+
+
+      <p>Bitte geben Sie das Ihnen kommunizierte <a href="#nope">Tagungs-Passwort</a> ein.</p>
+      <!-- <p class="font-tertiary">Neugierig? Testen Sie die App mit der <br>Tagungskennung: <i>demo</i> und dem Passwort: <i>demo</i>.</p> -->
+
+    </div>
+
+  </section>
+
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+
+    <ion-grid>
+      <ion-row align-items-center justify-content-center>
+        <ion-col col-12>
+          <button round ion-button block (click)="getAttendees(this.confPassword,this.globalProvider.conferenceId,this.globalProvider.conferenceToken)">Teilnehmerliste einsehen</button>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+
+
+  </ion-toolbar>
+</ion-footer>
