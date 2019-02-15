@@ -7,6 +7,7 @@ import { ToastController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
+import {ConferenceOptions} from '../../models/conference-options';
 
 import CryptoJS from 'crypto-js';
 
@@ -45,9 +46,10 @@ export class AddConferencePage {
     this.ga.trackView('addConferencePage');
   }
 
-  public goToConference(newConferenceId: string, newToken: string) {
+  public goToConference(newConferenceId: string, newToken: string, conferenceopt: ConferenceOptions) {
     this.globalProvider.conferenceId = newConferenceId;
     this.globalProvider.conferenceToken = newToken;
+    this.globalProvider.conferenceOptions = conferenceopt;
 	  this.app.getRootNav().push(TabsPage);
 	  this.viewCtrl.dismiss();
   }
@@ -77,7 +79,7 @@ export class AddConferencePage {
 	    this.conferenceService.addConference(conferenceCode, conferencePassword)
 	      .then((conference) => {
 		     loader.dismiss();
-		     this.goToConference(conference.id,conference.token);
+		     this.goToConference(conference.id,conference.token,conference.options);
 	      }).catch((error) => {
 
 		 	loader.dismiss();

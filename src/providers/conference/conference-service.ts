@@ -56,6 +56,7 @@ export class ConferenceService {
     }).toPromise()
       .then((conference: Conference): Conference => {
         this.conferences.set(conference.id.toString(), conference);
+        if(conference.options) this.global.conferenceOptions = conference.options;
         this.storage.set(STORAGE_KEY, this.conferences);
         this.agendaService.loadAgenda(conference.id, token);
         this.speakerService.loadSpeakers(conference.id, token);

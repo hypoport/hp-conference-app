@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ENV } from './../../../env.js';
+import {ConferenceOptions} from "../../models/conference-options";
+
 /*
   Generated class for the GlobalProvider provider.
 
@@ -11,6 +13,7 @@ export class GlobalProvider {
 
   private _conferenceId: string;
   private _conferenceToken: string;
+  private _conferenceOptions: ConferenceOptions;
 
   private _apiURL: string;
   private _gaKey: string;
@@ -39,14 +42,20 @@ export class GlobalProvider {
   set conferenceToken(value: string) {
     this._conferenceToken = value;
   }
+  get conferenceOptions(): ConferenceOptions {
+    return this._conferenceOptions;
+  }
 
+  set conferenceOptions(value: ConferenceOptions) {
+    this._conferenceOptions = value;
+  }
 
  public appVersion() {
     return this._appVersion;
   }
   public getGAKey() {
      return this._gaKey;
-}
+ }
  public apiURL(endpoint: string){
 	return this._apiURL + '/' + endpoint;
  }

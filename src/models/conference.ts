@@ -1,6 +1,7 @@
 import {Directions} from "./directions";
 import {Contact} from "./contact";
 import {QuickAccessCard} from "./quickaccess-card";
+import {ConferenceOptions} from "./conference-options";
 
 export class Conference {
   id: string;
@@ -17,4 +18,5 @@ export class Conference {
   contact: Contact;
   image: string;
   brand: string;
+  options: ConferenceOptions;
 }
