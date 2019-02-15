@@ -42,7 +42,7 @@
             </ion-card>
 
             <!-- card location and date -->
-            <ion-card class="service-card" *ngIf="card.type == 'loc_date'">
+            <ion-card class="service-card" *ngIf="card.type == 'loc_date'" (click)="cardAction(card)">
               <ion-card-content>
                 <div class="card-content-top">
                   <h6>{{card.cardTitle ? card.cardTitle : 'Location + Date'}}</h6>
@@ -56,7 +56,7 @@
             </ion-card>
 
             <!-- card location and date -->
-            <ion-card class="service-card" *ngIf="card.type == 'next_session'">
+            <ion-card class="service-card" *ngIf="card.type == 'next_session' && this.nextSession" (click)="cardAction(card)">
               <ion-card-content>
                 <div class="card-content-top">
                   <h6>{{card.cardTitle ? card.cardTitle : 'Kommendes Ereignis'}}</h6>
@@ -64,7 +64,7 @@
                 </div>
                 <div class="card-content-bottom">
                   <h3 [innerHTML]="this.nextSession?.title"></h3>
-                  <h5>{{nextSession?.timeStart | date: 'HH:mm': 'CEST': 'de-DE'}} &mdash; {{nextSession?.timeEnd | date: 'HH:mm': 'CEST': 'de-DE'}}</h5>
+                  <h5>{{this.nextSession?.timeStart | date: 'HH:mm': 'CEST': 'de-DE'}} &mdash; {{this.nextSession?.timeEnd | date: 'HH:mm': 'CEST': 'de-DE'}}</h5>
                 </div>
               </ion-card-content>
             </ion-card>

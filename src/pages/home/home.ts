@@ -7,7 +7,7 @@ import {QuickAccessCard} from '../../models/quickaccess-card';
 import {ConferenceService} from '../../providers/conference/conference-service';
 import {AgendaService} from '../../providers/agenda/agenda-service';
 import {GlobalProvider} from "../../providers/global/global";
-import { ToastController, Refresher } from 'ionic-angular';
+import { ToastController, Refresher, App } from 'ionic-angular';
 
 declare const google;
 
@@ -24,7 +24,9 @@ export class HomePage {
 
   lastUpdate: Date;
 
-  constructor(private conferenceService: ConferenceService,
+  constructor(
+    private app: App,
+    private conferenceService: ConferenceService,
     private agendaService: AgendaService,
     private globalProvider: GlobalProvider,
     private toastCtrl: ToastController) {
@@ -77,7 +79,11 @@ export class HomePage {
   }
 
   public cardAction(card: QuickAccessCard){
-
+    if(card.action == "gotoPage"){
+      // if(card.data == "attendee") this.app.getRootNav().push(SessionPage, {session: session});
+      if(card.data == "agenda") this.app.getRootNav().getActiveChildNav().select(1);
+      if(card.data == "speaker") this.app.getRootNav().getActiveChildNav().select(2);
+    }
   }
 
   public refreshConference(refresher: Refresher) {
