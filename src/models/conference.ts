@@ -1,11 +1,13 @@
 import {Directions} from "./directions";
 import {Contact} from "./contact";
+import {QuickAccessCard} from "./quickaccess-card";
 
 export class Conference {
   id: string;
   token: string;
   title: string;
   subtitle: string;
+  quickaccess: Array<QuickAccessCard>;
   startDate: Date;
   endDate: Date;
   city: string;
