@@ -63,7 +63,7 @@ export class ConferenceService {
       });
   }
 
-  public loadConferenceAttendees(conferenceId: string, token: string, password: string): Promise<Array<any>> {
+  public loadConferenceAttendees(conferenceId: string, token: string, password: string): Promise<any> {
     const url = this.global.apiURL('conference/attendees');
     // @ts-ignore
     return this.http.post(url, {
@@ -75,6 +75,7 @@ export class ConferenceService {
       headers: {'Content-Type': 'application/json; charset=utf-8'}
     }).toPromise()
       .then((attendeelist) => {
+        console.log(attendeelist);
         return attendeelist;
     });
   }

@@ -384,7 +384,7 @@ ion-card {
 
   &.service-card.text-selectable {
     h1,h2,h3,h4,h5,h6,p {
-      user-select: auto !important;
+      user-select: text !important;
     }
   }
 
@@ -601,9 +601,9 @@ ion-list {
 }
 
 .selectable-text {
-  user-select: auto !important;
+  user-select: text !important;
   h1,h2,h3,h4,h5,h6,p {
-    user-select: auto !important;
+    user-select: text !important;
   }
 }
 

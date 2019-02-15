@@ -48,11 +48,6 @@ export class AttendeesPage {
 
     } else {
 
-
-      console.log(conferencePassword);
-      console.log(key);
-      console.log(token);
-
     const loader = this.loadingCtrl.create({
         content: "Lade Teilnehmerliste …",
         duration: 30000,
@@ -62,7 +57,7 @@ export class AttendeesPage {
       this.conferenceService.loadConferenceAttendees(key,token, conferencePassword)
         .then((attendees) => {
          loader.dismiss();
-         attendees = attendees;
+         if(attendees.data) this.attendees = attendees.data;
         }).catch((error) => {
 
         loader.dismiss();
@@ -80,7 +75,6 @@ export class AttendeesPage {
          closeButtonText: 'OK'
       });
         toast.present();
-
       });
   }
   }
