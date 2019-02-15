@@ -1,0 +1,15 @@
+page-feedback {
+  ion-textarea {
+		min-height: 30vh;
+		border: 1px solid rgba(0,0,0,0.1);
+		border-radius: 6px;
+		padding: 10px;
+		textarea {
+			min-height: 30vh;
+		}
+	}
+	ion-item {
+		padding-left: 0px !important;
+		padding-right: 0px !important;
+	}
+}
