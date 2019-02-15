@@ -65,10 +65,10 @@ export class NotificationService {
   }
 
   private getNotification(notifications: Map<string, Map<string, number>>, session: Session) {
- 
+
     let currDate = new Date().getTime();
 	let startDate  = new Date(session.timeStart).getTime();
-	
+
 	// @ts-ignore
 	let minutesUntil = ( ((startDate - currDate) / 60000)) - 5;
 	console.log('notification '+session.title+' send in '+minutesUntil);
@@ -76,7 +76,7 @@ export class NotificationService {
 		return null;
 	}
 	minutesUntil = Math.round(minutesUntil);
-	
+
     return {
       id: this.getMaxId(notifications) + 1,
       text: `${session.title} beginnt in 5 Minuten`,

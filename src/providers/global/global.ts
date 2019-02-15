@@ -19,7 +19,7 @@ export class GlobalProvider {
   constructor() {
 	  this._apiURL = ENV.apiROOT;
 	  this._qrPayloadSecret = ENV.qrPayloadSecret;
-	  this._appVersion = '0.1.0';
+	  this._appVersion = '1.0.0 (1)';
   }
 
   get conferenceId(): string {
