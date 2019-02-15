@@ -140,27 +140,35 @@
   <section class="support" *ngIf="conference?.contact">
 
 
-	<h2>Ihre Ansprechpartner</h2>
 
 
 
-  <div class="support-global">
-    <button ion-button small round color="cloud" icon-start>
-      <ion-icon name="call"></ion-icon>
-        {{ conference.contact.telephone }}
-    </button>
+  <ion-grid class="support-global support-card">
+    <ion-row>
+      <ion-col col-12>
+        <h2>Ihr Ansprechpartner</h2>
+      </ion-col>
+      <ion-col auto no-padding>
+        <button ion-button small round color="cloud" icon-start>
+          <ion-icon name="call"></ion-icon>
+            {{ conference.contact.telephone }}
+        </button>
 
-    <button ion-button small round color="cloud" icon-start>
-      <ion-icon name="paper-plane"></ion-icon>
-        {{ conference.contact.email }}
-    </button>
-  </div>
+        <button ion-button small round color="cloud" icon-start>
+          <ion-icon name="paper-plane"></ion-icon>
+            {{ conference.contact.email }}
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 
 
 
-    <ion-list no-padding *ngIf="conference?.contact?.persons" class="support-individual">
-      <ion-item no-lines no-padding *ngFor="let person of conference.contact.persons" class="support-card">
+
+
+    <ion-list no-lines no-padding *ngIf="conference?.contact?.persons" class="support-individual">
+      <ion-item *ngFor="let person of conference.contact.persons" >
         <ion-grid>
 
           <ion-row no-padding align-items-center>

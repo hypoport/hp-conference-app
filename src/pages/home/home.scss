@@ -166,17 +166,20 @@ page-home {
 
     .item-ios,
     .item-md {
+      padding-left: 0;
       // margin-bottom: 1rem;
       // background: $white;
       // border-radius: calc(#{$border-radius * 1});
       // border: $base-border !important;
 
+      border-bottom: .55px solid rgba($black, .12) !important;
+
       .item-inner {
-        // padding-right: 0;
+        padding-right: 0;
       }
       .label-ios,
       .label-md {
-        // margin-right: 0;
+        margin-right: 0;
       }
 
     }

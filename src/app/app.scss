@@ -71,9 +71,6 @@ $font-color-primary:            $text-color;
 $font-color-secondary:          lighten($text-color, 15%);
 $font-color-tertiary:           lighten($text-color, 50%);
 
-.font-tertiary {
-  color: $font-color-tertiary;
-}
 
 $font-color-text:               lighten($charcoal, 20%);
 $font-color-text-lead:          lighten($charcoal, 10%);
@@ -203,10 +200,14 @@ hr,
 
 .support-card {
 
+  /* base card padding */
+  padding: 15px;
+
   /* shape */
   background: $white;
   border: $base-border !important;
   border-radius: calc(#{$border-radius * 1.4});
+  box-shadow: $card-shadow-secondary;
 
 
   /* override base list settings for better card styling */
@@ -225,7 +226,9 @@ hr,
   }
 }
 
-
+.font-tertiary {
+  color: $font-color-tertiary;
+}
 
 
 
@@ -472,6 +475,11 @@ ion-card {
 
 .card-ios,
 .card-md {
+
+  .card-content-ios,
+  .card-content-md {
+    padding: 15px;
+  }
 
   /* shape */
   background: $white;
