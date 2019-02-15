@@ -14,6 +14,7 @@ import {SpeakerPage} from '../pages/speaker/speaker';
 import {SettingsPage} from '../pages/settings/settings';
 import {HomePopoverPage} from '../pages/home-popover/home-popover';
 
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {AgendaService} from '../providers/agenda/agenda-service';
@@ -26,6 +27,7 @@ import {NotificationService} from '../providers/notifications/notifications-serv
 import {HttpClientModule} from '@angular/common/http';
 import {IonicStorageModule} from '@ionic/storage';
 import {Device} from '@ionic-native/device';
+import { CallNumber } from '@ionic-native/call-number';
 
 import {ComponentsModule} from "../components/components.module";
 
@@ -80,7 +82,10 @@ registerLocaleData(localeDe);
     BarcodeScanner,
     LocalNotifications,
     Device,
-    SplashScreen, {provide: ErrorHandler, useClass: IonicErrorHandler},
+    SplashScreen,
+    InAppBrowser,
+    CallNumber,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
     AgendaService,
     ConferenceService,
     GlobalProvider,

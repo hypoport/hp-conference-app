@@ -4,6 +4,9 @@ import {Session} from '../../models/session';
 
 import {QuickAccessCard} from '../../models/quickaccess-card';
 
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { CallNumber } from '@ionic-native/call-number';
+
 import {ConferenceService} from '../../providers/conference/conference-service';
 import {AgendaService} from '../../providers/agenda/agenda-service';
 import {GlobalProvider} from "../../providers/global/global";
@@ -29,7 +32,9 @@ export class HomePage {
     private conferenceService: ConferenceService,
     private agendaService: AgendaService,
     private globalProvider: GlobalProvider,
-    private toastCtrl: ToastController) {
+    private toastCtrl: ToastController,
+    private iab: InAppBrowser,
+    private callNumber: CallNumber) {
 
   }
 
@@ -83,9 +88,22 @@ export class HomePage {
       // if(card.data == "attendee") this.app.getRootNav().push(SessionPage, {session: session});
       if(card.data == "agenda") this.app.getRootNav().getActiveChildNav().select(1);
       if(card.data == "speaker") this.app.getRootNav().getActiveChildNav().select(2);
+    } else if(card.action == "openURL") {
+        if(card.data != "") this.iab.create(card.data,'_system',{location:'no'});
     }
   }
-
+  public openMail(mail){
+    if(mail){
+      window.open(`mailto:${mail}`, '_system');
+    }
+  }
+  public openTel(tel){
+    if(tel){
+      this.callNumber.callNumber(tel, false)
+        .then(res => console.log('Launched dialer!', res))
+        .catch(err => console.log('Error launching dialer', err));
+    }
+  }
   public refreshConference(refresher: Refresher) {
     this.conferenceService.loadConference(this.globalProvider.conferenceId, this.globalProvider.conferenceToken).then((conference: Conference) => {
       this.conference = conference;

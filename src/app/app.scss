@@ -382,6 +382,11 @@ ion-card {
     min-height: 45vh;
   }
 
+  &.service-card.text-selectable {
+    h1,h2,h3,h4,h5,h6,p {
+      user-select: auto !important;
+    }
+  }
 
   ion-card-content {
     display: flex;
@@ -592,9 +597,15 @@ ion-list {
   h5 {
     color: $font-color-tertiary;
   }
+
 }
 
-
+.selectable-text {
+  user-select: auto !important;
+  h1,h2,h3,h4,h5,h6,p {
+    user-select: auto !important;
+  }
+}
 
 
 
