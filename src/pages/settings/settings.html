@@ -24,7 +24,7 @@
 
       <ion-item class="switcher-item">
         <ion-label>
-          <p>Benachrichtigung zur Agenda</p>
+          <p>Agenda-Favoritenliste</p>
         </ion-label>
         <ion-toggle checked="true"></ion-toggle>
       </ion-item>
@@ -40,7 +40,7 @@
       <ion-item>
 	  	  <ion-icon name="phone-portrait" item-start></ion-icon>
         <p>Hypoport Tagungs-App<br/>v. {{this.globalProvider.appVersion()}}</p>
-        <button ion-button clear item-end>Changelog</button>
+        <button ion-button clear item-end (click)="openCLog()">Changelog</button>
       </ion-item>
 
     </ion-list>

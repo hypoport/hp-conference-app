@@ -33,6 +33,9 @@ export class SettingsPage {
       this.ga.trackView('settingsPage');
   }
   openLandingpage(){
+    this.iab.create('https://github.com/hypoport/hp-conference-app/commits/master','_system',{location:'no'});
+  }
+  openCLog(){
     this.iab.create('https://tagungsapp.hypoport.de/','_system',{location:'no'});
   }
   openDS(){
