@@ -98,6 +98,7 @@ export class FeedbackPage {
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       }).toPromise()
 		    .then(data => {
+          // @ts-ignore
 				  let success = data.success;
 				  if(success){
 					  return true;

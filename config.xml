@@ -97,8 +97,8 @@
     </plugin>
     <allow-navigation href="http://10.10.97.6:8100" />
     <plugin name="cordova-plugin-local-notification" spec="0.9.0-beta.2" />
-    <engine name="android" spec="^7.1.0" />
     <plugin name="cordova-plugin-device" spec="^2.0.2" />
     <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
-    <engine name="ios" spec="~4.5.4" />
+    <engine name="android" spec="^7.1.4" />
+    <engine name="ios" spec="4.5.4" />
 </widget>
