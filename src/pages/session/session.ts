@@ -42,9 +42,10 @@ export class SessionPage {
     this.speakers.length = 0;
     if (this.session.speakers) {
       this.session.speakers.forEach((speakerId) => {
+        // @ts-ignore
         if(!speakerId.name){ // maybe are speaker allready unfolded
           this.speakerService.getSpeaker(this.globalProvider.conferenceId, speakerId).then((speaker) => {
-            // @ts-ignore 
+            // @ts-ignore
             if(speaker) this.speakers.push(speaker);
           });
         }

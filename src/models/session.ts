@@ -6,7 +6,7 @@ export class Session {
   description: string;
   timeStart: Date;
   timeEnd: Date;
-  speakers: Array<string|Speaker>;
+  speakers: Array<string>;
   location: string;
   category: string;
   isFavorite: boolean;
