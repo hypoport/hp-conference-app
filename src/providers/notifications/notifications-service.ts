@@ -56,17 +56,19 @@ export class NotificationService {
   public removeNotification(conferenceId: string, session: Session) {
     console.log("remove notification");
     this.storage.get(STORAGE_KEY).then((notifications: Map<string, Map<string, number>>) => {
-      const notificationId = notifications.get(conferenceId).get(session.id);
-      console.log("cancel notification " + notificationId);
-      this.localNotifications.cancel(notificationId);
-      notifications.get(conferenceId).delete(session.id);
-      this.storage.set(STORAGE_KEY, notifications);
+      if(notifications){
+        const notificationId = notifications.get(conferenceId).get(session.id);
+        console.log("cancel notification " + notificationId);
+        this.localNotifications.cancel(notificationId);
+        notifications.get(conferenceId).delete(session.id);
+        this.storage.set(STORAGE_KEY, notifications);
+      }
     });
   }
 
   private getNotification(notifications: Map<string, Map<string, number>>, session: Session) {
 
-    let currDate = new Date().getTime();
+  let currDate = new Date().getTime();
 	let startDate  = new Date(session.timeStart).getTime();
 
 	// @ts-ignore

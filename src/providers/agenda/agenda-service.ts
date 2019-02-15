@@ -49,7 +49,7 @@ export class AgendaService {
         this.speakerService.setSpeaker(conferenceId,speaker);
 
         return agenda;
-      }).then((agenda) => {
+      }).then((agenda) => { 
         this.favoritesService.rescheduleNotifications(agenda, conferenceId);
         return agenda;
       });

@@ -3,6 +3,7 @@ import {Storage} from "@ionic/storage";
 import {Session} from "../../models/session";
 import {Agenda} from "../../models/agenda";
 import {NotificationService} from "../notifications/notifications-service";
+import {GlobalProvider} from "../global/global";
 
 const STORAGE_KEY = "favorites";
 
@@ -10,7 +11,8 @@ const STORAGE_KEY = "favorites";
 export class FavoritesService {
 
   constructor(private storage: Storage,
-    private notificationService: NotificationService) {
+    private notificationService: NotificationService,
+    private globalProvider: GlobalProvider) {
   }
 
   public toggleFavorite(conferenceId: string, session: Session): void {
@@ -47,12 +49,24 @@ export class FavoritesService {
 
   public rescheduleNotifications(agenda: Agenda, conferenceId: string) {
     console.log("reschedule notifications");
+
+    let confOptions = this.globalProvider.conferenceOptions;
+    if(confOptions && confOptions.noNotifications){
+      console.log('no notifications active. Stop sending notifications');
+      this.notificationService.removeAllNotifictions(conferenceId.toString());
+    } else {
+      this.notificationService.removeAllNotifictions(conferenceId);
+      this.loadFavorites(agenda, conferenceId).then((favorites) => {
+        if (favorites) {
+          favorites.forEach((favorite) => this.notificationService.triggerNotification(conferenceId, favorite));
+        }
+      });
+    }
+  }
+
+  public removeAllNotifictions(conferenceId: string){
+    console.log("remove all notifications");
     this.notificationService.removeAllNotifictions(conferenceId);
-    this.loadFavorites(agenda, conferenceId).then((favorites) => {
-      if (favorites) {
-        favorites.forEach((favorite) => this.notificationService.triggerNotification(conferenceId, favorite));
-      }
-    })
   }
 
 }
