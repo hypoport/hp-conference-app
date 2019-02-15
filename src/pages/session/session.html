@@ -13,14 +13,14 @@
 
     <ion-list no-lines no-padding>
       <ion-item detail-none>
-        <h3>{{ session?.title }}</h3>
+        <h3 [innerHTML]="session?.title"></h3>
         <button ion-button item-end clear (click)="this.toggleFavorite()">
           <ion-icon class="bookmark" name="bookmark-outline" [ngClass]="session?.isFavorite ? 'bookmark-active' : 'bookmark-inactive'" (click)="this.toggleFavorite()"></ion-icon>
         </button>
 
         <div class="agenda-stats">
         <h5><ion-icon ios="md-alarm" md="md-alarm"></ion-icon>{{ session?.timeStart | date: 'HH:mm': 'CEST': 'de-DE' }} - {{ session?.timeEnd | date: 'HH:mm': 'CEST': 'de-DE' }}</h5>
-        <h5><ion-icon ios="md-square-outline" md="md-square-outline"></ion-icon>{{ session?.location }}</h5>
+        <h5 *ngIf="session?.location"><ion-icon ios="md-square-outline" md="md-square-outline"></ion-icon>{{ session?.location }}</h5>
         </div>
 
 
@@ -37,13 +37,13 @@
     <ion-list no-lines no-padding *ngIf="speakers">
 
       <ion-item no-padding *ngFor="let speaker of speakers" (click)="goToSpeakerPage(speaker)" class="speaker-card">
-        <ion-grid>
+        <ion-grid *ngIf="speaker">
           <ion-row align-items-center>
 
 
             <ion-col col-2 class="profile-image">
-              <ion-avatar *ngIf="speaker.profileFoto">
-                <img [src]="speaker.profileFoto" alt="Speaker profile foto">
+              <ion-avatar *ngIf="speaker?.profileFoto">
+                <img *ngIf="speaker.profileFoto" [src]="speaker.profileFoto" alt="Speaker profile foto">
               </ion-avatar>
             </ion-col>
 

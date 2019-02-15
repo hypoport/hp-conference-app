@@ -15,13 +15,26 @@ $categories: (
   @return map-remove($categories);
 }
 
-agenda-list {
+session-list {
   @each $category, $value in auxiliary-categories() {
     ion-item-sliding[category=#{$category}] ion-label {
       border-left: 2px solid $value;
       padding-left: 10px;
     }
   }
+
+  h4 {
+    margin: 0 0 0.5rem 0 !important;
+    font-size: 1.4rem;
+    color: color($colors, darkgrey) !important;
+    span {
+      margin-right: 0.75rem;
+      &:empty {
+        display: none;
+      }
+    }
+  }
+
 }
 
 .agenda-stats {
