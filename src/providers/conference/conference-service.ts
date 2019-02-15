@@ -60,7 +60,22 @@ export class ConferenceService {
         this.agendaService.loadAgenda(conference.id, token);
         this.speakerService.loadSpeakers(conference.id, token);
         return conference;
-      });      
+      });
+  }
+
+  public loadConferenceAttendees(conferenceId: string, token: string, password: string): Promise<Array<any>> {
+    const url = this.global.apiURL('conference/attendees');
+    return this.http.post(url, {
+      "key": conferenceId,
+      "token": token,
+      "password": password,
+      "uuid": this.device.uuid
+    }, {
+      headers: {'Content-Type': 'application/json; charset=utf-8'}
+    }).toPromise()
+      .then((attendeelist) => {
+        return attendeelist;
+      });
   }
 
   public removeConference(conferenceId: string): Promise<Map<string, Conference>> {
@@ -71,7 +86,7 @@ export class ConferenceService {
 	       this.storage.set(STORAGE_KEY, this.conferences);
 		}
   	});
-  	
+
     return Promise.resolve(this.conferences);
   }
 

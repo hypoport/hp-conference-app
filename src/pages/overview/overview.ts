@@ -73,14 +73,14 @@ export class OverviewPage {
     this.lastConferences.length = 0;
     return this.conferenceService.getAllConferences().then((conferences) => {
       if (conferences) {
-        conferences.forEach(conference => {	        
+        conferences.forEach(conference => {
           if (new Date(conference.endDate).getTime() < today.getTime()) {
             this.lastConferences.push(conference);
           }
           else if (new Date(conference.startDate).getTime() > today.getTime() || new Date(conference.endDate).getTime() >= today.getTime() ) {
-            this.nextConferences.push(conference);   
+            this.nextConferences.push(conference);
           } else {
-            this.lastConferences.push(conference);	          
+            this.lastConferences.push(conference);
           }
         });
         this.sortByStartDate(this.nextConferences);
@@ -91,7 +91,7 @@ export class OverviewPage {
         else {
            this.currentConference = this.lastConferences.pop();
         }
-		
+
       }
       return Promise.resolve();
     });
@@ -112,7 +112,7 @@ export class OverviewPage {
   public getLogo(brand: string): string {
     return this.brandProvider.getLogoUrl(brand);
   }
-  
+
   public openActionSheetForConferences(newConferenceId: string){
 	  let actionSheet = this.actSheetCtrl.create({
 	     title: 'Tagung',
@@ -141,7 +141,7 @@ export class OverviewPage {
 				        duration: 2000,
 				        position: "top"
 				      });
-				      toast.present();					  
+				      toast.present();
 				  });
 			 	});
 	         }
@@ -154,12 +154,12 @@ export class OverviewPage {
 	       }
 	     ]
 	   });
-	
-	   actionSheet.present();	  
+
+	   actionSheet.present();
   }
-  
+
   public openSettingsPage(){
 	  this.navCtrl.push(SettingsPage);
   }
-  
+
 }

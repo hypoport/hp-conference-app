@@ -85,7 +85,8 @@ export class HomePage {
 
   public cardAction(card: QuickAccessCard){
     if(card.action == "gotoPage"){
-      // if(card.data == "attendee") this.app.getRootNav().push(SessionPage, {session: session});
+      if(card.data == "attendees") this.app.getRootNav().push('AttendeesPage');
+      if(card.data == "settings") this.app.getRootNav().push('SettingsPage');
       if(card.data == "agenda") this.app.getRootNav().getActiveChildNav().select(1);
       if(card.data == "speaker") this.app.getRootNav().getActiveChildNav().select(2);
     } else if(card.action == "openURL") {

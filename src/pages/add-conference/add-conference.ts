@@ -42,8 +42,9 @@ export class AddConferencePage {
     console.log('ionViewDidLoad AddConferencePage');
   }
 
-  public goToConference(id: string){
-	  this.globalProvider.conferenceId = id;
+  public goToConference(newConferenceId: string, newToken: string) {
+    this.globalProvider.conferenceId = newConferenceId;
+    this.globalProvider.conferenceToken = newToken;
 	  this.app.getRootNav().push(TabsPage);
 	  this.viewCtrl.dismiss();
   }
@@ -73,7 +74,7 @@ export class AddConferencePage {
 	    this.conferenceService.addConference(conferenceCode, conferencePassword)
 	      .then((conference) => {
 		     loader.dismiss();
-		     this.goToConference(conference.id);
+		     this.goToConference(conference.id,conference.token);
 	      }).catch((error) => {
 
 		 	loader.dismiss();

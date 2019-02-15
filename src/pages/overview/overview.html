@@ -31,7 +31,7 @@
       <!-- <h3 class="subtitle">Aktuelle Tagung</h3> -->
       <ion-slides card-slides slidesPerView="1">
         <ion-slide>
-          <ion-card class="hero-card" (click)="goToConference(currentConference.id)" (press)="openActionSheetForConferences(currentConference.id)">
+          <ion-card class="hero-card" (click)="goToConference(currentConference.id,currentConference.token)" (press)="openActionSheetForConferences(currentConference.id)">
             <div class="hero-background" [style.backgroundImage]="'url(' + currentConference.image + ')'">
             </div>
 
@@ -95,7 +95,7 @@
       <h3 class="subtitle">Zukünftige Tagungen</h3>
       <ion-slides card-slides slidesPerView="1.5" spaceBetween="10">
         <ion-slide *ngFor="let conference of nextConferences">
-          <ion-card class="hero-card small-card" (click)="goToConference(conference.id)" (press)="openActionSheetForConferences(currentConference.id)">
+          <ion-card class="hero-card small-card" (click)="goToConference(conference.id,conference.token)" (press)="openActionSheetForConferences(currentConference.id)">
             <img [src]="conference.image" />
 
 
@@ -123,7 +123,7 @@
       <h3 class="subtitle">Vergangene Tagungen</h3>
       <ion-slides card-slides slidesPerView="1.5" spaceBetween="0">
         <ion-slide *ngFor="let conference of lastConferences">
-          <ion-card class="hero-card small-card" (click)="goToConference(conference.id)" (press)="openActionSheetForConferences(currentConference.id)">
+          <ion-card class="hero-card small-card" (click)="goToConference(conference.id,conference.token)" (press)="openActionSheetForConferences(currentConference.id)">
             <img [src]="conference.image" />
 
 
