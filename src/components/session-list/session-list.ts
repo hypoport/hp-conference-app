@@ -24,13 +24,17 @@ export class SessionListComponent {
   	this.sessions = sessions;
     this.sessions.forEach((session) => {
       if (session.speakers) {
+        let newSpeaker = [];
         session.speakers.forEach((speakerId) => {
-          this.speakerService.getSpeaker(this.globalProvider.conferenceId, speakerId).then((speaker) => {
-            console.log(speaker);
-            // @ts-ignore
-            if(speaker) session.speakers.push(speaker);
-          });
+          // @ts-ignore
+          if(!speakerId.name){
+            this.speakerService.getSpeaker(this.globalProvider.conferenceId, speakerId).then((speaker) => {
+              // @ts-ignore
+              if(speaker) newSpeaker.push(speaker);
+            });
+          }
         });
+        session.speakers = newSpeaker;
       }
     });
   }
