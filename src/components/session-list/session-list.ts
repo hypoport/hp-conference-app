@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { App } from "ionic-angular";
 import { Session } from "../../models/session";
+import { Speaker } from "../../models/speaker";
 import { SessionPage } from "../../pages/session/session";
 import { SpeakerService } from '../../providers/speaker/speaker-service';
 import { GlobalProvider } from '../../providers/global/global';
@@ -19,8 +20,8 @@ export class SessionListComponent {
 
   sessions: Array<Session> = [];
   groupedSessions: Array<Array<Session>> = [];
+  speakerById: Array<Speaker> = [];
   doGroup: boolean = true;
-  Object: Object;
 
   @Input()
   set sessionList(sessions: Array<Session>) {
@@ -29,17 +30,13 @@ export class SessionListComponent {
     let index = -1;
     this.sessions.forEach((session) => {
       if (session.speakers) {
-        let newSpeaker = [];
         session.speakers.forEach((speakerId) => {
           // @ts-ignore
-          if(!speakerId.name){
-            this.speakerService.getSpeaker(this.globalProvider.conferenceId, speakerId).then((speaker) => {
+          this.speakerService.getSpeaker(this.globalProvider.conferenceId, speakerId).then((speaker) => {
               // @ts-ignore
-              if(speaker) newSpeaker.push(speaker);
-            });
-          }
+              if(speaker) this.speakerById[speakerId] = speaker;
+          });
         });
-        session.speakers = newSpeaker;
       }
       let d = new Date(session.timeStart);
       let key = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();

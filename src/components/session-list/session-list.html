@@ -53,7 +53,7 @@
 <button ion-item detail-none *ngIf="session.type != 'break'" (click)="goToSessionDetail(session)">
 
   <h3 [innerHTML]="session.title"></h3>
-  <h4 class="speaker" *ngIf="session?.speakers && session?.speakers.length">– <ng-container *ngFor="let speaker of session.speakers"><span>{{speaker.name}}</span></ng-container></h4>
+  <h4 class="speaker" *ngIf="session?.speakers && session?.speakers.length">– <ng-container *ngFor="let speaker of session.speakers"><span *ngIf="speakerById[speaker]?.name">{{speakerById[speaker].name}}</span></ng-container></h4>
   <!-- <span class="session-title" [innerHTML]="session.title"></span> -->
   <div class="agenda-stats">
     <h5 class="session-time">
@@ -70,7 +70,7 @@
 
 <ion-item no-lines detail-none *ngIf="session.type == 'break'">
   <h3 [innerHTML]="session.title"></h3>
-  <h4 class="speaker" *ngIf="session?.speakers && session?.speakers.length">– <ng-container *ngFor="let speaker of session.speakers"><span>{{speaker.name}}</span></ng-container></h4>
+  <h4 class="speaker" *ngIf="session?.speakers && session?.speakers.length">– <ng-container *ngFor="let speaker of session.speakers"><span *ngIf="speakerById[speaker]?.name">{{speakerById[speaker].name}}</span></ng-container></h4>
   <div class="agenda-stats">
   <h5>
     {{session.timeStart | date: 'HH:mm': 'CEST': 'de-DE'}} &mdash;
