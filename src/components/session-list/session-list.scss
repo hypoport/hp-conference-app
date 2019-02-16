@@ -37,6 +37,40 @@ session-list {
 
 }
 
+.day-group {
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid lighten(color($colors, lightgrey),6%);
+  &:last-of-type {
+    border-bottom: 0px !important;
+  }
+  .date-heading {
+    margin: 0px;
+    padding-bottom: 8px;
+    padding-top: 14px;
+    color: darken(color($colors, lightgrey),22%) !important;
+
+    ion-icon {
+      margin-left: -8px;
+      font-size: 1.7rem;
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+        border-radius: 25px;
+        background: lighten(color($colors, lightgrey),12%);
+        color: darken(color($colors, lightgrey),14%) !important;
+        &:before {
+          display: flex;
+          flex-flow: column wrap;
+          justify-content: center;
+          align-items: center;
+          flex-grow: 1;
+        }
+      }
+
+  }
+}
+
 .agenda-stats {
   display: flex;
   flex-direction: row;

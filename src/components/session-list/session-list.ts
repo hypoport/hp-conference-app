@@ -18,10 +18,15 @@ import { GlobalProvider } from '../../providers/global/global';
 export class SessionListComponent {
 
   sessions: Array<Session> = [];
+  groupedSessions: Array<Array<Session>> = [];
+  doGroup: boolean = true;
+  Object: Object;
 
   @Input()
   set sessionList(sessions: Array<Session>) {
   	this.sessions = sessions;
+    let lastKeyDay = "";
+    let index = -1;
     this.sessions.forEach((session) => {
       if (session.speakers) {
         let newSpeaker = [];
@@ -36,7 +41,18 @@ export class SessionListComponent {
         });
         session.speakers = newSpeaker;
       }
+      let d = new Date(session.timeStart);
+      let key = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
+      if(key != lastKeyDay){
+        index++;
+        lastKeyDay = key;
+      }
+      if(!this.groupedSessions[index]) this.groupedSessions[index] = new Array();
+      this.groupedSessions[index].push(session);
+
+
     });
+
   }
 
   constructor(private app: App, private globalProvider: GlobalProvider, private speakerService: SpeakerService) {
