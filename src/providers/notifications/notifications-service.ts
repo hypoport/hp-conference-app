@@ -73,11 +73,14 @@ export class NotificationService {
 
 	// @ts-ignore
 	let minutesUntil = ( ((startDate - currDate) / 60000)) - 5;
+  minutesUntil = Math.round(minutesUntil);
+  console.log('now:'+new Date().getTime());
+  console.log('then:'+new Date(session.timeStart).getTime());
+
 	console.log('notification '+session.title+' send in '+minutesUntil);
 	if(minutesUntil < 5){
 		return null;
 	}
-	minutesUntil = Math.round(minutesUntil);
 
     return {
       id: this.getMaxId(notifications) + 1,

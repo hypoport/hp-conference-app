@@ -49,7 +49,7 @@ export class AgendaService {
         this.speakerService.setSpeaker(conferenceId,speaker);
 
         return agenda;
-      }).then((agenda) => { 
+      }).then((agenda) => {
         this.favoritesService.rescheduleNotifications(agenda, conferenceId);
         return agenda;
       });
@@ -69,8 +69,8 @@ export class AgendaService {
         let latest = null;
 
 	  	  agenda.sessions.forEach( (session) =>{
-	  		if( new Date(session.timeStart).getTime() > now.getTime() || new Date(session.timeEnd).getTime() > now.getTime() ){
-	  			latest = session;
+	  		if( new Date(session.timeStart).getTime() > now.getTime() || (new Date(session.timeEnd).getTime()-1000) > now.getTime()){
+	  			if(!latest) latest = session;
 		  	}
 	  	});
 	  	return latest;
