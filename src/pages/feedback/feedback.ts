@@ -4,7 +4,6 @@ import { IonicPage, NavController, NavParams, Content, Platform, LoadingControll
 import {HttpClient} from "@angular/common/http";
 import { GlobalProvider } from '../../providers/global/global';
 import { ConferenceService } from '../../providers/conference/conference-service';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
 
 import { Device } from '@ionic-native/device';
 
@@ -33,12 +32,11 @@ export class FeedbackPage {
     			  public alertCtrl: AlertController,
     			  private device: Device,
             private conferenceService: ConferenceService,
-    			  public http: HttpClient,
-            private ga: GoogleAnalytics
+    			  public http: HttpClient
           ) {  }
 
   ionViewDidLoad() {
-    this.ga.trackView('feedbackPage');
+    //this.ga.trackView('feedbackPage');
   }
 
   submitFeedback(){

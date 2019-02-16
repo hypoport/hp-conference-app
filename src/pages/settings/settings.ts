@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {GlobalProvider} from "../../providers/global/global";
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 /**
@@ -21,7 +20,6 @@ export class SettingsPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private globalProvider: GlobalProvider,
-    private ga: GoogleAnalytics,
     private iab: InAppBrowser
     ) {
   }
@@ -30,7 +28,7 @@ export class SettingsPage {
     console.log('ionViewDidLoad SettingsPage');
   }
   ionViewDidEnter(){
-      this.ga.trackView('settingsPage');
+    //  this.ga.trackView('settingsPage');
   }
   openCLog(){
     this.iab.create('https://github.com/hypoport/hp-conference-app/commits/master','_system',{location:'no'});

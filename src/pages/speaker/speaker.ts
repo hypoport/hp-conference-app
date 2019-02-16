@@ -5,8 +5,6 @@ import { Session } from "../../models/session";
 import { GlobalProvider } from "../../providers/global/global";
 import { AgendaService } from "../../providers/agenda/agenda-service";
 
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
-
 /**
  * Generated class for the SpeakerPage page.
  *
@@ -27,7 +25,6 @@ export class SpeakerPage {
   constructor(public navCtrl: NavController,
   			public navParams: NavParams,
   			private agendaService: AgendaService,
-        private ga: GoogleAnalytics,
   			private globalProvider: GlobalProvider,
       ) {
     this.speaker = navParams.get('speaker');
@@ -45,11 +42,12 @@ export class SpeakerPage {
 			      	if(speakerId == this.speaker.id) this.speakerSessions.push(session);
 			      });
 		      }
+          /*
           if(this.globalProvider.conferenceId && this.speaker.id){
             this.ga.trackView('conf/ep/'+this.globalProvider.conferenceId+'/speaker/'+this.speaker.id);
           } else {
             this.ga.trackView('speakerPage');
-          }
+          }*/
 	      });
       }
     });

@@ -6,7 +6,6 @@ import { TabsPage } from '../tabs/tabs';
 import { ToastController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import {ConferenceOptions} from '../../models/conference-options';
 
 import CryptoJS from 'crypto-js';
@@ -37,13 +36,8 @@ export class AddConferencePage {
   public app: App,
   private toastCtrl: ToastController,
   public loadingCtrl: LoadingController,
-  private barcodeScanner: BarcodeScanner,
-  private ga: GoogleAnalytics
+  private barcodeScanner: BarcodeScanner
   ) {
-  }
-
-  ionViewDidLoad() {
-    this.ga.trackView('addConferencePage');
   }
 
   public goToConference(newConferenceId: string, newToken: string, conferenceopt: ConferenceOptions) {

@@ -28,7 +28,6 @@ import {HttpClientModule} from '@angular/common/http';
 import {IonicStorageModule} from '@ionic/storage';
 import {Device} from '@ionic-native/device';
 import { CallNumber } from '@ionic-native/call-number';
-import { GoogleAnalytics } from '@ionic-native/google-analytics';
 
 import {ComponentsModule} from "../components/components.module";
 
@@ -86,7 +85,6 @@ registerLocaleData(localeDe);
     SplashScreen,
     InAppBrowser,
     CallNumber,
-    GoogleAnalytics,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AgendaService,
     ConferenceService,
