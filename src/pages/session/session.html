@@ -15,7 +15,7 @@
       <ion-item detail-none>
         <h3 [innerHTML]="session?.title"></h3>
         <button ion-button item-end clear (click)="this.toggleFavorite()">
-          <ion-icon class="bookmark" name="bookmark-outline" [ngClass]="session?.isFavorite ? 'bookmark-active' : 'bookmark-inactive'" (click)="this.toggleFavorite()"></ion-icon>
+          <ion-icon class="bookmark" name="bookmark-outline" md="md-bookmark" [ngClass]="session?.isFavorite ? 'bookmark-active' : 'bookmark-inactive'" (click)="this.toggleFavorite()"></ion-icon>
         </button>
 
         <div class="agenda-stats">
