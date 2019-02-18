@@ -56,7 +56,7 @@ export class NotificationService {
   public removeNotification(conferenceId: string, session: Session) {
     console.log("remove notification");
     this.storage.get(STORAGE_KEY).then((notifications: Map<string, Map<string, number>>) => {
-      if(notifications){
+      if(notifications && notifications.get(conferenceId)){
         const notificationId = notifications.get(conferenceId).get(session.id);
         console.log("cancel notification " + notificationId);
         this.localNotifications.cancel(notificationId);
