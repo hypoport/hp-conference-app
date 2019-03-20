@@ -20,6 +20,7 @@ import { LoadingController } from 'ionic-angular';
 export class AttendeesPage {
 
   attendees: Array<any>;
+  attendeesFiltered: Array<any>;
   confPassword: string;
 
   constructor(
@@ -65,7 +66,10 @@ export class AttendeesPage {
       this.conferenceService.loadConferenceAttendees(key,token, conferencePassword)
         .then((attendees) => {
          loader.dismiss();
-         if(attendees.data) this.attendees = attendees.data;
+         if(attendees.data){
+            this.attendees = attendees.data;
+            this.attendeesFiltered = this.attendees;
+         }
         }).catch((error) => {
 
         loader.dismiss();
@@ -86,6 +90,24 @@ export class AttendeesPage {
       });
   }
   }
+  /*
+    Filter attendees
+  */
+  filterAttendees(ev: any) {
 
+    this.attendeesFiltered = this.attendees;
+    let val = ev.target.value;
+
+    if (val && val.trim() != '') {
+      this.attendeesFiltered = this.attendeesFiltered.filter((attendee) => {
+        return (
+           attendee.vorname && attendee.vorname.toLowerCase().indexOf(val.toLowerCase()) > -1
+        || attendee.nachname && attendee.nachname.toLowerCase().indexOf(val.toLowerCase()) > -1
+        || attendee.firma && attendee.firma.toLowerCase().indexOf(val.toLowerCase()) > -1
+        || attendee.unternehmen && attendee.unternehmen.toLowerCase().indexOf(val.toLowerCase()) > -1
+        );
+      })
+    }
+  }
 
 }

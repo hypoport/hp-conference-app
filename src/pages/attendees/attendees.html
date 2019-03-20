@@ -15,6 +15,8 @@
 
 <ion-content padding>
 
+  <ion-searchbar (ionInput)="filterAttendees($event)" *ngIf="attendees && attendees.length"></ion-searchbar>
+
 
   <section class="splashscreen" *ngIf="!attendees || !attendees.length">
 
@@ -44,7 +46,7 @@
 
   </section>
   <ion-list class="attendee-list selectable-text" *ngIf="attendees && attendees.length">
-    <ion-item *ngFor="let attendee of attendees" class="selectable-text">
+    <ion-item *ngFor="let attendee of this.attendeesFiltered" class="selectable-text">
       <h2>{{attendee.vorname}} {{attendee.nachname}}</h2>
       <p class="selectable-text"> {{attendee.position ? attendee.position+' &middot;': ''}} {{attendee.job ? attendee.job: ''}} {{attendee.firma ? attendee.firma: ''}} {{attendee.unternehmen ? attendee.unternehmen: ''}}<br/>
       {{attendee.email ? attendee.email+' &middot;': ''}} {{attendee.mail ? attendee.mail+' &middot;' : ''}} {{attendee.tel ? attendee.tel : ''}} {{attendee.telefon ? attendee.telefon : ''}}</p>
