@@ -9,5 +9,7 @@ export class Session {
   speakers: Array<string>;
   location: string;
   category: string;
+  categoryName: string;
+  subCategory: string;
   isFavorite: boolean;
 }

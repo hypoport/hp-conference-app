@@ -57,6 +57,7 @@ export class SessionListComponent {
       if(key != lastKeyDay){
         dayIndex++;
         lastKeyDay = key;
+        parallelIndex = -1;
       }
       if(!this.groupedSessions[dayIndex]) this.groupedSessions[dayIndex] = new Array();
       this.groupedSessions[dayIndex].push(session);
