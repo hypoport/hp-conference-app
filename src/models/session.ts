@@ -11,5 +11,6 @@ export class Session {
   category: string;
   categoryName: string;
   subCategory: string;
+  subCategoryName: string;
   isFavorite: boolean;
 }
