@@ -21,15 +21,15 @@
 
 
 
-  <section class="agenda">
+  <section class="agenda {{agenda?.layout ? 'layout-'+agenda.layout : 'layout-linear'}}">
 
 
 	<div [ngSwitch]="activeSegment">
 	  <div *ngSwitchCase="'allSessions'">
-	  	<session-list *ngIf="agenda && agenda.sessions" [sessionList]="agenda.sessions"></session-list>
+	  	<session-list *ngIf="agenda && agenda.sessions" [sessionList]="agenda.sessions" [layout]="agenda.layout"></session-list>
 	  </div>
 	  <div *ngSwitchCase="'favoriteSessions'">
-		  <session-list *ngIf="agenda && favoSessions" [sessionList]="favoSessions"></session-list>
+		  <session-list *ngIf="agenda && favoSessions" [sessionList]="favoSessions" [layout]="agenda.layout"></session-list>
 
       <div class="add-favo-info" *ngIf="!favoSessions || !favoSessions.length">
       <h1>      <ion-icon class="bookmark bookmark-active" name="bookmark-outline"></ion-icon>

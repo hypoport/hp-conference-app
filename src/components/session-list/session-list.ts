@@ -19,16 +19,28 @@ import { GlobalProvider } from '../../providers/global/global';
 export class SessionListComponent {
 
   sessions: Array<Session> = [];
-  groupedSessions: Array<Array<Session>> = [];
   speakerById: Array<Speaker> = [];
-  doGroup: boolean = true;
 
+  doGroup: boolean = true;
+  groupedSessions: Array<Array<Session>> = [];
+  groupedParallelSessions: Array<Array<Array<Session>>> = [];
+
+  @Input() layout: string;
   @Input()
   set sessionList(sessions: Array<Session>) {
   	this.sessions = sessions;
+
+    // group by days
     let lastKeyDay = "";
-    let index = -1;
+    let dayIndex = -1;
+
+    // group by parallel sessions
+    let lastParallelKey = "";
+    let parallelIndex = -1;
+
     this.sessions.forEach((session) => {
+
+      // build a list with speakers
       if (session.speakers) {
         session.speakers.forEach((speakerId) => {
           // @ts-ignore
@@ -38,17 +50,30 @@ export class SessionListComponent {
           });
         });
       }
+
+      // group session by days
       let d = new Date(session.timeStart);
       let key = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
       if(key != lastKeyDay){
-        index++;
+        dayIndex++;
         lastKeyDay = key;
       }
-      if(!this.groupedSessions[index]) this.groupedSessions[index] = new Array();
-      this.groupedSessions[index].push(session);
+      if(!this.groupedSessions[dayIndex]) this.groupedSessions[dayIndex] = new Array();
+      this.groupedSessions[dayIndex].push(session);
 
+      // group parallel sessions
+      let keyTime = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate()+' '+d.getHours()+':'+d.getMinutes();
+      if(keyTime != lastParallelKey){
+        parallelIndex++;
+        lastParallelKey = keyTime;
+      }
+      if(!this.groupedParallelSessions[dayIndex]) this.groupedParallelSessions[dayIndex] = new Array();
+      if(!this.groupedParallelSessions[dayIndex][parallelIndex]) this.groupedParallelSessions[dayIndex][parallelIndex] = new Array();
+      this.groupedParallelSessions[dayIndex][parallelIndex].push(session);
 
     });
+    console.log('test');
+    console.log(this.groupedParallelSessions);
 
   }
 

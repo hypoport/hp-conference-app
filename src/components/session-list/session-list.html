@@ -1,6 +1,5 @@
 <ion-list no-lines #scheduleList [hidden]="sessions && sessions.length === 0">
 
-
   <ng-container *ngIf="!doGroup"><!-- KEINE Gruppierung -->
   <ion-item-sliding no-lines *ngFor="let session of sessions" [attr.category]="session.category | lowercase"
   [hidden]="session.hide">
@@ -44,7 +43,7 @@
 
 
 -->
-<ng-container *ngIf="doGroup"><!-- Gruppierung -->
+<ng-container *ngIf="doGroup && layout != 'parallel-cards'"><!-- Gruppierung -->
 <div class="day-group" *ngFor="let sessionsOfDay of groupedSessions; let i = index">
 <h4 class="date-heading"><ion-icon class="calendar" name="calendar"></ion-icon> {{ (sessionsOfDay[0].timeStart) | date: 'd.MM.y': 'CEST': 'de-DE'}}</h4>
 <ion-item-sliding no-lines *ngFor="let session of sessionsOfDay" [attr.category]="session.category | lowercase"
@@ -85,6 +84,71 @@
 </div><!-- for end -->
 
 
-</ng-container><!-- MIT Gruppierung -->
+</ng-container><!-- // MIT Gruppierung -->
+
+<ng-container *ngIf="doGroup && layout == 'parallel-cards'"><!-- Gruppierung und Slider Cards -->
+<div class="day-group" *ngFor="let sessionsOfDay of groupedParallelSessions; let i = index">
+TEST
+<ng-container class="paralell-session-group" *ngFor="let parallelSessions of sessionsOfDay; let p = index">
+<ion-item-sliding no-lines *ngFor="let session of parallelSessions | slice:0:1;" [attr.category]="session.category | lowercase"
+[hidden]="session.hide">
+
+<ion-item no-lines detail-none *ngIf="session.type != 'break'">
+
+  <div class="agenda-stats">
+    <h5 class="session-time">
+      {{session.timeStart | date: 'HH:mm': 'CEST': 'de-DE'}} &mdash;
+      {{session.timeEnd | date: 'HH:mm': 'CEST': 'de-DE'}}
+    </h5>
+  </div>
+
+    <ion-slides class="session-card-slider" slidesPerView="auto">
+      <ion-slide class="session-card" *ngFor="let parallelSession of parallelSessions" (click)="goToSessionDetail(parallelSession)">
+        <ion-card>
+          <ion-card-content>
+            <h5>
+              <span class="category" *ngIf="parallelSession.categoryName"><ion-icon name="easel"></ion-icon> {{parallelSession.categoryName}}</span>
+              <span class="category" *ngIf="parallelSession.location"><ion-icon ios="md-square-outline" md="md-square-outline"></ion-icon> {{parallelSession.location}}</span>
+            </h5>
+            <h3 [innerHTML]="parallelSession.title"></h3>
+            <ion-icon class="bookmark" name="bookmark-outline" *ngIf="parallelSession.isFavorite" [ngClass]="parallelSession.isFavorite ? 'bookmark-active' : 'bookmark-inactive'"></ion-icon>
+            <div class="speaker" *ngIf="parallelSession?.speakers && parallelSession?.speakers.length">
+              <ng-container *ngFor="let speaker of parallelSession.speakers">
+                <span *ngIf="speakerById[speaker]?.name">
+                  <ion-avatar item-start *ngIf="speakerById[speaker]?.profileFoto">
+                    <img src="{{speakerById[speaker].profileFoto}}">
+                  </ion-avatar>
+                  {{speakerById[speaker].name}}<br/>
+                  {{speakerById[speaker].company}}
+                </span>
+              </ng-container>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+
+</ion-item>
+
+
+<ion-item no-lines detail-none *ngIf="session.type == 'break'">
+  <h3 [innerHTML]="session.title"></h3>
+  <h4 class="speaker" *ngIf="session?.speakers && session?.speakers.length">– <ng-container *ngFor="let speaker of session.speakers"><span *ngIf="speakerById[speaker]?.name">{{speakerById[speaker].name}}</span></ng-container></h4>
+  <div class="agenda-stats">
+  <h5>
+    {{session.timeStart | date: 'HH:mm': 'CEST': 'de-DE'}} &mdash;
+    {{session.timeEnd | date: 'HH:mm': 'CEST': 'de-DE'}}
+  </h5>
+  <h5>{{session.location ? session.location : ''}}</h5>
+  <ion-icon class="bookmark" name="bookmark-outline" *ngIf="session.isFavorite" [ngClass]="session.isFavorite ? 'bookmark-active' : 'bookmark-inactive'"></ion-icon>
+  </div>
+</ion-item>
+
+</ion-item-sliding>
+</ng-container> <!-- for para sessions end -->
+</div><!-- for end day grouped -->
+
+
+</ng-container><!-- // MIT Gruppierung Slider Cards -->
 
 </ion-list>

@@ -108,3 +108,11 @@ session-list {
     }
   }
 }
+
+.session-card-slider {
+  margin-left: -$content-padding;
+  width: calc(100% + #{$content-padding*3});
+}
+.session-card {
+  max-width: 250px;
+}
