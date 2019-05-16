@@ -104,7 +104,7 @@
     </h5>
   </div>
 
-    <ion-slides class="session-card-slider" card-slides slidesPerView="1.2" spaceBetween="0">
+    <ion-slides class="session-card-slider">
       <ion-slide class="session-card" *ngFor="let parallelSession of parallelSessions" (click)="goToSessionDetail(parallelSession)">
         <ion-card class="agenda-card">
           <!-- <ion-card class="agenda-card {{parallelSession.category | lowercase}}"> -->
@@ -125,6 +125,7 @@
               <ion-icon class="bookmark" name="bookmark-outline" *ngIf="parallelSession.isFavorite" [ngClass]="parallelSession.isFavorite ? 'bookmark-active' : 'bookmark-inactive'"></ion-icon>
 
 
+
           </div>
 
           <div class="card-content-bottom">
@@ -135,8 +136,9 @@
 
 
             <ion-grid class="speaker" *ngIf="parallelSession?.speakers && parallelSession?.speakers.length">
+              <ng-container *ngFor="let speaker of parallelSession.speakers">
               <ion-row align-items-center>
-                <ng-container *ngFor="let speaker of parallelSession.speakers">
+
 
                 <ion-col col-2 align-self-center class="profile-image">
                   <ion-avatar item-start *ngIf="speakerById[speaker]?.profileFoto">
@@ -154,10 +156,10 @@
                 </ion-col>
 
 
-              </ng-container>
+
 
           </ion-row>
-
+              </ng-container>
             </ion-grid>
 
             </div>
