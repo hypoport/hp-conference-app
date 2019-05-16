@@ -125,21 +125,40 @@ session-list {
   ion-label {
     overflow: visible;
   }
+  margin-right: -#{$content-padding};
+
+  ion-label {
+
+  }
+
+  .item-ios,
+  .item-md {
+    &.item-block {
+      margin-bottom: 1rem;
+      .item-inner {
+        padding-right: 0;
+      }
+    }
+    .label-ios,
+    .label-md {
+      margin: 0;
+    }
+  }
 }
 .session-card-slider {
   margin-left: -$content-padding;
   width: calc(100% + #{$content-padding*3});
 }
-
-
-
 .session-card {
-  max-width: 280px;
+  // max-width: 280px;
 }
 
 
 ion-card.agenda-card {
+  margin-left: 1.75rem;
   margin-left: 1rem;
+  margin-right: 0;
+
 
   ion-card-content {
     .card-content-top {
