@@ -75,21 +75,20 @@ session-list {
     ion-icon {
       margin-left: -8px;
       font-size: 1.7rem;
-        width: 25px;
-        height: 25px;
-        line-height: 25px;
-        border-radius: 25px;
-        background: lighten(color($colors, lightgrey),12%);
-        color: darken(color($colors, lightgrey),14%) !important;
-        &:before {
-          display: flex;
-          flex-flow: column wrap;
-          justify-content: center;
-          align-items: center;
-          flex-grow: 1;
-        }
+      width: 25px;
+      height: 25px;
+      line-height: 25px;
+      border-radius: 25px;
+      background: lighten(color($colors, lightgrey),12%);
+      color: darken(color($colors, lightgrey),14%) !important;
+      &:before {
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
       }
-
+    }
   }
 }
 
@@ -106,41 +105,47 @@ session-list {
   ion-icon {
     margin-left: auto;
     font-size: 1.4rem;
-    &.bookmark {
+  }
+}
+
+// bookmark icon
+ion-icon {
+  &.bookmark {
+    display: flex;
+    width: 25px;
+    height: 25px;
+    border-radius: 25px;
+    background: lighten($brand-primary, 55%);
+    color: $brand-primary;
+    &:before {
       display: flex;
-      width: 25px;
-      height: 25px;
-      border-radius: 25px;
-      background: lighten($brand-primary, 55%);
-      color: $brand-primary;
+      flex-flow: column wrap;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+    }
+    &.bookmark-inactive {
+    }
+    &.bookmark-active {
       &:before {
-        display: flex;
-        flex-flow: column wrap;
-        justify-content: center;
-        align-items: center;
-        flex-grow: 1;
-      }
-      &.bookmark-inactive {
-      }
-      &.bookmark-active {
-        &:before {
-          content: '\f12e'
-        }
+        content: '\f12e'
       }
     }
   }
 }
+
+
+
+
+
 .layout-parallel-cards {
   margin-right: -#{$content-padding};
-
   .input-wrapper {
     overflow: visible;
   }
   ion-label {
     overflow: visible;
   }
-
-
   .item-ios,
   .item-md {
     &.item-block {
@@ -164,88 +169,83 @@ session-list {
 }
 
 
-ion-card.agenda-card {
+.agenda-card {
   margin-left: $content-padding;
-
   margin-right: 0;
 
 
   ion-card-content {
     .card-content-top {
+      position: relative;
       justify-content: flex-start;
 
       .card-label {
         display: flex;
         flex-direction: row;
-
         align-items: center;
-
 
         border-radius: calc(#{$border-radius * 1});
         border: $base-border;
+        border-color: lighten($silver, 15%);
+        // border: 0 !important;
         background: lighten($background-secondary, 5%);
 
         padding: .3rem .6rem;
         margin-right: .6rem;
-
-
         &:last-of-type {
           margin-right: 0;
         }
 
+
+        // custom color label without border
         ion-icon {
           font-size: calc(#{$font-size-base * 1});
           height: 100%;
           width: 100%;
+
           border: 0;
           background: none;
-
           color: $font-color-tertiary;
+
           &:after {
           display: none;
           }
         }
-
-
-
         h6 {
-
           margin-top: 2px;
           margin-bottom: 0;
           line-height: 1;
           padding: 0 0 0 .6rem;
           white-space: nowrap;
-
         }
-
       }
-      ion-icon {
 
+      // bookmark icon
+      ion-icon {
         &.bookmark {
-          margin-left: auto;
+          position: absolute;
+          left: calc(100% - 20px);
           font-size: 1.4rem;
-          display: flex;
-          width: 25px;
-          height: 25px;
-          border-radius: 25px;
-          background: lighten($brand-primary, 55%);
-          color: $brand-primary;
+          border-radius: 0;
+          background: transparent;
+          border: 0;
           &:after {
-            display:  none;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: scale(2.6);
+            background: linear-gradient(to right, transparent , white 25%);
           }
           &:before {
-            display: flex;
-            flex-flow: column wrap;
-            justify-content: center;
-            align-items: center;
-            flex-grow: 1;
-          }
-          &.bookmark-inactive {
-          }
-          &.bookmark-active {
-            &:before {
-              content: '\f12e'
-            }
+            border: $base-border;
+            border-color: lighten($brand-primary, 40%);
+            border-radius: 25px;
+            background: lighten($brand-primary, 55%);
+            color: $brand-primary;
+            z-index: 2;
           }
         }
       }
