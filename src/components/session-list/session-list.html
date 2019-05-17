@@ -104,7 +104,7 @@
     </h5>
   </div>
 
-    <ion-slides class="session-card-slider">
+<ion-slides card-slides slidesPerView="1.1" spaceBetween="0">
       <ion-slide class="session-card" *ngFor="let parallelSession of parallelSessions" (click)="goToSessionDetail(parallelSession)">
         <ion-card class="agenda-card">
           <!-- <ion-card class="agenda-card {{parallelSession.category | lowercase}}"> -->

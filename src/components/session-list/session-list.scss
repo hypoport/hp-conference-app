@@ -16,9 +16,9 @@ $categories: (
   mindset: #6BA4CF,
 
   // secondary (nicht wichtig)
-  transit: #f6e772,
+  // transit: #f6e772,
   // break: #b5b5b5,
-  party: #98c4d2,
+  // party: #98c4d2,
 
 
 );
@@ -67,21 +67,32 @@ session-list {
     border-bottom: 0px !important;
   }
   .date-heading {
-    margin: 0px;
-    padding-bottom: 8px;
-    padding-top: 14px;
+
+    margin: $content-padding 0 0 0 !important;
+    // padding-bottom: 8px;
+    // padding-top: 14px;
+    padding: 0 $content-padding/2;
+
     color: darken(color($colors, lightgrey),22%) !important;
+
 
     ion-icon {
       margin-left: -8px;
-      font-size: 1.7rem;
+
+      font-size: 1.6rem;
       width: 25px;
       height: 25px;
       line-height: 25px;
       border-radius: 25px;
       background: lighten(color($colors, lightgrey),12%);
+
       color: darken(color($colors, lightgrey),14%) !important;
+      border: $base-border;
+      border-color: lighten($silver, 0%);
+      // border: 0 !important;
+      background: lighten($background-secondary, 5%);
       &:before {
+        margin-top: -1px;
         display: flex;
         flex-flow: column wrap;
         justify-content: center;
@@ -97,6 +108,8 @@ session-list {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  // padding: 0 $content-padding;
+
 
   h5 {
     margin: 0 1rem 0 0 !important;
@@ -139,46 +152,103 @@ ion-icon {
 
 
 .layout-parallel-cards {
+  // full width parallel cards container (override base padding)
   margin-right: -#{$content-padding};
-  .input-wrapper {
-    overflow: visible;
-  }
-  ion-label {
-    overflow: visible;
-  }
+  margin-left: -#{$content-padding};
+  ion-list {}
+  ion-item-sliding {}
   .item-ios,
   .item-md {
+    padding-left: 0;
     &.item-block {
-      margin-bottom: 1rem;
       .item-inner {
-        // padding-right: 0;
+        padding: 0 0 0 0px;
+        margin: 0 0 0 12px;
+        // border-left: .55px solid $lightgrey !important;
+        border-left: .55px solid $lightgrey;
+
+        &:before {
+          padding-right: 24px;
+          background-position: left 8px center;
+        }
       }
     }
     .label-ios,
     .label-md {
-      // margin: 0;
+      margin: 0;
     }
   }
+  .agenda-stats {
+    padding-left: 16px;
+    margin-top: 16px;
+  }
+
+
+
+  ion-slides[card-slides] {
+    // margin-left: calc(#{$content-padding} - #{$card-ios-margin-left});
+    // width: calc(100% - calc(#{$content-padding} - #{$card-ios-margin-left}));
+    width: calc(100% - 18px);
+    margin: 0 12px 0 6px;
+
+    .swiper-wrapper {}
+
+    // stretch non parallel slot to max-width
+    ion-slide {
+      flex: 1 0 auto;
+    }
+  }
+
+  .input-wrapper {
+    // overflow: visible;
+    // width: 100%;
+
+  }
+  ion-label {
+    // overflow: visible;
+    width: 100%;
+  }
+
 }
 .session-card-slider {
-  margin-left: -$content-padding;
-  width: calc(100% + #{$content-padding*3});
+  // margin-left: -$content-padding;
+  // width: calc(100% + #{$content-padding*3});
 }
 .session-card {
-  max-width: 320px;
+  // max-width: 320px;
 }
+
+
+
+
+
+
+
+
 
 
 .agenda-card {
-  margin-left: $content-padding;
-  margin-right: 0;
+  // margin-left: $content-padding;
+  // margin-right: 0;
+
+  /* shape */
+  // background: $white;
+  // border: $base-border !important;
+  // border-radius: calc(#{$border-radius * 1.4});
+  // box-shadow: $card-shadow-secondary;
+
+
+  margin: 6px;
+  width: calc(100% - 12px);
 
 
   ion-card-content {
     .card-content-top {
       position: relative;
       justify-content: flex-start;
-
+      flex-wrap: wrap;
+      margin-bottom: 0;
+      width: calc(100% - 10px);
       .card-label {
         display: flex;
         flex-direction: row;
@@ -192,8 +262,10 @@ ion-icon {
 
         padding: .3rem .6rem;
         margin-right: .6rem;
+        margin-bottom: .3rem;
         &:last-of-type {
           margin-right: 0;
+
         }
 
 
@@ -217,6 +289,7 @@ ion-icon {
           line-height: 1;
           padding: 0 0 0 .6rem;
           white-space: nowrap;
+          font-size: 9px;
         }
       }
 
@@ -224,7 +297,8 @@ ion-icon {
       ion-icon {
         &.bookmark {
           position: absolute;
-          left: calc(100% - 20px);
+          left: calc(100% - 15px);
+          top: -1px;
           font-size: 1.4rem;
           border-radius: 0;
           background: transparent;
