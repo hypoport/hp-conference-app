@@ -6,10 +6,13 @@
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
+    "regen-brands": "ionic-app-scripts build --sass ./config/brand.gp.sass.config.js && ionic-app-scripts build --sass ./config/brand.ep.sass.config.js",
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
-    "ionic:build": "ionic-app-scripts build",
-    "ionic:serve": "ionic-app-scripts serve"
+    "ionic:build": "npm run-script regen-brands && ionic-app-scripts build",
+    "ionic:serve": "ionic-app-scripts serve",
+    "ionic:serve-brands": "npm run-script regen-brands && ionic-app-scripts serve",
+    "sasstest": "ionic-app-scripts sass"
   },
   "dependencies": {
     "@angular/animations": "5.2.11",

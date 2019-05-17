@@ -29,6 +29,8 @@ plugins/android.json
 plugins/ios.json
 www/
 $RECYCLE.BIN/
+src/assets/css/*.css
+src/assets/css/*.css.map
 
 env.js
 
