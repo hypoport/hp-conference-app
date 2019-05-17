@@ -112,12 +112,12 @@
 
             <div class="card-content-top">
 
-              <div class="card-label {{parallelSession.category | lowercase}}">
+              <div class="card-label {{parallelSession.category | lowercase}} {{parallelSession.subCategory | lowercase}}" *ngIf="parallelSession.category || parallelSession.subCategory">
                 <ion-icon name="easel"></ion-icon>
-                <h6 class="" *ngIf="parallelSession.categoryName">{{parallelSession.categoryName}}</h6>
+                <h6 class="" *ngIf="parallelSession.category">{{parallelSession.categoryName ? parallelSession.categoryName : parallelSession.subCategoryName}}</h6>
               </div>
 
-              <div class="card-label">
+              <div class="card-label" *ngIf="parallelSession.location">
                 <ion-icon ios="md-square-outline" md="md-square-outline"></ion-icon>
                 <h6 *ngIf="parallelSession.location">{{parallelSession.location}}</h6>
               </div>
