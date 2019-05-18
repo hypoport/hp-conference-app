@@ -61,7 +61,7 @@ session-list {
 
 .day-group {
   margin-bottom: 40px;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   border-bottom: 1px solid lighten(color($colors, lightgrey),6%);
 
 
@@ -70,10 +70,8 @@ session-list {
   }
   .date-heading {
 
-    // margin: $content-padding 0 0 0 !important;
-    // padding-bottom: 8px;
-    // padding-top: 14px;
-    padding: 0 12px;
+    padding: 0 12px 20px;
+    margin-bottom: 0 !important;
 
     color: darken(color($colors, lightgrey),22%) !important;
 
@@ -110,7 +108,6 @@ session-list {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  // padding: 0 $content-padding;
 
 
   h5 {
@@ -167,15 +164,11 @@ ion-icon {
       .item-inner {
         padding: 0 0 0 0px;
         margin: 0 0 0 12px;
-        // border-left: .55px solid $lightgrey;
-
-
         &:before {
           padding-right: 24px;
           background-position: left 8px center;
         }
         &:after {
-          // display: none;
           content: '';
           left: 12px;
           top: 0;
@@ -230,7 +223,8 @@ ion-icon {
 
   .agenda-stats {
     padding-left: 16px;
-    margin-top: 16px;
+    height: 20px;
+    // margin-top: 16px;
   }
 
 
@@ -240,12 +234,18 @@ ion-icon {
     // width: calc(100% - calc(#{$content-padding} - #{$card-ios-margin-left}));
     width: calc(100% - 18px);
     margin: 0 12px 0 6px;
+    padding-bottom: 20px;
 
-    .swiper-wrapper {}
+    .swiper-wrapper {
+      display: flex;
+      flex-direction: row;
+    }
 
     // stretch non parallel slot to max-width
     ion-slide {
-      flex: 1 0 auto;
+      display: flex;
+      flex-grow: 1;
+
     }
   }
 
@@ -278,28 +278,22 @@ ion-icon {
 
 
 .agenda-card {
-  // margin-left: $content-padding;
-  // margin-right: 0;
-
-  /* shape */
-  // background: $white;
-  // border: $base-border !important;
-  // border-radius: calc(#{$border-radius * 1.4});
-  // box-shadow: $card-shadow-secondary;
-
-
   margin: 6px;
   width: calc(100% - 12px);
-
 
   ion-card-content {
 
     justify-content: flex-start;
+    // flex-direction: column;
+    // flex-wrap: nowrap;
+    // height: auto;
+    // flex-shrink: 1;
+
     .card-content-top {
       position: relative;
       justify-content: flex-start;
       flex-wrap: wrap;
-      margin-bottom: 0;
+      margin-bottom: 1.6rem;
       width: calc(100% - 10px);
       .card-label {
         display: flex;
@@ -376,6 +370,9 @@ ion-icon {
         }
       }
     }
+    .card-content-bottom {
+      // justify-content: flex-start;
+    }
   }
 
 
@@ -384,7 +381,8 @@ ion-icon {
 
 
   .parallel-session-title {
-    padding: 1rem 0 0;
+    margin: 0;
+    padding: 0;
   }
   .speaker {
     padding-left: 0;
