@@ -60,24 +60,26 @@ session-list {
 }
 
 .day-group {
-  margin-bottom: 20px;
-  padding-bottom: 12px;
+  margin-bottom: 40px;
+  padding-bottom: 40px;
   border-bottom: 1px solid lighten(color($colors, lightgrey),6%);
+
+
   &:last-of-type {
     border-bottom: 0px !important;
   }
   .date-heading {
 
-    margin: $content-padding 0 0 0 !important;
+    // margin: $content-padding 0 0 0 !important;
     // padding-bottom: 8px;
     // padding-top: 14px;
-    padding: 0 $content-padding/2;
+    padding: 0 12px;
 
     color: darken(color($colors, lightgrey),22%) !important;
 
 
     ion-icon {
-      margin-left: -8px;
+      margin-left: -12px;
 
       font-size: 1.6rem;
       width: 25px;
@@ -89,7 +91,7 @@ session-list {
       color: darken(color($colors, lightgrey),14%) !important;
       border: $base-border;
       border-color: lighten($silver, 0%);
-      // border: 0 !important;
+      border: 0 !important;
       background: lighten($background-secondary, 5%);
       &:before {
         margin-top: -1px;
@@ -155,6 +157,7 @@ ion-icon {
   // full width parallel cards container (override base padding)
   margin-right: -#{$content-padding};
   margin-left: -#{$content-padding};
+
   ion-list {}
   ion-item-sliding {}
   .item-ios,
@@ -164,12 +167,22 @@ ion-icon {
       .item-inner {
         padding: 0 0 0 0px;
         margin: 0 0 0 12px;
-        // border-left: .55px solid $lightgrey !important;
-        border-left: .55px solid $lightgrey;
+        // border-left: .55px solid $lightgrey;
+
 
         &:before {
           padding-right: 24px;
           background-position: left 8px center;
+        }
+        &:after {
+          // display: none;
+          content: '';
+          left: 12px;
+          top: 0;
+          height: 100%;
+          position: absolute;
+          width: .55px;
+          background: $lightgrey;
         }
       }
     }
@@ -178,6 +191,43 @@ ion-icon {
       margin: 0;
     }
   }
+  ion-item-sliding {
+
+
+    &:first-of-type {
+      .item-ios,
+      .item-md {
+        &.item-block {
+          .item-inner {
+            &:after {
+              top: 50%;
+            }
+          }
+        }
+      }
+    }
+    &:last-of-type {
+      .item-ios,
+      .item-md {
+        &.item-block {
+          .item-inner {
+            &:after {
+              top: auto;
+              bottom: 50%;
+            }
+          }
+        }
+      }
+    }
+
+
+  }
+
+
+
+
+
+
   .agenda-stats {
     padding-left: 16px;
     margin-top: 16px;
@@ -334,8 +384,6 @@ ion-icon {
   .parallel-session-title {
     padding: 1rem 0 0;
   }
-
-
   .speaker {
     padding-left: 0;
     ion-avatar {
