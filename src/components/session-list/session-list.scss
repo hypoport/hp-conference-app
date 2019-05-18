@@ -92,7 +92,8 @@ session-list {
       border: 0 !important;
       background: lighten($background-secondary, 5%);
       &:before {
-        margin-top: -1px;
+
+        margin-left: 4px;
         display: flex;
         flex-flow: column wrap;
         justify-content: center;
@@ -155,6 +156,7 @@ ion-icon {
   margin-right: -#{$content-padding};
   margin-left: -#{$content-padding};
 
+
   ion-list {}
   ion-item-sliding {}
   .item-ios,
@@ -162,19 +164,20 @@ ion-icon {
     padding-left: 0;
     &.item-block {
       .item-inner {
-        padding: 0 0 0 0px;
+        padding: 0;
         margin: 0 0 0 12px;
+        margin-left: 0;
         &:before {
-          padding-right: 24px;
-          background-position: left 8px center;
+          padding-right: 28px;
+          background-position: left 10px center;
         }
         &:after {
           content: '';
-          left: 12px;
+          left: 13.5px;
           top: 0;
           height: 100%;
           position: absolute;
-          width: .55px;
+          width: .5px;
           background: $lightgrey;
         }
       }
@@ -222,7 +225,7 @@ ion-icon {
 
 
   .agenda-stats {
-    padding-left: 16px;
+    padding-left: 28px;
     height: 20px;
     // margin-top: 16px;
   }
@@ -233,7 +236,9 @@ ion-icon {
     // margin-left: calc(#{$content-padding} - #{$card-ios-margin-left});
     // width: calc(100% - calc(#{$content-padding} - #{$card-ios-margin-left}));
     width: calc(100% - 18px);
+    width: calc(100% - 30px);
     margin: 0 12px 0 6px;
+    margin-left: 18px;
     padding-bottom: 20px;
 
     .swiper-wrapper {
@@ -278,8 +283,8 @@ ion-icon {
 
 
 .agenda-card {
-  margin: 6px;
-  width: calc(100% - 12px);
+  margin: 10px;
+  width: calc(100% - 20px);
 
   ion-card-content {
 
