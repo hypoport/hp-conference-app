@@ -27,22 +27,31 @@ export class ConferenceService {
 
   public addConference(conferenceCode: string, conferencePassword: string): Promise<Conference> {
 
-    const url = this.global.apiURL('auth');
-
-    return this.http.post(url, {
-      "key": conferenceCode,
-      "password": conferencePassword,
-      "uuid": this.device.uuid
-    }, {
-      headers: {'Content-Type': 'application/json; charset=utf-8'}
-    }).toPromise()
-      .then((conference: Conference): Conference => {
-        this.conferences.set(conference.id.toString(), conference);
-        this.storage.set(STORAGE_KEY, this.conferences);
-        this.agendaService.loadAgenda(conference.id, conference.token);
-        this.speakerService.loadSpeakers(conference.id, conference.token);
-        return conference;
-      });
+    const rootUrl = this.global.rootApiUrl();
+    return this.http.post(rootUrl,{
+        "key": conferenceCode,
+      }, {
+        headers: {'Content-Type': 'application/json; charset=utf-8'}
+      }).toPromise()
+      .then((brandResponse: any) => {
+        console.log(brandResponse);
+        this.global.conferenceBrand = brandResponse.brand;
+        let url = this.global.apiURL('auth');
+        return this.http.post(url, {
+          "key": conferenceCode,
+          "password": conferencePassword,
+          "uuid": this.device.uuid
+        }, {
+          headers: {'Content-Type': 'application/json; charset=utf-8'}
+        }).toPromise()
+          .then((conference: Conference): Conference => {
+            this.conferences.set(conference.id.toString(), conference);
+            this.storage.set(STORAGE_KEY, this.conferences);
+            this.agendaService.loadAgenda(conference.id, conference.token);
+            this.speakerService.loadSpeakers(conference.id, conference.token);
+            return conference;
+          });
+    });
   }
 
   public loadConference(conferenceId: string, token: string): Promise<Conference> {
@@ -76,7 +85,6 @@ export class ConferenceService {
       headers: {'Content-Type': 'application/json; charset=utf-8'}
     }).toPromise()
       .then((attendeelist) => {
-        console.log(attendeelist);
         return attendeelist;
     });
   }

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { App, IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { GlobalProvider } from '../../providers/global/global';
+import { BrandProvider } from '../../providers/brand/brand';
+
 import { ConferenceService } from "../../providers/conference/conference-service";
 import { TabsPage } from '../tabs/tabs';
 import { ToastController } from 'ionic-angular';
@@ -36,14 +38,17 @@ export class AddConferencePage {
   public app: App,
   private toastCtrl: ToastController,
   public loadingCtrl: LoadingController,
-  private barcodeScanner: BarcodeScanner
+  private barcodeScanner: BarcodeScanner,
+  public brandProvider: BrandProvider
   ) {
   }
 
-  public goToConference(newConferenceId: string, newToken: string, conferenceopt: ConferenceOptions) {
+  public goToConference(newConferenceId: string, newToken: string, newBrand: string, conferenceopt: ConferenceOptions) {
     this.globalProvider.conferenceId = newConferenceId;
     this.globalProvider.conferenceToken = newToken;
+    this.globalProvider.conferenceBrand = newBrand;
     this.globalProvider.conferenceOptions = conferenceopt;
+    this.brandProvider.switchBrandTheme(this.globalProvider.conferenceBrand);
 	  this.app.getRootNav().push(TabsPage);
 	  this.viewCtrl.dismiss();
   }
@@ -73,7 +78,7 @@ export class AddConferencePage {
 	    this.conferenceService.addConference(conferenceCode, conferencePassword)
 	      .then((conference) => {
 		     loader.dismiss();
-		     this.goToConference(conference.id,conference.token,conference.options);
+		     this.goToConference(conference.id,conference.token,conference.brand,conference.options);
 	      }).catch((error) => {
 
 		 	loader.dismiss();

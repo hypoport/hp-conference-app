@@ -3,6 +3,7 @@ import { IonicPage, ViewController, NavController, NavParams, App } from 'ionic-
 import {SettingsPage} from '../settings/settings';
 import {OverviewPage} from '../overview/overview';
 import {FeedbackPage} from '../feedback/feedback';
+import {BrandProvider} from '../../providers/brand/brand';
 
 /**
  * Generated class for the HomePopoverPage page.
@@ -18,7 +19,7 @@ import {FeedbackPage} from '../feedback/feedback';
 })
 export class HomePopoverPage {
 
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams, public app: App) {
+  constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams, public app: App, public brandProvider: BrandProvider) {
   }
 
   public openSettingsPage(){
@@ -33,6 +34,7 @@ export class HomePopoverPage {
   }
   public exitConference(){
 	 this.viewCtrl.dismiss().then(() => {
+    this.brandProvider.switchBrandTheme('hp');
 		this.app.getRootNav().setRoot(OverviewPage);
 	});
   }

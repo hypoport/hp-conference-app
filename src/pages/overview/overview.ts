@@ -6,6 +6,8 @@ import {AddConferencePage} from '../add-conference/add-conference';
 import {GlobalProvider} from '../../providers/global/global';
 import {ConferenceService} from "../../providers/conference/conference-service";
 import {Conference} from '../../models/conference';
+import {ConferenceOptions} from '../../models/conference-options';
+
 import {BrandProvider} from '../../providers/brand/brand';
 import {SettingsPage} from '../settings/settings';
 
@@ -53,9 +55,12 @@ export class OverviewPage {
 
   }
 
-  public goToConference(newConferenceId: string, newToken: string) {
+  public goToConference(newConferenceId: string, newToken: string, newBrand: string, conferenceopt: ConferenceOptions) {
     this.globalProvider.conferenceId = newConferenceId;
     this.globalProvider.conferenceToken = newToken;
+    this.globalProvider.conferenceBrand = newBrand;
+    this.globalProvider.conferenceOptions = conferenceopt;
+    this.brandProvider.switchBrandTheme(this.globalProvider.conferenceBrand);
     this.navCtrl.push(TabsPage);
   }
 

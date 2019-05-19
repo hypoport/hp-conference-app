@@ -6,16 +6,15 @@ import { DOCUMENT } from '@angular/common';
 export class BrandProvider {
 
   constructor(@Inject(DOCUMENT) document) {
-    this.switchBrandTheme('gp');
   }
 
   public getLogoUrl(brand: string): string {
     switch (brand.toUpperCase()) {
-      case "EP":
+      case "ep":
         return "assets/logos/europace.png";
-      case "FM":
+      case "fm":
         return "assets/logos/finmas.png";
-      case "GP":
+      case "gp":
         return "assets/logos/genopace.png";
       default:
         return "";
@@ -29,18 +28,33 @@ export class BrandProvider {
       console.warn('SKIPPED BRANDING: Fallback to default Style-Theme.');
       return false;
     }
+
+    let knownBrands = ENV.knownBrands;
+    if(knownBrands.indexOf(brand) === -1){
+      console.log('UNKNOWN BRAND: '+brand);
+      return false;
+    }
+
     console.log('LOAD BRANDING: '+brand);
+
     for(let i = 0; i < links.length; i++){
         let ele = links[i];
         if(ele.getAttribute('rel') == 'stylesheet'){
-          if(ele.getAttribute('href').indexOf('build/') !== -1){
+          if(ele.getAttribute('href').indexOf('build/') !== -1
+          || (ele.getAttribute('href').indexOf('assets/css') !== -1 && ele.getAttribute('href').indexOf('assets/css/brand-'+brand+'.css') === -1) ){
             var newStyling = document.createElement("link");
             newStyling.setAttribute('rel','stylesheet');
-            newStyling.setAttribute('href','assets/css/brand-'+brand+'.css')
-            document.head.appendChild(newStyling);
+            if(brand == 'hp'){
+              newStyling.setAttribute('href','build/main.css')
+            } else {
+              newStyling.setAttribute('href','assets/css/brand-'+brand+'.css')
+            }
+            setTimeout(()=>{
+              document.head.appendChild(newStyling);
+            },50);
             setTimeout(()=>{
               ele.remove();
-            },500);
+            },1200);
           }
         }
     }

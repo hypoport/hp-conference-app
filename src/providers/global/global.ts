@@ -13,6 +13,7 @@ export class GlobalProvider {
 
   private _conferenceId: string;
   private _conferenceToken: string;
+  private _conferenceBrand: string;
   private _conferenceOptions: ConferenceOptions;
 
   private _apiURL: string;
@@ -42,6 +43,15 @@ export class GlobalProvider {
   set conferenceToken(value: string) {
     this._conferenceToken = value;
   }
+
+  get conferenceBrand(): string {
+    return this._conferenceBrand;
+  }
+
+  set conferenceBrand(value: string) {
+    this._conferenceBrand = value;
+  }
+
   get conferenceOptions(): ConferenceOptions {
     return this._conferenceOptions;
   }
@@ -57,7 +67,12 @@ export class GlobalProvider {
      return this._gaKey;
  }
  public apiURL(endpoint: string){
-	return this._apiURL + '/' + endpoint;
+  let backendUrl = ENV.backendUrls[this._conferenceBrand];
+  if(!backendUrl) backendUrl = ENV.backendUrls['hp'];
+	return backendUrl + '/' + endpoint;
+ }
+ public rootApiUrl(){
+   return this._apiURL;
  }
  public qrSecret(){
 	return this._qrPayloadSecret;
