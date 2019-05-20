@@ -45,7 +45,9 @@
 -->
 <ng-container *ngIf="doGroup && layout != 'parallel-cards'"><!-- Gruppierung -->
 <div class="day-group" *ngFor="let sessionsOfDay of groupedSessions; let i = index">
-<h4 class="date-heading"><ion-icon class="calendar" ios="md-calendar" md="md-calendar"></ion-icon> {{ (sessionsOfDay[0].timeStart) | date: 'dd.MM.y': 'CEST': 'de-DE'}}</h4>
+
+<h2 class="date-heading top-head">{{i+1 | nicerDay}}</h2>
+<h4 class="date-heading sub-head">{{ (sessionsOfDay[0].timeStart) | date: 'dd.MM.y': 'CEST': 'de-DE'}}</h4>
 <ion-item-sliding no-lines *ngFor="let session of sessionsOfDay" [attr.subcategory]="session.subCategory | lowercase" [attr.category]="session.category | lowercase"
 [hidden]="session.hide">
 
@@ -89,7 +91,8 @@
 <ng-container *ngIf="doGroup && layout == 'parallel-cards'"><!-- Gruppierung und Slider Cards -->
 <div class="day-group" *ngFor="let sessionsOfDay of groupedParallelSessions; let i = index">
 
-<h4 class="date-heading"><ion-icon class="calendar" ios="md-calendar" md="md-calendar"></ion-icon> {{ (sessionsOfDay[i][0].timeStart) | date: 'dd.MMM y': 'CEST': 'de-DE'}}</h4>
+<h2 class="date-heading top-head">{{i+1 | nicerDay}}</h2>
+<h4 class="date-heading sub-head">{{ (sessionsOfDay[i][0].timeStart) | date: 'dd.MMM y': 'CEST': 'de-DE'}}</h4>
 
 <ng-container class="paralell-session-group" *ngFor="let parallelSessions of sessionsOfDay; let p = index">
 <ion-item-sliding no-lines *ngFor="let session of parallelSessions | slice:0:1;" [attr.subcategory]="session.subCategory | lowercase" [attr.category]="session.category | lowercase"

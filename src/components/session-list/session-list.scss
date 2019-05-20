@@ -11,9 +11,9 @@ $categories: (
   navigation: #6600CC,
 
   // primary
-  strategie: #ff6501,
-  praxis: #002e68,
-  mindset: #6BA4CF,
+  ws_a: #ff6501,
+  ws_b: #002e68,
+  ws_c: #6BA4CF,
 
   // secondary (nicht wichtig)
   // transit: #f6e772,
@@ -73,8 +73,12 @@ session-list {
     padding: 0 12px 20px;
     margin-bottom: 0 !important;
 
-    color: darken(color($colors, lightgrey),22%) !important;
-
+    &.top-head {
+      padding: 0 12px 7px;
+    }
+    &.sub-head {
+      color: darken(color($colors, lightgrey),22%) !important;
+    }
 
     ion-icon {
       margin-left: -12px;
@@ -113,6 +117,7 @@ session-list {
 
   h5 {
     margin: 0 1rem 0 0 !important;
+    color: darken(color($colors, lightgrey),22%);
   }
 
   ion-icon {
@@ -169,16 +174,17 @@ ion-icon {
         margin-left: 0;
         &:before {
           padding-right: 28px;
-          background-position: left 10px center;
+          background-position: left 10px top 6px;
         }
         &:after {
           content: '';
           left: 13.5px;
           top: 0;
-          height: 100%;
+          height: calc(100% + 10px);
           position: absolute;
-          width: .5px;
-          background: $lightgrey;
+          width: 0px;
+          background: transparent;
+          box-shadow: 0 0 0 0.25px $lightgrey;
         }
       }
     }
@@ -196,7 +202,7 @@ ion-icon {
         &.item-block {
           .item-inner {
             &:after {
-              top: 50%;
+              top: 10px;
             }
           }
         }
@@ -209,7 +215,8 @@ ion-icon {
           .item-inner {
             &:after {
               top: auto;
-              bottom: 50%;
+              top: 0px;
+              height: 14px;
             }
           }
         }
@@ -335,7 +342,7 @@ ion-icon {
           }
         }
         h6 {
-          margin-top: 2px;
+          margin-top: 0px;
           margin-bottom: 0;
           line-height: 1;
           padding: 0 0 0 .6rem;
