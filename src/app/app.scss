@@ -59,11 +59,7 @@ $dark: #202020;
 $black: #000000;
 
 
-
-$brand-primary: #b11f30;  // europace
-
-
-
+$brand-primary: color($colors, primary);  // brand
 
 
 /* text colors */
@@ -143,6 +139,7 @@ p.lead,
 }
 a {
   font-weight: $font-semibold;
+  color: color($colors, secondary);
   text-decoration: none;
 }
 
@@ -433,9 +430,9 @@ ion-card {
     border: $base-border;
     color: $font-color-tertiary;
 
-    border-color: lighten($brand-primary, 40%);
+    border-color: lighten($brand-primary, 30%);
     color: $brand-primary;
-    background: lighten($brand-primary, 55%);
+    background: lighten($brand-primary, 45%);
     /* vertical center */
     &:before {
       display: flex;
@@ -453,16 +450,16 @@ ion-card {
       background: radial-gradient(
                     transparent 0,
                     transparent 22px,
-                    lighten($brand-primary, 52%) 22px,
-                    lighten($brand-primary, 52%) 23px,
+                    lighten($brand-primary, 42%) 22px,
+                    lighten($brand-primary, 42%) 23px,
                     transparent 23px,
                     transparent 31px,
-                    lighten($brand-primary, 55%) 31px,
-                    lighten($brand-primary, 55%) 32px,
+                    lighten($brand-primary, 45%) 31px,
+                    lighten($brand-primary, 45%) 32px,
                     transparent 32px,
                     transparent 40px,
-                    lighten($brand-primary, 57%) 40px,
-                    lighten($brand-primary, 57%) 41px,
+                    lighten($brand-primary, 47%) 40px,
+                    lighten($brand-primary, 47%) 41px,
                     transparent 41px
                     );
     }
