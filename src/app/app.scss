@@ -450,16 +450,16 @@ ion-card {
       background: radial-gradient(
                     transparent 0,
                     transparent 22px,
-                    lighten($brand-primary, 42%) 22px,
-                    lighten($brand-primary, 42%) 23px,
+                    transparentize($brand-primary, 0.78) 22px,
+                    transparentize($brand-primary, 0.78) 23px,
                     transparent 23px,
                     transparent 31px,
-                    lighten($brand-primary, 45%) 31px,
-                    lighten($brand-primary, 45%) 32px,
+                    transparentize($brand-primary, 0.88) 31px,
+                    transparentize($brand-primary, 0.88) 32px,
                     transparent 32px,
                     transparent 40px,
-                    lighten($brand-primary, 47%) 40px,
-                    lighten($brand-primary, 47%) 41px,
+                    transparentize($brand-primary, 0.94) 40px,
+                    transparentize($brand-primary, 0.94) 41px,
                     transparent 41px
                     );
     }
