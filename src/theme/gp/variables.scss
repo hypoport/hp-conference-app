@@ -49,17 +49,17 @@ $colors: (
 $agendaCategories: (
   ws_a: (
     base: #ff6501,
-    light: lighten(#ff6501, 35%),
+    light: lighten(#ff6501, 46%),
     dark: darken(#ff6501, 10%),
   ),
   ws_b: (
-    base: #002e68,
-    light: desaturate(lighten(#002e68, 60%),10%),
+    base: lighten(#002e68,5%),
+    light: desaturate(lighten(#002e68, 67%),40%),
     dark: darken(#002e68, 7%),
   ),
   ws_c: (
-    base: saturate(#6BA4CF,20%),
-    light: lighten(#6BA4CF, 20%),
+    base: saturate(#6BA4CF,25%),
+    light: lighten(#6BA4CF, 35%),
     dark: darken(#6BA4CF, 7%),
   )
 );
