@@ -9,11 +9,11 @@ export class NicerDay {
    transform(value) {
      let result = value+'. Tag';
 
-     if(parseInt(value) == 1) result = "Erster Tag";
-     if(parseInt(value) == 2) result = "Zweiter Tag";
-     if(parseInt(value) == 3) result = "Dritter Tag";
-     if(parseInt(value) == 4) result = "Vierter Tag";
-     if(parseInt(value) == 5) result = "Fünfter Tag";
+     if(parseInt(value) == 1) result = "Erster Konferenztag";
+     if(parseInt(value) == 2) result = "Zweiter Konferenztag";
+     if(parseInt(value) == 3) result = "Dritter Konferenztag";
+     if(parseInt(value) == 4) result = "Vierter Konferenztag";
+     if(parseInt(value) == 5) result = "Fünfter Konferenztag";
 
      return result;
    }
