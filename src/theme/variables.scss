@@ -49,28 +49,18 @@ $colors: (
 $agendaCategories: (
   ws_a: (
     base: #ff6501,
-    light: lighten(#ff6501, 35%),
+    light: lighten(#ff6501, 46%),
     dark: darken(#ff6501, 10%),
   ),
   ws_b: (
-    base: #002e68,
-    light: lighten(#002e68, 60%),
+    base: lighten(#002e68,5%),
+    light: desaturate(lighten(#002e68, 67%),40%),
     dark: darken(#002e68, 7%),
   ),
   ws_c: (
-    base: #6BA4CF,
-    light: lighten(#6BA4CF, 20%),
+    base: saturate(#6BA4CF,25%),
+    light: lighten(#6BA4CF, 35%),
     dark: darken(#6BA4CF, 7%),
-  ),
-  transit: (
-    base: darken(#f6e772,15%),
-    light: lighten(#f6e772, 20%),
-    dark: darken(#f6e772, 20%),
-  ),
-  party: (
-    base: #98c4d2,
-    light: lighten(#98c4d2, 20%),
-    dark: darken(#98c4d2, 20%),
   )
 );
 

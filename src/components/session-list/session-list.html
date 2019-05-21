@@ -116,7 +116,7 @@
             <div class="card-content-top">
 
               <div class="card-label {{parallelSession.category | lowercase}} {{parallelSession.subCategory | lowercase}}" *ngIf="parallelSession.category || parallelSession.subCategory">
-                <ion-icon name="easel"></ion-icon>
+                <ion-icon name="{{iconHotFix(parallelSession.subCategory)}}"></ion-icon>
                 <h6 class="" *ngIf="parallelSession.category">{{parallelSession.categoryName ? parallelSession.categoryName : parallelSession.subCategoryName}}</h6>
               </div>
 

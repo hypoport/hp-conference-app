@@ -89,4 +89,22 @@ export class SessionListComponent {
     this.app.getRootNav().push(SessionPage, {session: session});
   }
 
+  iconHotFix(cat){
+    if(cat == "ws_a"){
+      return 'swap';
+    } else if(cat == "ws_b"){
+      return 'settings';
+    } else if(cat == "ws_c"){
+      return 'cloud';
+    } else if(cat == "break"){
+      return 'cafe';
+    } else if(cat == "transit"){
+      return 'bus';
+    } else if(cat == "party"){
+      return 'wine';
+    } else {
+      return 'easel';
+    }
+  }
+
 }

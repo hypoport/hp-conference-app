@@ -54,23 +54,13 @@ $agendaCategories: (
   ),
   ws_b: (
     base: #002e68,
-    light: lighten(#002e68, 60%),
+    light: desaturate(lighten(#002e68, 60%),10%),
     dark: darken(#002e68, 7%),
   ),
   ws_c: (
-    base: #6BA4CF,
+    base: saturate(#6BA4CF,20%),
     light: lighten(#6BA4CF, 20%),
     dark: darken(#6BA4CF, 7%),
-  ),
-  transit: (
-    base: darken(#f6e772,15%),
-    light: lighten(#f6e772, 20%),
-    dark: darken(#f6e772, 20%),
-  ),
-  party: (
-    base: #98c4d2,
-    light: lighten(#98c4d2, 20%),
-    dark: darken(#98c4d2, 20%),
   )
 );
 

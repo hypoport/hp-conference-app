@@ -2,38 +2,6 @@
   @return map-remove($agendaCategories);
 }
 
-session-list {
-  @each $category, $value in auxiliary-categories() {
-    ion-item-sliding[category=#{$category}] ion-card {
-
-    }
-
-    .card-label.#{$category} {
-      background: map-get(map-get($agendaCategories, $category), light) !important;
-      border-color: map-get(map-get($agendaCategories, $category), base) !important;
-      ion-icon {
-        color: map-get(map-get($agendaCategories, $category), base) !important;
-      }
-      h6 {
-        color: map-get(map-get($agendaCategories, $category), base);
-      }
-    }
-  }
-
-  h4 {
-    margin: 0 0 0.5rem 0 !important;
-    font-size: 1.4rem;
-    color: color($colors, darkgrey) !important;
-    span {
-      margin-right: 0.75rem;
-      &:empty {
-        display: none;
-      }
-    }
-  }
-
-}
-
 .day-group {
   margin-bottom: 40px;
   padding-bottom: 20px;
@@ -286,13 +254,13 @@ ion-icon {
         display: flex;
         flex-direction: row;
         align-items: center;
+        color: darken(color($colors, lightgrey),15%);
 
         border-radius: calc(#{$border-radius * 1});
         border: $base-border;
         border-color: lighten($silver, 15%);
         // border: 0 !important;
         background: lighten($background-secondary, 5%);
-
         padding: .3rem .6rem;
         margin-right: .6rem;
         margin-bottom: .3rem;
@@ -311,6 +279,7 @@ ion-icon {
           border: 0;
           background: none;
           color: $font-color-tertiary;
+          color: darken(color($colors, lightgrey),15%);
 
           &:after {
           display: none;
@@ -323,6 +292,7 @@ ion-icon {
           padding: 0 0 0 .6rem;
           white-space: nowrap;
           font-size: 9px;
+          color: inherit;
         }
       }
 
@@ -388,6 +358,40 @@ ion-icon {
       img {
         width: 30px;
         height: 30px;
+      }
+    }
+  }
+
+}
+
+session-list {
+  @each $category, $value in auxiliary-categories() {
+    ion-item-sliding[category=#{$category}] ion-card {
+
+    }
+
+    .card-label.#{$category} {
+      background: map-get(map-get($agendaCategories, $category), light) !important;
+      border-color: map-get(map-get($agendaCategories, $category), base) !important;
+      color: map-get(map-get($agendaCategories, $category), base);
+
+      ion-icon {
+        color: map-get(map-get($agendaCategories, $category), base) !important;
+      }
+      h6 {
+        color: map-get(map-get($agendaCategories, $category), base) !important;
+      }
+    }
+  }
+
+  h4 {
+    margin: 0 0 0.5rem 0 !important;
+    font-size: 1.4rem;
+    color: color($colors, darkgrey) !important;
+    span {
+      margin-right: 0.75rem;
+      &:empty {
+        display: none;
       }
     }
   }
