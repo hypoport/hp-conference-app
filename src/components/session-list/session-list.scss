@@ -1,30 +1,5 @@
-$categories: (
-  ionic: color($colors, primary),
-  angular: #AC282B,
-  communication: #8E8D93,
-  tooling: #FE4C52,
-  services: #FD8B2D,
-  design: #FED035,
-  workshop: #69BB7B,
-  food: #3BC7C4,
-  documentation: #B16BE3,
-  navigation: #6600CC,
-
-  // primary
-  ws_a: #ff6501,
-  ws_b: #002e68,
-  ws_c: #6BA4CF,
-
-  // secondary (nicht wichtig)
-  // transit: #f6e772,
-  // break: #b5b5b5,
-  // party: #98c4d2,
-
-
-);
-
 @function auxiliary-categories() {
-  @return map-remove($categories);
+  @return map-remove($agendaCategories);
 }
 
 session-list {
@@ -34,13 +9,13 @@ session-list {
     }
 
     .card-label.#{$category} {
-      background: lighten($value, 30%) !important;
-      border-color: lighten($value, 10%) !important;
+      background: map-get(map-get($agendaCategories, $category), light) !important;
+      border-color: map-get(map-get($agendaCategories, $category), base) !important;
       ion-icon {
-        color: $value !important;
+        color: map-get(map-get($agendaCategories, $category), base) !important;
       }
       h6 {
-        color: $value;
+        color: map-get(map-get($agendaCategories, $category), base);
       }
     }
   }
@@ -133,8 +108,6 @@ ion-icon {
     width: 25px;
     height: 25px;
     border-radius: 25px;
-    background: lighten($brand-primary, 55%);
-    color: $brand-primary;
     &:before {
       display: flex;
       flex-flow: column wrap;
@@ -143,8 +116,11 @@ ion-icon {
       flex-grow: 1;
     }
     &.bookmark-inactive {
+      color: darken(color($colors, lightgrey),22%);
     }
     &.bookmark-active {
+      background: lighten($brand-primary, 55%);
+      color: $brand-primary;
       &:before {
         content: '\f12e'
       }
@@ -174,17 +150,16 @@ ion-icon {
         margin-left: 0;
         &:before {
           padding-right: 28px;
-          background-position: left 10px top 6px;
+          background-position: left 9.5px top 6px;
         }
         &:after {
           content: '';
-          left: 13.5px;
+          left: 13px;
           top: 0;
           height: calc(100% + 10px);
           position: absolute;
-          width: 0px;
-          background: transparent;
-          box-shadow: 0 0 0 0.25px $lightgrey;
+          width: 1px;
+          background: $lightgrey;
         }
       }
     }
@@ -369,16 +344,27 @@ ion-icon {
             width: 100%;
             height: 100%;
             transform: scale(2.6);
-            background: linear-gradient(to right, transparent , white 25%);
+            background: linear-gradient(to right, rgba(255,255,255,0) , rgba(255,255,255,1) 25%);
           }
           &:before {
             border: $base-border;
-            border-color: lighten($brand-primary, 40%);
+            border-color: transparent;
             border-radius: 25px;
-            background: lighten($brand-primary, 55%);
-            color: $brand-primary;
+            background: transparent;
+            color: darken(color($colors, lightgrey),22%);
             z-index: 2;
           }
+          &.bookmark-active {
+            &:before {
+              border: $base-border;
+              border-color: lighten($brand-primary, 40%);
+              border-radius: 25px;
+              background: lighten($brand-primary, 55%);
+              color: $brand-primary;
+              z-index: 2;
+            }
+          }
+
         }
       }
     }

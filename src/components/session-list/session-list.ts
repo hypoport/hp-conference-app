@@ -4,6 +4,7 @@ import { Session } from "../../models/session";
 import { Speaker } from "../../models/speaker";
 import { SessionPage } from "../../pages/session/session";
 import { SpeakerService } from '../../providers/speaker/speaker-service';
+import { FavoritesService } from '../../providers/favorites/favorites-service';
 import { GlobalProvider } from '../../providers/global/global';
 
 /**
@@ -73,13 +74,15 @@ export class SessionListComponent {
       this.groupedParallelSessions[dayIndex][parallelIndex].push(session);
 
     });
-    console.log('test');
-    console.log(this.groupedParallelSessions);
+  }
+
+  constructor(private app: App, private globalProvider: GlobalProvider, private speakerService: SpeakerService, private favoritesService: FavoritesService) {
 
   }
 
-  constructor(private app: App, private globalProvider: GlobalProvider, private speakerService: SpeakerService) {
-
+  public toggleFavorite(event: Event, session: Session) {
+    event.stopPropagation();
+    this.favoritesService.toggleFavorite(this.globalProvider.conferenceId, session);
   }
 
   public goToSessionDetail(session: any) {

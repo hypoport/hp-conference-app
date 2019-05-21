@@ -50,7 +50,7 @@
                 </div>
                 <div class="card-content-bottom">
                   <h3 [innerHTML]="conference?.directions?.address"></h3>
-                  <h5>{{ conference?.startDate | date: 'dd.MM.yyyy' }} - {{ conference?.endDate | date: 'dd.MM.yyyy'}}</h5>
+                  <h5>{{ conference?.startDate | date: 'dd.MM.yyyy' : 'UTC' }} - {{ conference?.endDate | date: 'dd.MM.yyyy' : 'UTC' }}</h5>
                 </div>
               </ion-card-content>
             </ion-card>
@@ -64,7 +64,7 @@
                 </div>
                 <div class="card-content-bottom">
                   <h3 [innerHTML]="this.nextSession?.title"></h3>
-                  <h5>{{this.nextSession?.timeStart | date: 'HH:mm': 'CEST': 'de-DE'}} &mdash; {{this.nextSession?.timeEnd | date: 'HH:mm': 'CEST': 'de-DE'}}</h5>
+                  <h5>{{this.nextSession?.timeStart | date: 'HH:mm': 'UTC'}} &mdash; {{this.nextSession?.timeEnd | date: 'HH:mm': 'UTC'}}</h5>
                 </div>
               </ion-card-content>
             </ion-card>
