@@ -10,6 +10,7 @@ import { Directive, ElementRef, Renderer } from '@angular/core';
 export class ParallaxHeader {
 
     header: any;
+    cardslider: any;
     headerHeight: any;
     translateAmt: any;
     scaleAmt: any;
@@ -22,6 +23,7 @@ export class ParallaxHeader {
 
         let content = this.element.nativeElement.getElementsByClassName('scroll-content')[0];
         this.header = content.getElementsByClassName('hero-image')[0];
+        this.cardslider = content.getElementsByClassName('parallax-card-slider')[0];
 
         this.headerHeight = this.header.clientHeight;
 
@@ -53,6 +55,10 @@ export class ParallaxHeader {
         }
 
         this.renderer.setElementStyle(this.header, 'webkitTransform', 'translate3d(0,'+this.translateAmt+'px,0) scale('+this.scaleAmt+','+this.scaleAmt+')');
+
+        if(ev.scrollTop < 275){
+          this.renderer.setElementStyle(this.cardslider, 'webkitTransform', 'translate3d(0,'+(-this.translateAmt/4)+'px,0)');
+        }
 
     }
 
