@@ -15,7 +15,7 @@
         {{session.timeEnd | date: 'HH:mm': 'UTC'}}
       </h5>
       <h5>{{session.location ? session.location : ''}}</h5>
-      <ion-icon class="bookmark" name="bookmark-outline" *ngIf="session.isFavorite || globalProvider.conferenceOptions.favoriteInAgenda" [ngClass]="session.isFavorite ? 'bookmark-active' : 'bookmark-inactive'" (click)="toggleFavorite($event, session)"></ion-icon>
+      <ion-icon class="bookmark" name="bookmark-outline" md="md-bookmark" *ngIf="session.isFavorite || globalProvider.conferenceOptions.favoriteInAgenda" [ngClass]="session.isFavorite ? 'bookmark-active' : 'bookmark-inactive'" (click)="toggleFavorite($event, session)"></ion-icon>
     </div>
 
 
@@ -31,7 +31,7 @@
       {{session.timeEnd | date: 'HH:mm': 'UTC'}}
     </h5>
     <h5>{{session.location ? session.location : ''}}</h5>
-    <ion-icon class="bookmark" name="bookmark-outline" *ngIf="session.isFavorite || globalProvider.conferenceOptions.favoriteInAgenda" [ngClass]="session.isFavorite ? 'bookmark-active' : 'bookmark-inactive'" (click)="toggleFavorite($event, session)"></ion-icon>
+    <ion-icon class="bookmark" name="bookmark-outline" md="md-bookmark" *ngIf="session.isFavorite || globalProvider.conferenceOptions.favoriteInAgenda" [ngClass]="session.isFavorite ? 'bookmark-active' : 'bookmark-inactive'" (click)="toggleFavorite($event, session)"></ion-icon>
     </div>
   </ion-item>
 
@@ -62,7 +62,7 @@
       {{session.timeEnd | date: 'HH:mm': 'UTC'}}
     </h5>
     <h5>{{session.location ? session.location : ''}}</h5>
-    <ion-icon class="bookmark" name="bookmark-outline" *ngIf="session.isFavorite || globalProvider.conferenceOptions.favoriteInAgenda" [ngClass]="session.isFavorite ? 'bookmark-active' : 'bookmark-inactive'" (click)="toggleFavorite($event, session)"></ion-icon>
+    <ion-icon class="bookmark" name="bookmark-outline" md="md-bookmark" *ngIf="session.isFavorite || globalProvider.conferenceOptions.favoriteInAgenda" [ngClass]="session.isFavorite ? 'bookmark-active' : 'bookmark-inactive'" (click)="toggleFavorite($event, session)"></ion-icon>
   </div>
 
 
@@ -78,7 +78,7 @@
     {{session.timeEnd | date: 'HH:mm': 'UTC'}}
   </h5>
   <h5>{{session.location ? session.location : ''}}</h5>
-  <ion-icon class="bookmark" name="bookmark-outline" *ngIf="session.isFavorite || globalProvider.conferenceOptions.favoriteInAgenda" [ngClass]="session.isFavorite ? 'bookmark-active' : 'bookmark-inactive'" (click)="toggleFavorite($event, session)"></ion-icon>
+  <ion-icon class="bookmark" name="bookmark-outline" md="md-bookmark" *ngIf="session.isFavorite || globalProvider.conferenceOptions.favoriteInAgenda" [ngClass]="session.isFavorite ? 'bookmark-active' : 'bookmark-inactive'" (click)="toggleFavorite($event, session)"></ion-icon>
   </div>
 </ion-item>
 
@@ -125,7 +125,7 @@
                 <h6 *ngIf="parallelSession.location">{{parallelSession.location}}</h6>
               </div>
 
-              <ion-icon class="bookmark" name="bookmark-outline" *ngIf="parallelSession.isFavorite || globalProvider.conferenceOptions.favoriteInAgenda" [ngClass]="parallelSession.isFavorite ? 'bookmark-active' : 'bookmark-inactive'" (click)="toggleFavorite($event, parallelSession)"></ion-icon>
+              <ion-icon class="bookmark" name="bookmark-outline" md="md-bookmark" *ngIf="parallelSession.isFavorite || globalProvider.conferenceOptions.favoriteInAgenda" [ngClass]="parallelSession.isFavorite ? 'bookmark-active' : 'bookmark-inactive'" (click)="toggleFavorite($event, parallelSession)"></ion-icon>
 
 
 
@@ -183,7 +183,7 @@
     {{session.timeEnd | date: 'HH:mm': 'UTC'}}
   </h5>
   <h5>{{session.location ? session.location : ''}}</h5>
-  <ion-icon class="bookmark" name="bookmark-outline" *ngIf="session.isFavorite || globalProvider.conferenceOptions.favoriteInAgenda" [ngClass]="session.isFavorite ? 'bookmark-active' : 'bookmark-inactive'" (click)="toggleFavorite($event, session)"></ion-icon>
+  <ion-icon class="bookmark" name="bookmark-outline" md="md-bookmark" *ngIf="session.isFavorite || globalProvider.conferenceOptions.favoriteInAgenda" [ngClass]="session.isFavorite ? 'bookmark-active' : 'bookmark-inactive'" (click)="toggleFavorite($event, session)"></ion-icon>
   </div>
 </ion-item>
 
