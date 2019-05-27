@@ -59,13 +59,18 @@ export class GlobalProvider {
   set conferenceOptions(value: ConferenceOptions) {
     this._conferenceOptions = value;
   }
-
+ /*
+    Tracking and Versioning
+ */
  public appVersion() {
     return this._appVersion;
   }
   public getGAKey() {
      return this._gaKey;
  }
+ /*
+    API Url and Backend Switcher
+ */
  public apiURL(endpoint: string){
   let backendUrl = ENV.backendUrls[this._conferenceBrand];
   if(!backendUrl) backendUrl = ENV.backendUrls['hp'];
@@ -74,6 +79,19 @@ export class GlobalProvider {
  public rootApiUrl(){
    return this._apiURL;
  }
+ /*
+    Custom Labels for InApp Texts
+ */
+ public getLabel(labelIndex: string){
+   if(this._conferenceOptions && this._conferenceOptions.labels && this._conferenceOptions.labels[labelIndex]){
+     return this._conferenceOptions.labels[labelIndex];
+   } else {
+     return false;
+   }
+ }
+ /*
+    QR-Code Functionalities
+ */
  public qrSecret(){
 	return this._qrPayloadSecret;
  }
