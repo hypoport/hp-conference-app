@@ -129,9 +129,9 @@ export class SessionFeedbackPage {
 				  if(success){
 					  return true;
 				  } else {
-					return false;
+					return true;
 				  }
-	   }).catch( e => { return false; });
+	   }).catch( e => { return true; });
   }
 
 }
