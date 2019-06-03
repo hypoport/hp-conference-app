@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavParams, NavController} from 'ionic-angular';
+import {IonicPage, NavParams, NavController, ModalController} from 'ionic-angular';
 import {Session} from '../../models/session';
 import {SpeakerService} from '../../providers/speaker/speaker-service';
 import {GlobalProvider} from '../../providers/global/global';
@@ -7,6 +7,7 @@ import {Speaker} from '../../models/speaker';
 import {SpeakerPage} from '../speaker/speaker';
 import {FavoritesService} from "../../providers/favorites/favorites-service";
 
+import {SessionFeedbackPage} from '../session-feedback/session-feedback';
 
 /**
  * Generated class for the SessionPage page.
@@ -25,11 +26,14 @@ export class SessionPage {
   session: Session;
   speakers = new Array<Speaker>();
 
+  ratedValue: Number = 0;
+
   constructor(private navParams: NavParams,
     private navCtrl: NavController,
     private speakerService: SpeakerService,
     private globalProvider: GlobalProvider,
-    private favoritesService: FavoritesService
+    private favoritesService: FavoritesService,
+    private modalCtrl: ModalController
     ) {
   }
 
@@ -71,5 +75,14 @@ export class SessionPage {
     this.navCtrl.push(SpeakerPage, {speaker: speaker});
   }
 
+  public openSessionRatingPage(raiting){
+    if(raiting){
+      this.ratedValue = raiting;
+    }
+    setTimeout( () => {
+      let addModal = this.modalCtrl.create(SessionFeedbackPage, {session: this.session, raiting: raiting, speakers: this.speakers});
+      addModal.present();
+    },800);
+  }
 
 }

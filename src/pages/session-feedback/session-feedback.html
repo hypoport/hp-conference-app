@@ -1,0 +1,100 @@
+<!--
+  Generated template for the AddConferencePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+
+    <!-- TODO: change cancel icon -->
+    <ion-title>Session bewerten</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="dismiss()">
+        <!-- <span ion-text color="primary" showWhen="ios">Cancel</span> -->
+        <!-- <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon> -->
+        <ion-icon color="lightgrey" name="md-close"></ion-icon>
+
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding no-bounce>
+
+  <section class="session-feedback">
+
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col col-12 class="add-conference-intro">
+          <h1 text-center>„{{ session?.title }}“</h1>
+          <h3 text-center class="speaker" *ngIf="speakers && speakers.length">– <ng-container *ngFor="let speaker of speakers"><span>{{speaker.name}}</span></ng-container></h3>
+
+          <ion-row>
+            <ion-col class="star-button" align-self-end>
+              <button ion-button round clear text-center color="primary" (click)="this.setRaiting(1)">
+                  <ion-icon name="star-outline" *ngIf="ratedValue < 1"></ion-icon>
+                  <ion-icon name="star" *ngIf="ratedValue >= 1"></ion-icon>
+              </button>
+            </ion-col>
+            <ion-col class="star-button" align-self-end>
+              <button ion-button round clear text-center color="primary" (click)="this.setRaiting(2)">
+                <ion-icon name="star-outline" *ngIf="ratedValue < 2"></ion-icon>
+                <ion-icon name="star" *ngIf="ratedValue >= 2"></ion-icon>
+              </button>
+            </ion-col>
+            <ion-col class="star-button" align-self-end>
+              <button ion-button round clear text-center color="primary" (click)="this.setRaiting(3)">
+                <ion-icon name="star-outline" *ngIf="ratedValue < 3"></ion-icon>
+                <ion-icon name="star" *ngIf="ratedValue >= 3"></ion-icon>
+              </button>
+            </ion-col>
+            <ion-col class="star-button" align-self-end>
+              <button ion-button round clear text-center color="primary" (click)="this.setRaiting(4)">
+                <ion-icon name="star-outline" *ngIf="ratedValue < 4"></ion-icon>
+                <ion-icon name="star" *ngIf="ratedValue >= 4"></ion-icon>
+              </button>
+            </ion-col>
+            <ion-col class="star-button" align-self-end>
+              <button ion-button round clear color="primary" (click)="this.setRaiting(5)">
+                <ion-icon name="star-outline" *ngIf="ratedValue < 5"></ion-icon>
+                <ion-icon name="star" *ngIf="ratedValue >= 5"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+
+          <p text-center>{{globalProvider.getLabel('sessionRaitingInfo') ? globalProvider.getLabel('sessionRaitingInfo') : 'Wie fanden Sie die Session? Was können wir besser machen? Wir freuen uns über Ihr Feedback!'}}</p>
+
+          <ion-list no-lines>
+        	  <ion-item>
+        	    <ion-textarea [(ngModel)]="feedback" placeholder="{{globalProvider.getLabel('sessionRaitingPlaceholder') ? globalProvider.getLabel('sessionRaitingPlaceholder') : 'Ihre Bewertung…'}}" spellcheck="true" autocorrect="true"></ion-textarea>
+        	  </ion-item>
+      	  </ion-list>
+
+        </ion-col>
+      </ion-row>
+
+
+    </ion-grid>
+
+  </section>
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+
+    <ion-grid>
+      <ion-row align-items-center justify-content-center>
+        <ion-col col-12>
+          <button round ion-button block (click)="submitFeedback()">Bewertung abschicken</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-toolbar>
+</ion-footer>

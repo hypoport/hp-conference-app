@@ -23,13 +23,11 @@
         <h5 *ngIf="session?.location"><ion-icon ios="md-square-outline" md="md-square-outline"></ion-icon>{{ session?.location }}</h5>
         </div>
 
-
-
       </ion-item>
     </ion-list>
 
 
-    <p class="session-desc" [innerHtml]="session?.description | trustByPass"></p>
+  <p class="session-desc" [innerHtml]="session?.description | trustByPass"></p>
   </section>
 
   <section class="agenda-speaker">
@@ -46,7 +44,6 @@
                 <img *ngIf="speaker.profileFoto" [src]="speaker.profileFoto" alt="Speaker profile foto">
               </ion-avatar>
             </ion-col>
-
 
             <ion-col auto class="profile-data">
               <h3 class="speaker-name" *ngIf="speaker.name">{{ speaker.name }}</h3>
@@ -66,3 +63,48 @@
 
 
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col class="rate-button" text-left align-self-center>
+          <button ion-button round clear small text-center color="primary" (click)="this.openSessionRatingPage(null)">
+            {{globalProvider.getLabel('sessionRaitingButton') ? global.getLabel('sessionRaitingButton') : 'Bewerten Sie die Session'}}
+          </button>
+        </ion-col>
+        <ion-col class="star-button" align-self-center>
+          <button ion-button round clear small text-center color="primary" (click)="this.openSessionRatingPage(1)">
+              <ion-icon name="star-outline" *ngIf="ratedValue < 1"></ion-icon>
+              <ion-icon name="star" *ngIf="ratedValue >= 1"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col class="star-button" align-self-center>
+          <button ion-button round clear small text-center color="primary" (click)="this.openSessionRatingPage(2)">
+            <ion-icon name="star-outline" *ngIf="ratedValue < 2"></ion-icon>
+            <ion-icon name="star" *ngIf="ratedValue >= 2"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col class="star-button" align-self-center>
+          <button ion-button round clear small text-center color="primary" (click)="this.openSessionRatingPage(3)">
+            <ion-icon name="star-outline" *ngIf="ratedValue < 3"></ion-icon>
+            <ion-icon name="star" *ngIf="ratedValue >= 3"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col class="star-button" align-self-center>
+          <button ion-button round clear small text-center color="primary" (click)="this.openSessionRatingPage(4)">
+            <ion-icon name="star-outline" *ngIf="ratedValue < 4"></ion-icon>
+            <ion-icon name="star" *ngIf="ratedValue >= 4"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col class="star-button" align-self-center>
+          <button ion-button round clear small color="primary" (click)="this.openSessionRatingPage(5)">
+            <ion-icon name="star-outline" *ngIf="ratedValue < 5"></ion-icon>
+            <ion-icon name="star" *ngIf="ratedValue >= 5"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

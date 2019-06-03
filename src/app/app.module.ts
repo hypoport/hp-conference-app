@@ -9,6 +9,7 @@ import {TabsPage} from '../pages/tabs/tabs';
 import {OverviewPage} from '../pages/overview/overview';
 import {AddConferencePage} from '../pages/add-conference/add-conference';
 import {SessionPage} from '../pages/session/session';
+import {SessionFeedbackPage} from '../pages/session-feedback/session-feedback';
 import {SpeakersPage} from '../pages/speakers/speakers';
 import {SpeakerPage} from '../pages/speaker/speaker';
 import {SettingsPage} from '../pages/settings/settings';
@@ -49,6 +50,7 @@ registerLocaleData(localeDe);
     OverviewPage,
     AddConferencePage,
     SessionPage,
+    SessionFeedbackPage,
     SpeakerPage,
     SettingsPage,
     HomePopoverPage
@@ -73,6 +75,7 @@ registerLocaleData(localeDe);
     OverviewPage,
     AddConferencePage,
     SessionPage,
+    SessionFeedbackPage,
     SpeakerPage,
     SettingsPage,
     HomePopoverPage
