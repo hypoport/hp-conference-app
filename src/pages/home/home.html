@@ -151,7 +151,7 @@
   <section class="maps selectable-text">
 
 
-    <h2>{{globalProvider.getLabel('homeDirections') ? global.getLabel('homeDirections') : 'Veranstaltungsort'}}</h2>
+    <h2>{{globalProvider.getLabel('homeDirections') ? globalProvider.getLabel('homeDirections') : 'Veranstaltungsort'}}</h2>
 
     <div [innerHtml]="conference?.directions?.description"></div>
 
@@ -173,7 +173,7 @@
   <ion-grid class="support-global support-card selectable-text">
     <ion-row>
       <ion-col col-12>
-        <h2>{{globalProvider.getLabel('homeContact') ? global.getLabel('homeContact') : 'Ihr Ansprechpartner'}}</h2>
+        <h2>{{globalProvider.getLabel('homeContact') ? globalProvider.getLabel('homeContact') : 'Ihr Ansprechpartner'}}</h2>
       </ion-col>
       <ion-col auto no-padding>
         <button ion-button small round color="cloud" icon-start (click)="openTel(conference.contact.telephone)">
