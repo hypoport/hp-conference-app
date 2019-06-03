@@ -64,14 +64,14 @@
 
 </ion-content>
 
-<ion-footer>
+<ion-footer *ngIf="session && session.category != 'break' && loadedRaiting && !isRaited && isInPast">
   <ion-toolbar>
 
     <ion-grid>
       <ion-row>
         <ion-col class="rate-button" text-left align-self-center>
           <button ion-button round clear small text-center color="primary" (click)="this.openSessionRatingPage(null)">
-            {{globalProvider.getLabel('sessionRaitingButton') ? global.getLabel('sessionRaitingButton') : 'Bewerten Sie die Session'}}
+            {{globalProvider.getLabel('sessionRaitingButton') ? global.getLabel('sessionRaitingButton') : 'Bewerten Sie diese Session'}}
           </button>
         </ion-col>
         <ion-col class="star-button" align-self-center>

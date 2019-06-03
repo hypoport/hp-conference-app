@@ -10,6 +10,7 @@ import {FavoritesService} from "../favorites/favorites-service";
 import {SpeakerService} from "../speaker/speaker-service";
 
 const STORAGE_KEY = "agendas";
+const STORAGE_KEY_RAITINGS = "raitedSessions";
 
 @Injectable()
 export class AgendaService {
@@ -90,6 +91,31 @@ export class AgendaService {
     }
     console.log("return Promise with agendas");
     return Promise.resolve(this.agendas);
+  }
+
+  public saveSessionRaiting(conferenceId, sessionId, raiting){
+    return this.storage.get(STORAGE_KEY_RAITINGS).then((data) => {
+      console.log('here');
+      console.log(data);
+      if(!data){
+        data = [];
+      }
+      data[String(conferenceId+'-'+sessionId)] = raiting;
+      this.storage.set(STORAGE_KEY_RAITINGS, data);
+      return true;
+    });
+  }
+  public getSessionRaiting(conferenceId, sessionId){
+    return this.storage.get(STORAGE_KEY_RAITINGS).then((data) => {
+      if(!data){
+        return false;
+      }
+      if(!data[String(conferenceId+'-'+sessionId)]){
+        return false;
+      } else {
+        return data[String(conferenceId+'-'+sessionId)];
+      }
+    });
   }
 
 }

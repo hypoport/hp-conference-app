@@ -4,6 +4,7 @@ import { App, IonicPage, NavController, NavParams, ViewController, Content, Plat
 import { GlobalProvider } from '../../providers/global/global';
 
 import { ConferenceService } from "../../providers/conference/conference-service";
+import { AgendaService } from "../../providers/agenda/agenda-service";
 import { Session } from '../../models/session';
 import { Speaker } from '../../models/speaker';
 import { Device } from '@ionic-native/device';
@@ -31,6 +32,7 @@ export class SessionFeedbackPage {
   public navCtrl: NavController,
   public navParams: NavParams,
   private conferenceService: ConferenceService,
+  private agendaService: AgendaService,
   public viewCtrl: ViewController,
   public alertCtrl: AlertController,
   public loadingCtrl: LoadingController,
@@ -81,6 +83,9 @@ export class SessionFeedbackPage {
 	  this.sendFeedback(postData).then((send) => {
 	      loading.dismiss();
 		  if(send){
+
+        this.agendaService.saveSessionRaiting(this.globalProvider.conferenceId,this.session.id,this.ratedValue);
+
         setTimeout(()=>{this.viewCtrl.dismiss();},500);
         setTimeout(()=>{
           		    let toast = this.toastCtrl.create({
