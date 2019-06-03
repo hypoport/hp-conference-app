@@ -107,7 +107,7 @@ page-home {
       height: 300px;
       // margin-left: -$content-padding;
       // width: calc(100% + #{$content-padding*2});
-
+      margin: 10px 0;
       // display: none;
       border-radius: calc(#{$border-radius * 3});
     }
@@ -147,7 +147,9 @@ page-home {
   }
 
   .support-individual {
-
+    h3.contact-name {
+      margin-top: 7px;
+    }
   }
   .support-global {
 
@@ -207,6 +209,9 @@ page-home {
     box-shadow: none;
   }
 
-
+  .profile-image ion-avatar img {
+    width: 54px;
+    height: 54px;
+  }
 
 }
