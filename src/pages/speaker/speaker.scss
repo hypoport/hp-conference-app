@@ -59,7 +59,8 @@ page-speaker {
 
 	/* base agenda list styling */
 	// TODO: merge with global app list style
-	.item-wrapper {
+  /*
+  .item-wrapper {
 		&:last-child {
 			.item-block {
 				border-bottom: 0 !important;
@@ -69,7 +70,6 @@ page-speaker {
   .item-ios,
   .item-md {
     .item-inner {
-      /* left agenda point line */
       margin-left: -12px;
       padding-left: 16px;
       // border-left: .55px solid #c8c7cc;
@@ -89,9 +89,12 @@ page-speaker {
         background-size: 8px 8px;
       }
     }
-  }
+  }*/
 	.speaker-agenda {
 		padding-top: 27px;
+    .date-heading {
+      padding-left: 0px !important;
+    }
 	}
 
 }

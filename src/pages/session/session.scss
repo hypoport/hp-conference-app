@@ -66,8 +66,6 @@ page-session {
       border: $base-border;
       background: $white;
       color: $font-color-secondary;
-
-
       &:before {
         display: flex;
         flex-flow: column wrap;

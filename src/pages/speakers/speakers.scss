@@ -31,4 +31,14 @@ page-speakers {
   //     margin-right: 1rem;
   //   }
   // }
+  .profile-image {
+    text-align: center;
+  }
+  .profile-image img, .profile-image ion-img {
+    width: 54px;
+    height: 54px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
 }
