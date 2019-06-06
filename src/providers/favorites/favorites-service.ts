@@ -56,7 +56,9 @@ export class FavoritesService {
   }
 
   public rescheduleNotifications(agenda: Agenda, conferenceId: string) {
-    this.notificationService.rescheduleNotifications(agenda,conferenceId);
+    this.loadFavorites(agenda,conferenceId).then((favorites)=>{
+      this.notificationService.rescheduleNotifications(agenda,conferenceId);
+    });
   }
 
   public removeAllNotifictions(conferenceId: string){
