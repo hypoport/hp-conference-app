@@ -25,16 +25,15 @@ export class FavoritesService {
       if (favorites.get(session.id)) {
         favorites.delete(session.id);
         session.isFavorite = false;
-        this.notificationService.removeNotification(conferenceId, session);
+        this.notificationService.removeAllNotifictions(conferenceId);
         this.events.publish('session:favorite', session, session.isFavorite, Date.now());
       }
       else {
         favorites.set(session.id, session);
         session.isFavorite = true;
-        this.notificationService.triggerNotification(conferenceId, session);
+        this.notificationService.removeAllNotifictions(conferenceId);
         this.events.publish('session:favorite', session, session.isFavorite, Date.now());
       }
-      console.log(favorites);
       this.storage.set(STORAGE_KEY + conferenceId, favorites);
     });
   }
@@ -57,19 +56,7 @@ export class FavoritesService {
   }
 
   public rescheduleNotifications(agenda: Agenda, conferenceId: string) {
-    console.log("reschedule notifications");
-    let confOptions = this.globalProvider.conferenceOptions;
-    if(confOptions && confOptions.noNotifications){
-      console.log('no notifications active. Stop sending notifications');
-      this.notificationService.removeAllNotifictions(conferenceId.toString());
-    } else {
-      this.notificationService.removeAllNotifictions(conferenceId);
-      this.loadFavorites(agenda, conferenceId).then((favorites) => {
-        if (favorites) {
-          favorites.forEach((favorite) => this.notificationService.triggerNotification(conferenceId, favorite));
-        }
-      });
-    }
+    this.notificationService.rescheduleNotifications(agenda,conferenceId);
   }
 
   public removeAllNotifictions(conferenceId: string){

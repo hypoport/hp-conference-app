@@ -31,6 +31,7 @@ export class AgendaPage {
   ionViewDidLoad() {
     this.events.subscribe('session:favorite', (session, isFavo, time) => {
       this.segmentChanged(null);
+      this.favoritesService.rescheduleNotifications(this.agenda,this.globalProvider.conferenceId);
     });
   }
 
