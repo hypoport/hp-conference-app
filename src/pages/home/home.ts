@@ -25,7 +25,7 @@ export class HomePage {
   conference: Conference;
   nextSession: Session;
 
-  lastUpdate: Date;
+  updateInterval: any = -1;
 
   constructor(
     private app: App,
@@ -63,17 +63,20 @@ export class HomePage {
     }*/
 
 	});
-
 	// silently update conference in background
-    if(!this.lastUpdate || this.lastUpdate.getTime() - new Date().getTime() > 1000*60){
-	    this.lastUpdate = new Date();
-	    setTimeout(()=>{
+	setTimeout(()=>{
 		  this.conferenceService.loadConference(this.globalProvider.conferenceId,this.globalProvider.conferenceToken).then((conference: Conference) => {
 			if(conference) this.conference = conference;
 	      	console.log('background-update done');
-	      });
-	    }, 2000); // delay it, so it wont affect the page transition
-    }
+	    });
+      clearInterval(this.updateInterval);
+      this.updateInterval = setInterval(()=>{
+        this.conferenceService.loadConference(this.globalProvider.conferenceId,this.globalProvider.conferenceToken).then((conference: Conference) => {
+  			if(conference) this.conference = conference;
+  	      	console.log('background-update interval done');
+  	    });
+      },30000);
+	}, 2000); // delay it, so it wont affect the page transition
   }
 
   loadDirection() {
@@ -99,6 +102,8 @@ export class HomePage {
       if(card.data == "speaker") this.app.getRootNav().getActiveChildNav().select(2);
     } else if(card.action == "openURL") {
         if(card.data != "") this.iab.create(card.data,'_system',{location:'no'});
+    } else if(card.type == "updateInfo") {
+        this.iab.create('https://tagungsapp.hypoport.de/app','_system',{location:'no'});
     }
   }
   public openMail(mail){
@@ -123,8 +128,6 @@ export class HomePage {
         position: "top"
       });
       toast.present();
-      this.lastUpdate = new Date();
-
     });
   }
 }

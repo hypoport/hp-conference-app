@@ -25,7 +25,8 @@
 
         <ion-slides card-slides slidesPerView="1.2" spaceBetween="0" *ngIf="conference?.quickaccess">
 
-          <ion-slide *ngFor="let card of conference.quickaccess; let i = index">
+          <ng-container *ngFor="let card of conference.quickaccess; let i = index">
+          <ion-slide *ngIf="card.type != 'updateInfo' || (card.type == 'updateInfo' && globalProvider.appVersion() != card.data)">
 
             <!-- default -->
             <ion-card class="service-card" *ngIf="!card.type || card.type == 'default'" [ngClass]="(card.action == 'selectable' ? 'text-selectable': '')" (click)="cardAction(card)">
@@ -69,7 +70,22 @@
               </ion-card-content>
             </ion-card>
 
+            <!-- update info -->
+            <ion-card class="service-card update-info" *ngIf="card.type == 'updateInfo' && globalProvider.appVersion() != card.data" [ngClass]="(card.action == 'selectable' ? 'text-selectable': '')" (click)="cardAction(card)">
+              <ion-card-content>
+                <div class="card-content-top">
+                  <h6>{{card.cardTitle ? card.cardTitle : 'Kachel'}}</h6>
+                  <ion-icon name="{{card.icon ? card.icon : 'phone-portrait'}}"></ion-icon>
+                </div>
+                <div class="card-content-bottom">
+                  <h3 [innerHTML]="card.title"></h3>
+                  <h5 [innerHTML]="card.subTitle"></h5>
+                </div>
+              </ion-card-content>
+            </ion-card>
+
           </ion-slide>
+          </ng-container>
         <!--
         <ion-slide>
           <ion-card class="service-card">
