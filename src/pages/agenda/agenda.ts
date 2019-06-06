@@ -36,10 +36,12 @@ export class AgendaPage {
 
   ionViewWillEnter(){
     this.agendaService.getAgenda(this.globalProvider.conferenceId).then((agenda) => {
-    this.agenda = agenda;
-      this.favoritesService.loadFavorites(agenda, this.globalProvider.conferenceId);
-      this.sessions = agenda.sessions;
-      this.favoSessions = this.sessions.filter((session) => session.isFavorite);
+      this.favoritesService.loadFavorites(agenda, this.globalProvider.conferenceId).then(()=>{
+        this.agenda = agenda;
+        this.sessions = agenda.sessions;
+        this.favoSessions = this.sessions.filter((session) => session.isFavorite);
+      });
+
     });
     /*if(this.globalProvider.conferenceId){
       this.ga.trackView('conf/ep/'+this.globalProvider.conferenceId+'/agenda');
@@ -50,30 +52,30 @@ export class AgendaPage {
 
   public refreshAgenda(refresher: Refresher) {
     this.agendaService.loadAgenda(this.globalProvider.conferenceId,this.globalProvider.conferenceToken).then((agenda: Agenda) => {
-      this.agenda = agenda;
-        this.favoritesService.loadFavorites(agenda, this.globalProvider.conferenceId);
-        this.sessions = agenda.sessions;
-        this.favoSessions = this.sessions.filter((session) => session.isFavorite);
-      refresher.complete();
-      const toast = this.toastCtrl.create({
-        message: "Agenda wurde aktualisiert",
-        duration: 2000,
-        position: "top"
-      });
-      toast.present();
+        this.favoritesService.loadFavorites(agenda, this.globalProvider.conferenceId).then((favorites) => {
+          this.agenda = agenda;
+          this.sessions = agenda.sessions;
+          this.favoSessions = this.sessions.filter((session) => session.isFavorite);
+          refresher.complete();
+          const toast = this.toastCtrl.create({
+              message: "Agenda wurde aktualisiert",
+              duration: 2000,
+              position: "top"
+            });
+            toast.present();
+          });
     });
   }
 
   public segmentChanged(event) {
     this.agendaService.getAgenda(this.globalProvider.conferenceId).then((agenda) => {
-	  this.agenda = agenda;
-      this.favoritesService.loadFavorites(agenda, this.globalProvider.conferenceId);
-      this.sessions = agenda.sessions;
-      console.log(this.sessions);
-      this.favoSessions = this.sessions.filter((session) => session.isFavorite);
-      console.log(this.favoSessions);
+	    this.favoritesService.loadFavorites(agenda, this.globalProvider.conferenceId).then((favos) => {
+        this.agenda = agenda;
+        this.sessions = agenda.sessions;
+        this.favoSessions = this.sessions.filter((session) => session.isFavorite);
+        console.log(this.favoSessions);
+      });
     });
-
   }
 
 }

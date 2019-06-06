@@ -42,12 +42,16 @@ export class FavoritesService {
   public loadFavorites(agenda: Agenda, conferenceId: string): Promise<Map<string, Session>> {
     console.log("load favorites");
     return this.storage.get(STORAGE_KEY + conferenceId).then((favorites: Map<string, Session>) => {
+      let favoriteSessions = [];
       if (favorites) {
         agenda.sessions.forEach(session => {
           session.isFavorite = favorites.has(session.id);
+          if(session.isFavorite){
+            favoriteSessions.push(session);
+          }
         });
       }
-      return favorites;
+      return favoriteSessions;
     });
   }
 

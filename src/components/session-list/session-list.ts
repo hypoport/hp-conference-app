@@ -30,6 +30,8 @@ export class SessionListComponent {
   @Input()
   set sessionList(sessions: Array<Session>) {
   	this.sessions = sessions;
+    this.groupedSessions = new Array();
+    this.groupedParallelSessions = new Array();
 
     // group by days
     let lastKeyDay = "";
@@ -72,7 +74,6 @@ export class SessionListComponent {
       if(!this.groupedParallelSessions[dayIndex]) this.groupedParallelSessions[dayIndex] = new Array();
       if(!this.groupedParallelSessions[dayIndex][parallelIndex]) this.groupedParallelSessions[dayIndex][parallelIndex] = new Array();
       this.groupedParallelSessions[dayIndex][parallelIndex].push(session);
-
     });
   }
 
