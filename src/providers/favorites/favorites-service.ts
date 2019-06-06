@@ -41,6 +41,7 @@ export class FavoritesService {
 
   public loadFavorites(agenda: Agenda, conferenceId: string): Promise<Map<string, Session>> {
     console.log("load favorites");
+    // @ts-ignore
     return this.storage.get(STORAGE_KEY + conferenceId).then((favorites: Map<string, Session>) => {
       let favoriteSessions = [];
       if (favorites) {
