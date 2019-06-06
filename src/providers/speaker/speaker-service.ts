@@ -12,12 +12,12 @@ export class SpeakerService {
 
   private speakers: Map<string, Array<Speaker>> = new Map<string, Array<Speaker>>();
 
-  constructor(public http: HttpClient, 
+  constructor(public http: HttpClient,
   			  private storage: Storage,
   			  private global: GlobalProvider,
   			  private device: Device
   			  ) {
-	
+
   }
 
   public loadSpeakers(conferenceId: string, token: string): Promise<Array<Speaker>> {
@@ -37,19 +37,21 @@ export class SpeakerService {
       });
   }
 
-  public setSpeaker(conferenceId: string, speakers: Array<Speaker>) {
+  public setSpeaker(conferenceId: string, speakers: Array<any>) {
   	  this.speakers.set(conferenceId, speakers);
       this.storage.set(STORAGE_KEY, this.speakers);
   }
-  
-  public getSpeaker(conferenceId: string, speakerId: string): Promise<Speaker> {
+
+  public getSpeaker(conferenceId: string, speakerId: string): Promise<any> {
     return this.getAllSpeakers().then((speakers) => {
+      if(!speakers.get(conferenceId)) return [];
       return speakers.get(conferenceId).find((value) => value.id == speakerId);
     });
   }
 
-  public getSpeakers(conferenceId: string): Promise<Array<Speaker>> {
+  public getSpeakers(conferenceId: string): Promise<Array<any>> {
     return this.getAllSpeakers().then((speakers) => {
+      if(!speakers.get(conferenceId)) return [];
       return speakers.get(conferenceId);
     });
   }

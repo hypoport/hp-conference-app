@@ -92,7 +92,7 @@
 <div class="day-group" *ngFor="let sessionsOfDay of groupedParallelSessions; let i = index">
 
 <h2 class="date-heading top-head">{{i+1 | nicerDay}}</h2>
-<h4 class="date-heading sub-head">{{ (sessionsOfDay[i][0].timeStart) | date: 'dd.MMM y': 'UTC'}}</h4>
+<h4 class="date-heading sub-head">{{ (sessionsOfDay[i] && sessionsOfDay[i][0].timeStart) | date: 'dd.MMM y': 'UTC'}}</h4>
 
 <ng-container class="paralell-session-group" *ngFor="let parallelSessions of sessionsOfDay; let p = index">
 <ion-item-sliding no-lines *ngFor="let session of parallelSessions | slice:0:1;" [attr.subcategory]="session.subCategory | lowercase" [attr.category]="session.category | lowercase"

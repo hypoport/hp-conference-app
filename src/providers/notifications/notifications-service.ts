@@ -68,15 +68,13 @@ export class NotificationService {
 
   private getNotification(notifications: Map<string, Map<string, number>>, session: Session) {
 
+  let now = new Date();
   let currDate = new Date().getTime();
 	let startDate  = new Date(session.timeStart).getTime();
-
 	// @ts-ignore
-	let minutesUntil = ( ((startDate - currDate) / 60000)) - 5;
+	let minutesUntil = (( ((startDate - currDate) / 60000)) - 5) + now.getTimezoneOffset();
   minutesUntil = Math.round(minutesUntil);
-  console.log('now:'+new Date().getTime());
-  console.log('then:'+new Date(session.timeStart).getTime());
-
+  console.log(new Date(currDate).toISOString());
 	console.log('notification '+session.title+' send in '+minutesUntil);
 	if(minutesUntil < 5){
 		return null;

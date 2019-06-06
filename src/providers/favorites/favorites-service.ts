@@ -4,6 +4,7 @@ import {Session} from "../../models/session";
 import {Agenda} from "../../models/agenda";
 import {NotificationService} from "../notifications/notifications-service";
 import {GlobalProvider} from "../global/global";
+import {Events} from "ionic-angular";
 
 const STORAGE_KEY = "favorites";
 
@@ -12,7 +13,8 @@ export class FavoritesService {
 
   constructor(private storage: Storage,
     private notificationService: NotificationService,
-    private globalProvider: GlobalProvider) {
+    private globalProvider: GlobalProvider,
+    private events: Events) {
   }
 
   public toggleFavorite(conferenceId: string, session: Session): void {
@@ -24,11 +26,13 @@ export class FavoritesService {
         favorites.delete(session.id);
         session.isFavorite = false;
         this.notificationService.removeNotification(conferenceId, session);
+        this.events.publish('session:favorite', session, session.isFavorite, Date.now());
       }
       else {
         favorites.set(session.id, session);
         session.isFavorite = true;
         this.notificationService.triggerNotification(conferenceId, session);
+        this.events.publish('session:favorite', session, session.isFavorite, Date.now());
       }
       console.log(favorites);
       this.storage.set(STORAGE_KEY + conferenceId, favorites);
@@ -49,7 +53,6 @@ export class FavoritesService {
 
   public rescheduleNotifications(agenda: Agenda, conferenceId: string) {
     console.log("reschedule notifications");
-
     let confOptions = this.globalProvider.conferenceOptions;
     if(confOptions && confOptions.noNotifications){
       console.log('no notifications active. Stop sending notifications');

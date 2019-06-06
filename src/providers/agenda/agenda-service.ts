@@ -69,8 +69,8 @@ export class AgendaService {
         let now = new Date();
         let latest = null;
 
-	  	  agenda.sessions.forEach( (session) =>{
-	  		if( new Date(session.timeStart).getTime() > now.getTime() || (new Date(session.timeEnd).getTime()-1000) > now.getTime()){
+	  	  agenda.sessions.forEach( (session) => {
+	  		if( new Date(session.timeStart).getTime() > now.getTime() - (now.getTimezoneOffset() * 60000) || (new Date(session.timeEnd).getTime()-1000) > now.getTime() - (now.getTimezoneOffset() * 60000)){
 	  			if(!latest) latest = session;
 		  	}
 	  	});

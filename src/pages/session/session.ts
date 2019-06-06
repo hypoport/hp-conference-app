@@ -72,9 +72,8 @@ export class SessionPage {
           this.isRaited = false;
         }
       });
-
-      this.isInPast = new Date(this.session.timeStart).getTime() < new Date().getTime();
-
+      let now = new Date();
+      this.isInPast = new Date(this.session.timeStart).getTime() < new Date().getTime() - (now.getTimezoneOffset() * 60000);
     /*
         if(this.globalProvider.conferenceId && this.session.id){
           this.ga.trackView('conf/ep/'+this.globalProvider.conferenceId+'/session/'+this.session.id);
