@@ -46,8 +46,8 @@ export class ConferenceService {
         }).toPromise()
           .then((conference: Conference): Conference => {
             // temp date fix!
-            conference.startDate = new Date(conference.startDate.replace(' ','T'));
-            conference.endDate = new Date(conference.endDate.replace(' ','T'));
+            conference.startDate = new Date(conference.startDate.toString().replace(' ','T'));
+            conference.endDate = new Date(conference.endDate.toString().replace(' ','T'));
             this.conferences.set(conference.id.toString(), conference);
             this.storage.set(STORAGE_KEY, this.conferences);
             this.agendaService.loadAgenda(conference.id, conference.token);
@@ -68,8 +68,8 @@ export class ConferenceService {
     }).toPromise()
       .then((conference: Conference): Conference => {
         // temp date fix!
-        conference.startDate = new Date(conference.startDate.replace(' ','T'));
-        conference.endDate = new Date(conference.endDate.replace(' ','T'));
+        conference.startDate = new Date(conference.startDate.toString().replace(' ','T'));
+        conference.endDate = new Date(conference.endDate.toString().replace(' ','T'));
         this.conferences.set(conference.id.toString(), conference);
         if(conference.options) this.global.conferenceOptions = conference.options;
         this.storage.set(STORAGE_KEY, this.conferences);
