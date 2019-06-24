@@ -1,8 +1,7 @@
 <ion-list no-lines #scheduleList [hidden]="sessions && sessions.length === 0">
 
   <ng-container *ngIf="!doGroup"><!-- KEINE Gruppierung -->
-  <ion-item-sliding no-lines *ngFor="let session of sessions" [attr.subcategory]="session.subCategory | lowercase" [attr.category]="session.category | lowercase"
-  [hidden]="session.hide">
+  <ion-item-sliding no-lines *ngFor="let session of sessions" [hidden]="session.hide">
 
   <button ion-item detail-none *ngIf="session.type != 'break'" (click)="goToSessionDetail(session)">
 
@@ -48,8 +47,7 @@
 
 <h2 class="date-heading top-head">{{i+1 | nicerDay}}</h2>
 <h4 class="date-heading sub-head">{{ (sessionsOfDay[0].timeStart) | date: 'dd.MM.y': 'UTC'}}</h4>
-<ion-item-sliding no-lines *ngFor="let session of sessionsOfDay" [attr.subcategory]="session.subCategory | lowercase" [attr.category]="session.category | lowercase"
-[hidden]="session.hide">
+<ion-item-sliding no-lines *ngFor="let session of sessionsOfDay" [hidden]="session.hide">
 
 <button ion-item detail-none *ngIf="session.type != 'break'" (click)="goToSessionDetail(session)">
 
@@ -95,8 +93,7 @@
 <h4 class="date-heading sub-head">{{ (sessionsOfDay[i] && sessionsOfDay[i][0].timeStart) | date: 'dd.MMM y': 'UTC'}}</h4>
 
 <ng-container class="paralell-session-group" *ngFor="let parallelSessions of sessionsOfDay; let p = index">
-<ion-item-sliding no-lines *ngFor="let session of parallelSessions | slice:0:1;" [attr.subcategory]="session.subCategory | lowercase" [attr.category]="session.category | lowercase"
-[hidden]="session.hide">
+<ion-item-sliding no-lines *ngFor="let session of parallelSessions | slice:0:1;" [hidden]="session.hide">
 
 <ion-item no-lines detail-none *ngIf="session.type != 'break'">
 
@@ -115,10 +112,16 @@
 
             <div class="card-content-top">
 
-              <div class="card-label {{parallelSession.category | lowercase}} {{parallelSession.subCategory | lowercase}}" *ngIf="parallelSession.category || parallelSession.subCategory">
-                <ion-icon name="{{iconHotFix(parallelSession.subCategory)}}"></ion-icon>
-                <h6 class="" *ngIf="parallelSession.category">{{parallelSession.categoryName ? parallelSession.categoryName : parallelSession.subCategoryName}}</h6>
-              </div>
+              <ng-container *ngIf="parallelSession?.category?.length">
+                <div *ngFor="let category of parallelSession.category" class="card-label {{category.name | lowercase}}" [ngStyle]="{
+                  'color': category.color,
+                  'border-color': convertToBorderColor(category.color),
+                  'background-color': convertToBgColor(category.color)
+                  }">
+                  <ion-icon *ngIf="category.icon" name="{{iconHotFix(category.icon)}}"></ion-icon>
+                  <h6 class="" *ngIf="category.name">{{category.name}}</h6>
+                </div>
+              </ng-container>
 
               <div class="card-label" *ngIf="parallelSession.location">
                 <ion-icon ios="md-square-outline" md="md-square-outline"></ion-icon>
@@ -126,8 +129,6 @@
               </div>
 
               <ion-icon class="bookmark" name="bookmark-outline" md="md-bookmark" *ngIf="parallelSession.isFavorite || globalProvider.conferenceOptions.favoriteInAgenda" [ngClass]="parallelSession.isFavorite ? 'bookmark-active' : 'bookmark-inactive'" (click)="toggleFavorite($event, parallelSession)"></ion-icon>
-
-
 
           </div>
 

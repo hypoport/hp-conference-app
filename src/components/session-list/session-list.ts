@@ -108,4 +108,51 @@ export class SessionListComponent {
     }
   }
 
+
+  convertToBorderColor(hex: string){
+    var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+    hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+      return r + r + g + g + b + b;
+    });
+
+    var saturate = 1.02;
+
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    var rgb = result ? {
+      r: Math.min(Math.round(parseInt(result[1], 16)*saturate),255),
+      g: Math.min(Math.round(parseInt(result[2], 16)*saturate),255),
+      b: Math.min(Math.round(parseInt(result[3], 16)*saturate),255)
+    } : null;
+
+    var lighten = 0.45;
+    var r = Math.round((1 - (1 - rgb.r / 255) * (1 - (255*lighten) / 255)) * 255);
+    var g = Math.round((1 - (1 - rgb.g / 255) * (1 - (255*lighten) / 255)) * 255);
+    var b = Math.round((1 - (1 - rgb.b / 255) * (1 - (255*lighten) / 255)) * 255);
+
+    return 'rgba('+r+','+g+','+b+',1)'
+  }
+
+  convertToBgColor(hex: string){
+    var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+    hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+      return r + r + g + g + b + b;
+    });
+
+    var saturate = 1.07;
+
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    var rgb = result ? {
+      r: Math.min(Math.round(parseInt(result[1], 16)*saturate),255),
+      g: Math.min(Math.round(parseInt(result[2], 16)*saturate),255),
+      b: Math.min(Math.round(parseInt(result[3], 16)*saturate),255)
+    } : null;
+
+    var lighten = 0.85;
+    var r = Math.round((1 - (1 - rgb.r / 255) * (1 - (255*lighten) / 255)) * 255);
+    var g = Math.round((1 - (1 - rgb.g / 255) * (1 - (255*lighten) / 255)) * 255);
+    var b = Math.round((1 - (1 - rgb.b / 255) * (1 - (255*lighten) / 255)) * 255);
+
+    return 'rgba('+r+','+g+','+b+',1)'
+  }
+
 }

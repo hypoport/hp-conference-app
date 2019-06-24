@@ -443,7 +443,7 @@ ion-icon {
 
 session-list {
   @each $category, $value in auxiliary-categories() {
-    ion-item-sliding[category=#{$category}] ion-card {
+    /*ion-item-sliding[category=#{$category}] ion-card {
 
     }
 
@@ -458,6 +458,20 @@ session-list {
       h6 {
         color: map-get(map-get($agendaCategories, $category), base) !important;
       }
+    }*/
+  }
+
+  .card-label {
+    color: inherit;
+
+    ion-icon {
+      color: inherit !important;
+      &:before {
+        color: inherit;
+      }
+    }
+    h6 {
+      color: inherit;
     }
   }
 

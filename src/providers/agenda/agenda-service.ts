@@ -41,8 +41,6 @@ export class AgendaService {
 	  	let agenda = response.data.agenda as Agenda;
 	  	let speaker = response.data.speakers as Array<Speaker>;
 
-	  	console.log("agenda", agenda);
-
         if(this.agendas.set(conferenceId, agenda)){
         	this.storage.set(STORAGE_KEY, this.agendas);
         }
@@ -95,8 +93,6 @@ export class AgendaService {
 
   public saveSessionRaiting(conferenceId, sessionId, raiting){
     return this.storage.get(STORAGE_KEY_RAITINGS).then((data) => {
-      console.log('here');
-      console.log(data);
       if(!data){
         data = [];
       }
