@@ -14,6 +14,7 @@ import {SpeakersPage} from '../pages/speakers/speakers';
 import {SpeakerPage} from '../pages/speaker/speaker';
 import {SettingsPage} from '../pages/settings/settings';
 import {HomePopoverPage} from '../pages/home-popover/home-popover';
+import {AgendaPopoverPage} from '../pages/agenda-popover/agenda-popover';
 
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import {StatusBar} from '@ionic-native/status-bar';
@@ -53,7 +54,8 @@ registerLocaleData(localeDe);
     SessionFeedbackPage,
     SpeakerPage,
     SettingsPage,
-    HomePopoverPage
+    HomePopoverPage,
+    AgendaPopoverPage
   ],
   imports: [
     BrowserModule,
@@ -78,7 +80,8 @@ registerLocaleData(localeDe);
     SessionFeedbackPage,
     SpeakerPage,
     SettingsPage,
-    HomePopoverPage
+    HomePopoverPage,
+    AgendaPopoverPage
   ],
   providers: [
     StatusBar,
