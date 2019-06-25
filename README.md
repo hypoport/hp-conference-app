@@ -18,3 +18,25 @@ Ionic based Hybrid-App, connected to an Event-Backend based on a Wordpress-Plugi
 - [ ] " Real " Userprofiles
 - - [ ] Comments for Sessions
 - - [ ] Chat
+
+
+## Creating a new brand
+
+1. Create a `config/brand.*brandshorthand*.config.js`. 
+
+Open it. Change the brand variable to the brand handle:
+```js
+// https://www.npmjs.com/package/node-sass
+let brand = "ep"; // change brand name here
+module.exports [...]
+```
+
+2. Add `theme/*brandhanle*/variables.scss`
+
+Here you can change the variables and add own brand specific stylings.
+
+3. Add to the npm run-script regen-brands command your new created brand in `package.json`.
+
+```
+ionic-app-scripts build --sass ./config/brand.gp.sass.config.js && ionic-app-scripts build --sass ./config/brand.ep.sass.config.js
+```
