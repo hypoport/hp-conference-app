@@ -47,7 +47,12 @@
 
 <h2 class="date-heading top-head">{{i+1 | nicerDay}}</h2>
 <h4 class="date-heading sub-head">{{ (sessionsOfDay[0].timeStart) | date: 'dd.MM.y': 'UTC'}}</h4>
-<ion-item-sliding no-lines *ngFor="let session of sessionsOfDay" [hidden]="session.hide">
+<ion-item-sliding 
+  no-lines 
+  *ngFor="let session of sessionsOfDay" 
+  [hidden]="session.hide"
+  [ngClass]="{'item-wrapper--current': currentSessionArr[session.id-1]}"
+>
 
 <button ion-item detail-none *ngIf="session.type != 'break'" (click)="goToSessionDetail(session)">
 
