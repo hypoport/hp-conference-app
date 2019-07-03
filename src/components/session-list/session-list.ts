@@ -26,6 +26,9 @@ export class SessionListComponent {
   groupedSessions: Array<Array<Session>> = [];
   groupedParallelSessions: Array<Array<Array<Session>>> = [];
 
+  currentSessionArr: Array<boolean> = []; // improvement: extend Session Model with isCurrent property
+  timeOutArr: Array<number> = []; // saves all setTimeouts created by this component
+
   @Input() layout: string;
   @Input()
   set sessionList(sessions: Array<Session>) {
@@ -153,6 +156,91 @@ export class SessionListComponent {
     var b = Math.round((1 - (1 - rgb.b / 255) * (1 - (255*lighten) / 255)) * 255);
 
     return 'rgba('+r+','+g+','+b+',1)'
+  }
+
+  private findCurrentSession(): void {
+    for(let i=0; i<this.sessions.length; i++) {
+      const id:number = parseInt(this.sessions[i].id);
+      this.currentSessionArr[id-1] = this.isCurrentSession(this.sessions[i]);
+    }
+  }
+
+  private isCurrentSession(session: Session): boolean {
+
+    // handle time difference
+    const timeDiffMs = (new Date(session.timeStart).getTimezoneOffset()) * 60 * 1000;
+    const timeStart = new Date(session.timeStart).getTime() + timeDiffMs;
+    const timeEnd = new Date(session.timeEnd).getTime() + timeDiffMs;
+
+    // optional: change current date (time and/or day) for testing purposes
+    const changeTime = (hour: number, min: number, day?: number, month?: number): number => {
+      let modifiedDate = new Date().setHours(hour, min);
+      if(month) {
+        modifiedDate = new Date(modifiedDate).setMonth(month-1, day);
+      };
+      console.warn( 'TIME MODIFIED: ', new Date(modifiedDate) );
+      return modifiedDate;
+    }
+    let newTime = null;
+    // newTime = changeTime(10,0, 30, 1);
+    newTime = changeTime(13,0, 30, 1);
+    // newTime = changeTime(13,0, 15, 2);
+    // newTime = changeTime(13,0, 1, 7);
+    // newTime = changeTime(18, 29, 2, 7);
+    // newTime = changeTime(10,7, 3, 7);
+
+    const now = new Date( newTime || new Date().getTime() ).getTime();
+    const start = new Date(timeStart).getTime();
+    const end = new Date(timeEnd).getTime();
+
+    // is current Session?
+    if(now >= start && now  < end) {
+      this.highlightNextSession(session, now, timeEnd, timeDiffMs);
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  private highlightNextSession(session, now, timeEnd, timeDiffMs): void {
+    const nextSession = this.sessions[session.id] || null;
+    const endOfCurrentSessionMs = timeEnd - now;
+    
+    const endCurrentSession = () => {
+      this.timeOutArr[this.timeOutArr.length] = window.setTimeout((session) => {
+        console.log('mitchLog >> currentSession ended');
+        this.currentSessionArr[session.id-1] = false; //set last session to false
+      }, endOfCurrentSessionMs, session);
+    }
+
+    const startNextSession = (startOfNextSessionMs) => {
+      this.timeOutArr[this.timeOutArr.length] = window.setTimeout((session) => {
+        console.log('mitchLog >> next session started');
+        this.currentSessionArr[session.id] = true;
+      }, startOfNextSessionMs, session);
+    }
+
+    if(nextSession === null) { // no next session -> Just end current session
+      endCurrentSession();
+    } else { //end current session and prepare next Session
+      const nextSessionTimeStart = new Date(nextSession.timeStart).getTime() + timeDiffMs;
+      const startOfNextSessionMs = nextSessionTimeStart - now;
+      endCurrentSession();
+      startNextSession(startOfNextSessionMs);
+    }
+  }
+
+  ngOnInit() {
+    console.log('mitchLog >> ngOnInit: session-list');
+    this.findCurrentSession();
+    console.log('mitchLog >> ', this.currentSessionArr);
+  }
+
+  ngOnDestroy() {
+    this.timeOutArr.forEach(timeOutId => {
+      clearTimeout(timeOutId);
+    });
+    console.log('mitchLog >> ngOnDestroy: session-list');
   }
 
 }
