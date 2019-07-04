@@ -30,6 +30,7 @@ $app-direction: ltr;
 $colors: (
   primary:    #e2001a,
   secondary:  #e2001a,
+  tertiary:   #e2001a,
   danger:     #f53d3d,
   light:      #fafafa,
   red:        #e2001a,
@@ -168,8 +169,9 @@ $button-md-box-shadow: none !default;
 // --------------------------------------------------
 // Windows only Sass variables can go here
 
-
-
+.card-ios.service-card, .card-ios.speaker-card, .card-ios.agenda-card, .card-md.service-card, .card-md.speaker-card, .card-md.agenda-card {
+  box-shadow: 0 3px 6px -3px rgba(32, 32, 32, 0.125), 0 0px 14px 0px rgba(32, 32, 32, 0.1) !important;
+}
 
 // App Theme
 // --------------------------------------------------
@@ -196,3 +198,24 @@ $button-md-box-shadow: none !default;
 @import "noto-sans";
 @import "../../assets/fonts/open-sans";
 @import "../../assets/fonts/IBMPlexSans";
+
+
+.ion-page ion-content {
+  background: linear-gradient(to bottom, #ffffff 0%, #fafafa 100%) !important;
+}
+
+.list-ios .ion-item-sliding, .list-md .ion-item-sliding  {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+.list-ios ion-item-sliding {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+page-home main {
+  background: linear-gradient(to bottom, #ffffff 0%, #fafafa 100%) !important;
+  background-color: transparent !important;
+}
+.item-ios, .item-md {
+  background: transparent !important;
+}
