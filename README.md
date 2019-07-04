@@ -40,3 +40,11 @@ Here you can change the variables and add own brand specific stylings.
 ```
 ionic-app-scripts build --sass ./config/brand.gp.sass.config.js && ionic-app-scripts build --sass ./config/brand.ep.sass.config.js
 ```
+
+----
+
+External / Backend Preperations for adding brands:
+
+4. Add DB of Conference Plugin to the knwon brand list on tagungsapp.hypoport.de/api/
+5. Add in theme functions the filter for the brandhandle. 
+`add_filter( 'hp_conv_brand', function(){ return 'ep'; } );`
