@@ -1,4 +1,4 @@
-import {ErrorHandler, NgModule} from '@angular/core';
+import {ErrorHandler, NgModule, LOCALE_ID} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {MyApp} from './app.component';
@@ -84,6 +84,7 @@ registerLocaleData(localeDe);
     AgendaPopoverPage
   ],
   providers: [
+    {provide: LOCALE_ID, useValue: "de" },
     StatusBar,
     BarcodeScanner,
     LocalNotifications,

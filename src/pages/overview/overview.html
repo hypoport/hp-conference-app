@@ -47,8 +47,13 @@
               <div class="card-content-bottom">
                 <h1>{{ currentConference.title }}</h1>
                 <h2>{{ currentConference.subtitle }}</h2>
-                <h5>{{ currentConference.startDate | date: 'dd.MM.' }} - {{ currentConference.endDate | date: 'dd.MM.yyyy' }}</h5>
+                <h5 *ngIf="currentConference.endDate.getTime()-currentConference.startDate.getTime() > 18*3600
+                    && currentConference.endDate.getMonth() != currentConference.startDate.getMonth()">{{ currentConference.startDate | date: 'dd. LLL' }} - {{ currentConference.endDate | date: 'dd. LLL yyyy' }}</h5>
 
+                <h5 *ngIf="currentConference.endDate.getTime()-currentConference.startDate.getTime() > 18*3600
+                        && currentConference.endDate.getMonth() == currentConference.startDate.getMonth()">{{ currentConference.startDate | date: 'dd.' }} - {{ currentConference.endDate | date: 'dd. LLL. yyyy' }}</h5>
+
+                <h5 *ngIf="currentConference.endDate.getTime()-currentConference.startDate.getTime() <= 18*3600">{{ currentConference.startDate | date: 'dd. LLLL yyyy' }}</h5>
               </div>
             </ion-card-content>
           </ion-card>

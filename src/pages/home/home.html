@@ -51,12 +51,18 @@
                 </div>
                 <div class="card-content-bottom">
                   <h3 [innerHTML]="conference?.directions?.address"></h3>
-                  <h5>{{ conference?.startDate | date: 'dd.MM.yyyy' : 'UTC' }} - {{ conference?.endDate | date: 'dd.MM.yyyy' : 'UTC' }}</h5>
+                  <h5 *ngIf="conference?.endDate.getTime()-conference?.startDate.getTime() > 18*3600
+                      && conference?.endDate.getMonth() != conference?.startDate.getMonth()">{{ conference?.startDate | date: 'dd. LLL' }} - {{ conference?.endDate | date: 'dd. LLL yyyy' }}</h5>
+
+                  <h5 *ngIf="conference?.endDate.getTime()-conference?.startDate.getTime() > 18*3600
+                          && conference?.endDate.getMonth() == conference?.startDate.getMonth()">{{ conference?.startDate | date: 'dd.' }} - {{ conference?.endDate | date: 'dd. LLL. yyyy' }}</h5>
+
+                  <h5 *ngIf="conference?.endDate.getTime()-conference?.startDate.getTime() <= 18*3600">{{ conference?.startDate | date: 'dd. LLLL yyyy' }}</h5>
                 </div>
               </ion-card-content>
             </ion-card>
 
-            <!-- card location and date -->
+            <!-- card next session -->
             <ion-card class="service-card next-session" *ngIf="card.type == 'next_session'" (click)="cardAction(card)">
               <ion-card-content>
                 <div class="card-content-top">
