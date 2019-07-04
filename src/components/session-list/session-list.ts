@@ -182,12 +182,7 @@ export class SessionListComponent {
       return modifiedDate;
     }
     let newTime = null;
-    // newTime = changeTime(10,0, 30, 1);
-    newTime = changeTime(13,0, 30, 1);
-    // newTime = changeTime(13,0, 15, 2);
-    // newTime = changeTime(13,0, 1, 7);
-    // newTime = changeTime(18, 29, 2, 7);
-    // newTime = changeTime(10,7, 3, 7);
+    // newTime = changeTime(10,0, 3, 7);
 
     const now = new Date( newTime || new Date().getTime() ).getTime();
     const start = new Date(timeStart).getTime();

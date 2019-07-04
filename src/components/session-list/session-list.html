@@ -98,7 +98,12 @@
 <h4 class="date-heading sub-head">{{ (sessionsOfDay[i] && sessionsOfDay[i][0].timeStart) | date: 'dd.MMM y': 'UTC'}}</h4>
 
 <ng-container class="paralell-session-group" *ngFor="let parallelSessions of sessionsOfDay; let p = index">
-<ion-item-sliding no-lines *ngFor="let session of parallelSessions | slice:0:1;" [hidden]="session.hide">
+<ion-item-sliding 
+  no-lines 
+  *ngFor="let session of parallelSessions | slice:0:1;" 
+  [hidden]="session.hide"
+  [ngClass]="{'item-wrapper--current': currentSessionArr[session.id-1]}"
+>
 
 <ion-item no-lines detail-none *ngIf="session.type != 'break'">
 
