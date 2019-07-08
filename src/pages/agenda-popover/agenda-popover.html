@@ -6,15 +6,24 @@
 -->
 
 <ion-content>
-  <ion-list>
-    <button ion-item (click)="openSettingsPage()">
-      <p>Einstellungen</p>
-    </button>
-    <button ion-item (click)="exitConference()">
-  	<p>Tagung wechseln</p>
-    </button>
-    <button ion-item (click)="openFeedbackPage()">
-      <p>Feedback senden</p>
-    </button>
-  </ion-list>
+  <ion-item-group>
+    <ion-list-header>
+      Filtern nach:
+    </ion-list-header>
+    <ion-item-divider color="light" *ngIf="availableFilter.length">
+      <ion-icon name="apps" item-start></ion-icon>
+      Kategorien</ion-item-divider>
+
+    <ion-item *ngFor="let category of availableFilter" [ngStyle]="{'color': category.color}">
+        <ion-icon *ngIf="category.icon" name="{{iconHotFix(category.icon)}}" item-start></ion-icon>
+        {{category.name}}
+
+    </ion-item>
+
+    <ion-item-divider color="light" *ngIf="availableRooms.length">
+      <ion-icon ios="md-square-outline" md="md-square-outline" item-start></ion-icon>
+      Räume</ion-item-divider>
+      <ion-item *ngFor="let room of availableRooms">{{room}}</ion-item>
+
+  </ion-item-group>
 </ion-content>

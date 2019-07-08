@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ENV } from './../../../env.js';
 import { ConferenceOptions } from "../../models/conference-options";
+import { SessionCategory } from "../../models/session-category";
 
 /*
   Generated class for the GlobalProvider provider.
@@ -20,6 +21,8 @@ export class GlobalProvider {
   private _gaKey: string;
   private _qrPayloadSecret: string;
   private _appVersion: string;
+
+  public activeFilters: Array<string>;
 
   constructor() {
 	  this._apiURL = ENV.apiROOT;
@@ -101,6 +104,21 @@ export class GlobalProvider {
    } else {
      return url;
    }
+ }
+ /*
+    Agenda Filter
+ */
+ public addAgendaFilter(filter: string){
+   if(this.activeFilters.indexOf(filter) == -1){
+     this.activeFilters.push(filter);
+   }
+   return this.activeFilters;
+ }
+ public removeAgendaFilter(filter: string){
+   for(let i = 0; i < this.activeFilters.length; i++){
+     if(this.activeFilters[i] == filter) this.activeFilters.splice(i,1);
+   }
+   return this.activeFilters;
  }
 
 }

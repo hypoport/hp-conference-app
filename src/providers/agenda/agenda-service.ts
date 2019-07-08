@@ -17,6 +17,8 @@ export class AgendaService {
 
   private agendas: Map<string, Agenda> = new Map<string, Agenda>();
 
+  public activeFilters: Array<string>;
+
   constructor(private http: HttpClient,
   			  private storage: Storage,
   			  private global: GlobalProvider,
@@ -44,7 +46,6 @@ export class AgendaService {
         if(this.agendas.set(conferenceId, agenda)){
         	this.storage.set(STORAGE_KEY, this.agendas);
         }
-
         this.speakerService.setSpeaker(conferenceId,speaker);
 
         return agenda;
@@ -89,6 +90,18 @@ export class AgendaService {
     }
     console.log("return Promise with agendas");
     return Promise.resolve(this.agendas);
+  }
+
+  public addFilter(filter){
+    this.activeFilters = this.global.addAgendaFilter(filter);
+    return this.activeFilters;
+  }
+  public removeFilter(filter){
+    this.activeFilters = this.global.removeAgendaFilter(filter);
+    return this.activeFilters;
+  }
+  public getFilters(){
+    return this.global.activeFilters;
   }
 
   public saveSessionRaiting(conferenceId, sessionId, raiting){

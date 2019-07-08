@@ -2,6 +2,10 @@
   <ion-navbar hideBackButton>
     <ion-title>{{ title }}</ion-title>
     <ion-buttons end>
+
+      <button *ngIf="this.title == 'Agenda'" ion-button color="lightgrey" icon-only (click)="openPopoverAgenda($event)">
+        <ion-icon name="options"></ion-icon>
+      </button>
       <button ion-button color="lightgrey" icon-only (click)="openPopover($event)">
         <ion-icon ios="md-more" md="md-more"></ion-icon>
       </button>

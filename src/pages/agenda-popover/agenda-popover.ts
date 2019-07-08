@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, ViewController, NavController, NavParams, App } from 'ionic-angular';
-import {SettingsPage} from '../settings/settings';
-import {OverviewPage} from '../overview/overview';
-import {FeedbackPage} from '../feedback/feedback';
-import {BrandProvider} from '../../providers/brand/brand';
+import { AgendaService } from '../../providers/agenda/agenda-service';
+import { GlobalProvider } from "../../providers/global/global";
+import { Session } from "../../models/session";
+import { SessionCategory } from "../../models/session-category";
 
 /**
  * Generated class for the HomePopoverPage page.
@@ -19,24 +19,112 @@ import {BrandProvider} from '../../providers/brand/brand';
 })
 export class AgendaPopoverPage {
 
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams, public app: App, public brandProvider: BrandProvider) {
+
+  availableFilter: Array<SessionCategory> = [];
+  availableRooms: Array<string> = [];
+
+  constructor(private agendaService: AgendaService,
+              private navParams: NavParams,
+              private globalProvider: GlobalProvider) {
+
   }
 
-  public openSettingsPage(){
-	this.viewCtrl.dismiss().then(() => {
-	  	this.app.getRootNav().push(SettingsPage);
-	});
+  ngOnInit(){
+
+    this.agendaService.getAgenda(this.globalProvider.conferenceId).then((agenda) => {
+        this.availableFilter = [];
+        this.availableRooms = [];
+        let sessions = agenda.sessions;
+        if(sessions){
+          sessions.forEach( (session) => {
+            // add categories
+            if(session.category){
+              session.category.forEach( (category) => {
+                let found = false;
+                this.availableFilter.forEach( (knownCategory) => {
+                  console.log(category.name);
+                  if(category.name == knownCategory.name){
+                    found = true;
+                  }
+                });
+                if(!found) this.availableFilter.push(category);
+              });
+            }
+            // add rooms
+            if(session.location && this.availableRooms.indexOf(session.location) == -1) this.availableRooms.push(session.location);
+          });
+        }
+    });
+
+    if (this.navParams.data) {
+      this.contentEle = this.navParams.data.contentEle;
+      this.textEle = this.navParams.data.textEle;
+    }
   }
-  public openFeedbackPage(){
-	this.viewCtrl.dismiss().then(() => {
-	  	this.app.getRootNav().push('FeedbackPage');
-	});
+
+  convertToBorderColor(hex: string){
+    var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+    hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+      return r + r + g + g + b + b;
+    });
+
+    var saturate = 1.02;
+
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    var rgb = result ? {
+      r: Math.min(Math.round(parseInt(result[1], 16)*saturate),255),
+      g: Math.min(Math.round(parseInt(result[2], 16)*saturate),255),
+      b: Math.min(Math.round(parseInt(result[3], 16)*saturate),255)
+    } : null;
+
+    var lighten = 0.45;
+    var r = Math.round((1 - (1 - rgb.r / 255) * (1 - (255*lighten) / 255)) * 255);
+    var g = Math.round((1 - (1 - rgb.g / 255) * (1 - (255*lighten) / 255)) * 255);
+    var b = Math.round((1 - (1 - rgb.b / 255) * (1 - (255*lighten) / 255)) * 255);
+
+    return 'rgba('+r+','+g+','+b+',1)'
   }
-  public exitConference(){
-	 this.viewCtrl.dismiss().then(() => {
-    this.brandProvider.switchBrandTheme('hp');
-		this.app.getRootNav().setRoot(OverviewPage);
-	});
+
+  convertToBgColor(hex: string){
+    var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+    hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+      return r + r + g + g + b + b;
+    });
+
+    var saturate = 1.07;
+
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    var rgb = result ? {
+      r: Math.min(Math.round(parseInt(result[1], 16)*saturate),255),
+      g: Math.min(Math.round(parseInt(result[2], 16)*saturate),255),
+      b: Math.min(Math.round(parseInt(result[3], 16)*saturate),255)
+    } : null;
+
+    var lighten = 0.85;
+    var r = Math.round((1 - (1 - rgb.r / 255) * (1 - (255*lighten) / 255)) * 255);
+    var g = Math.round((1 - (1 - rgb.g / 255) * (1 - (255*lighten) / 255)) * 255);
+    var b = Math.round((1 - (1 - rgb.b / 255) * (1 - (255*lighten) / 255)) * 255);
+
+    return 'rgba('+r+','+g+','+b+',1)'
   }
+
+  iconHotFix(cat){
+    if(cat == "ws_a"){
+      return 'swap';
+    } else if(cat == "ws_b"){
+      return 'settings';
+    } else if(cat == "ws_c"){
+      return 'cloud';
+    } else if(cat == "break"){
+      return 'cafe';
+    } else if(cat == "transit"){
+      return 'bus';
+    } else if(cat == "party"){
+      return 'wine';
+    } else {
+      return 'easel';
+    }
+  }
+
 
 }
