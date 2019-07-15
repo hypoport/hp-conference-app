@@ -7,23 +7,26 @@
 
 <ion-content>
   <ion-item-group>
+
+    <ng-container *ngIf="availableRooms.length && globalProvider.conferenceOptions?.filter.category">
     <ion-list-header>
       Filtern nach:
     </ion-list-header>
-    <ion-item-divider color="light" *ngIf="availableFilter.length">
+    <ion-item-divider color="light">
       <ion-icon name="apps" item-start></ion-icon>
       Kategorien</ion-item-divider>
 
     <ion-item *ngFor="let category of availableFilter" [ngStyle]="{'color': category.color}">
         <ion-icon *ngIf="category.icon" md="{{category.icon.replace('ion-','')}}" ios="{{category.icon.replace('ion-','')}}" item-start></ion-icon>
         {{category.name}}
-
     </ion-item>
+    </ng-container>
 
-    <ion-item-divider color="light" *ngIf="availableRooms.length">
+    <ng-container *ngIf="availableRooms.length && globalProvider.conferenceOptions?.filter.rooms">
+    <ion-item-divider color="light">
       <ion-icon ios="md-square-outline" md="md-square-outline" item-start></ion-icon>
       Räume</ion-item-divider>
       <ion-item *ngFor="let room of availableRooms">{{room}}</ion-item>
-
+    </ng-container>
   </ion-item-group>
 </ion-content>
