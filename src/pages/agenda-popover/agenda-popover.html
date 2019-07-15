@@ -15,7 +15,7 @@
       Kategorien</ion-item-divider>
 
     <ion-item *ngFor="let category of availableFilter" [ngStyle]="{'color': category.color}">
-        <ion-icon *ngIf="category.icon" name="{{iconHotFix(category.icon)}}" item-start></ion-icon>
+        <ion-icon *ngIf="category.icon" md="{{category.icon.replace('ion-','')}}" ios="{{category.icon.replace('ion-','')}}" item-start></ion-icon>
         {{category.name}}
 
     </ion-item>

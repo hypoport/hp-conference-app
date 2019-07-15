@@ -56,10 +56,11 @@ export class AgendaPopoverPage {
         }
     });
 
+    /*
     if (this.navParams.data) {
       this.contentEle = this.navParams.data.contentEle;
       this.textEle = this.navParams.data.textEle;
-    }
+    }*/
   }
 
   convertToBorderColor(hex: string){
@@ -107,24 +108,4 @@ export class AgendaPopoverPage {
 
     return 'rgba('+r+','+g+','+b+',1)'
   }
-
-  iconHotFix(cat){
-    if(cat == "ws_a"){
-      return 'swap';
-    } else if(cat == "ws_b"){
-      return 'settings';
-    } else if(cat == "ws_c"){
-      return 'cloud';
-    } else if(cat == "break"){
-      return 'cafe';
-    } else if(cat == "transit"){
-      return 'bus';
-    } else if(cat == "party"){
-      return 'wine';
-    } else {
-      return 'easel';
-    }
-  }
-
-
 }
