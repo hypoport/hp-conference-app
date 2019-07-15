@@ -14,7 +14,7 @@
 
 
 
-  <section class="hero-image" [style.backgroundImage]="'url('+ conference?.image +')'"></section>
+  <section class="hero-image" [style.backgroundImage]="'url('+ conference?.image +')'" [style.backgroundPosition]="globalProvider.conferenceOptions.keyVisualPlacement"></section>
 
   <main class="main-content" padding>
 
@@ -31,13 +31,15 @@
             <!-- default -->
             <ion-card class="service-card" *ngIf="!card.type || card.type == 'default'" [ngClass]="(card.action == 'selectable' ? 'text-selectable': '')" (click)="cardAction(card)">
               <ion-card-content>
-                <div class="card-content-top">
-                  <h6>{{card.cardTitle ? card.cardTitle : 'Kachel'}}</h6>
-                  <ion-icon name="{{card.icon ? card.icon : 'radio-button-off'}}"></ion-icon>
-                </div>
-                <div class="card-content-bottom">
-                  <h3 [innerHTML]="card.title"></h3>
-                  <h5 [innerHTML]="card.subTitle"></h5>
+                <div>
+                  <div class="card-content-top">
+                    <h6>{{card.cardTitle ? card.cardTitle : 'Kachel'}}</h6>
+                    <ion-icon name="{{card.icon ? card.icon : 'radio-button-off'}}"></ion-icon>
+                  </div>
+                  <div class="card-content-bottom">
+                    <h3 [innerHTML]="card.title"></h3>
+                    <h5 [innerHTML]="card.subTitle"></h5>
+                  </div>
                 </div>
               </ion-card-content>
             </ion-card>
@@ -45,19 +47,21 @@
             <!-- card location and date -->
             <ion-card class="service-card loc-date" *ngIf="card.type == 'loc_date'" (click)="cardAction(card)">
               <ion-card-content>
-                <div class="card-content-top">
-                  <h6>{{card.cardTitle ? card.cardTitle : 'Location + Date'}}</h6>
-                  <ion-icon name="{{card.icon ? card.icon : 'pin'}}"></ion-icon>
-                </div>
-                <div class="card-content-bottom">
-                  <h3 [innerHTML]="conference?.directions?.address"></h3>
-                  <h5 *ngIf="conference?.endDate.getTime()-conference?.startDate.getTime() > 18*3600
-                      && conference?.endDate.getMonth() != conference?.startDate.getMonth()">{{ conference?.startDate | date: 'dd. LLL' }} - {{ conference?.endDate | date: 'dd. LLL yyyy' }}</h5>
+                <div>
+                  <div class="card-content-top">
+                    <h6>{{card.cardTitle ? card.cardTitle : 'Location + Date'}}</h6>
+                    <ion-icon name="{{card.icon ? card.icon : 'pin'}}"></ion-icon>
+                  </div>
+                  <div class="card-content-bottom">
+                    <h3 [innerHTML]="conference?.directions?.address"></h3>
+                    <h5 *ngIf="conference?.endDate.getTime()-conference?.startDate.getTime() > 18*3600
+                        && conference?.endDate.getMonth() != conference?.startDate.getMonth()">{{ conference?.startDate | date: 'dd. LLL' }} - {{ conference?.endDate | date: 'dd. LLL yyyy' }}</h5>
 
-                  <h5 *ngIf="conference?.endDate.getTime()-conference?.startDate.getTime() > 18*3600
-                          && conference?.endDate.getMonth() == conference?.startDate.getMonth()">{{ conference?.startDate | date: 'dd.' }} - {{ conference?.endDate | date: 'dd. LLL. yyyy' }}</h5>
+                    <h5 *ngIf="conference?.endDate.getTime()-conference?.startDate.getTime() > 18*3600
+                            && conference?.endDate.getMonth() == conference?.startDate.getMonth()">{{ conference?.startDate | date: 'dd.' }} - {{ conference?.endDate | date: 'dd. LLL. yyyy' }}</h5>
 
-                  <h5 *ngIf="conference?.endDate.getTime()-conference?.startDate.getTime() <= 18*3600">{{ conference?.startDate | date: 'dd. LLLL yyyy' }}</h5>
+                    <h5 *ngIf="conference?.endDate.getTime()-conference?.startDate.getTime() <= 18*3600">{{ conference?.startDate | date: 'dd. LLLL yyyy' }}</h5>
+                  </div>
                 </div>
               </ion-card-content>
             </ion-card>
@@ -65,13 +69,15 @@
             <!-- card next session -->
             <ion-card class="service-card next-session" *ngIf="card.type == 'next_session'" (click)="cardAction(card)">
               <ion-card-content>
-                <div class="card-content-top">
-                  <h6>{{card.cardTitle ? card.cardTitle : 'Kommendes Ereignis'}}</h6>
-                  <ion-icon name="{{card.icon ? card.icon : 'time'}}"></ion-icon>
-                </div>
-                <div class="card-content-bottom">
-                  <h3 [innerHTML]="this.nextSession?.title"></h3>
-                  <h5>{{this.nextSession?.timeStart | date: 'HH:mm': 'UTC'}} &mdash; {{this.nextSession?.timeEnd | date: 'HH:mm': 'UTC'}}</h5>
+                <div>
+                  <div class="card-content-top">
+                    <h6>{{card.cardTitle ? card.cardTitle : 'Kommendes Ereignis'}}</h6>
+                    <ion-icon name="{{card.icon ? card.icon : 'time'}}"></ion-icon>
+                  </div>
+                  <div class="card-content-bottom">
+                    <h3 [innerHTML]="this.nextSession?.title"></h3>
+                    <h5>{{this.nextSession?.timeStart | date: 'HH:mm': 'UTC'}} &mdash; {{this.nextSession?.timeEnd | date: 'HH:mm': 'UTC'}}</h5>
+                  </div>
                 </div>
               </ion-card-content>
             </ion-card>
@@ -79,13 +85,15 @@
             <!-- update info -->
             <ion-card class="service-card update-info" *ngIf="card.type == 'updateInfo' && globalProvider.appVersion() != card.data" [ngClass]="(card.action == 'selectable' ? 'text-selectable': '')" (click)="cardAction(card)">
               <ion-card-content>
-                <div class="card-content-top">
-                  <h6>{{card.cardTitle ? card.cardTitle : 'Kachel'}}</h6>
-                  <ion-icon name="{{card.icon ? card.icon : 'phone-portrait'}}"></ion-icon>
-                </div>
-                <div class="card-content-bottom">
-                  <h3 [innerHTML]="card.title"></h3>
-                  <h5 [innerHTML]="card.subTitle"></h5>
+                <div>
+                  <div class="card-content-top">
+                    <h6>{{card.cardTitle ? card.cardTitle : 'Kachel'}}</h6>
+                    <ion-icon name="{{card.icon ? card.icon : 'phone-portrait'}}"></ion-icon>
+                  </div>
+                  <div class="card-content-bottom">
+                    <h3 [innerHTML]="card.title"></h3>
+                    <h5 [innerHTML]="card.subTitle"></h5>
+                  </div>
                 </div>
               </ion-card-content>
             </ion-card>

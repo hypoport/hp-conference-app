@@ -53,7 +53,8 @@ export class HomePage {
   ionViewDidEnter(){
 	  this.agendaService.getNextAgendaPoint(this.globalProvider.conferenceId).then((session)=>{
 		this.nextSession = session;
-		console.log(this.nextSession);
+
+    console.log(this.globalProvider.conferenceOptions);
 
     /*
     if(this.globalProvider.conferenceId){
@@ -98,6 +99,7 @@ export class HomePage {
     if(card.action == "gotoPage"){
       if(card.data == "attendees") this.app.getRootNav().push('AttendeesPage');
       if(card.data == "settings") this.app.getRootNav().push('SettingsPage');
+      if(card.data == "roombooking") this.app.getRootNav().push('RoombookingPage');
       if(card.data == "agenda") this.app.getRootNav().getActiveChildNav().select(1);
       if(card.data == "speaker") this.app.getRootNav().getActiveChildNav().select(2);
     } else if(card.action == "openURL") {

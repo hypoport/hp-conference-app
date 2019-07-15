@@ -93,24 +93,6 @@ export class SessionListComponent {
     this.app.getRootNav().push(SessionPage, {session: session});
   }
 
-  iconHotFix(cat){
-    if(cat == "ws_a"){
-      return 'swap';
-    } else if(cat == "ws_b"){
-      return 'settings';
-    } else if(cat == "ws_c"){
-      return 'cloud';
-    } else if(cat == "break"){
-      return 'cafe';
-    } else if(cat == "transit"){
-      return 'bus';
-    } else if(cat == "party"){
-      return 'wine';
-    } else {
-      return 'easel';
-    }
-  }
-
 
   convertToBorderColor(hex: string){
     var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
@@ -200,7 +182,7 @@ export class SessionListComponent {
   private highlightNextSession(session, now, timeEnd, timeDiffMs): void {
     const nextSession = this.sessions[session.id] || null;
     const endOfCurrentSessionMs = timeEnd - now;
-    
+
     const endCurrentSession = () => {
       this.timeOutArr[this.timeOutArr.length] = window.setTimeout((session) => {
         console.log('mitchLog >> currentSession ended');

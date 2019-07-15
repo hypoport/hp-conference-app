@@ -28,7 +28,7 @@ export class GlobalProvider {
 	  this._apiURL = ENV.apiROOT;
     this._gaKey = ENV.gaKey;
 	  this._qrPayloadSecret = ENV.qrPayloadSecret;
-	  this._appVersion = '1.0.4 (1)';
+	  this._appVersion = '1.0.5';
   }
 
   get conferenceId(): string {
@@ -56,11 +56,13 @@ export class GlobalProvider {
   }
 
   get conferenceOptions(): ConferenceOptions {
+    if(!this._conferenceOptions) this._conferenceOptions = new ConferenceOptions;
     return this._conferenceOptions;
   }
 
   set conferenceOptions(value: ConferenceOptions) {
-    this._conferenceOptions = value;
+    let defaultMerged = Object.assign({}, new ConferenceOptions, value);
+    this._conferenceOptions = defaultMerged;
   }
  /*
     Tracking and Versioning
@@ -77,6 +79,12 @@ export class GlobalProvider {
  public apiURL(endpoint: string){
   let backendUrl = ENV.backendUrls[this._conferenceBrand];
   if(!backendUrl) backendUrl = ENV.backendUrls['hp'];
+
+  // room booking is a external module in wp-tagungs-plugin, so it's endpoint is outside the "confsystem/v2"
+  if(endpoint.indexOf('confrooms') != -1){
+    backendUrl = backendUrl.replace('/confsystem/v2','');
+  }
+
 	return backendUrl + '/' + endpoint;
  }
  public rootApiUrl(){

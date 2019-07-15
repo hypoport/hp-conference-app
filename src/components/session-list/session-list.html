@@ -45,11 +45,11 @@
 <ng-container *ngIf="doGroup && layout != 'parallel-cards'"><!-- Gruppierung -->
 <div class="day-group" *ngFor="let sessionsOfDay of groupedSessions; let i = index">
 
-<h2 class="date-heading top-head">{{i+1 | nicerDay}}</h2>
+<h2 class="date-heading top-head" *ngIf="globalProvider.conferenceOptions.markDaysInAgenda">{{i+1 | nicerDay}}</h2>
 <h4 class="date-heading sub-head">{{ (sessionsOfDay[0].timeStart) | date: 'dd.MM.y': 'UTC'}}</h4>
-<ion-item-sliding 
-  no-lines 
-  *ngFor="let session of sessionsOfDay" 
+<ion-item-sliding
+  no-lines
+  *ngFor="let session of sessionsOfDay"
   [hidden]="session.hide"
   [ngClass]="{'item-wrapper--current': currentSessionArr[session.id-1]}"
 >
@@ -98,9 +98,9 @@
 <h4 class="date-heading sub-head">{{ (sessionsOfDay[i] && sessionsOfDay[i][0].timeStart) | date: 'dd.MMM y': 'UTC'}}</h4>
 
 <ng-container class="paralell-session-group" *ngFor="let parallelSessions of sessionsOfDay; let p = index">
-<ion-item-sliding 
-  no-lines 
-  *ngFor="let session of parallelSessions | slice:0:1;" 
+<ion-item-sliding
+  no-lines
+  *ngFor="let session of parallelSessions | slice:0:1;"
   [hidden]="session.hide"
   [ngClass]="{'item-wrapper--current': currentSessionArr[session.id-1]}"
 >
@@ -128,7 +128,7 @@
                   'border-color': convertToBorderColor(category.color),
                   'background-color': convertToBgColor(category.color)
                   }">
-                  <ion-icon *ngIf="category.icon" name="{{iconHotFix(category.icon)}}"></ion-icon>
+                  <ion-icon *ngIf="category.icon" md="{{category.icon.replace('ion-','')}}" ios="{{category.icon.replace('ion-','')}}"></ion-icon>
                   <h6 class="" *ngIf="category.name">{{category.name}}</h6>
                 </div>
               </ng-container>
