@@ -10,8 +10,9 @@
     <!-- <span class="session-title" [innerHTML]="session.title"></span> -->
     <div class="agenda-stats">
       <h5 class="session-time">
-        {{session.timeStart | date: 'HH:mm': 'UTC'}} &mdash;
+        {{session.timeStart | date: 'HH:mm': 'UTC'}} <ng-container *ngIf="session.timeStart != session.timeEnd">&mdash;
         {{session.timeEnd | date: 'HH:mm': 'UTC'}}
+        </ng-container>
       </h5>
       <h5>{{session.location ? session.location : ''}}</h5>
       <ion-icon class="bookmark" name="bookmark-outline" md="md-bookmark" *ngIf="session.isFavorite || globalProvider.conferenceOptions.favoriteInAgenda" [ngClass]="session.isFavorite ? 'bookmark-active' : 'bookmark-inactive'" (click)="toggleFavorite($event, session)"></ion-icon>
@@ -26,8 +27,9 @@
     <h4 class="speaker" *ngIf="session?.speakers && session?.speakers.length">– <ng-container *ngFor="let speaker of session.speakers"><span>{{speaker.name}}</span></ng-container></h4>
     <div class="agenda-stats">
     <h5>
-      {{session.timeStart | date: 'HH:mm': 'UTC'}} &mdash;
+      {{session.timeStart | date: 'HH:mm': 'UTC'}} <ng-container *ngIf="session.timeStart != session.timeEnd">&mdash;
       {{session.timeEnd | date: 'HH:mm': 'UTC'}}
+      </ng-container>
     </h5>
     <h5>{{session.location ? session.location : ''}}</h5>
     <ion-icon class="bookmark" name="bookmark-outline" md="md-bookmark" *ngIf="session.isFavorite || globalProvider.conferenceOptions.favoriteInAgenda" [ngClass]="session.isFavorite ? 'bookmark-active' : 'bookmark-inactive'" (click)="toggleFavorite($event, session)"></ion-icon>
@@ -61,8 +63,9 @@
   <!-- <span class="session-title" [innerHTML]="session.title"></span> -->
   <div class="agenda-stats">
     <h5 class="session-time">
-      {{session.timeStart | date: 'HH:mm': 'UTC'}} &mdash;
+      {{session.timeStart | date: 'HH:mm': 'UTC'}} <ng-container *ngIf="session.timeStart != session.timeEnd">&mdash;
       {{session.timeEnd | date: 'HH:mm': 'UTC'}}
+      </ng-container>
     </h5>
     <h5>{{session.location ? session.location : ''}}</h5>
     <ion-icon class="bookmark" name="bookmark-outline" md="md-bookmark" *ngIf="session.isFavorite || globalProvider.conferenceOptions.favoriteInAgenda" [ngClass]="session.isFavorite ? 'bookmark-active' : 'bookmark-inactive'" (click)="toggleFavorite($event, session)"></ion-icon>
@@ -77,8 +80,9 @@
   <h4 class="speaker" *ngIf="session?.speakers && session?.speakers.length">– <ng-container *ngFor="let speaker of session.speakers"><span *ngIf="speakerById[speaker]?.name">{{speakerById[speaker].name}}</span></ng-container></h4>
   <div class="agenda-stats">
   <h5>
-    {{session.timeStart | date: 'HH:mm': 'UTC'}} &mdash;
+    {{session.timeStart | date: 'HH:mm': 'UTC'}} <ng-container *ngIf="session.timeStart != session.timeEnd">&mdash;
     {{session.timeEnd | date: 'HH:mm': 'UTC'}}
+    </ng-container>
   </h5>
   <h5>{{session.location ? session.location : ''}}</h5>
   <ion-icon class="bookmark" name="bookmark-outline" md="md-bookmark" *ngIf="session.isFavorite || globalProvider.conferenceOptions.favoriteInAgenda" [ngClass]="session.isFavorite ? 'bookmark-active' : 'bookmark-inactive'" (click)="toggleFavorite($event, session)"></ion-icon>
@@ -109,8 +113,9 @@
 
   <div class="agenda-stats">
     <h5 class="session-time">
-      {{session.timeStart | date: 'HH:mm': 'UTC'}} &mdash;
+      {{session.timeStart | date: 'HH:mm': 'UTC'}} <ng-container *ngIf="session.timeStart != session.timeEnd">&mdash;
       {{session.timeEnd | date: 'HH:mm': 'UTC'}}
+      </ng-container>
     </h5>
   </div>
 
@@ -190,8 +195,9 @@
   <h4 class="speaker" *ngIf="session?.speakers && session?.speakers.length">– <ng-container *ngFor="let speaker of session.speakers"><span *ngIf="speakerById[speaker]?.name">{{speakerById[speaker].name}}</span></ng-container></h4>
   <div class="agenda-stats">
   <h5>
-    {{session.timeStart | date: 'HH:mm': 'UTC'}} &mdash;
+    {{session.timeStart | date: 'HH:mm': 'UTC'}} <ng-container *ngIf="session.timeStart != session.timeEnd">&mdash;
     {{session.timeEnd | date: 'HH:mm': 'UTC'}}
+    </ng-container>
   </h5>
   <h5>{{session.location ? session.location : ''}}</h5>
   <ion-icon class="bookmark" name="bookmark-outline" md="md-bookmark" *ngIf="session.isFavorite || globalProvider.conferenceOptions.favoriteInAgenda" [ngClass]="session.isFavorite ? 'bookmark-active' : 'bookmark-inactive'" (click)="toggleFavorite($event, session)"></ion-icon>

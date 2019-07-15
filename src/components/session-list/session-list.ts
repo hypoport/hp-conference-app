@@ -58,7 +58,8 @@ export class SessionListComponent {
       }
 
       // group session by days
-      let d = new Date(session.timeStart);
+      let timeDiffMs = (new Date(session.timeStart).getTimezoneOffset()) * 60 * 1000;
+      let d = new Date(new Date(session.timeStart).getTime() + timeDiffMs);
       let key = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
       if(key != lastKeyDay){
         dayIndex++;
