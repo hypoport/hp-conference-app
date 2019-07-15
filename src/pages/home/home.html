@@ -18,10 +18,7 @@
 
   <main class="main-content" padding>
 
-
     <section class="service parallax-card-slider">
-
-
 
         <ion-slides card-slides slidesPerView="1.2" spaceBetween="0" *ngIf="conference?.quickaccess">
 
@@ -155,35 +152,19 @@
 
       </section>
 
-
-
-
-
-
-
-
-
-
-
-
-      <section class="intro selectable-text">
+      <section class="intro selectable-text" padding-left padding-right>
 
         <h1>{{ conference?.header }}</h1>
           <div [innerHtml]="conference?.description"></div>
         </section>
 
-
-
-  <hr>
-
-
-
   <section class="maps selectable-text">
 
+    <div padding>
+      <h2>{{globalProvider.getLabel('homeDirections') ? globalProvider.getLabel('homeDirections') : 'Veranstaltungsort'}}</h2>
 
-    <h2>{{globalProvider.getLabel('homeDirections') ? globalProvider.getLabel('homeDirections') : 'Veranstaltungsort'}}</h2>
-
-    <div [innerHtml]="conference?.directions?.description"></div>
+      <div [innerHtml]="conference?.directions?.description"></div>
+    </div>
 
     <div #map class="" id="map" padding></div>
 
@@ -200,57 +181,54 @@
 
 
 
-  <ion-grid class="support-global support-card selectable-text">
+  <ion-grid class="support-global support-card selectable-text" *ngIf="conference?.contact?.persons || (conference.contact.telephone || conference.contact.email)">
     <ion-row>
       <ion-col col-12>
         <h2>{{globalProvider.getLabel('homeContact') ? globalProvider.getLabel('homeContact') : 'Ihr Ansprechpartner'}}</h2>
       </ion-col>
-      <ion-col auto no-padding>
-        <button ion-button small round color="cloud" icon-start (click)="openTel(conference.contact.telephone)">
+      <ion-col auto no-padding *ngIf="conference.contact.telephone || conference.contact.email">
+        <button ion-button small round color="cloud" icon-start (click)="openTel(conference.contact.telephone)" *ngIf="conference.contact.telephone">
           <ion-icon name="call"></ion-icon>
             {{ conference.contact.telephone }}
         </button>
 
-        <button ion-button small round color="cloud" icon-start (click)="openMail(conference.contact.email)">
+        <button ion-button small round color="cloud" icon-start (click)="openMail(conference.contact.email)" *ngIf="conference.contact.email">
           <ion-icon name="paper-plane"></ion-icon>
             {{ conference.contact.email }}
         </button>
       </ion-col>
     </ion-row>
+
+
+        <ion-list no-lines no-padding *ngIf="conference?.contact?.persons" class="support-individual">
+          <ion-item *ngFor="let person of conference.contact.persons" >
+            <ion-grid>
+
+              <ion-row no-padding align-items-center>
+
+                <!-- contact profile picture -->
+                <ion-col col-3 align-self-center class="profile-image">
+                  <ion-avatar>
+                    <img [src]="person.avatarUrl">
+                  </ion-avatar>
+                </ion-col>
+
+                <!-- contact profile data (name/mail/tele) -->
+                <ion-col auto class="profile-data selectable-text">
+                  <h3 class="contact-name" *ngIf="person.name">{{ person.name }}</h3>
+
+                  <button ion-button small color="cloud" *ngIf="person?.telephone" (click)="openTel(person.telephone)">{{ person.telephone }}</button>
+                  <button ion-button small color="cloud" *ngIf="person?.email" (click)="openMail(person.email)">{{ person.email }}</button>
+
+                </ion-col>
+
+              </ion-row>
+
+            </ion-grid>
+          </ion-item>
+        </ion-list>
+
   </ion-grid>
-
-
-
-
-
-
-    <ion-list no-lines no-padding *ngIf="conference?.contact?.persons" class="support-individual">
-      <ion-item *ngFor="let person of conference.contact.persons" >
-        <ion-grid>
-
-          <ion-row no-padding align-items-center>
-
-            <!-- contact profile picture -->
-            <ion-col col-3 align-self-center class="profile-image">
-              <ion-avatar>
-                <img [src]="person.avatarUrl">
-              </ion-avatar>
-            </ion-col>
-
-            <!-- contact profile data (name/mail/tele) -->
-            <ion-col auto class="profile-data selectable-text">
-              <h3 class="contact-name" *ngIf="person.name">{{ person.name }}</h3>
-
-              <button ion-button small color="cloud" *ngIf="person?.telephone" (click)="openTel(person.telephone)">{{ person.telephone }}</button>
-              <button ion-button small color="cloud" *ngIf="person?.email" (click)="openMail(person.email)">{{ person.email }}</button>
-
-            </ion-col>
-
-          </ion-row>
-
-        </ion-grid>
-      </ion-item>
-    </ion-list>
   </section>
 
 
