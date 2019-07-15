@@ -1,0 +1,57 @@
+<!--
+  Generated template for the AttendeesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Raumbuchungen</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <div class="loading-state" *ngIf="isLoading">
+    <ion-spinner></ion-spinner> <h4>Lade Räume…</h4>
+  </div>
+
+  <div class="add-favo-info" *ngIf="!favoSessions || !favoSessions.length" text-center>
+  <h1><ion-icon name="chatbubbles"></ion-icon>
+    <br/>{{globalProvider.conferenceOptions?.labels.roombookingTitle ? globalProvider.conferenceOptions.labels.roombookingTitle : 'Raumbuchungen'}}</h1>
+  <p>{{globalProvider.conferenceOptions?.labels.roombookingInfo ? globalProvider.conferenceOptions.labels.roombookingInfo : 'Buche hier deinen Raum für bilaterale Gespräche.'}}</p>
+  </div>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Tag</ion-label>
+      <ion-select [(ngModel)]="selectedDay" [disabled]="isLoading" (ionChange)="updateDay()">
+        <ion-option *ngFor="let day of bookingDays" value="{{day.ind}}">{{day.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Zeit</ion-label>
+      <ion-select [(ngModel)]="selectedSlot" [disabled]="isLoading" (ionChange)="updateRoomsAndSlots()">
+        <ion-option *ngFor="let slot of bookingSlots" value="{{slot.key}}">{{slot.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Raum</ion-label>
+      <ion-select [(ngModel)]="selectedRoom" [disabled]="isLoading" (ionChange)="updateRoomsAndSlots()">
+        <ion-option *ngFor="let room of bookingRooms" value="{{room.key}}">{{room.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-grid *ngIf="!attendees || !attendees.length">
+    <ion-row align-items-center justify-content-center>
+      <ion-col col-12>
+        <button round ion-button block (click)="bookRoom()" [disabled]="(!selectedSlot || !selectedRoom)">Raum buchen</button>
+        <span style="display: block; height: 8px;"></span>
+        <button ion-button block clear small (click)="bookRoomInBrowser()" *ngIf="globalProvider.conferenceOptions?.roombooking.browserLink">Über Browser buchen</button>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

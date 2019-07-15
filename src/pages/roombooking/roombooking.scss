@@ -1,0 +1,24 @@
+page-roombooking {
+
+  .loading-state {
+    width: 144px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    overflow: hidden;
+    text-align: center;
+    ion-spinner {
+      display: inline-block;
+    }
+    h4 {
+      margin: 0;
+      display: inline-block;
+      line-height: 28px;
+      position: relative;
+      padding-left: 12px;
+      opacity: 0.6;
+      top: -9px;
+    }
+  }
+
+}
