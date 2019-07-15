@@ -95,13 +95,13 @@
 
 
 
-    <section *ngIf="nextConferences.length > 0">
+    <section *ngIf="nextConferences.length > 0" padding>
       <h3 class="subtitle">Zukünftige Tagungen</h3>
       <ion-slides card-slides slidesPerView="1.5" spaceBetween="10">
         <ion-slide *ngFor="let conference of nextConferences">
           <ion-card class="hero-card small-card" (click)="goToConference(conference.id,conference.token,conference.brand,conference.options)" (press)="openActionSheetForConferences(conference.id)">
-            <img [src]="conference.image" />
-
+            <div class="hero-background small" [style.backgroundImage]="'url(' + conference.image + ')'">
+            </div>
 
 
             <ion-card-content>
@@ -128,8 +128,8 @@
       <ion-slides card-slides slidesPerView="1.5" spaceBetween="0">
         <ion-slide *ngFor="let conference of lastConferences">
           <ion-card class="hero-card small-card" (click)="goToConference(conference.id,conference.token,conference.brand,conference.options)" (press)="openActionSheetForConferences(conference.id)">
-            <img [src]="conference.image" />
-
+            <div class="hero-background small" [style.backgroundImage]="'url(' + conference.image + ')'">
+            </div>
             <ion-card-content>
               <div class="card-content-top">
                 <!-- <h6>Supertitle</h6> -->

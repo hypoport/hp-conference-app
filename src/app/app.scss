@@ -376,8 +376,15 @@ ion-card {
     display: flex;
     background-position: center center;
     background-size: cover;
-    min-height: 45vh;
+    min-height: 42vh;
+    &.small {
+      min-height: 22vh;
+    }
   }
+  &.small-card .hero-background {
+      min-height: 22vh;
+  }
+
 
   &.service-card.text-selectable {
     h1,h2,h3,h4,h5,h6,p, a {
