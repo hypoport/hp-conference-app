@@ -26,7 +26,6 @@ export class SessionListComponent {
   groupedSessions: Array<Array<Session>> = [];
   groupedParallelSessions: Array<Array<Array<Session>>> = [];
 
-  currentSessionArr: Array<boolean> = []; // improvement: extend Session Model with isCurrent property
   timeOutArr: Array<number> = []; // saves all setTimeouts created by this component
 
   @Input() layout: string;
@@ -144,7 +143,7 @@ export class SessionListComponent {
   private findCurrentSession(): void {
     for(let i=0; i<this.sessions.length; i++) {
       const id:number = parseInt(this.sessions[i].id);
-      this.currentSessionArr[id-1] = this.isCurrentSession(this.sessions[i]);
+      this.sessions[i].isRunning = this.isCurrentSession(this.sessions[i]);
     }
   }
 
@@ -165,7 +164,7 @@ export class SessionListComponent {
       return modifiedDate;
     }
     let newTime = null;
-    // newTime = changeTime(10,0, 3, 7);
+    newTime = changeTime(12, 55, 30, 1);
 
     const now = new Date( newTime || new Date().getTime() ).getTime();
     const start = new Date(timeStart).getTime();
@@ -187,14 +186,14 @@ export class SessionListComponent {
     const endCurrentSession = () => {
       this.timeOutArr[this.timeOutArr.length] = window.setTimeout((session) => {
         console.log('mitchLog >> currentSession ended');
-        this.currentSessionArr[session.id-1] = false; //set last session to false
+        this.sessions[session.id-1].isRunning = false; //set last session to false
       }, endOfCurrentSessionMs, session);
     }
 
     const startNextSession = (startOfNextSessionMs) => {
       this.timeOutArr[this.timeOutArr.length] = window.setTimeout((session) => {
         console.log('mitchLog >> next session started');
-        this.currentSessionArr[session.id] = true;
+        this.sessions[session.id].isRunning = true;
       }, startOfNextSessionMs, session);
     }
 
@@ -211,7 +210,7 @@ export class SessionListComponent {
   ngOnInit() {
     console.log('mitchLog >> ngOnInit: session-list');
     this.findCurrentSession();
-    console.log('mitchLog >> ', this.currentSessionArr);
+    console.log('mitchLog >> this.sessions', this.sessions);
   }
 
   ngOnDestroy() {

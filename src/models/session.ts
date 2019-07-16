@@ -11,4 +11,5 @@ export class Session {
   location: string;
   category: Array<SessionCategory>;
   isFavorite: boolean;
+  isRunning: boolean;
 }
