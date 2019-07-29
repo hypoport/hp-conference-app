@@ -32,7 +32,7 @@
       <ion-slides card-slides slidesPerView="1">
         <ion-slide>
           <ion-card class="hero-card" (click)="goToConference(currentConference.id,currentConference.token,currentConference.brand,currentConference.options)" (press)="openActionSheetForConferences(currentConference.id)">
-            <div class="hero-background" [style.backgroundImage]="'url(' + currentConference.image + ')'">
+            <div class="hero-background" [style.backgroundImage]="'url(' + currentConference.image + ')'" [style.backgroundPosition]="currentConference.options.keyVisualPlacement">
             </div>
 
 
@@ -100,7 +100,7 @@
       <ion-slides card-slides slidesPerView="1.5" spaceBetween="10">
         <ion-slide *ngFor="let conference of nextConferences">
           <ion-card class="hero-card small-card" (click)="goToConference(conference.id,conference.token,conference.brand,conference.options)" (press)="openActionSheetForConferences(conference.id)">
-            <div class="hero-background small" [style.backgroundImage]="'url(' + conference.image + ')'">
+            <div class="hero-background small" [style.backgroundImage]="'url(' + conference.image + ')'" [style.backgroundPosition]="conference.options.keyVisualPlacement">
             </div>
 
 
@@ -128,7 +128,7 @@
       <ion-slides card-slides slidesPerView="1.5" spaceBetween="0">
         <ion-slide *ngFor="let conference of lastConferences">
           <ion-card class="hero-card small-card" (click)="goToConference(conference.id,conference.token,conference.brand,conference.options)" (press)="openActionSheetForConferences(conference.id)">
-            <div class="hero-background small" [style.backgroundImage]="'url(' + conference.image + ')'">
+            <div class="hero-background small" [style.backgroundImage]="'url(' + conference.image + ')'" [style.backgroundPosition]="conference.options.keyVisualPlacement">
             </div>
             <ion-card-content>
               <div class="card-content-top">
