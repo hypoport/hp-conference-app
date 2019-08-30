@@ -84,6 +84,8 @@ registerLocaleData(localeDe);
     SessionPage,
     SessionFeedbackPage,
     SpeakerPage,
+    ExhibitorsPage,
+    ExhibitorPage,
     SettingsPage,
     HomePopoverPage,
     AgendaPopoverPage

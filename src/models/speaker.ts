@@ -1,5 +1,4 @@
 export class Speaker {
-
   id: string;
   name: string;
   profileFoto: string;

@@ -3,6 +3,7 @@ import {NavParams, NavController} from 'ionic-angular';
 import {SpeakersPage} from '../speakers/speakers';
 import {AgendaPage} from '../agenda/agenda';
 import {HomePage} from '../home/home';
+import {ExhibitorsPage} from '../exhibitors/exhibitors';
 import {HomePopoverPage} from '../home-popover/home-popover';
 import {AgendaPopoverPage} from '../agenda-popover/agenda-popover';
 
@@ -18,6 +19,7 @@ export class TabsPage {
   infoPage = HomePage;
   agendaPage = AgendaPage;
   speakerPage = SpeakersPage;
+  exhibitorsPage = ExhibitorsPage;
 
   title: string;
 
@@ -41,9 +43,11 @@ export class TabsPage {
 
   tabsChange(ev){
 	if(ev.index == 1){
-		this.title = "Agenda";
+		this.title = this.globalProvider.getLabel("navAgenda");
 	} else if(ev.index == 2){
-		this.title = "Sprecher";
+		this.title = this.globalProvider.getLabel("navSpeaker");;
+	} else if(ev.index == 3){
+		this.title = this.globalProvider.getLabel("navExhibitor");;
 	} else {
     	this.title = this.conferenceService.getConference(this.globalProvider.conferenceId).title;
 	}

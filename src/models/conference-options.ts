@@ -12,6 +12,10 @@ export class ConferenceOptions {
     sessionRaitingSuccess: 'Vielen Dank für Ihr Feedback!',
     roombookingTitle: 'Raumbuchungen',
     roombookingInfo: 'Buche hier deinen Raum für bilaterale Gespräche.',
+    navInfo: 'Info',
+    navAgenda: 'Agenda',
+    navSpeaker: 'Sprecher',
+    navExhibitor: 'Aussteller',
   };
   roombooking: any = {
     enabled: true,

@@ -61,7 +61,12 @@ export class GlobalProvider {
   }
 
   set conferenceOptions(value: ConferenceOptions) {
-    let defaultMerged = Object.assign({}, new ConferenceOptions, value);
+    let defaultOptions = new ConferenceOptions;
+
+    // deep merging?
+    if(value.labels) value.labels = Object.assign({}, defaultOptions.labels, value.labels);
+
+    let defaultMerged = Object.assign({}, defaultOptions, value);
     this._conferenceOptions = defaultMerged;
   }
  /*
