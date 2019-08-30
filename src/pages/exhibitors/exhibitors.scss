@@ -1,0 +1,26 @@
+page-exhibitors {
+  /* header shadow */
+  .toolbar-ios,
+  .toolbar-md {
+    box-shadow: $toolbar-shadow;
+  }
+
+  /* 1st section top padding */
+  .content {}
+  .content-ios {
+    section {
+      &.exhibitors {
+        padding-top: calc(#{$toolbar-ios-height - $content-padding });
+      }
+    }
+  }
+  .content-md {
+    section {
+      &.exhibitors {
+        padding-top: calc(#{$toolbar-md-height - $content-padding });
+      }
+    }
+  }
+
+
+}

@@ -1,0 +1,25 @@
+page-exhibitor {
+  /* header shadow */
+  .toolbar-ios,
+  .toolbar-md {
+    box-shadow: $toolbar-shadow;
+  }
+
+  /* 1st section top padding */
+  .content {}
+  .content-ios {
+    section {
+      &.exhibitor {
+        padding-top: calc(#{$toolbar-ios-height - $content-padding });
+      }
+    }
+  }
+  .content-md {
+    section {
+      &.exhibitor {
+        padding-top: calc(#{$toolbar-md-height - $content-padding });
+      }
+    }
+  }
+
+}

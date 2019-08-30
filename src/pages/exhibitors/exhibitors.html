@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-refresher (ionRefresh)="refreshExhibitors($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <section class="exhibitors">
+
+    <ion-list no-lines no-padding>
+
+      <ion-item no-padding (click)="goToExhibitorsPage(speaker)" *ngFor="let exhibitor of exhibitors" class="exhibitor-card">
+      <ion-grid>
+        <ion-row align-items-center>
+
+        </ion-row>
+      </ion-grid>
+
+    </ion-item>
+
+    </ion-list>
+
+  </section>
+</ion-content>
