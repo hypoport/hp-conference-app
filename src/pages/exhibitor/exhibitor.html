@@ -1,11 +1,48 @@
 <ion-header>
   <ion-navbar>
+    <ion-title>{{exhibitor ? exhibitor.title : 'Aussteller'}}</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content no-padding parallax-header>
 
-  <section class="exhibitor">
+  <section class="hero-image" *ngIf="exhibitor?.headerImg" [style.backgroundImage]="'url('+ exhibitor?.headerImg +')'"></section>
 
-  </section>
+  <main class="main-content exhibitor-detail" padding>
+
+    <ion-card class="offset-logo parallax-card-slider" *ngIf="exhibitor.logoImg">
+      <img class="exhibitor-logo" src="{{exhibitor?.logoImg}}" />
+    </ion-card>
+
+    <h1>{{ exhibitor?.title }}</h1>
+    <div class="exhibitor-description" [innerHTML]="exhibitor.description">
+    </div>
+
+    <ion-grid class="support-global support-card selectable-text" *ngIf="(exhibitor.url || exhibitor.phone || exhibitor.email)">
+      <ion-row>
+        <ion-col col-12 text-center>
+          <h2>Kontakt zum Aussteller</h2>
+        </ion-col>
+        <ion-col auto no-padding text-center *ngIf="exhibitor.url || exhibitor.phone || exhibitor.email">
+
+          <button ion-button small round color="cloud" icon-start (click)="openBrowser(exhibitor.url)" *ngIf="exhibitor.url">
+            <ion-icon name="globe"></ion-icon>
+              {{ exhibitor.url | nicerUrl }}
+          </button>
+
+          <button ion-button small round color="cloud" icon-start (click)="openTel(exhibitor.phone)" *ngIf="exhibitor.phone">
+            <ion-icon name="call"></ion-icon>
+              {{ exhibitor.phone }}
+          </button>
+
+          <button ion-button small round color="cloud" icon-start (click)="openMail(exhibitor.email)" *ngIf="exhibitor.email">
+            <ion-icon name="paper-plane"></ion-icon>
+              {{ exhibitor.email }}
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </main>
+
 </ion-content>

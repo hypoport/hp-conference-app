@@ -12,17 +12,23 @@
   <section class="exhibitors">
 
     <ion-list no-lines no-padding>
-
-      <ion-item no-padding (click)="goToExhibitorsPage(speaker)" *ngFor="let exhibitor of exhibitors" class="exhibitor-card">
-      <ion-grid>
-        <ion-row align-items-center>
-
-        </ion-row>
-      </ion-grid>
-
-    </ion-item>
-
+        <ion-item no-padding (click)="goToExhibitorsPage(exhibitor)" *ngFor="let exhibitor of exhibitors" class="exhibitor-card">
+        <ion-grid>
+          <ion-row align-items-center>
+                <!-- speaker profile picture -->
+                <ion-col col-3 class="exhibitor-image">
+                  <ion-avatar *ngIf="exhibitor.profileFoto">
+                    <img [src]="exhibitor.profileFoto" alt="">
+                  </ion-avatar>
+                </ion-col>
+                <!-- speaker profile data (name/company/jobtitle) -->
+                <ion-col auto class="meta-box">
+                  <h3 class="meta-name" *ngIf="exhibitor.title">{{ exhibitor.title }}</h3>
+                  <h5 class="meta-data">{{ exhibitor.company ? exhibitor.company : '' }}</h5>
+                </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
     </ion-list>
-
   </section>
 </ion-content>

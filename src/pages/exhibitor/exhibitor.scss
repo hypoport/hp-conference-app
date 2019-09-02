@@ -22,4 +22,33 @@ page-exhibitor {
     }
   }
 
+  .offset-logo {
+      margin-top: -35px;
+      padding-top: 0px;
+      padding-bottom: 0;
+      margin-left: 0px;
+      margin-right: 0px;
+      width: 100%;
+  }
+  .exhibitor-logo {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    display: inline-block;
+    margin: 20px auto;
+  }
+
+  .support-global {
+    margin-top: 25px;
+        .button-ios,
+        .button-md {
+          margin-left: 0;
+          &.button-small-ios,
+          &.button-small-md {
+            font-size: $font-h5;
+          }
+        }
+  }
+
+
 }

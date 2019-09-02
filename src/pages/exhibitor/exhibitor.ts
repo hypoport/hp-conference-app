@@ -1,8 +1,10 @@
 import {Component} from '@angular/core';
-import {ActionSheetButton, ActionSheetController, ActionSheetOptions, App, Config, Refresher, ToastController} from 'ionic-angular';
+import {ActionSheetButton, ActionSheetController, ActionSheetOptions, App, Config, Refresher, ToastController, NavParams} from 'ionic-angular';
 import {GlobalProvider} from "../../providers/global/global";
 import {ExhibitorService} from "../../providers/exhibitor/exhibitor-service";
 import {Exhibitor} from "../../models/exhibitor";
+import { CallNumber } from '@ionic-native/call-number';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @Component({
   selector: 'page-exhibitor',
@@ -17,8 +19,12 @@ export class ExhibitorPage {
     private toastCtrl: ToastController,
     private config: Config,
     private actionSheetCtrl: ActionSheetController,
+    public navParams: NavParams,
     private app: App,
+    private iab: InAppBrowser,
+    private callNumber: CallNumber
     ) {
+      this.exhibitor = navParams.get('exhibitor');
   }
 
   ionViewDidEnter(){
@@ -29,30 +35,24 @@ export class ExhibitorPage {
     }*/
   }
 
-  openContact(exhibitor: Exhibitor) {
-    let mode = this.config.get('mode');
-
-    let actionSheet = this.actionSheetCtrl.create({
-      title: 'Contact',
-      buttons: [
-        {
-          text: `Email ( ${exhibitor.email} )`,
-          icon: mode !== 'ios' ? 'mail' : null,
-          handler: () => {
-            window.open('mailto:' + exhibitor.email);
-          }
-        } as ActionSheetButton,
-        {
-          text: `Call ( ${exhibitor.phone} )`,
-          icon: mode !== 'ios' ? 'call' : null,
-          handler: () => {
-            window.open('tel:' + exhibitor.phone);
-          }
-        } as ActionSheetButton
-      ]
-    } as ActionSheetOptions);
-
-    actionSheet.present();
+  public openBrowser(url){
+    if(url){
+      if(url != "") this.iab.create(url,'_system',{location:'no'});
+    }
   }
+
+  public openMail(mail){
+    if(mail){
+      window.open(`mailto:${mail}`, '_system');
+    }
+  }
+  public openTel(tel){
+    if(tel){
+      this.callNumber.callNumber(tel, false)
+        .then(res => console.log('Launched dialer!', res))
+        .catch(err => console.log('Error launching dialer', err));
+    }
+  }
+
 
 }
