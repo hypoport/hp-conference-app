@@ -1,0 +1,79 @@
+ion-content[parallax-header]{
+
+  /* 1st section top margin */
+    .hero-image {
+      margin-top: calc(#{$toolbar-ios-height * 0.3});
+    }
+
+
+    main {
+
+      transform: translate3d(0,32px,10px);
+      // background: linear-gradient(to bottom,
+      //               rgba($background-color, .85) 0,
+      //               rgba($background-color, .95) 16px,
+      //               rgba($background-color, 100) 32px);
+
+      background: $background-color;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: -18px;
+        width: 18px;
+        height: 18px;
+
+        right: calc(#{$content-padding * 0.4 });
+
+        background: radial-gradient(circle at 0 0, rgba(204,0,0,0) 18px, $background-color 18px);
+        background-size: 100%;
+        background-repeat: no-repeat;
+
+
+        // top: calc(-#{$content-padding * 1});
+        // left: calc(#{$content-padding + 0 });
+        // right: calc(#{$content-padding + 0 });
+        // border-top-left-radius: calc(#{$border-radius * 8});
+        // border-top-right-radius: calc(#{$border-radius * 8});
+        //
+        // height: calc(#{$content-padding + 0 });
+        // background: linear-gradient(to bottom,
+        //             rgba($background-color, .75) 0,
+        //             rgba($background-color, .85) 100%);
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: -18px;
+        width: 18px;
+        height: 18px;
+        left: calc(#{$content-padding * 0.4 });
+
+        background: radial-gradient(circle at 100% 0, rgba(204,0,0,0) 18px, $background-color 18px);
+        background-size: 100%;
+        background-repeat: no-repeat;
+      }
+    }
+
+
+
+
+
+    /* size + position conv hero image */
+    .hero-image {
+        min-height: 380px;
+
+        padding: 0;
+        margin-left: calc(#{$content-padding * 0.4 });
+        margin-right: calc(#{$content-padding * 0.4 });
+
+        /* shape */
+        border-radius: calc(#{$border-radius * 3});
+
+        /* image position */
+        background-position: center center;
+        background-size: auto 102%;
+        background-repeat: no-repeat;
+    }
+  }

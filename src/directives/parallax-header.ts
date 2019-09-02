@@ -24,16 +24,17 @@ export class ParallaxHeader {
         let content = this.element.nativeElement.getElementsByClassName('scroll-content')[0];
         this.header = content.getElementsByClassName('hero-image')[0];
         this.cardslider = content.getElementsByClassName('parallax-card-slider')[0];
-
-        this.headerHeight = this.header.clientHeight;
-
-        this.renderer.setElementStyle(this.header, 'webkitTransformOrigin', 'center bottom');
-        this.renderer.setElementStyle(this.header, 'background-size', 'cover');
-
+        if(this.header){
+          this.headerHeight = this.header.clientHeight;
+          this.renderer.setElementStyle(this.header, 'webkitTransformOrigin', 'center bottom');
+          this.renderer.setElementStyle(this.header, 'background-size', 'cover');
+        }
     }
 
     onWindowResize(ev){
+      if(this.header){
         this.headerHeight = this.header.clientHeight;
+      }
     }
 
     onContentScroll(ev){
@@ -53,11 +54,11 @@ export class ParallaxHeader {
             this.translateAmt = 0;
             this.scaleAmt = -ev.scrollTop / this.headerHeight + 1;
         }
-
-        this.renderer.setElementStyle(this.header, 'webkitTransform', 'translate3d(0,'+this.translateAmt+'px,0) scale('+this.scaleAmt+','+this.scaleAmt+')');
-
+        if(this.header){
+          this.renderer.setElementStyle(this.header, 'webkitTransform', 'translate3d(0,'+this.translateAmt+'px,0) scale('+this.scaleAmt+','+this.scaleAmt+')');
+        }
         if(ev.scrollTop < 275){
-          this.renderer.setElementStyle(this.cardslider, 'webkitTransform', 'translate3d(0,'+(-this.translateAmt/4)+'px,0)');
+          if(this.cardslider) this.renderer.setElementStyle(this.cardslider, 'webkitTransform', 'translate3d(0,'+(-this.translateAmt/4)+'px,0)');
         }
 
     }
