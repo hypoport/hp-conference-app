@@ -5,6 +5,7 @@ import { SessionListComponent } from './session-list/session-list';
 
 import { TrustByPass } from './../pipes/trust-bypass';
 import { NicerDay } from './../pipes/nicer-day';
+import { NicerUrl } from './../pipes/nicer-url';
 import { ParallaxHeader } from './../directives/parallax-header';
 
 @NgModule({
@@ -12,14 +13,16 @@ import { ParallaxHeader } from './../directives/parallax-header';
 		SessionListComponent,
 		ParallaxHeader,
 		TrustByPass,
-		NicerDay
+		NicerDay,
+		NicerUrl
 	],
 	imports: [IonicModule],
 	exports: [
 		SessionListComponent,
 		ParallaxHeader,
 		TrustByPass,
-		NicerDay
+		NicerDay,
+		NicerUrl
 	]
 })
 export class ComponentsModule {}
