@@ -30,8 +30,8 @@
 
 
         <ion-col auto class="profile-data">
-          <h3 class="speaker-name" *ngIf="speaker.name">{{ speaker.name }}</h3>
-          <h5 class="speaker-data">{{ speaker.company ? speaker.company : '' }}<span *ngIf="speaker.company && speaker.jobTitle">, </span>{{ speaker.jobTitle ? speaker.jobTitle : ''}}</h5>
+          <h3 class="speaker-name selectable-text" *ngIf="speaker.name">{{ speaker.name }}</h3>
+          <h5 class="speaker-data selectable-text">{{ speaker.company ? speaker.company : '' }}<span *ngIf="speaker.company && speaker.jobTitle">, </span>{{ speaker.jobTitle ? speaker.jobTitle : ''}}</h5>
 
         </ion-col>
 
@@ -40,7 +40,7 @@
 
 
 
-    <p class="short-description" [innerHtml]="speaker?.description"></p>
+    <p class="short-description selectable-text" [innerHtml]="speaker?.description"></p>
 
     <div class="speaker-agenda" *ngIf="speakerSessions.length > 0">
       <h3>Vorträge von {{speaker.name}}</h3>
