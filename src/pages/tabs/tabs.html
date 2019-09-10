@@ -18,5 +18,5 @@
   <ion-tab [root]="infoPage" tabTitle="{{globalProvider.getLabel('navInfo')}}" tabIcon="home" (ionSelect)="tabsChange($event)"></ion-tab>
   <ion-tab [root]="agendaPage" tabTitle="{{globalProvider.getLabel('navAgenda')}}" tabIcon="information-circle" (ionSelect)="tabsChange($event)"></ion-tab>
   <ion-tab [root]="speakerPage" tabTitle="{{globalProvider.getLabel('navSpeaker')}}" tabIcon="contacts" (ionSelect)="tabsChange($event)"></ion-tab>
-  <ion-tab [root]="exhibitorsPage" tabTitle="{{globalProvider.getLabel('navExhibitor')}}" tabIcon="easel" (ionSelect)="tabsChange($event)"></ion-tab>
+  <ion-tab [root]="exhibitorsPage" *ngIf="globalProvider.conferenceOptions?.exhibitors" tabTitle="{{globalProvider.getLabel('navExhibitor')}}" tabIcon="easel" (ionSelect)="tabsChange($event)"></ion-tab>
 </ion-tabs>

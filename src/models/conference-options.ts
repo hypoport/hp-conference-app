@@ -2,6 +2,7 @@ export class ConferenceOptions {
   noNotifications: boolean = false;
   favoriteInAgenda: boolean = true;
   markDaysInAgenda: boolean = true;
+  exhibitors: boolean = false;
   keyVisualPlacement: string = 'center center';
   labels: any = {
     homeDirections: 'Veranstaltungsort',
