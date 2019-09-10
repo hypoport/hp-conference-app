@@ -5,6 +5,11 @@ page-exhibitor {
     box-shadow: $toolbar-shadow;
   }
 
+  .exhibitor-subheadline {
+    padding: 3px 0px;
+    opacity: 0.7;
+  }
+
   /* 1st section top padding */
   .content {}
   .content-ios {
@@ -23,12 +28,12 @@ page-exhibitor {
   }
 
   .offset-logo {
-      margin-top: -35px;
-      padding-top: 0px;
-      padding-bottom: 0;
-      margin-left: 0px;
-      margin-right: 0px;
-      width: 100%;
+    margin-top: -35px;
+    padding-top: 0px;
+    padding-bottom: 0;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 100%;
   }
   .exhibitor-logo {
     max-width: 100%;

@@ -22,5 +22,39 @@ page-exhibitors {
     }
   }
 
+  .card-header {
+    &.with-background {
+      position: relative;
+      margin-bottom: 56px;
+    }
+  }
+
+  .logo-wrap {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    text-align: center;
+    .sub-card {
+      margin-top: -36px;
+      padding: 20px 10px;
+      background-color: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      display: inline-block;
+      box-shadow: 0 3px 6px -3px rgba(32, 32, 32, 0.125), 0 0px 14px 0px rgba(32, 32, 32, 0.1) !important;
+    }
+    .logo-image {
+      display: inline-block;
+      max-width: 70%;
+      height: auto;
+      width: 220px;
+    }
+  }
+
+  .exhibitor-card {
+    ion-label {
+      overflow: visible;
+    }
+  }
 
 }

@@ -152,34 +152,42 @@
 
             <h3 class="parallel-session-title" [innerHTML]="parallelSession.title"></h3>
 
+            <div class="speaker inline-speaker" *ngIf="parallelSession?.speakers && parallelSession?.speakers.length">
+              <ion-avatar *ngFor="let speaker of parallelSession.speakers">
+                <img src="{{speakerById[speaker].profileFoto}}" *ngIf="speakerById[speaker]?.profileFoto">
+                <div class="empty-avatar" *ngIf="!speakerById[speaker]?.profileFoto"></div>
+              </ion-avatar>
 
+              <div class="speaker-name" *ngIf="parallelSession?.speakers.length >= 1">
+                  {{ parallelSession?.speakers.length >= 2 ? speakerById[parallelSession.speakers[0]]?.name+',&nbsp;' : speakerById[parallelSession.speakers[0]]?.name }}
+              </div>
+              <div class="speaker-name" *ngIf="parallelSession?.speakers.length >= 2">
+                {{ parallelSession?.speakers.length >= 3 ? speakerById[parallelSession.speakers[1]]?.name+'&nbsp;' : speakerById[parallelSession.speakers[1]]?.name }}
+              </div>
+              <div class="speaker-name" *ngIf="parallelSession?.speakers.length >= 3">
+                  + {{ parallelSession?.speakers.length-2 }} weitere
+              </div>
 
-            <ion-grid class="speaker" *ngIf="parallelSession?.speakers && parallelSession?.speakers.length">
-              <ng-container *ngFor="let speaker of parallelSession.speakers">
+            </div>
+
+            <!-- old view toto deprec? <ion-grid class="speaker" *ngIf="parallelSession?.speakers && parallelSession?.speakers.length">
+             <ng-container *ngFor="let speaker of parallelSession.speakers">
               <ion-row align-items-center>
-
 
                 <ion-col col-2 align-self-center class="profile-image">
                   <ion-avatar item-start *ngIf="speakerById[speaker]?.profileFoto">
                     <img src="{{speakerById[speaker].profileFoto}}">
                   </ion-avatar>
-
                 </ion-col>
 
                 <ion-col auto class="profile-data" *ngIf="speakerById[speaker]?.name">
-
                     <h3 class="speaker-name">{{speakerById[speaker].name}}</h3>
                     <h5 class="speaker-data">{{speakerById[speaker].company}}</h5>
-
-
                 </ion-col>
 
-
-
-
           </ion-row>
-              </ng-container>
-            </ion-grid>
+        </ng-container>
+      </ion-grid> -->
 
             </div>
           </ion-card-content>
