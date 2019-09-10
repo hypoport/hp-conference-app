@@ -98,7 +98,7 @@
 <ng-container *ngIf="doGroup && layout == 'parallel-cards'"><!-- Gruppierung und Slider Cards -->
 <div class="day-group" *ngFor="let sessionsOfDay of groupedParallelSessions; let i = index">
 
-<h2 class="date-heading top-head">{{i+1 | nicerDay}}</h2>
+<h2 class="date-heading top-head"  *ngIf="globalProvider.conferenceOptions.markDaysInAgenda">{{i+1 | nicerDay}}</h2>
 <h4 class="date-heading sub-head">{{ (sessionsOfDay[i] && sessionsOfDay[i][0].timeStart) | date: 'dd.MMM y': 'UTC'}}</h4>
 
 <ng-container class="paralell-session-group" *ngFor="let parallelSessions of sessionsOfDay; let p = index">
