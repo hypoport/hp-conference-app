@@ -11,6 +11,7 @@ export class ConferenceOptions {
     sessionRaitingInfo: 'Wie fanden Sie die Session? Was können wir besser machen? Wir freuen uns über Ihr Feedback!',
     sessionRaitingPlaceholder: 'Ihre Bewertung…',
     sessionRaitingSuccess: 'Vielen Dank für Ihr Feedback!',
+    sessionPlusOneSpeaker: 'weitere',
     roombookingTitle: 'Raumbuchungen',
     roombookingInfo: 'Buche hier deinen Raum für bilaterale Gespräche.',
     navInfo: 'Info',

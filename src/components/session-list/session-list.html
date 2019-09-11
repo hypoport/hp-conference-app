@@ -165,7 +165,7 @@
                 {{ parallelSession?.speakers.length >= 3 ? speakerById[parallelSession.speakers[1]]?.name+'&nbsp;' : speakerById[parallelSession.speakers[1]]?.name }}
               </div>
               <div class="speaker-name" *ngIf="parallelSession?.speakers.length >= 3">
-                  + {{ parallelSession?.speakers.length-2 }} weitere
+                  + {{ parallelSession?.speakers.length-2 }} {{globalProvider.getLabel('sessionPlusOneSpeaker')}}
               </div>
 
             </div>
