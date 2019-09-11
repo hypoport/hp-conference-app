@@ -28,7 +28,7 @@ export class GlobalProvider {
 	  this._apiURL = ENV.apiROOT;
     this._gaKey = ENV.gaKey;
 	  this._qrPayloadSecret = ENV.qrPayloadSecret;
-	  this._appVersion = '1.0.6';
+	  this._appVersion = '1.0.7';
   }
 
   get conferenceId(): string {
