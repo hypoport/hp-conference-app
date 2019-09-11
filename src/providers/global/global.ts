@@ -68,7 +68,6 @@ export class GlobalProvider {
 
     let defaultMerged = Object.assign({}, defaultOptions, value);
     this._conferenceOptions = defaultMerged;
-    this.activeFilters = [];
   }
  /*
     Tracking and Versioning
