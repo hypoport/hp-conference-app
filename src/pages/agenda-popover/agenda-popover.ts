@@ -4,6 +4,7 @@ import { AgendaService } from '../../providers/agenda/agenda-service';
 import { GlobalProvider } from "../../providers/global/global";
 import { Session } from "../../models/session";
 import { SessionCategory } from "../../models/session-category";
+import {Events} from "ionic-angular";
 
 /**
  * Generated class for the HomePopoverPage page.
@@ -19,18 +20,18 @@ import { SessionCategory } from "../../models/session-category";
 })
 export class AgendaPopoverPage {
 
-
   availableFilter: Array<SessionCategory> = [];
   availableRooms: Array<string> = [];
 
   constructor(private agendaService: AgendaService,
               private navParams: NavParams,
-              private globalProvider: GlobalProvider) {
+              private globalProvider: GlobalProvider,
+              private events: Events) {
 
   }
 
   ngOnInit(){
-
+    console.log(this.globalProvider.conferenceOptions);
     this.agendaService.getAgenda(this.globalProvider.conferenceId).then((agenda) => {
         this.availableFilter = [];
         this.availableRooms = [];
@@ -61,6 +62,11 @@ export class AgendaPopoverPage {
       this.contentEle = this.navParams.data.contentEle;
       this.textEle = this.navParams.data.textEle;
     }*/
+  }
+
+  updateFilter(newFilter){
+    this.globalProvider.toggleAgendaFilter(newFilter);
+    this.events.publish('session:filter', newFilter);
   }
 
   convertToBorderColor(hex: string){

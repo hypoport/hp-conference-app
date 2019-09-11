@@ -103,4 +103,17 @@ page-agenda {
       }
     }
 
+    .filter-bar {
+      overflow: hidden;
+      margin-top: -20px;
+      .filter {
+        margin-right: 4px;
+        padding: 2px 8px;
+        border-radius: 14px;
+        background-color: darken(color($colors, light),5%);
+        display: inline-block;
+        float: left;
+      }
+    }
+
 }

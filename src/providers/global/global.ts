@@ -22,7 +22,7 @@ export class GlobalProvider {
   private _qrPayloadSecret: string;
   private _appVersion: string;
 
-  public activeFilters: Array<string>;
+  public activeFilters: Array<string> = [];
 
   constructor() {
 	  this._apiURL = ENV.apiROOT;
@@ -68,6 +68,7 @@ export class GlobalProvider {
 
     let defaultMerged = Object.assign({}, defaultOptions, value);
     this._conferenceOptions = defaultMerged;
+    this.activeFilters = [];
   }
  /*
     Tracking and Versioning
@@ -130,6 +131,16 @@ export class GlobalProvider {
  public removeAgendaFilter(filter: string){
    for(let i = 0; i < this.activeFilters.length; i++){
      if(this.activeFilters[i] == filter) this.activeFilters.splice(i,1);
+   }
+   return this.activeFilters;
+ }
+ public toggleAgendaFilter(filter: string){
+   if(this.activeFilters.indexOf(filter) == -1){
+     this.activeFilters.push(filter);
+   } else {
+     for(let i = 0; i < this.activeFilters.length; i++){
+       if(this.activeFilters[i] == filter) this.activeFilters.splice(i,1);
+     }
    }
    return this.activeFilters;
  }

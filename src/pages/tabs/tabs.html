@@ -3,8 +3,9 @@
     <ion-title>{{ title }}</ion-title>
     <ion-buttons end>
 
-      <button ion-button color="lightgrey" icon-only (click)="openPopoverAgenda($event)" *ngIf="this.title == 'Agenda' && globalProvider.conferenceOptions?.filter.enabled && (globalProvider.conferenceOptions?.filter.rooms || globalProvider.conferenceOptions?.filter.category)">
+      <button class="filter-button" ion-button color="lightgrey" icon-only (click)="openPopoverAgenda($event)" *ngIf="this.title == 'Agenda' && globalProvider.conferenceOptions?.filter.enabled && (globalProvider.conferenceOptions?.filter.rooms || globalProvider.conferenceOptions?.filter.category)">
         <ion-icon name="options"></ion-icon>
+        <ion-badge *ngIf="globalProvider.activeFilters.length">{{globalProvider.activeFilters.length}}</ion-badge>
       </button>
       <button ion-button color="lightgrey" icon-only (click)="openPopover($event)">
         <ion-icon ios="md-more" md="md-more"></ion-icon>

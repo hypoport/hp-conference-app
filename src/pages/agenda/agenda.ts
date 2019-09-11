@@ -33,6 +33,22 @@ export class AgendaPage {
       this.segmentChanged(null);
       this.favoritesService.rescheduleNotifications(this.agenda,this.globalProvider.conferenceId);
     });
+    this.events.subscribe('session:filter', (newfilter) => {
+      this.sessions = this.agenda.sessions;
+      let filteredSessions = this.sessions.filter((session) => {
+        if(!this.globalProvider.activeFilters.length) return true;
+        let found = false;
+        for(let i = 0; i < session.category.length; i++){
+          if(this.globalProvider.activeFilters.indexOf(session.category[i].name) != -1){
+            found = true;
+          }
+        }
+        if(this.globalProvider.activeFilters.indexOf(session.location) != -1) found = true;
+        return found;
+      });
+      this.sessions = filteredSessions;
+      this.favoSessions = this.sessions.filter((session) => session.isFavorite);
+    });
   }
 
   ionViewWillEnter(){
@@ -40,6 +56,18 @@ export class AgendaPage {
       this.favoritesService.loadFavorites(agenda, this.globalProvider.conferenceId).then(()=>{
         this.agenda = agenda;
         this.sessions = agenda.sessions;
+        let filteredSessions = this.sessions.filter((session) => {
+          if(!this.globalProvider.activeFilters.length) return true;
+          let found = false;
+          for(let i = 0; i < session.category.length; i++){
+            if(this.globalProvider.activeFilters.indexOf(session.category[i].name) != -1){
+              found = true;
+            }
+          }
+          if(this.globalProvider.activeFilters.indexOf(session.location) != -1) found = true;
+          return found;
+        });
+        this.sessions = filteredSessions;
         this.favoSessions = this.sessions.filter((session) => session.isFavorite);
       });
 
@@ -51,11 +79,28 @@ export class AgendaPage {
     }*/
   }
 
+  public removeFilter(filter) {
+    this.globalProvider.removeAgendaFilter(filter);
+    this.events.publish('session:filter', filter);
+  }
+
   public refreshAgenda(refresher: Refresher) {
     this.agendaService.loadAgenda(this.globalProvider.conferenceId,this.globalProvider.conferenceToken).then((agenda: Agenda) => {
         this.favoritesService.loadFavorites(agenda, this.globalProvider.conferenceId).then((favorites) => {
           this.agenda = agenda;
           this.sessions = agenda.sessions;
+          let filteredSessions = this.sessions.filter((session) => {
+            if(!this.globalProvider.activeFilters.length) return true;
+            let found = false;
+            for(let i = 0; i < session.category.length; i++){
+              if(this.globalProvider.activeFilters.indexOf(session.category[i].name) != -1){
+                found = true;
+              }
+            }
+            if(this.globalProvider.activeFilters.indexOf(session.location) != -1) found = true;
+            return found;
+          });
+          this.sessions = filteredSessions;
           this.favoSessions = this.sessions.filter((session) => session.isFavorite);
           refresher.complete();
           const toast = this.toastCtrl.create({
@@ -73,6 +118,18 @@ export class AgendaPage {
 	    this.favoritesService.loadFavorites(agenda, this.globalProvider.conferenceId).then((favos) => {
         this.agenda = agenda;
         this.sessions = agenda.sessions;
+        let filteredSessions = this.sessions.filter((session) => {
+          if(!this.globalProvider.activeFilters.length) return true;
+          let found = false;
+          for(let i = 0; i < session.category.length; i++){
+            if(this.globalProvider.activeFilters.indexOf(session.category[i].name) != -1){
+              found = true;
+            }
+          }
+          if(this.globalProvider.activeFilters.indexOf(session.location) != -1) found = true;
+          return found;
+        });
+        this.sessions = filteredSessions;
         this.favoSessions = this.sessions.filter((session) => session.isFavorite);
         console.log(this.favoSessions);
       });

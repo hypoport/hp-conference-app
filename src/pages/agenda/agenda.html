@@ -23,10 +23,17 @@
 
   <section class="agenda {{agenda?.layout ? 'layout-'+agenda.layout : 'layout-linear'}}" >
 
+  <div class="filter-bar" padding *ngIf="globalProvider.activeFilters.length">
+    <h4>Aktive Filter:</h4>
+    <div class="filter" *ngFor="let filter of globalProvider.activeFilters" (click)="removeFilter(filter)">
+      {{filter}}
+      <span class="delete-icon">&times;</span>
+    </div>
+  </div>
 
 	<div [ngSwitch]="activeSegment">
 	  <div *ngSwitchCase="'allSessions'">
-	  	<session-list *ngIf="agenda && agenda.sessions" [sessionList]="agenda.sessions" [layout]="agenda.layout"></session-list>
+	  	<session-list *ngIf="agenda && agenda.sessions" [sessionList]="sessions" [layout]="agenda.layout"></session-list>
 	  </div>
 	  <div *ngSwitchCase="'favoriteSessions'">
 		  <session-list *ngIf="agenda && favoSessions" [sessionList]="favoSessions" [layout]="agenda.layout"></session-list>
