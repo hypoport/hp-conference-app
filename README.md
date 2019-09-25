@@ -12,13 +12,27 @@ Ionic based Hybrid-App, connected to an Event-Backend based on a Wordpress-Plugi
 - [x] Save and Load added Conferences in/from Native Storage
 - [x] Automatical Reload Conference Data, if they changed
 - [x] PushNotifications for next Agenda Points
-- [ ] Star-Raiting + Review for Sessions
+- [x] Star-Raiting + Review for Sessions
 - [ ] Push-Notifications send from backend 
 - [ ] Poll after Conferences
 - [ ] " Real " Userprofiles
 - - [ ] Comments for Sessions
 - - [ ] Chat
 
+
+## env.sample breakdown
+
+```javascript
+ENV = {
+	apiROOT = API Server for retrieving the conference brand by conference key
+	gaKey = GoogleAnalytics-Key
+	qrPayloadSecret = Your Secret String for the symetric QR-Code Hasing
+	skipBranding = boolean; toggle white-labeling 
+	knownBrands = array<string>; array of conference brand keys
+	backendUrls = {'brand' => API Url}; The conference backend hosted on a client site
+	hotFixUrls = {'oldQRCodeUrl' => 'newQRUrl'}; convert QR-Code to another URL, before reading (cut-candidate)
+};
+```
 
 ## Creating a new brand
 
