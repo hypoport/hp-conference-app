@@ -22,7 +22,9 @@ Ionic based Hybrid-App, connected to an Event-Backend based on a Wordpress-Plugi
 
 ## Creating a new brand
 
-1. Create a `config/brand.*brandshorthand*.config.js`. 
+1. Add Brand to the "knownBrands" environment variable. Also adding the "backendUrl".
+
+2. Create a `config/brand.*brandshorthand*.config.js`. 
 
 Open it. Change the brand variable to the brand handle:
 ```js
@@ -31,11 +33,11 @@ let brand = "ep"; // change brand name here
 module.exports [...]
 ```
 
-2. Add `theme/*brandhanle*/variables.scss`
+3. Add `theme/*brandhandle*/variables.scss`
 
 Here you can change the variables and add own brand specific stylings.
 
-3. Add to the npm run-script regen-brands command your new created brand in `package.json`.
+4. Add to the npm run-script regen-brands command your new created brand in `package.json`.
 
 ```
 ionic-app-scripts build --sass ./config/brand.gp.sass.config.js && ionic-app-scripts build --sass ./config/brand.ep.sass.config.js
@@ -45,6 +47,6 @@ ionic-app-scripts build --sass ./config/brand.gp.sass.config.js && ionic-app-scr
 
 External / Backend Preperations for adding brands:
 
-4. Add DB of Conference Plugin to the knwon brand list on tagungsapp.hypoport.de/api/
-5. Add in theme functions the filter for the brandhandle. 
+5. Add DB of Conference Plugin to the knwon brand list on tagungsapp.hypoport.de/api/
+6. Add in theme functions the filter for the brandhandle. 
 `add_filter( 'hp_conv_brand', function(){ return 'ep'; } );`
