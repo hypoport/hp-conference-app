@@ -25,15 +25,15 @@ page-speaker {
 
 
   .profile-image {
+    width: 100%;
+    max-width: 70px;
+    height: auto;
+    align-self: flex-start;
     ion-avatar {
-      display: flex;
-      justify-content: flex-start;
+
       img {
         border-radius: 50%;
         overflow: hidden;
-        width: 70px;
-        height: 70px;
-
       }
     }
   }

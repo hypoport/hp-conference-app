@@ -22,7 +22,7 @@
         <ion-row align-items-center>
 
           <!-- speaker profile picture -->
-          <ion-col col-3 class="profile-image">
+          <ion-col col-2 class="profile-image">
             <ion-avatar *ngIf="speaker.profileFoto">
               <img [src]="speaker.profileFoto" alt="Speaker profile foto">
             </ion-avatar>
@@ -30,7 +30,8 @@
 
           <!-- speaker profile data (name/company/jobtitle) -->
           <ion-col auto class="profile-data">
-              <h3 class="speaker-name" *ngIf="speaker.name">{{ speaker.name }}</h3>
+          <h4 class="speaker-pre-title" *ngIf="speaker.title">{{ speaker.title }}</h4>
+          <h3 class="speaker-name" *ngIf="speaker.name">{{ speaker.name }}</h3>
           <h5 class="speaker-data">{{ speaker.company ? speaker.company : '' }}<span *ngIf="speaker.company && speaker.jobTitle">, </span>{{ speaker.jobTitle ? speaker.jobTitle : ''}}</h5>
 
           </ion-col>

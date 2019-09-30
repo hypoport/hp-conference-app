@@ -33,12 +33,17 @@ page-speakers {
   // }
   .profile-image {
     text-align: center;
+    align-self: flex-start;
   }
   .profile-image img, .profile-image ion-img {
-    width: 54px;
-    height: 54px;
+    width: 100%;
+    max-width: 60px;
+    height: auto;
     margin-left: auto;
     margin-right: auto;
   }
-
+  .speaker-pre-title {
+    margin-top: 3px;
+    margin-bottom: 8px;
+  }
 }

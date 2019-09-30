@@ -6,5 +6,6 @@ export class Speaker {
   company: string;
   email: string;
   phone: string;
+  title: string;
   description: string;
 }
