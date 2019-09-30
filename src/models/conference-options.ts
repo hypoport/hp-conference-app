@@ -7,6 +7,7 @@ export class ConferenceOptions {
   labels: any = {
     homeDirections: 'Veranstaltungsort',
     homeContact: 'Ihr Ansprechpartner',
+    dayInAgenda: 'Konferenztag',
     sessionRaitingButton: 'Bewerten Sie die Session',
     sessionRaitingInfo: 'Wie fanden Sie die Session? Was können wir besser machen? Wir freuen uns über Ihr Feedback!',
     sessionRaitingPlaceholder: 'Ihre Bewertung…',
