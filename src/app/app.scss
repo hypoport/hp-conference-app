@@ -128,8 +128,12 @@ p, ul, li {
   font-weight: $font-normal;
   color: $font-color-secondary;
 
-  a, b, strong {
+  b, strong {
     color: $font-color-primary;
+  }
+  a, b a, strong a, a strong, a b {
+    color: color($colors, secondary);
+    text-decoration: none;
   }
 }
 p.lead,
