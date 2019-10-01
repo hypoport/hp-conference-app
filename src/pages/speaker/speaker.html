@@ -38,7 +38,7 @@
 
 
 
-    <p class="short-description selectable-text" [innerHtml]="speaker?.description"></p>
+    <p #desc class="short-description selectable-text" [innerHtml]="speaker?.description"></p>
 
     <div class="speaker-agenda" *ngIf="speakerSessions.length > 0">
       <h3>Vorträge von {{speaker.name}}</h3>

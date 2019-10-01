@@ -155,7 +155,7 @@
       <section class="intro selectable-text" padding-left padding-right>
 
         <h1>{{ conference?.header }}</h1>
-          <div [innerHtml]="conference?.description"></div>
+          <div #desc [innerHtml]="conference?.description"></div>
         </section>
 
   <section class="maps selectable-text">
@@ -163,7 +163,7 @@
     <div padding>
       <h2>{{globalProvider.getLabel('homeDirections') ? globalProvider.getLabel('homeDirections') : 'Veranstaltungsort'}}</h2>
 
-      <div [innerHtml]="conference?.directions?.description"></div>
+      <div #directions [innerHtml]="conference?.directions?.description"></div>
     </div>
 
     <div #map class="" id="map" padding></div>

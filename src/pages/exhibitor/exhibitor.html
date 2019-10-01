@@ -16,7 +16,7 @@
 
     <h1 class="selectable-text" *ngIf="exhibitor?.title">{{ exhibitor?.title }}</h1>
     <h3 class="exhibitor-subheadline selectable-text" *ngIf="exhibitor.company">{{ exhibitor.company ? exhibitor.company : '' }}</h3>
-    <div class="exhibitor-description selectable-text" [innerHTML]="exhibitor.description">
+    <div #desc class="exhibitor-description selectable-text" [innerHTML]="exhibitor.description">
     </div>
 
     <ion-grid class="support-global support-card selectable-text" *ngIf="(exhibitor.url || exhibitor.phone || exhibitor.email)">

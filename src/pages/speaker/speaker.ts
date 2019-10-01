@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Speaker } from "../../models/speaker";
 import { Session } from "../../models/session";
 import { GlobalProvider } from "../../providers/global/global";
 import { AgendaService } from "../../providers/agenda/agenda-service";
+import { BrowserService } from '../../providers/browser-service/browser-service';
 
 /**
  * Generated class for the SpeakerPage page.
@@ -19,6 +20,8 @@ import { AgendaService } from "../../providers/agenda/agenda-service";
 })
 export class SpeakerPage {
 
+  @ViewChild('desc') desc: ElementRef;
+
   speaker: Speaker;
   speakerSessions: Array<Session> = [];
 
@@ -26,6 +29,7 @@ export class SpeakerPage {
   			public navParams: NavParams,
   			private agendaService: AgendaService,
   			private globalProvider: GlobalProvider,
+        private browserService: BrowserService,
       ) {
     this.speaker = navParams.get('speaker');
   }
@@ -33,7 +37,6 @@ export class SpeakerPage {
   ionViewDidLoad() {
     this.agendaService.getAgenda(this.globalProvider.conferenceId).then((agenda) => {
 	  this.speakerSessions = [];
-	  console.log(agenda);
       if(agenda.sessions){
 	      agenda.sessions.forEach((session,index) => {
 		      console.log(session);
@@ -51,6 +54,7 @@ export class SpeakerPage {
 	      });
       }
     });
+    this.browserService.enableDynamicHyperlinks(this.desc);
   }
 
   ionViewDidEnter(){

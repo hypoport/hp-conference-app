@@ -29,6 +29,8 @@ import {SpeakerService} from '../providers/speaker/speaker-service';
 import {ExhibitorService} from '../providers/exhibitor/exhibitor-service';
 import {FavoritesService} from '../providers/favorites/favorites-service';
 import {NotificationService} from '../providers/notifications/notifications-service';
+import {BrowserService} from '../providers/browser-service/browser-service';
+
 import {HttpClientModule} from '@angular/common/http';
 import {IonicStorageModule} from '@ionic/storage';
 import {Device} from '@ionic-native/device';
@@ -107,7 +109,8 @@ registerLocaleData(localeDe);
     ExhibitorService,
     BrandProvider,
     FavoritesService,
-    NotificationService
+    NotificationService,
+    BrowserService
   ]
 })
 export class AppModule {}

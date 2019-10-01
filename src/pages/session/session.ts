@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild, ElementRef} from '@angular/core';
 import {IonicPage, NavParams, NavController, ModalController} from 'ionic-angular';
 import {Session} from '../../models/session';
 import {SpeakerService} from '../../providers/speaker/speaker-service';
@@ -7,6 +7,7 @@ import {Speaker} from '../../models/speaker';
 import {SpeakerPage} from '../speaker/speaker';
 import {FavoritesService} from "../../providers/favorites/favorites-service";
 import {AgendaService} from "../../providers/agenda/agenda-service";
+import { BrowserService } from '../../providers/browser-service/browser-service';
 
 import {SessionFeedbackPage} from '../session-feedback/session-feedback';
 
@@ -24,6 +25,8 @@ import {SessionFeedbackPage} from '../session-feedback/session-feedback';
 })
 export class SessionPage {
 
+  @ViewChild('desc') desc: ElementRef;
+
   session: Session;
   speakers = new Array<Speaker>();
 
@@ -38,12 +41,13 @@ export class SessionPage {
     private globalProvider: GlobalProvider,
     private favoritesService: FavoritesService,
     private agendaService: AgendaService,
+    private browserService: BrowserService,
     private modalCtrl: ModalController
     ) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SessionPage');
+    this.browserService.enableDynamicHyperlinks(this.desc);
   }
 
   ionViewWillEnter() {

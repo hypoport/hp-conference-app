@@ -4,6 +4,7 @@ import {Session} from '../../models/session';
 
 import {QuickAccessCard} from '../../models/quickaccess-card';
 
+import { BrowserService } from '../../providers/browser-service/browser-service';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { CallNumber } from '@ionic-native/call-number';
 
@@ -21,6 +22,9 @@ declare const google;
 export class HomePage {
 
   @ViewChild('map') mapElement: ElementRef;
+  @ViewChild('desc') desc: ElementRef;
+  @ViewChild('directions') directions: ElementRef;
+
   map: any;
   conference: Conference;
   nextSession: Session;
@@ -34,6 +38,7 @@ export class HomePage {
     private globalProvider: GlobalProvider,
     private toastCtrl: ToastController,
     private iab: InAppBrowser,
+    private browserService: BrowserService,
     private callNumber: CallNumber
     ) {
 
@@ -42,13 +47,14 @@ export class HomePage {
   ionViewDidLoad() {
     this.conference = this.conferenceService.getConference(this.globalProvider.conferenceId);
 
-	this.agendaService.getNextAgendaPoint(this.globalProvider.conferenceId).then((session)=>{
+	  this.agendaService.getNextAgendaPoint(this.globalProvider.conferenceId).then((session)=>{
 		this.nextSession = session;
-		console.log('next');
-		console.log(this.nextSession);
-	});
-
+  		console.log('next');
+  		console.log(this.nextSession);
+  	});
     this.loadDirection();
+    this.browserService.enableDynamicHyperlinks(this.desc);
+    this.browserService.enableDynamicHyperlinks(this.directions);
   }
   ionViewDidEnter(){
 	  this.agendaService.getNextAgendaPoint(this.globalProvider.conferenceId).then((session)=>{
