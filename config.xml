@@ -108,10 +108,10 @@
         <string>Need location access to deliver directions.</string>
     </edit-config>
     <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
-        <string>Need camera access to take pictures</string>
+        <string>Need camera access to scan Conferece QR-Codes.</string>
     </edit-config>
     <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsageDescription">
-        <string>need photo library access to get pictures from there</string>
+        <string>Need photo library access to get pictures from there</string>
     </edit-config>
     <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryAddUsageDescription">
         <string>need photo library access to save pictures there</string>
