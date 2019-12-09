@@ -48,10 +48,8 @@ export class HomePage {
     this.conference = this.conferenceService.getConference(this.globalProvider.conferenceId);
 
 	  this.agendaService.getNextAgendaPoint(this.globalProvider.conferenceId).then((session)=>{
-		this.nextSession = session;
-  		console.log('next');
-  		console.log(this.nextSession);
-  	});
+		    this.nextSession = session;
+    });
     this.loadDirection();
     this.browserService.enableDynamicHyperlinks(this.desc);
     this.browserService.enableDynamicHyperlinks(this.directions);
@@ -59,9 +57,6 @@ export class HomePage {
   ionViewDidEnter(){
 	  this.agendaService.getNextAgendaPoint(this.globalProvider.conferenceId).then((session)=>{
 		this.nextSession = session;
-
-    console.log(this.globalProvider.conferenceOptions);
-
     /*
     if(this.globalProvider.conferenceId){
       this.ga.trackView('conf/ep/'+this.globalProvider.conferenceId+'/home');

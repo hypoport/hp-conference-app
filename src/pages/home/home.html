@@ -3,18 +3,15 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content no-padding parallax-header>
+<ion-content no-padding parallax-header [ngClass]="{'advanced-keyvisual': conference?.headerImage}">
 
   <ion-refresher (ionRefresh)="refreshConference($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-
-
-
-
-
-  <section class="hero-image" [style.backgroundImage]="'url('+ conference?.image +')'" [style.backgroundPosition]="globalProvider.conferenceOptions.keyVisualPlacement"></section>
+  <section class="hero-image" [ngClass]="{'advanced-placement': conference?.headerImage}">
+    <img [src]="(conference?.headerImage ? conference?.headerImage : conference?.image)" />
+  </section>
 
   <main class="main-content" padding>
 

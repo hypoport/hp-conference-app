@@ -14,6 +14,7 @@ export class ParallaxHeader {
     headerHeight: any;
     translateAmt: any;
     scaleAmt: any;
+    slowDown: any;
 
     constructor(public element: ElementRef, public renderer: Renderer){
 
@@ -25,7 +26,7 @@ export class ParallaxHeader {
         this.header = content.getElementsByClassName('hero-image')[0];
         this.cardslider = content.getElementsByClassName('parallax-card-slider')[0];
         if(this.header){
-          this.headerHeight = this.header.clientHeight;
+          this.headerHeight = this.header.offsetHeight;
           this.renderer.setElementStyle(this.header, 'webkitTransformOrigin', 'center bottom');
           this.renderer.setElementStyle(this.header, 'background-size', 'cover');
         }
@@ -33,7 +34,7 @@ export class ParallaxHeader {
 
     onWindowResize(ev){
       if(this.header){
-        this.headerHeight = this.header.clientHeight;
+        this.headerHeight = this.header.offsetHeight;
       }
     }
 
@@ -47,15 +48,23 @@ export class ParallaxHeader {
 
     updateParallaxHeader(ev){
 
+        if(!this.headerHeight) this.headerHeight = this.header.offsetHeight
+      
+        this.slowDown = (this.headerHeight-(ev.scrollTop*1.4))/this.headerHeight;
+
         if(ev.scrollTop >= 0){
-            this.translateAmt = ev.scrollTop / 2;
+            this.translateAmt = (ev.scrollTop*0.64);
             this.scaleAmt = 1;
         } else {
             this.translateAmt = 0;
             this.scaleAmt = -ev.scrollTop / this.headerHeight + 1;
         }
         if(this.header){
-          this.renderer.setElementStyle(this.header, 'webkitTransform', 'translate3d(0,'+this.translateAmt+'px,0) scale('+this.scaleAmt+','+this.scaleAmt+')');
+          if(this.slowDown > -0.4){
+            this.renderer.setElementStyle(this.header, 'webkitTransform', 'translate3d(0,'+(this.translateAmt*this.slowDown)+'px,0) scale('+this.scaleAmt+','+this.scaleAmt+')');
+          } else if(this.slowDown > -1) {
+            this.renderer.setElementStyle(this.header, 'webkitTransform', 'translate3d(0,'+((this.translateAmt*this.slowDown) - (this.translateAmt*this.slowDown)*0.1 )+'px,0) scale('+this.scaleAmt+','+this.scaleAmt+')');
+          }
         }
         if(ev.scrollTop < 275){
           if(this.cardslider) this.renderer.setElementStyle(this.cardslider, 'webkitTransform', 'translate3d(0,'+(-this.translateAmt/4)+'px,0)');

@@ -1,11 +1,5 @@
 ion-content[parallax-header]{
 
-  /* 1st section top margin */
-    .hero-image {
-      margin-top: calc(#{$toolbar-ios-height * 0.3});
-    }
-
-
     main {
 
       transform: translate3d(0,32px,10px);
@@ -62,18 +56,76 @@ ion-content[parallax-header]{
 
     /* size + position conv hero image */
     .hero-image {
-        min-height: 380px;
-
+      overflow: hidden;
+      max-height: 380px;
         padding: 0;
         margin-left: calc(#{$content-padding * 0.4 });
         margin-right: calc(#{$content-padding * 0.4 });
-
+        margin-top: calc(#{$toolbar-ios-height * 0.3});
         /* shape */
         border-radius: calc(#{$border-radius * 3});
-
-        /* image position */
-        background-position: center center;
-        background-size: auto 102%;
-        background-repeat: no-repeat;
+        img {
+          border-radius: calc(#{$border-radius * 3});
+          margin-left: auto;
+          margin-right: auto;
+          display: block;
+        }
+      &.advanced-placement {
+        overflow: visible;        
+      }
     }
+
+    @media screen and (max-width: 640px){
+
+      .hero-image {
+        max-height: 350px;
+      }
+
+      .hero-image.advanced-placement img {
+        margin-left: -10%;
+        max-width: 120%;
+        width: 120%;
+      }
+    }
+    @media screen and (max-width: 700px) and (min-width: 640px) {
+
+      .hero-image {
+        max-height: 380px;
+      }
+
+      .hero-image.advanced-placement img {
+        margin-left: -15%;
+        max-width: 130%;
+        width: 130%;
+      }
+    }
+    @media screen and (max-width: 980px) and (min-width: 700px) {
+
+      .hero-image {
+        max-height: 450px;
+      }
+
+      .hero-image.advanced-placement img {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100%;
+        display: block;
+        width: auto;
+      }
+    }
+    @media screen and (min-width: 980px){
+
+      .hero-image {
+        max-height: 520px;
+      }
+
+      .hero-image.advanced-placement img {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 70%;
+        display: block;
+        width: auto;
+      }
+    }
+
   }
