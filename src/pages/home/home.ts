@@ -14,6 +14,7 @@ import {GlobalProvider} from "../../providers/global/global";
 import { ToastController, Refresher, App } from 'ionic-angular';
 
 declare const google;
+declare const window;
 
 @Component({
   selector: 'page-home',
@@ -133,4 +134,16 @@ export class HomePage {
       toast.present();
     });
   }
+  public sliderResponsiveSizes(){
+    if(window.innerWidth >= 1280){
+        return 2.8;
+    } else if(window.innerWidth >= 960){
+        return 2.2;
+    } else if(window.innerWidth >= 700){
+        return 1.8;
+    } else {
+        return 1.2;
+    }
+  }
+
 }

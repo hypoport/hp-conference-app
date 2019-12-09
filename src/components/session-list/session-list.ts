@@ -220,4 +220,16 @@ export class SessionListComponent {
     console.log('mitchLog >> ngOnDestroy: session-list');
   }
 
+  public sliderResponsiveSizes(){
+    if(window.innerWidth >= 1280){
+        return 2.8;
+    } else if(window.innerWidth >= 960){
+        return 2.2;
+    } else if(window.innerWidth >= 700){
+        return 1.25;
+    } else {
+        return 1.14;
+    }
+  }
+
 }
