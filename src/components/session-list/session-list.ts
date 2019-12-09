@@ -25,6 +25,7 @@ export class SessionListComponent {
   doGroup: boolean = true;
   groupedSessions: Array<Array<Session>> = [];
   groupedParallelSessions: Array<Array<Array<Session>>> = [];
+  sliderSize: number = 1.2;
 
   timeOutArr: Array<number> = []; // saves all setTimeouts created by this component
 
@@ -34,6 +35,8 @@ export class SessionListComponent {
   	this.sessions = sessions;
     this.groupedSessions = new Array();
     this.groupedParallelSessions = new Array();
+
+    console.log('session relopad');
 
     // group by days
     let lastKeyDay = "";
@@ -78,6 +81,9 @@ export class SessionListComponent {
       if(!this.groupedParallelSessions[dayIndex][parallelIndex]) this.groupedParallelSessions[dayIndex][parallelIndex] = new Array();
       this.groupedParallelSessions[dayIndex][parallelIndex].push(session);
     });
+
+    this.sliderSize = this.sliderResponsiveSizes();
+
   }
 
   constructor(private app: App, private globalProvider: GlobalProvider, private speakerService: SpeakerService, private favoritesService: FavoritesService) {
@@ -87,6 +93,7 @@ export class SessionListComponent {
   public toggleFavorite(event: Event, session: Session) {
     event.stopPropagation();
     this.favoritesService.toggleFavorite(this.globalProvider.conferenceId, session);
+    setTimeout(() => { session.isFavorite = (session.isFavorite ? false : true); }, 100);
   }
 
   public goToSessionDetail(session: any) {

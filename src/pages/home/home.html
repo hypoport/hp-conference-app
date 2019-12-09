@@ -17,7 +17,7 @@
 
     <section class="service parallax-card-slider">
 
-        <ion-slides #serviceCards card-slides [slidesPerView]="sliderResponsiveSizes()" spaceBetween="0" *ngIf="conference?.quickaccess">
+        <ion-slides #serviceCards card-slides [slidesPerView]="sliderSize" spaceBetween="0" *ngIf="conference?.quickaccess">
 
           <ng-container *ngFor="let card of conference.quickaccess; let i = index">
           <ion-slide *ngIf="card.type != 'updateInfo' || (card.type == 'updateInfo' && globalProvider.appVersion() != card.data)">

@@ -311,8 +311,11 @@ ion-icon {
   // margin-left: -$content-padding;
   // width: calc(100% + #{$content-padding*3});
 }
-.session-card {
-  // max-width: 320px;
+.session-card .slide-zoom {
+  min-height: 150px;
+}
+.agenda-card {
+  min-height: 115px;
 }
 
 

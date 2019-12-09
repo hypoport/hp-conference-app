@@ -31,6 +31,7 @@ export class HomePage {
   nextSession: Session;
 
   updateInterval: any = -1;
+  sliderSize: number = 1.2;
 
   constructor(
     private app: App,
@@ -54,6 +55,12 @@ export class HomePage {
     this.loadDirection();
     this.browserService.enableDynamicHyperlinks(this.desc);
     this.browserService.enableDynamicHyperlinks(this.directions);
+
+    this.sliderSize = this.sliderResponsiveSizes();
+
+  }
+  ionViewWillLeave(){
+    clearInterval(this.updateInterval);
   }
   ionViewDidEnter(){
 	  this.agendaService.getNextAgendaPoint(this.globalProvider.conferenceId).then((session)=>{
