@@ -17,6 +17,8 @@ export class Conference {
   directions: Directions;
   contact: Contact;
   image: string;
+  headerImage: string;
+  walletImage: string;
   brand: string;
   options: ConferenceOptions;
 }

@@ -21,7 +21,7 @@ export class ConferenceOptions {
     navExhibitor: 'Aussteller',
   };
   roombooking: any = {
-    enabled: true,
+    enabled: false,
     template: "Raumplan EP Konferenz 2019",
     browserLink: "",
   };
