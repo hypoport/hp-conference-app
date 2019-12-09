@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
-    "regen-brands": "ionic-app-scripts build --sass ./config/brand.gp.sass.config.js && ionic-app-scripts build --sass ./config/brand.ep.sass.config.js && ionic-app-scripts build --sass ./config/brand.ep-old.sass.config.js && ionic-app-scripts build --sass ./config/brand.fm.sass.config.js && ionic-app-scripts build --sass ./config/brand.step.sass.config.js && ionic-app-scripts build --sass ./config/brand.smit.sass.config.js && ionic-app-scripts build --sass ./config/brand.hori.sass.config.js",
+    "regen-brands": "ionic-app-scripts build --sass ./config/brand.gp.sass.config.js && ionic-app-scripts build --sass ./config/brand.ep.sass.config.js && ionic-app-scripts build --sass ./config/brand.ep-old.sass.config.js && ionic-app-scripts build --sass ./config/brand.fm.sass.config.js && ionic-app-scripts build --sass ./config/brand.step.sass.config.js && ionic-app-scripts build --sass ./config/brand.smit.sass.config.js && ionic-app-scripts build --sass ./config/brand.hori.sass.config.js && ionic-app-scripts build --sass ./config/brand.qp.sass.config.js",
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
     "ionic:build": "npm run-script regen-brands && ionic-app-scripts build",

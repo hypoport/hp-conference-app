@@ -1,0 +1,221 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../../assets/fonts";
+
+
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+$app-direction: ltr;
+
+
+@import "ionic.globals";
+
+
+
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+
+$colors: (
+  primary:    #84bd00,
+  secondary:  #008578,
+  tertiary:   #008578,
+  danger:     #f53d3d,
+  light:      #f7f6f6,
+  red:        #e2001a,
+  white:      #ffffff,
+  cobalt:     #0050ef,
+  offwhite:   #f7f6f6,
+  whitesmoke: #f5f5f6,
+  cloud:      #ecf0f1,
+  silver:     #c0c0c0,
+  lightgrey:  #d3d3d3,
+  darkgrey:   #8c8c8c,
+  charcoal:   #444444,
+  dark:       #232323,
+  black:      #000000
+);
+
+$agendaCategories: (
+  ws_a: (
+    base: #e2001a,
+    light: lighten(#e2001a, 46%),
+    dark: darken(#e2001a, 10%),
+  ),
+  ws_b: (
+    base: lighten(#e2001a,5%),
+    light: desaturate(lighten(#e2001a, 67%),40%),
+    dark: darken(#e2001a, 7%),
+  ),
+  ws_c: (
+    base: saturate(#e2001a,25%),
+    light: lighten(#e2001a, 35%),
+    dark: darken(#e2001a, 7%),
+  )
+);
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+
+
+
+$font-size-base:             1.4rem !default;
+$font-size-ios-base:         $font-size-base !default;
+$font-size-md-base:          $font-size-base !default;
+
+$font-family-base:           "IBMPlexSans", "Open Sans" ,-apple-system, "Helvetica Neue", "Roboto", sans-serif !default;
+$font-family-ios-base:       $font-family-base !default;
+$font-family-md-base:        "IBMPlexSans", "Open Sans", "Roboto", sans-serif !default;
+$font-family-wp-base:        "IBMPlexSans", "Open Sans", "Segoe UI", "Noto Sans", sans-serif !default;
+
+
+$text-color:                 color($colors, charcoal) !default;
+$text-ios-color:             $text-color !default;
+$text-md-color:              $text-color !default;
+
+$link-color:                 color($colors, secondary) !default;
+
+$content-padding:            16px !default;
+$content-margin:             16px !default;
+
+/* background color */
+$background-color:           color($colors, offwhite) !default;
+$background-ios-color:       $background-color !default;
+$background-md-color:        $background-color !default;
+
+
+/* toolbar */
+$toolbar-ios-height:         44px !default;
+$toolbar-ios-padding:        4px !default;
+$toolbar-md-height:          56px !default;
+$toolbar-md-padding:         4px !default;
+$toolbar-wp-height:          44px !default;
+$toolbar-wp-padding:         4px !default;
+
+$toolbar-active-color:       $link-color !default;
+
+$toolbar-background:          color($colors, white) !default;
+$toolbar-ios-background:      $toolbar-background !default;
+$toolbar-md-background:       $toolbar-background !default;
+
+$toolbar-border-color:        rgba(0, 0, 0, 0) !default; // rgba(0, 0, 0, 0.12)
+$toolbar-ios-border-color:    $toolbar-border-color !default;
+$toolbar-md-border-color:     $toolbar-border-color !default;
+
+/* tabs bar */
+$tabs-background:             color($colors, white) !default;
+$tabs-ios-background:         $tabs-background !default;
+$tabs-md-background:          $tabs-background !default;
+$tabs-border-color:           rgba(0, 0, 0, 0) !default;
+$tabs-ios-border-color:       rgba(0, 0, 0, 0) !default;
+
+/* lists */
+$list-text-color:             $text-color !default;
+$list-background-color:       $background-color !default;
+$list-border-color:           rgba(0, 0, 0, 0.12) !default;
+
+$list-ios-text-color:         $list-text-color !default;
+$list-ios-border-color:       $list-border-color !default;
+$list-ios-background-color:   $list-background-color !default;
+
+$list-md-text-color:          $list-text-color !default;
+$list-md-border-color:        rgba(0, 0, 0, 0.12) !default;
+$list-md-background-color:    $list-background-color !default;
+
+/* segment filter */
+$segment-button-md-border-bottom-width:         1px !default;
+$segment-button-ios-border-width:               1px !default;
+$segment-button-ios-border-radius:              4px !default;
+$segment-button-ios-height:                     32px !default;
+$segment-button-md-height:                      42px !default;
+
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+
+
+$toolbar-ios-button-font-size:                  1.4rem !default;
+
+
+/* actin sheet */
+$action-sheet-ios-title-color:                  lighten($text-color, 15%) !default;
+// $action-sheet-ios-title-font-size:              1.0rem !default;
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+$button-md-box-shadow: none !default;
+
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+.card-ios.service-card, .card-ios.speaker-card, .card-ios.agenda-card, .card-md.service-card, .card-md.speaker-card, .card-md.agenda-card {
+  box-shadow: 0 3px 6px -3px rgba(32, 32, 32, 0.125), 0 0px 14px 0px rgba(32, 32, 32, 0.1) !important;
+}
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/ionicons/
+
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";
+@import "../../assets/fonts/open-sans";
+@import "../../assets/fonts/IBMPlexSans";
+
+
+.ion-page ion-content {
+  background: linear-gradient(to bottom, #ffffff 0%, #fafafa 100%) !important;
+}
+
+.list-ios .ion-item-sliding, .list-md .ion-item-sliding  {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+.list-ios ion-item-sliding {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+page-home main {
+  background: linear-gradient(to bottom, #ffffff 0%, #fafafa 100%) !important;
+  background-color: transparent !important;
+}
+.item-ios, .item-md {
+  background: transparent !important;
+}
