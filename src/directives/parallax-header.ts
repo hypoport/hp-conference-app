@@ -48,8 +48,8 @@ export class ParallaxHeader {
 
     updateParallaxHeader(ev){
 
-        if(!this.headerHeight) this.headerHeight = this.header.offsetHeight
-      
+        if(!this.headerHeight && this.header) this.headerHeight = this.header.offsetHeight
+
         this.slowDown = (this.headerHeight-(ev.scrollTop*1.4))/this.headerHeight;
 
         if(ev.scrollTop >= 0){
