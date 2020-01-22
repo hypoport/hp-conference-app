@@ -239,4 +239,13 @@ export class SessionListComponent {
     }
   }
 
+  public getAgendaDayOption(i = 0, key = ""){
+    if(!this.globalProvider.conferenceOptions || !this.globalProvider.conferenceOptions.daysInAgenda[i]) return false;
+    if(key && key != ""){
+      return this.globalProvider.conferenceOptions.daysInAgenda[i][key];
+    } else {
+      return this.globalProvider.conferenceOptions.daysInAgenda[i];      
+    }
+  }
+
 }

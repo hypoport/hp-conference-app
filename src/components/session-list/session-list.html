@@ -47,8 +47,22 @@
 <ng-container *ngIf="doGroup && layout != 'parallel-cards'"><!-- Gruppierung -->
 <div class="day-group" *ngFor="let sessionsOfDay of groupedSessions; let i = index">
 
-<h2 class="date-heading top-head" *ngIf="globalProvider.conferenceOptions.markDaysInAgenda">{{i+1 | nicerDay}} {{globalProvider.getLabel('dayInAgenda') ? globalProvider.getLabel('dayInAgenda') : 'Konferenztag'}}</h2>
-<h4 class="date-heading sub-head">{{ (sessionsOfDay[0].timeStart) | date: 'dd.MM.y': 'UTC'}}</h4>
+    <h2 class="date-heading top-head" *ngIf="globalProvider.conferenceOptions.markDaysInAgenda && !getAgendaDayOption(i,'hide')">
+      <ng-container *ngIf="!getAgendaDayOption(i,'overrideText') || getAgendaDayOption(i,'overrideText') == ''">
+        {{i+1 | nicerDay}} {{globalProvider.getLabel('dayInAgenda') ? globalProvider.getLabel('dayInAgenda') : 'Konferenztag'}}
+      </ng-container>
+      <ng-container *ngIf="getAgendaDayOption(i,'overrideText') && getAgendaDayOption(i,'overrideText') != ''">
+        {{getAgendaDayOption(i,'overrideText')}}
+      </ng-container>
+    </h2>
+    <h4 class="date-heading sub-head" *ngIf="!getAgendaDayOption(i,'hideDate')">
+      <ng-container *ngIf="!getAgendaDayOption(i,'overrideDateText') || getAgendaDayOption(i,'overrideDateText') == ''">
+        {{ (sessionsOfDay[0].timeStart) | date: 'dd.MM.y': 'UTC'}}
+      </ng-container>
+      <ng-container *ngIf="getAgendaDayOption(i,'overrideDateText') && getAgendaDayOption(i,'overrideDateText') != ''">
+        {{getAgendaDayOption(i,'overrideDateText')}}
+      </ng-container>
+    </h4>
 <ion-item-sliding
   no-lines
   *ngFor="let session of sessionsOfDay"
@@ -98,8 +112,22 @@
 <ng-container *ngIf="doGroup && layout == 'parallel-cards'"><!-- Gruppierung und Slider Cards -->
 <div class="day-group" *ngFor="let sessionsOfDay of groupedParallelSessions; let i = index">
 
-<h2 class="date-heading top-head"  *ngIf="globalProvider.conferenceOptions.markDaysInAgenda">{{i+1 | nicerDay}} {{globalProvider.getLabel('dayInAgenda') ? globalProvider.getLabel('dayInAgenda') : 'Konferenztag'}}</h2>
-<h4 class="date-heading sub-head">{{ (sessionsOfDay[i] && sessionsOfDay[i][0].timeStart) | date: 'dd.MMM y': 'UTC'}}</h4>
+  <h2 class="date-heading top-head" *ngIf="globalProvider.conferenceOptions.markDaysInAgenda && !getAgendaDayOption(i,'hide')">
+    <ng-container *ngIf="!getAgendaDayOption(i,'overrideText') || getAgendaDayOption(i,'overrideText') == ''">
+      {{i+1 | nicerDay}} {{globalProvider.getLabel('dayInAgenda') ? globalProvider.getLabel('dayInAgenda') : 'Konferenztag'}}
+    </ng-container>
+    <ng-container *ngIf="getAgendaDayOption(i,'overrideText') && getAgendaDayOption(i,'overrideText') != ''">
+      {{getAgendaDayOption(i,'overrideText')}}
+    </ng-container>
+  </h2>
+  <h4 class="date-heading sub-head" *ngIf="!getAgendaDayOption(i,'hideDate')">
+    <ng-container *ngIf="!getAgendaDayOption(i,'overrideDateText') || getAgendaDayOption(i,'overrideDateText') == ''">
+      {{ (sessionsOfDay[i] && sessionsOfDay[i][0].timeStart) | date: 'dd.MMM y': 'UTC'}}
+    </ng-container>
+    <ng-container *ngIf="getAgendaDayOption(i,'overrideDateText') && getAgendaDayOption(i,'overrideDateText') != ''">
+      {{getAgendaDayOption(i,'overrideDateText')}}
+    </ng-container>
+  </h4>
 
 <ng-container class="paralell-session-group" *ngFor="let parallelSessions of sessionsOfDay; let p = index">
 <ion-item-sliding

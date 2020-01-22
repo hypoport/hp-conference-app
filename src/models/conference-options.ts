@@ -1,7 +1,15 @@
+class AgendaDayOptions {
+  hide: boolean = true;
+  overrideText: string;
+  hideDate: boolean = true;
+  overrideDateText: string;
+}
+
 export class ConferenceOptions {
   noNotifications: boolean = false;
   favoriteInAgenda: boolean = true;
   markDaysInAgenda: boolean = true;
+  daysInAgenda: Array<AgendaDayOptions> = [];
   exhibitors: boolean = false;
   keyVisualPlacement: string = 'center center';
   labels: any = {
