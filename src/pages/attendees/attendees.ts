@@ -4,6 +4,7 @@ import { GlobalProvider } from '../../providers/global/global';
 import { ConferenceService } from "../../providers/conference/conference-service";
 import { ToastController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
+import { OverviewPage } from '../overview/overview';
 
 /**
  * Generated class for the AttendeesPage page.
@@ -19,9 +20,11 @@ import { LoadingController } from 'ionic-angular';
 })
 export class AttendeesPage {
 
-  attendees: Array<any>;
-  attendeesFiltered: Array<any>;
-  confPassword: string;
+  attendees: Array<any> = [];
+  attendeesFiltered: Array<any> = [];
+
+  cachedPassword: boolean = true;
+  confPassword: string = "";
 
   constructor(
   public navCtrl: NavController,
@@ -35,12 +38,28 @@ export class AttendeesPage {
   ) {
   }
 
+  ionViewWillEnter(){
+    // if navigated directly or spoiled app cache: redirect to wallet
+    if(!this.globalProvider.conferenceId){
+      this.navCtrl.setRoot(OverviewPage);
+    }
+  }
+
   ionViewDidLoad() {
-    /*if(this.globalProvider.conferenceId){
-      this.ga.trackView('conf/ep/'+this.globalProvider.conferenceId+'/attendees');
-    } else {
-      this.ga.trackView('attendeePage');
-    }*/
+    if(this.globalProvider.conferenceId){
+      this.conferenceService.getConferencePassword(this.globalProvider.conferenceId).then((password)=>{
+        this.cachedPassword = true;
+        if(password && password.length){
+          this.confPassword = password;
+          // wait for page transition
+          setTimeout(()=>{
+            this.getAttendees(this.confPassword, this.globalProvider.conferenceId, this.globalProvider.conferenceToken);
+          },430);
+        } else {
+          this.cachedPassword = false;
+        }
+      });
+    }
   }
 
   getAttendees(conferencePassword: string,key: string,token: string){
@@ -54,6 +73,7 @@ export class AttendeesPage {
       closeButtonText: 'OK'
     });
     toast.present();
+    this.cachedPassword = false;
 
     } else {
 
@@ -62,16 +82,20 @@ export class AttendeesPage {
         duration: 30000,
         dismissOnPageChange: true,
     });
-    loader.present();
-      this.conferenceService.loadConferenceAttendees(key,token, conferencePassword)
+
+    if(!this.cachedPassword) loader.present();
+
+    this.conferenceService.loadConferenceAttendees(key,token, conferencePassword)
         .then((attendees) => {
          loader.dismiss();
          if(attendees.data){
             this.attendees = attendees.data;
             this.attendeesFiltered = this.attendees;
+         } else {
+           this.cachedPassword = false;
          }
         }).catch((error) => {
-
+        this.cachedPassword = false;
         loader.dismiss();
 
         let message = "Teilnehmerliste aktuell nicht verfügbar. Versuchen Sie es zu einem späteren Zeitpunkt nochmal.";

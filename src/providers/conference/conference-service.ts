@@ -11,11 +11,14 @@ import {AgendaService} from "../agenda/agenda-service";
 import {SpeakerService} from "../speaker/speaker-service";
 
 const STORAGE_KEY = "conferences";
+const STORAGE_KEY_PW_LOCKER = "conferencePWLocker";
 
 @Injectable()
 export class ConferenceService {
 
   private conferences: Map<string, Conference> = new Map<string, Conference>();
+  private attendeeLists: Map<string, any> = new Map<string, any>();
+  private conferencePasswords: Map<string, string> = new Map<string, string>();
 
   constructor(private http: HttpClient,
     private storage: Storage,
@@ -34,7 +37,6 @@ export class ConferenceService {
         headers: {'Content-Type': 'application/json; charset=utf-8'}
       }).toPromise()
       .then((brandResponse: any) => {
-        console.log(brandResponse);
         this.global.conferenceBrand = brandResponse.brand;
         let url = this.global.apiURL('auth');
         return this.http.post(url, {
@@ -83,17 +85,47 @@ export class ConferenceService {
 
   public loadConferenceAttendees(conferenceId: string, token: string, password: string): Promise<any> {
     const url = this.global.apiURL('conference/attendees');
-    // @ts-ignore
-    return this.http.post(url, {
-      "key": conferenceId,
-      "token": token,
-      "password": password,
-      "uuid": this.device.uuid
-    }, {
-      headers: {'Content-Type': 'application/json; charset=utf-8'}
-    }).toPromise()
-      .then((attendeelist) => {
-        return attendeelist;
+
+    return new Promise(async (resolve,reject) => {
+
+      // no password given? maybe it's on the saved list
+      let cachedPassword = await this.getConferencePassword(conferenceId).then( (cachedPassword) => {
+        return cachedPassword;
+      });
+      if(cachedPassword && !password || password == "") password = cachedPassword;
+
+      // maybe we already loaded the userlist
+      let cachedList = await this.attendeeLists.forEach((val,key,atts) => {
+         if(conferenceId.toString() == key.toString()){
+          return resolve(val);
+        }
+      });
+
+      if(!cachedList){
+        // @ts-ignore
+        return resolve(this.http.post(url, {
+          "key": conferenceId,
+          "token": token,
+          "password": password,
+          "uuid": this.device.uuid
+        }, {
+          headers: {'Content-Type': 'application/json; charset=utf-8'}
+        }).toPromise()
+          .then((attendeelist) => {
+
+            /*
+              Save the password:
+              at this user knows (for sure) the conference password, he entered it manually – so we can exclude a snatched qr code
+              we save it to for future requests with password requiration we just access it
+            */
+            this.conferencePasswords.set(conferenceId.toString(), password);
+            this.storage.set(STORAGE_KEY_PW_LOCKER, this.conferencePasswords);
+            // also cache the attendees for current session
+            this.attendeeLists.set(conferenceId.toString(), attendeelist);
+
+            return attendeelist;
+        }));
+      }
     });
   }
 
@@ -101,8 +133,7 @@ export class ConferenceService {
   	this.conferences.forEach((val,key,confs) => {
 	  if(val.id.toString() == conferenceId.toString()){
 		   this.conferences.delete(key);
-		   console.log(this.conferences);
-	       this.storage.set(STORAGE_KEY, this.conferences);
+	     this.storage.set(STORAGE_KEY, this.conferences);
 		}
   	});
 
@@ -124,4 +155,22 @@ export class ConferenceService {
     }
     return Promise.resolve(this.conferences);
   }
+
+  /*
+    Check if User has entered the conference password manually "once"
+    so we can exclude a snatched qr code
+  */
+  public getConferencePassword(conferenceId: string): Promise<string>{
+    if (this.conferencePasswords.size == 0) {
+      return this.storage.get(STORAGE_KEY_PW_LOCKER).then((data) => {
+        if (data && data.size > 0) {
+          this.conferencePasswords = data;
+        }
+        return Promise.resolve( this.conferencePasswords.get(conferenceId.toString()) );
+      });
+    } else {
+      return Promise.resolve( this.conferencePasswords.get(conferenceId.toString()) );
+    }
+  }
+
 }

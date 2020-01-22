@@ -15,10 +15,19 @@
 
 <ion-content padding>
 
-  <ion-searchbar (ionInput)="filterAttendees($event)" *ngIf="attendees && attendees.length"></ion-searchbar>
+  <ion-searchbar (ionInput)="filterAttendees($event)" placeholder="Suchen" *ngIf="attendees && attendees.length"></ion-searchbar>
 
 
-  <section class="splashscreen" *ngIf="!attendees || !attendees.length">
+  <section class="splashscreen" *ngIf="cachedPassword && (!attendees || !attendees.length)">
+
+    <div class="attendeelist-info password-loading">
+
+      <ion-spinner></ion-spinner> <h3>Lade Teilnehmerliste…</h3>
+
+    </div>
+  </section>
+
+  <section class="splashscreen" *ngIf="!cachedPassword && (!attendees || !attendees.length)">
 
     <div class="attendeelist-info">
 
@@ -45,9 +54,13 @@
     </div>
 
   </section>
-  <ion-list class="attendee-list selectable-text" *ngIf="attendees && attendees.length">
+
+  <ion-list class="attendee-list selectable-text" no-lines *ngIf="attendees && attendees.length">
     <ion-item *ngFor="let attendee of this.attendeesFiltered" class="selectable-text">
-      <h2>{{attendee.vorname}} {{attendee.nachname}}</h2>
+      <ion-avatar item-start>
+        <span class="initials">{{attendee.vorname.charAt(0)}}{{attendee.nachname.charAt(0)}}</span>
+      </ion-avatar>
+      <h2 class="selectable-text">{{attendee.vorname}} {{attendee.nachname}}</h2>
       <p class="selectable-text"> {{attendee.position ? attendee.position+' &middot;': ''}} {{attendee.job ? attendee.job: ''}} {{attendee.firma ? attendee.firma: ''}} {{attendee.unternehmen ? attendee.unternehmen: ''}}<br/>
       {{attendee.email ? attendee.email+' &middot;': ''}} {{attendee.mail ? attendee.mail+' &middot;' : ''}} {{attendee.tel ? attendee.tel : ''}} {{attendee.telefon ? attendee.telefon : ''}}</p>
     </ion-item>

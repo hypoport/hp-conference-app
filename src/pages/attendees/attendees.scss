@@ -56,6 +56,17 @@ page-attendees {
       .attendeelist-info {
         text-align: center;
         margin-top: 8%;
+        &.password-loading {
+          display: flex;
+          align-items: center;
+          h3 {
+            display: inline-block;
+          }
+          ion-spinner {
+            display: inline-block;
+            margin-right: 16px;
+          }
+        }
       }
       .add-conference-hint {
         position: absolute;
@@ -155,11 +166,34 @@ page-attendees {
     p {
       color: $font-color-tertiary;
     }
+    ion-avatar {
+      display: flex;
+      background-color: #eee;
+      border-radius: 50%;
+      min-width: 42px;
+      min-height: 42px;
+      .initials {
+        align-self: center;
+        text-align: center;
+        width: 100%;
+      }
+    }
   }
   .selectable-text {
     user-select: text !important;
     h1,h2,h3,h4,h5,h6,p,a {
       user-select: text !important;
+    }
+  }
+
+  ion-searchbar.searchbar-ios {
+    background: transparent;
+    border: 0px !important;
+  }
+
+  .attendee-list > ion-tiem.item-block {
+    &:first-child {
+    border-top: 0 !important;
     }
   }
 
