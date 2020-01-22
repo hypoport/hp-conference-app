@@ -168,7 +168,7 @@ page-attendees {
     }
     ion-avatar {
       display: flex;
-      background-color: #eee;
+      background-color: color($colors, cloud);
       border-radius: 50%;
       min-width: 42px;
       min-height: 42px;

@@ -94,6 +94,9 @@ page-speaker {
 		padding-top: 27px;
     .date-heading {
       padding-left: 0px !important;
+      &.top-head {
+        display: none;
+      }
     }
 	}
 
