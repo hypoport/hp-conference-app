@@ -1,11 +1,16 @@
-import {Component} from "@angular/core";
+import {Component, ViewChild, ElementRef} from "@angular/core";
 import {Refresher, ToastController} from "ionic-angular";
 import {AgendaService} from "../../providers/agenda/agenda-service";
+import {ConferenceService} from "../../providers/conference/conference-service";
 import {GlobalProvider} from "../../providers/global/global";
 import {Agenda} from "../../models/agenda";
 import {Session} from "../../models/session";
+import {AppPage} from "../../models/app-page";
+
 import {FavoritesService} from "../../providers/favorites/favorites-service";
 import {Events} from "ionic-angular";
+
+import { BrowserService } from '../../providers/browser-service/browser-service';
 
 @Component({
   selector: "page-agenda",
@@ -19,10 +24,15 @@ export class AgendaPage {
   favoSessions: Array<Session> = [];
   isFavorite: boolean;
 
+  appPage: AppPage;
+  @ViewChild('appPageContent') appPageContent: ElementRef;
+
   constructor(private globalProvider: GlobalProvider,
     private agendaService: AgendaService,
+    private conferenceService: ConferenceService,
     private favoritesService: FavoritesService,
     private toastCtrl: ToastController,
+    private browserService: BrowserService,
     private events: Events
     ) {
 		this.activeSegment = 'allSessions';
@@ -49,6 +59,16 @@ export class AgendaPage {
       this.sessions = filteredSessions;
       this.favoSessions = this.sessions.filter((session) => session.isFavorite);
     });
+
+    this.conferenceService.getAppPage(this.globalProvider.conferenceId,'agenda').then((page) => {
+      this.appPage = page;
+      setTimeout(()=>{
+        if(this.appPageContent) this.browserService.enableDynamicHyperlinks(this.appPageContent);
+      },200);
+    },rejection => {
+      console.log('AppPage Error: '+rejection);
+    });
+
   }
 
   ionViewWillEnter(){

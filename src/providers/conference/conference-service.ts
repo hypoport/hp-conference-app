@@ -1,5 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Conference} from "../../models/conference";
+import {AppPage} from "../../models/app-page";
+
 import {HttpClient} from "@angular/common/http";
 import {Storage} from "@ionic/storage";
 import {Device} from '@ionic-native/device';
@@ -171,6 +173,25 @@ export class ConferenceService {
     } else {
       return Promise.resolve( this.conferencePasswords.get(conferenceId.toString()) );
     }
+  }
+  /*
+    Get Page a specific app page
+  */
+  public getAppPage(conferenceId: string,identifier: string): Promise<AppPage> {
+      let conference = this.conferences.get(conferenceId.toString());
+      if(!conference) return Promise.reject('no conference found');
+      console.log(conference);
+      if(!conference.pages) return Promise.reject('no conference pages found');
+      let pages = conference.pages;
+      let foundPage;
+      pages.forEach((page) => {
+        if(page.type == identifier) foundPage = page;
+      });
+      if(foundPage){
+        return Promise.resolve(foundPage);
+      } else {
+        return Promise.reject('no page with that identifier found');
+      }
   }
 
 }

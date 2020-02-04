@@ -19,7 +19,9 @@
     </ion-segment-button>
   </ion-segment>
 
-
+  <section class="page-text selectable-text" padding-left padding-right *ngIf="appPage">
+      <div #appPageContent [innerHtml]="appPage?.pageContent"></div>
+  </section>
 
   <section class="agenda {{agenda?.layout ? 'layout-'+agenda.layout : 'layout-linear'}}" >
 

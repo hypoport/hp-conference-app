@@ -2,6 +2,7 @@ import {Directions} from "./directions";
 import {Contact} from "./contact";
 import {QuickAccessCard} from "./quickaccess-card";
 import {ConferenceOptions} from "./conference-options";
+import {AppPage} from "./app-page";
 
 export class Conference {
   id: string;
@@ -9,6 +10,7 @@ export class Conference {
   title: string;
   subtitle: string;
   quickaccess: Array<QuickAccessCard>;
+  pages: Array<AppPage>;
   startDate: Date;
   endDate: Date;
   city: string;

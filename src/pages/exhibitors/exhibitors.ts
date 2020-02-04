@@ -1,8 +1,14 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild, ElementRef} from '@angular/core';
 import {ActionSheetButton, ActionSheetController, ActionSheetOptions, App, Config, Refresher, ToastController} from 'ionic-angular';
+
 import {GlobalProvider} from "../../providers/global/global";
 import {ExhibitorService} from "../../providers/exhibitor/exhibitor-service";
+import {ConferenceService} from "../../providers/conference/conference-service";
+import { BrowserService } from '../../providers/browser-service/browser-service';
+
 import {Exhibitor} from "../../models/exhibitor";
+import {AppPage} from "../../models/app-page";
+
 import {ExhibitorPage} from '../exhibitor/exhibitor';
 
 @Component({
@@ -13,16 +19,30 @@ export class ExhibitorsPage {
 
   exhibitors: Array<Exhibitor> = [];
 
+  appPage: AppPage;
+  @ViewChild('appPageContent') appPageContent: ElementRef;
+
   constructor(private globalProvider: GlobalProvider,
     private exhibitorService: ExhibitorService,
+    private conferenceService: ConferenceService,
     private toastCtrl: ToastController,
     private config: Config,
     private actionSheetCtrl: ActionSheetController,
+    private browserService: BrowserService,
     private app: App,
     ) {
   }
 
   ionViewDidLoad() {
+    this.conferenceService.getAppPage(this.globalProvider.conferenceId,'exhibitor').then((page) => {
+      this.appPage = page;
+      setTimeout(()=>{
+        if(this.appPageContent) this.browserService.enableDynamicHyperlinks(this.appPageContent);        
+      },200);
+    },rejection => {
+      console.log('AppPage Error: '+rejection);
+    });
+
     this.exhibitorService.getExhibitors(this.globalProvider.conferenceId).then((exhibitors) => {
       this.exhibitors = exhibitors;
       this.exhibitorService.loadExhibitors(this.globalProvider.conferenceId,this.globalProvider.conferenceToken).then((exhibitors: Array<Exhibitor>) => {

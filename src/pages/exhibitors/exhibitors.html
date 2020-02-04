@@ -9,6 +9,10 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
+  <section class="page-text selectable-text" padding-left padding-right *ngIf="appPage">
+      <div #appPageContent [innerHtml]="appPage?.pageContent"></div>
+  </section>
+
   <section class="exhibitors">
 
     <ion-list no-lines no-padding>

@@ -91,7 +91,7 @@ $font-family-md-base:        "IBMPlexSans", "Open Sans", "Roboto", sans-serif !d
 $font-family-wp-base:        "IBMPlexSans", "Open Sans", "Segoe UI", "Noto Sans", sans-serif !default;
 
 
-$text-color:                 color($colors, charcoal) !default;
+$text-color:                 color($colors, dark) !default;
 $text-ios-color:             $text-color !default;
 $text-md-color:              $text-color !default;
 
@@ -208,7 +208,9 @@ $button-md-box-shadow: none !default;
 /*
   Custom Styling
 */
-
+a, .selectable-text a {
+  color: #ec7456;
+}
 page-home ion-slides[card-slides]{
   ion-slide:nth-child(1) .card-content-top ion-icon{
   color: #ec7456;
@@ -274,4 +276,18 @@ page-home .intro {
   background-position: center bottom !important;
   background-repeat: no-repeat !important;
   background-size: contain !important;
+}
+
+.exhibitor-card {
+  .card {
+    border-radius: 8px;
+    box-shadow: 0px 3px 6px -3px rgba(0, 0, 0, 0.2);
+  }
+  .label {
+    margin: 0px;
+  }
+}
+
+h5.speaker-data {
+  color: color($colors, dark);
 }
