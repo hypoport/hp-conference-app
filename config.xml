@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="de.hypoport.tagungsapp" version="1.1.1" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="de.hypoport.tagungsapp" version="1.1.2" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Hypoport Tagungs-App</name>
     <description>Digitaler Tagungsbegleiter</description>
     <author email="marketing@hypoport.de" href="https://tagungsapp.hypoport.de">Hypoport AG</author>
@@ -117,6 +117,9 @@
     <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryAddUsageDescription">
         <string>need photo library access to save pictures there</string>
     </edit-config>
+    <config-file parent="UIUserInterfaceStyle" platform="ios" target="*-Info.plist">
+        <string>Light</string>
+    </config-file>
     <allow-navigation href="http://10.10.97.6:8100" />
     <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
