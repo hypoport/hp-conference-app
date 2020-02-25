@@ -131,6 +131,11 @@
     </plugin>
     <plugin name="cordova-plugin-local-notification" spec="~0.9.0-beta.2" />
     <plugin name="cordova-plugin-inappbrowser" spec="3.0.0" />
+    <plugin name="com.unarin.cordova.beacon" spec="~3.8.1" />
+    <plugin name="cordova-plugin-bluetoothle" spec="^4.5.7" />
+    <plugin name="cordova-plugin-bluetooth-peripheral-usage-description" spec="^1.0.1">
+        <variable name="TEXT" value="Interactive Bluetooth Beacons arround conference venues" />
+    </plugin>
     <engine name="android" spec="7.1.4" />
-    <engine name="ios" spec="^5.0.0" />
+    <engine name="ios" spec="^5.1.1" />
 </widget>

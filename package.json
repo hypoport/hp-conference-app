@@ -9,7 +9,7 @@
     "regen-brands": "ionic-app-scripts build --sass ./config/brand.gp.sass.config.js && ionic-app-scripts build --sass ./config/brand.ep.sass.config.js && ionic-app-scripts build --sass ./config/brand.ep-old.sass.config.js && ionic-app-scripts build --sass ./config/brand.fm.sass.config.js && ionic-app-scripts build --sass ./config/brand.step.sass.config.js && ionic-app-scripts build --sass ./config/brand.smit.sass.config.js && ionic-app-scripts build --sass ./config/brand.hori.sass.config.js && ionic-app-scripts build --sass ./config/brand.qp.sass.config.js",
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
-    "ionic:build": "npm run-script regen-brands && ionic-app-scripts build",
+    "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve",
     "ionic:serve-brands": "npm run-script regen-brands && ionic-app-scripts serve",
     "sasstest": "ionic-app-scripts sass"
@@ -26,6 +26,7 @@
     "@angular/platform-browser-dynamic": "5.2.11",
     "@google/maps": "0.5.0",
     "@ionic-native/barcode-scanner": "^4.20.0",
+    "@ionic-native/bluetooth-le": "^4.20.0",
     "@ionic-native/call-number": "^4.20.0",
     "@ionic-native/core": "4.7.0",
     "@ionic-native/device": "^4.20.0",
@@ -42,6 +43,8 @@
     "cordova-ios": "^5.1.1",
     "cordova-plugin-add-swift-support": "^1.7.2",
     "cordova-plugin-badge": "^0.8.8",
+    "cordova-plugin-bluetooth-peripheral-usage-description": "^1.0.1",
+    "cordova-plugin-bluetoothle": "^4.5.7",
     "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-inappbrowser": "3.0.0",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
@@ -54,6 +57,7 @@
     "ionic-angular": "3.9.2",
     "ionicons": "3.0.0",
     "mx.ferreyra.callnumber": "~0.0.2",
+    "node-sass": "^4.13.1",
     "phonegap-plugin-barcodescanner": "^8.1.0",
     "rxjs": "5.5.11",
     "sw-toolbox": "3.6.0",
@@ -77,7 +81,12 @@
       },
       "cordova-plugin-local-notification": {},
       "mx.ferreyra.callnumber": {},
-      "cordova-plugin-inappbrowser": {}
+      "cordova-plugin-inappbrowser": {},
+      "com.unarin.cordova.beacon": {},
+      "cordova-plugin-bluetoothle": {},
+      "cordova-plugin-bluetooth-peripheral-usage-description": {
+        "TEXT": "Interactive Bluetooth Beacons arround conference venues"
+      }
     },
     "platforms": [
       "android",
