@@ -31,6 +31,9 @@ import {FavoritesService} from '../providers/favorites/favorites-service';
 import {NotificationService} from '../providers/notifications/notifications-service';
 import {BrowserService} from '../providers/browser-service/browser-service';
 
+import { BluetoothLE } from '@ionic-native/bluetooth-le';
+import {BleService} from '../providers/ble-service/ble-service';
+
 import {HttpClientModule} from '@angular/common/http';
 import {IonicStorageModule} from '@ionic/storage';
 import {Device} from '@ionic-native/device';
@@ -101,6 +104,7 @@ registerLocaleData(localeDe);
     SplashScreen,
     InAppBrowser,
     CallNumber,
+    BluetoothLE,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AgendaService,
     ConferenceService,
@@ -110,7 +114,8 @@ registerLocaleData(localeDe);
     BrandProvider,
     FavoritesService,
     NotificationService,
-    BrowserService
+    BrowserService,
+    BleService
   ]
 })
 export class AppModule {}

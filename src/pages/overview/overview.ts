@@ -11,6 +11,9 @@ import {ConferenceOptions} from '../../models/conference-options';
 import {BrandProvider} from '../../providers/brand/brand';
 import {SettingsPage} from '../settings/settings';
 
+import {BleService} from '../../providers/ble-service/ble-service';
+
+
 /**
  * Generated class for the OverviewPage page.
  *
@@ -35,7 +38,8 @@ export class OverviewPage {
     private modalCtrl: ModalController,
     private toastCtrl: ToastController,
     private brandProvider: BrandProvider,
-    private actSheetCtrl: ActionSheetController
+    private actSheetCtrl: ActionSheetController,
+    private bleService: BleService
 ) {
   }
 
