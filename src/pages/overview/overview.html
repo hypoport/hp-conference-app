@@ -28,6 +28,13 @@
 
   <main padding>
     <section class="hero" *ngIf="currentConference != null && currentConference" padding>
+
+
+      <h3 *ngIf="bleService.scanning" style="text-align: center;"><ion-icon name="wifi"></ion-icon><br/>Finde Beacon …</h3>
+
+      <p *ngIf="bleService.scanning" style="font-weight: strong; text-align: center;">RSSI: {{beaconDistance}}</p>
+
+
       <!-- <h3 class="subtitle">Aktuelle Tagung</h3> -->
       <ion-slides card-slides slidesPerView="1">
         <ion-slide>

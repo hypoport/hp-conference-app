@@ -32,6 +32,9 @@ export class OverviewPage {
   lastConferences = new Array<Conference>();
   nextConferences = new Array<Conference>();
 
+  beaconInterval = -1;
+  beaconDistance = -100;
+
   constructor(private navCtrl: NavController,
     private globalProvider: GlobalProvider,
     private conferenceService: ConferenceService,
@@ -45,6 +48,15 @@ export class OverviewPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OverviewPage');
+
+    this.beaconInterval = setInterval(() => {
+           this.beaconDistance = this.bleService.lastBeaconDistance;
+    }, 100);
+
+    setTimeout(()=>{
+        clearInterval(this.beaconInterval);
+    },60000);
+
   }
 
   ionViewWillEnter() {
