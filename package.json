@@ -49,7 +49,7 @@
     "cordova-plugin-local-notification": "^0.9.0-beta.2",
     "cordova-plugin-splashscreen": "^5.0.3",
     "cordova-plugin-whitelist": "^1.3.4",
-    "crypto-js": "^3.1.9-1",
+    "crypto-js": "^3.2.1",
     "ioa": "9.1.0",
     "ionic-angular": "3.9.2",
     "ionicons": "3.0.0",
